@@ -12,6 +12,9 @@ import 'package:demo_app/feature/encouter_reg_mat/view/encouter_reg_mat_screen.d
 import 'package:demo_app/feature/encouter_reg_mat/view/maternal_service1_screen.dart';
 
 import 'package:demo_app/feature/home/view/home_screen.dart';
+import 'package:demo_app/feature/onboarding/view/get_started_screen.dart';
+import 'package:demo_app/feature/onboarding/view/partners_screen.dart';
+import 'package:demo_app/feature/onboarding/view/splash_screen.dart';
 import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg1_screen.dart';
 import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg_screen.dart';
 import 'package:demo_app/feature/login/view/login_screen.dart';
@@ -24,7 +27,13 @@ part 'router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(path: '/', page: LoginRoute.page),
+        // AutoRoute(path: '/', page: StartRoute.page),
+        //AutoRoute(path: '/', page: HomeRoute.page),
+        AutoRoute(path: '/', page: SplashRoute.page),
+        AutoRoute(path: '/get_started_screen', page: GetStartedRoute.page),
+        AutoRoute(path: '/partnersScreen', page: PartnersRoute.page),
+        AutoRoute(path: '/homeScreen', page: HomeRoute.page),
+        AutoRoute(path: '/loginScreen', page: LoginRoute.page),
         AutoRoute(path: '/home', page: HomeRoute.page),
         AutoRoute(path: '/encounter_reg_mat', page: EncouterRegMatRoute.page),
         AutoRoute(path: '/maternal_service1', page: MaternalService1Route.page),

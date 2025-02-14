@@ -25,12 +25,8 @@ mixin _$SendOtpRes {
   String? get smsStatus => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
 
-  /// Serializes this SendOtpRes to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SendOtpRes
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $SendOtpResCopyWith<SendOtpRes> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,8 +50,6 @@ class _$SendOtpResCopyWithImpl<$Res, $Val extends SendOtpRes>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SendOtpRes
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,8 +98,6 @@ class __$$SendOtpResImplCopyWithImpl<$Res>
       _$SendOtpResImpl _value, $Res Function(_$SendOtpResImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SendOtpRes
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,13 +165,11 @@ class _$SendOtpResImpl implements _SendOtpRes {
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, pinId, to, smsStatus, message);
 
-  /// Create a copy of SendOtpRes
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SendOtpResImplCopyWith<_$SendOtpResImpl> get copyWith =>
@@ -211,11 +201,8 @@ abstract class _SendOtpRes implements SendOtpRes {
   String? get smsStatus;
   @override
   String? get message;
-
-  /// Create a copy of SendOtpRes
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SendOtpResImplCopyWith<_$SendOtpResImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

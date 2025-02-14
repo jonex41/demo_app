@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    GetStartedRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const GetStartedScreen(),
+      );
+    },
     ChildHealth1Route.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -80,6 +86,20 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: const HomeScreen(),
       );
+    },
+    PartnersRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PartnersScreen(),
+      );
+    },
+    SplashRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SplashScreen(),
+      );
+    },
+  };
     },
     HouseHoldReg1Route.name: (routeData) {
       return AutoRoutePage<dynamic>(
@@ -261,6 +281,20 @@ class EncouterRegMatRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [GetStartedScreen]
+class GetStartedRoute extends PageRouteInfo<void> {
+  const GetStartedRoute({List<PageRouteInfo>? children})
+      : super(
+          GetStartedRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'GetStartedRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -354,6 +388,34 @@ class WalletRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'WalletRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PartnersScreen]
+class PartnersRoute extends PageRouteInfo<void> {
+  const PartnersRoute({List<PageRouteInfo>? children})
+      : super(
+          PartnersRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PartnersRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SplashScreen]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute({List<PageRouteInfo>? children})
+      : super(
+          SplashRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SplashRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
