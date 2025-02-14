@@ -3,6 +3,7 @@ import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
+import 'package:demo_app/feature/login/provider/login_binding.dart';
 import 'package:demo_app/network/network_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,6 +22,7 @@ void main() async {
     // FlutterNativeSplash.remove();
   });
   HomeBindings().dependencies();
+  LoginBindings().dependencies();
   runApp(const ProviderScope(child: MyApp()));
 }
 
