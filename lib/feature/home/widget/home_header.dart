@@ -24,7 +24,7 @@ class HomeHeaderWidget extends StatelessWidget {
           width: 56,
           height: 56,
           decoration: BoxDecoration(
-            color: AppPalette.primary.primary50,
+            color: AppPalette.primary.primary10,
             shape: BoxShape.circle,
           ),
           child: Center(

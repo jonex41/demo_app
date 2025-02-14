@@ -9,6 +9,13 @@ abstract class AppPalette {
 
   static const transparent = Colors.transparent;
   static const green = Color(0xFF23AC80);
+  static const lime = Color(0xFFDFF5A9);
+  static const lime2 = Color(0xFFF0FFCA);
+  static const green1 = Color(0xFFC7FCEA);
+  static const orangeLight1 = Color(0xFFFFEBDF);
+  static const orangeLight2 = Color(0xFFFADAC8);
+  static const cloud1 = Color(0xFFABFFFB);
+  static const cloud2 = Color(0xFFA6F5F1);
   static const green2 = Color(0xFF24B086);
   static const green3 = Color(0xFF02D898);
   static const orange1 = Color(0xFFF1B604);
@@ -47,6 +54,9 @@ abstract class AppPalette {
   static const greenLight = Color(0xffFEE2E2);
   static const greenLight2 = Color(0xffEEF2F8);
   static const blueLight2 = Color(0xff0064FF);
+  static const button1 = Color(0xff87BC03);
+  static const button3 = Color(0xffE35D6A);
+  static const button4 = Color(0xff129FE1);
 
   //new
 
@@ -64,7 +74,7 @@ abstract class AppPalette {
   static const red = _RedColors();
   static const dark = _DarkColors();
   static const yellow = _YellowColors();
-  static const lime = _LimeColors();
+  static const lime1 = _LimeColors();
 }
 
 /// Usage example: `AppPalette.grey.grey50`.
@@ -102,10 +112,10 @@ class _GreyColors {
 class _PrimaryColor {
   const _PrimaryColor();
 
-  final primary50 = const Color(0xFF007AFF);
+  final primary10 = const Color(0xFFEEFFF9);
   final primary100 = const Color(0xFF2F71EB);
 
-  final primary400 = const Color(0xFF0F57C5);
+  final primary400 = const Color(0xFF027D52);
   final primary350 = const Color(0xEB1150AE);
   final primary300 = const Color(0xFF157705);
   final primary200 = const Color(0xFF0851D9);

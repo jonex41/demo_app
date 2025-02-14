@@ -29,7 +29,7 @@ class AppTheme {
   static final _lightAppColors = AppColorsExtension(
     primary: AppPalette.primary.primary400,
     onPrimary: AppPalette.white,
-    secondary: AppPalette.lime.lime400,
+    secondary: AppPalette.lime1.lime400,
     onSecondary: AppPalette.white,
     error: AppPalette.red.red500,
     onError: AppPalette.red.red500,
@@ -101,7 +101,7 @@ class AppTheme {
   static final _darkAppColors = AppColorsExtension(
     primary: AppPalette.primary.primary400,
     onPrimary: AppPalette.white,
-    secondary: AppPalette.lime.lime400,
+    secondary: AppPalette.lime1.lime400,
     onSecondary: AppPalette.primary.primary400,
     error: AppPalette.red.red300,
     onError: AppPalette.red.red400,

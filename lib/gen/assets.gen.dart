@@ -199,39 +199,8 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/abdominal.png
-  AssetGenImage get abdominal =>
-      const AssetGenImage('assets/images/abdominal.png');
-
-  /// File path: assets/images/abdominal_test.png
-  AssetGenImage get abdominalTest =>
-      const AssetGenImage('assets/images/abdominal_test.png');
-
-  /// File path: assets/images/abdominal_test2.png
-  AssetGenImage get abdominalTest2 =>
-      const AssetGenImage('assets/images/abdominal_test2.png');
-
-  /// File path: assets/images/ask_bladder.png
-  AssetGenImage get askBladder =>
-      const AssetGenImage('assets/images/ask_bladder.png');
-
-  /// File path: assets/images/assessment.png
-  AssetGenImage get assessment =>
-      const AssetGenImage('assets/images/assessment.png');
-
   /// File path: assets/images/back.svg
   SvgGenImage get back => const SvgGenImage('assets/images/back.svg');
-
-  /// File path: assets/images/blood_pressure.png
-  AssetGenImage get bloodPressure =>
-      const AssetGenImage('assets/images/blood_pressure.png');
-
-  /// File path: assets/images/blood_pressure2.png
-  AssetGenImage get bloodPressure2 =>
-      const AssetGenImage('assets/images/blood_pressure2.png');
-
-  /// File path: assets/images/card1.png
-  AssetGenImage get card1 => const AssetGenImage('assets/images/card1.png');
 
   /// File path: assets/images/card2.png
   AssetGenImage get card2 => const AssetGenImage('assets/images/card2.png');
@@ -243,12 +212,25 @@ class $AssetsImagesGen {
   AssetGenImage get cardAdd =>
       const AssetGenImage('assets/images/card_add.png');
 
+  /// File path: assets/images/check1000.png
+  AssetGenImage get check1000 =>
+      const AssetGenImage('assets/images/check1000.png');
+
+  /// File path: assets/images/comodity_dispense.png
+  AssetGenImage get comodityDispense =>
+      const AssetGenImage('assets/images/comodity_dispense.png');
+
+  /// File path: assets/images/comodity_requisition.png
+  AssetGenImage get comodityRequisition =>
+      const AssetGenImage('assets/images/comodity_requisition.png');
+
+  /// File path: assets/images/encouter_register.png
+  AssetGenImage get encouterRegister =>
+      const AssetGenImage('assets/images/encouter_register.png');
+
   /// File path: assets/images/first_visit.svg
   SvgGenImage get firstVisit =>
       const SvgGenImage('assets/images/first_visit.svg');
-
-  /// File path: assets/images/heart.png
-  AssetGenImage get heart => const AssetGenImage('assets/images/heart.png');
 
   /// File path: assets/images/image1.svg
   SvgGenImage get image1 => const SvgGenImage('assets/images/image1.svg');
@@ -299,10 +281,6 @@ class $AssetsImagesGen {
   AssetGenImage get partners =>
       const AssetGenImage('assets/images/partners.png');
 
-  /// File path: assets/images/pulse_rate.png
-  AssetGenImage get pulseRate =>
-      const AssetGenImage('assets/images/pulse_rate.png');
-
   /// File path: assets/images/registraion2.svg
   SvgGenImage get registraion2 =>
       const SvgGenImage('assets/images/registraion2.svg');
@@ -349,20 +327,15 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        abdominal,
-        abdominalTest,
-        abdominalTest2,
-        askBladder,
-        assessment,
         back,
-        bloodPressure,
-        bloodPressure2,
-        card1,
         card2,
         card3,
         cardAdd,
+        check1000,
+        comodityDispense,
+        comodityRequisition,
+        encouterRegister,
         firstVisit,
-        heart,
         image1,
         login,
         logo,
@@ -376,7 +349,6 @@ class $AssetsImagesGen {
         partner3,
         partner4,
         partners,
-        pulseRate,
         registraion2,
         registration1,
         schedule,
