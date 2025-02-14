@@ -12,296 +12,252 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
-class $AssetsFontsGen {
-  const $AssetsFontsGen();
-
-  /// File path: assets/fonts/Jura-Regular.ttf
-  String get juraRegular => 'assets/fonts/Jura-Regular.ttf';
-
-  /// List of all assets
-  List<String> get values => [juraRegular];
-}
-
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/about.svg
-  SvgGenImage get about => const SvgGenImage('assets/icons/about.svg');
+  /// File path: assets/icons/activity.svg
+  SvgGenImage get activity => const SvgGenImage('assets/icons/activity.svg');
+
+  /// File path: assets/icons/add_green.svg
+  SvgGenImage get addGreen => const SvgGenImage('assets/icons/add_green.svg');
+
+  /// File path: assets/icons/add_lime.svg
+  SvgGenImage get addLime => const SvgGenImage('assets/icons/add_lime.svg');
+
+  /// File path: assets/icons/add_test.svg
+  SvgGenImage get addTest => const SvgGenImage('assets/icons/add_test.svg');
 
   /// File path: assets/icons/arrow_down.svg
   SvgGenImage get arrowDown => const SvgGenImage('assets/icons/arrow_down.svg');
 
-  /// File path: assets/icons/arrow_down_long.svg
-  SvgGenImage get arrowDownLong =>
-      const SvgGenImage('assets/icons/arrow_down_long.svg');
+  /// File path: assets/icons/arrow_side.svg
+  SvgGenImage get arrowSide => const SvgGenImage('assets/icons/arrow_side.svg');
 
-  /// File path: assets/icons/arrow_right_green.svg
-  SvgGenImage get arrowRightGreen =>
-      const SvgGenImage('assets/icons/arrow_right_green.svg');
+  /// File path: assets/icons/back_page.svg
+  SvgGenImage get backPage => const SvgGenImage('assets/icons/back_page.svg');
 
-  /// File path: assets/icons/arrow_right_white.svg
-  SvgGenImage get arrowRightWhite =>
-      const SvgGenImage('assets/icons/arrow_right_white.svg');
+  /// File path: assets/icons/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
 
-  /// File path: assets/icons/back_arrow.svg
-  SvgGenImage get backArrow => const SvgGenImage('assets/icons/back_arrow.svg');
+  /// File path: assets/icons/calendar2.svg
+  SvgGenImage get calendar2 => const SvgGenImage('assets/icons/calendar2.svg');
 
-  /// File path: assets/icons/back_arrow_black.svg
-  SvgGenImage get backArrowBlack =>
-      const SvgGenImage('assets/icons/back_arrow_black.svg');
+  /// File path: assets/icons/cancel.svg
+  SvgGenImage get cancel => const SvgGenImage('assets/icons/cancel.svg');
 
-  /// File path: assets/icons/bank_transfer.svg
-  SvgGenImage get bankTransfer =>
-      const SvgGenImage('assets/icons/bank_transfer.svg');
+  /// File path: assets/icons/category.svg
+  SvgGenImage get category => const SvgGenImage('assets/icons/category.svg');
 
-  /// File path: assets/icons/birth.svg
-  SvgGenImage get birth => const SvgGenImage('assets/icons/birth.svg');
+  /// File path: assets/icons/chat.svg
+  SvgGenImage get chat => const SvgGenImage('assets/icons/chat.svg');
 
-  /// File path: assets/icons/bvn.svg
-  SvgGenImage get bvn => const SvgGenImage('assets/icons/bvn.svg');
+  /// File path: assets/icons/clock.svg
+  SvgGenImage get clock => const SvgGenImage('assets/icons/clock.svg');
 
-  /// File path: assets/icons/cart.svg
-  SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
+  /// File path: assets/icons/doctor2.svg
+  SvgGenImage get doctor2 => const SvgGenImage('assets/icons/doctor2.svg');
 
-  /// File path: assets/icons/copy.svg
-  SvgGenImage get copy => const SvgGenImage('assets/icons/copy.svg');
+  /// File path: assets/icons/doctor_green.svg
+  SvgGenImage get doctorGreen =>
+      const SvgGenImage('assets/icons/doctor_green.svg');
 
-  /// File path: assets/icons/delete.svg
-  SvgGenImage get delete => const SvgGenImage('assets/icons/delete.svg');
+  /// File path: assets/icons/doctor_mean.svg
+  SvgGenImage get doctorMean =>
+      const SvgGenImage('assets/icons/doctor_mean.svg');
 
-  /// File path: assets/icons/download.svg
-  SvgGenImage get download => const SvgGenImage('assets/icons/download.svg');
+  /// File path: assets/icons/done_all.svg
+  SvgGenImage get doneAll => const SvgGenImage('assets/icons/done_all.svg');
 
-  /// File path: assets/icons/eye_open.png
-  AssetGenImage get eyeOpen => const AssetGenImage('assets/icons/eye_open.png');
+  /// File path: assets/icons/draft.svg
+  SvgGenImage get draft => const SvgGenImage('assets/icons/draft.svg');
 
-  /// File path: assets/icons/finger.svg
-  SvgGenImage get finger => const SvgGenImage('assets/icons/finger.svg');
+  /// File path: assets/icons/every_visit.svg
+  SvgGenImage get everyVisit =>
+      const SvgGenImage('assets/icons/every_visit.svg');
 
-  /// File path: assets/icons/fund_wallet.svg
-  SvgGenImage get fundWallet =>
-      const SvgGenImage('assets/icons/fund_wallet.svg');
+  /// File path: assets/icons/heart_rate.svg
+  SvgGenImage get heartRate => const SvgGenImage('assets/icons/heart_rate.svg');
 
-  /// File path: assets/icons/fund_wallet2.svg
-  SvgGenImage get fundWallet2 =>
-      const SvgGenImage('assets/icons/fund_wallet2.svg');
+  /// File path: assets/icons/home.svg
+  SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
 
-  /// File path: assets/icons/fund_withdraw.svg
-  SvgGenImage get fundWithdraw =>
-      const SvgGenImage('assets/icons/fund_withdraw.svg');
+  /// File path: assets/icons/logout.svg
+  SvgGenImage get logout => const SvgGenImage('assets/icons/logout.svg');
 
-  /// File path: assets/icons/hand_up.svg
-  SvgGenImage get handUp => const SvgGenImage('assets/icons/hand_up.svg');
+  /// File path: assets/icons/male.png
+  AssetGenImage get male => const AssetGenImage('assets/icons/male.png');
 
-  /// File path: assets/icons/help.svg
-  SvgGenImage get help => const SvgGenImage('assets/icons/help.svg');
+  /// File path: assets/icons/more.svg
+  SvgGenImage get more => const SvgGenImage('assets/icons/more.svg');
 
-  /// File path: assets/icons/home_blue.svg
-  SvgGenImage get homeBlue => const SvgGenImage('assets/icons/home_blue.svg');
+  /// File path: assets/icons/notification.png
+  AssetGenImage get notification =>
+      const AssetGenImage('assets/icons/notification.png');
 
-  /// File path: assets/icons/home_white.svg
-  SvgGenImage get homeWhite => const SvgGenImage('assets/icons/home_white.svg');
+  /// File path: assets/icons/paper.svg
+  SvgGenImage get paper => const SvgGenImage('assets/icons/paper.svg');
 
-  /// File path: assets/icons/message.svg
-  SvgGenImage get message => const SvgGenImage('assets/icons/message.svg');
+  /// File path: assets/icons/partner_dash.png
+  AssetGenImage get partnerDash =>
+      const AssetGenImage('assets/icons/partner_dash.png');
 
-  /// File path: assets/icons/network.svg
-  SvgGenImage get network => const SvgGenImage('assets/icons/network.svg');
+  /// File path: assets/icons/picker.svg
+  SvgGenImage get picker => const SvgGenImage('assets/icons/picker.svg');
 
-  /// File path: assets/icons/notif_profile.svg
-  SvgGenImage get notifProfile =>
-      const SvgGenImage('assets/icons/notif_profile.svg');
+  /// File path: assets/icons/plug.svg
+  SvgGenImage get plug => const SvgGenImage('assets/icons/plug.svg');
 
-  /// File path: assets/icons/notification.svg
-  SvgGenImage get notification =>
-      const SvgGenImage('assets/icons/notification.svg');
+  /// File path: assets/icons/profile_guy.png
+  AssetGenImage get profileGuy =>
+      const AssetGenImage('assets/icons/profile_guy.png');
 
-  /// File path: assets/icons/person.svg
-  SvgGenImage get person => const SvgGenImage('assets/icons/person.svg');
+  /// File path: assets/icons/request_test.svg
+  SvgGenImage get requestTest =>
+      const SvgGenImage('assets/icons/request_test.svg');
 
-  /// File path: assets/icons/profile.svg
-  SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
+  /// File path: assets/icons/right_arrow.svg
+  SvgGenImage get rightArrow =>
+      const SvgGenImage('assets/icons/right_arrow.svg');
 
-  /// File path: assets/icons/profile_blue.svg
-  SvgGenImage get profileBlue =>
-      const SvgGenImage('assets/icons/profile_blue.svg');
-
-  /// File path: assets/icons/profile_white.svg
-  SvgGenImage get profileWhite =>
-      const SvgGenImage('assets/icons/profile_white.svg');
-
-  /// File path: assets/icons/qr_frame.svg
-  SvgGenImage get qrFrame => const SvgGenImage('assets/icons/qr_frame.svg');
-
-  /// File path: assets/icons/refer1.png
-  AssetGenImage get refer1 => const AssetGenImage('assets/icons/refer1.png');
-
-  /// File path: assets/icons/referral2.svg
-  SvgGenImage get referral2 => const SvgGenImage('assets/icons/referral2.svg');
-
-  /// File path: assets/icons/referrals.svg
-  SvgGenImage get referrals => const SvgGenImage('assets/icons/referrals.svg');
-
-  /// File path: assets/icons/rush_icon.svg
-  SvgGenImage get rushIcon => const SvgGenImage('assets/icons/rush_icon.svg');
-
-  /// File path: assets/icons/scan.svg
-  SvgGenImage get scan => const SvgGenImage('assets/icons/scan.svg');
+  /// File path: assets/icons/schedule.svg
+  SvgGenImage get schedule => const SvgGenImage('assets/icons/schedule.svg');
 
   /// File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
-  /// File path: assets/icons/security_profile.svg
-  SvgGenImage get securityProfile =>
-      const SvgGenImage('assets/icons/security_profile.svg');
+  /// File path: assets/icons/small_calendar.svg
+  SvgGenImage get smallCalendar =>
+      const SvgGenImage('assets/icons/small_calendar.svg');
 
-  /// File path: assets/icons/send_black.svg
-  SvgGenImage get sendBlack => const SvgGenImage('assets/icons/send_black.svg');
+  /// File path: assets/icons/small_paper.svg
+  SvgGenImage get smallPaper =>
+      const SvgGenImage('assets/icons/small_paper.svg');
 
-  /// File path: assets/icons/send_blue.svg
-  SvgGenImage get sendBlue => const SvgGenImage('assets/icons/send_blue.svg');
+  /// File path: assets/icons/successful.svg
+  SvgGenImage get successful =>
+      const SvgGenImage('assets/icons/successful.svg');
 
-  /// File path: assets/icons/send_white.svg
-  SvgGenImage get sendWhite => const SvgGenImage('assets/icons/send_white.svg');
+  /// File path: assets/icons/support.svg
+  SvgGenImage get support => const SvgGenImage('assets/icons/support.svg');
 
-  /// File path: assets/icons/setting.svg
-  SvgGenImage get setting => const SvgGenImage('assets/icons/setting.svg');
+  /// File path: assets/icons/user.svg
+  SvgGenImage get user => const SvgGenImage('assets/icons/user.svg');
 
-  /// File path: assets/icons/share.svg
-  SvgGenImage get share => const SvgGenImage('assets/icons/share.svg');
+  /// File path: assets/icons/view_result.svg
+  SvgGenImage get viewResult =>
+      const SvgGenImage('assets/icons/view_result.svg');
 
-  /// File path: assets/icons/tabler_edit.svg
-  SvgGenImage get tablerEdit =>
-      const SvgGenImage('assets/icons/tabler_edit.svg');
-
-  /// File path: assets/icons/tabler_logout.svg
-  SvgGenImage get tablerLogout =>
-      const SvgGenImage('assets/icons/tabler_logout.svg');
-
-  /// File path: assets/icons/transaction_blue.svg
-  SvgGenImage get transactionBlue =>
-      const SvgGenImage('assets/icons/transaction_blue.svg');
-
-  /// File path: assets/icons/transaction_white.svg
-  SvgGenImage get transactionWhite =>
-      const SvgGenImage('assets/icons/transaction_white.svg');
-
-  /// File path: assets/icons/travel_case.svg
-  SvgGenImage get travelCase =>
-      const SvgGenImage('assets/icons/travel_case.svg');
-
-  /// File path: assets/icons/user_profile.svg
-  SvgGenImage get userProfile =>
-      const SvgGenImage('assets/icons/user_profile.svg');
-
-  /// File path: assets/icons/users.svg
-  SvgGenImage get users => const SvgGenImage('assets/icons/users.svg');
-
-  /// File path: assets/icons/winner.png
-  AssetGenImage get winner => const AssetGenImage('assets/icons/winner.png');
-
-  /// File path: assets/icons/withdraw_hand.svg
-  SvgGenImage get withdrawHand =>
-      const SvgGenImage('assets/icons/withdraw_hand.svg');
+  /// File path: assets/icons/wave.png
+  AssetGenImage get wave => const AssetGenImage('assets/icons/wave.png');
 
   /// List of all assets
   List<dynamic> get values => [
-        about,
+        activity,
+        addGreen,
+        addLime,
+        addTest,
         arrowDown,
-        arrowDownLong,
-        arrowRightGreen,
-        arrowRightWhite,
-        backArrow,
-        backArrowBlack,
-        bankTransfer,
-        birth,
-        bvn,
-        cart,
-        copy,
-        delete,
-        download,
-        eyeOpen,
-        finger,
-        fundWallet,
-        fundWallet2,
-        fundWithdraw,
-        handUp,
-        help,
-        homeBlue,
-        homeWhite,
-        message,
-        network,
-        notifProfile,
+        arrowSide,
+        backPage,
+        calendar,
+        calendar2,
+        cancel,
+        category,
+        chat,
+        clock,
+        doctor2,
+        doctorGreen,
+        doctorMean,
+        doneAll,
+        draft,
+        everyVisit,
+        heartRate,
+        home,
+        logout,
+        male,
+        more,
         notification,
-        person,
-        profile,
-        profileBlue,
-        profileWhite,
-        qrFrame,
-        refer1,
-        referral2,
-        referrals,
-        rushIcon,
-        scan,
+        paper,
+        partnerDash,
+        picker,
+        plug,
+        profileGuy,
+        requestTest,
+        rightArrow,
+        schedule,
         search,
-        securityProfile,
-        sendBlack,
-        sendBlue,
-        sendWhite,
-        setting,
-        share,
-        tablerEdit,
-        tablerLogout,
-        transactionBlue,
-        transactionWhite,
-        travelCase,
-        userProfile,
-        users,
-        winner,
-        withdrawHand
+        smallCalendar,
+        smallPaper,
+        successful,
+        support,
+        user,
+        viewResult,
+        wave
       ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/bottom.png
-  AssetGenImage get bottom => const AssetGenImage('assets/images/bottom.png');
+  /// File path: assets/images/abdominal.png
+  AssetGenImage get abdominal =>
+      const AssetGenImage('assets/images/abdominal.png');
 
-  /// File path: assets/images/bottom_back.png
-  AssetGenImage get bottomBack =>
-      const AssetGenImage('assets/images/bottom_back.png');
+  /// File path: assets/images/abdominal_test.png
+  AssetGenImage get abdominalTest =>
+      const AssetGenImage('assets/images/abdominal_test.png');
 
-  /// File path: assets/images/circle.png
-  AssetGenImage get circle => const AssetGenImage('assets/images/circle.png');
+  /// File path: assets/images/abdominal_test2.png
+  AssetGenImage get abdominalTest2 =>
+      const AssetGenImage('assets/images/abdominal_test2.png');
 
-  /// File path: assets/images/circle2.png
-  AssetGenImage get circle2 => const AssetGenImage('assets/images/circle2.png');
+  /// File path: assets/images/ask_bladder.png
+  AssetGenImage get askBladder =>
+      const AssetGenImage('assets/images/ask_bladder.png');
 
-  /// File path: assets/images/congrat.png
-  AssetGenImage get congrat => const AssetGenImage('assets/images/congrat.png');
+  /// File path: assets/images/assessment.png
+  AssetGenImage get assessment =>
+      const AssetGenImage('assets/images/assessment.png');
 
-  /// File path: assets/images/del.png
-  AssetGenImage get del => const AssetGenImage('assets/images/del.png');
+  /// File path: assets/images/back.svg
+  SvgGenImage get back => const SvgGenImage('assets/images/back.svg');
+
+  /// File path: assets/images/blood_pressure.png
+  AssetGenImage get bloodPressure =>
+      const AssetGenImage('assets/images/blood_pressure.png');
+
+  /// File path: assets/images/blood_pressure2.png
+  AssetGenImage get bloodPressure2 =>
+      const AssetGenImage('assets/images/blood_pressure2.png');
+
+  /// File path: assets/images/card1.png
+  AssetGenImage get card1 => const AssetGenImage('assets/images/card1.png');
+
+  /// File path: assets/images/card2.png
+  AssetGenImage get card2 => const AssetGenImage('assets/images/card2.png');
+
+  /// File path: assets/images/card3.png
+  AssetGenImage get card3 => const AssetGenImage('assets/images/card3.png');
+
+  /// File path: assets/images/card_add.png
+  AssetGenImage get cardAdd =>
+      const AssetGenImage('assets/images/card_add.png');
+
+  /// File path: assets/images/first_visit.svg
+  SvgGenImage get firstVisit =>
+      const SvgGenImage('assets/images/first_visit.svg');
+
+  /// File path: assets/images/heart.png
+  AssetGenImage get heart => const AssetGenImage('assets/images/heart.png');
+
+  /// File path: assets/images/image1.svg
+  SvgGenImage get image1 => const SvgGenImage('assets/images/image1.svg');
+
+  /// File path: assets/images/login.png
+  AssetGenImage get login => const AssetGenImage('assets/images/login.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
-
-  /// File path: assets/images/logo1.png
-  AssetGenImage get logo1 => const AssetGenImage('assets/images/logo1.png');
-
-  /// File path: assets/images/logo2.png
-  AssetGenImage get logo2 => const AssetGenImage('assets/images/logo2.png');
-
-  /// File path: assets/images/nfc.png
-  AssetGenImage get nfc => const AssetGenImage('assets/images/nfc.png');
-
-  /// File path: assets/images/ngn.png
-  AssetGenImage get ngn => const AssetGenImage('assets/images/ngn.png');
-
-  /// File path: assets/images/nig_logo.png
-  AssetGenImage get nigLogo =>
-      const AssetGenImage('assets/images/nig_logo.png');
 
   /// File path: assets/images/onboard1.png
   AssetGenImage get onboard1 =>
@@ -315,83 +271,129 @@ class $AssetsImagesGen {
   AssetGenImage get onboard3 =>
       const AssetGenImage('assets/images/onboard3.png');
 
-  /// File path: assets/images/profile.png
-  AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
+  /// File path: assets/images/onboard4.png
+  AssetGenImage get onboard4 =>
+      const AssetGenImage('assets/images/onboard4.png');
 
-  /// File path: assets/images/qr_frame.png
-  AssetGenImage get qrFrame =>
-      const AssetGenImage('assets/images/qr_frame.png');
+  /// File path: assets/images/onboard5.png
+  AssetGenImage get onboard5 =>
+      const AssetGenImage('assets/images/onboard5.png');
 
-  /// File path: assets/images/rush_logo2.png
-  AssetGenImage get rushLogo2 =>
-      const AssetGenImage('assets/images/rush_logo2.png');
+  /// File path: assets/images/partner1.png
+  AssetGenImage get partner1 =>
+      const AssetGenImage('assets/images/partner1.png');
 
-  /// File path: assets/images/scan1.png
-  AssetGenImage get scan1 => const AssetGenImage('assets/images/scan1.png');
+  /// File path: assets/images/partner2.png
+  AssetGenImage get partner2 =>
+      const AssetGenImage('assets/images/partner2.png');
 
-  /// File path: assets/images/scan2.png
-  AssetGenImage get scan2 => const AssetGenImage('assets/images/scan2.png');
+  /// File path: assets/images/partner3.png
+  AssetGenImage get partner3 =>
+      const AssetGenImage('assets/images/partner3.png');
 
-  /// File path: assets/images/scan3.png
-  AssetGenImage get scan3 => const AssetGenImage('assets/images/scan3.png');
+  /// File path: assets/images/partner4.png
+  AssetGenImage get partner4 =>
+      const AssetGenImage('assets/images/partner4.png');
 
-  /// File path: assets/images/security.png
-  AssetGenImage get security =>
-      const AssetGenImage('assets/images/security.png');
+  /// File path: assets/images/partners.png
+  AssetGenImage get partners =>
+      const AssetGenImage('assets/images/partners.png');
 
-  /// File path: assets/images/start1.png
-  AssetGenImage get start1 => const AssetGenImage('assets/images/start1.png');
+  /// File path: assets/images/pulse_rate.png
+  AssetGenImage get pulseRate =>
+      const AssetGenImage('assets/images/pulse_rate.png');
 
-  /// File path: assets/images/start2.png
-  AssetGenImage get start2 => const AssetGenImage('assets/images/start2.png');
+  /// File path: assets/images/registraion2.svg
+  SvgGenImage get registraion2 =>
+      const SvgGenImage('assets/images/registraion2.svg');
 
-  /// File path: assets/images/success_back.png
-  AssetGenImage get successBack =>
-      const AssetGenImage('assets/images/success_back.png');
+  /// File path: assets/images/registration1.svg
+  SvgGenImage get registration1 =>
+      const SvgGenImage('assets/images/registration1.svg');
 
-  /// File path: assets/images/success_one.png
-  AssetGenImage get successOne =>
-      const AssetGenImage('assets/images/success_one.png');
+  /// File path: assets/images/schedule.png
+  AssetGenImage get schedule =>
+      const AssetGenImage('assets/images/schedule.png');
 
-  /// File path: assets/images/topper.png
-  AssetGenImage get topper => const AssetGenImage('assets/images/topper.png');
+  /// File path: assets/images/schedule_avatar.png
+  AssetGenImage get scheduleAvatar =>
+      const AssetGenImage('assets/images/schedule_avatar.png');
+
+  /// File path: assets/images/self_examine.png
+  AssetGenImage get selfExamine =>
+      const AssetGenImage('assets/images/self_examine.png');
+
+  /// File path: assets/images/splash_screen_logo.png
+  AssetGenImage get splashScreenLogo =>
+      const AssetGenImage('assets/images/splash_screen_logo.png');
+
+  /// File path: assets/images/successful.svg
+  SvgGenImage get successful =>
+      const SvgGenImage('assets/images/successful.svg');
+
+  /// File path: assets/images/visual_breast_body1.png
+  AssetGenImage get visualBreastBody1 =>
+      const AssetGenImage('assets/images/visual_breast_body1.png');
+
+  /// File path: assets/images/visual_breast_body2.png
+  AssetGenImage get visualBreastBody2 =>
+      const AssetGenImage('assets/images/visual_breast_body2.png');
+
+  /// File path: assets/images/visual_breast_body3.png
+  AssetGenImage get visualBreastBody3 =>
+      const AssetGenImage('assets/images/visual_breast_body3.png');
+
+  /// File path: assets/images/visual_breast_header.png
+  AssetGenImage get visualBreastHeader =>
+      const AssetGenImage('assets/images/visual_breast_header.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-        bottom,
-        bottomBack,
-        circle,
-        circle2,
-        congrat,
-        del,
+  List<dynamic> get values => [
+        abdominal,
+        abdominalTest,
+        abdominalTest2,
+        askBladder,
+        assessment,
+        back,
+        bloodPressure,
+        bloodPressure2,
+        card1,
+        card2,
+        card3,
+        cardAdd,
+        firstVisit,
+        heart,
+        image1,
+        login,
         logo,
-        logo1,
-        logo2,
-        nfc,
-        ngn,
-        nigLogo,
         onboard1,
         onboard2,
         onboard3,
-        profile,
-        qrFrame,
-        rushLogo2,
-        scan1,
-        scan2,
-        scan3,
-        security,
-        start1,
-        start2,
-        successBack,
-        successOne,
-        topper
+        onboard4,
+        onboard5,
+        partner1,
+        partner2,
+        partner3,
+        partner4,
+        partners,
+        pulseRate,
+        registraion2,
+        registration1,
+        schedule,
+        scheduleAvatar,
+        selfExamine,
+        splashScreenLogo,
+        successful,
+        visualBreastBody1,
+        visualBreastBody2,
+        visualBreastBody3,
+        visualBreastHeader
       ];
 }
 
 class Assets {
   const Assets._();
 
-  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }

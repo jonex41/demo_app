@@ -117,7 +117,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/gifs/
-    - assets/fonts/
+ 
 fonts:
      - family: jura
        fonts:

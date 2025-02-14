@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:rush_app/core/theme/new_theme/app_color.dart';
+import 'package:demo_app/core/theme/new_theme/app_color.dart';
 
 String formatMoney(String value) {
   final oCcy = NumberFormat("#,##0.00", "en_US");
