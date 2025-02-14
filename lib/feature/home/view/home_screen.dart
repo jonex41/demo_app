@@ -41,8 +41,14 @@ class HomeScreen extends GetView<HomeController> {
                 _thirdCard(context),
                 _fourthCard(context),
                 _fifthCard(context),
+                _sixthCard(context),
+                _seventhCard(context),
+                _eigtthCard(context),
+                _halfCards(context),
+                Assets.images.germanLogo.image(
+                  width: (context.width - 20).w,
+                ),
 
-                //   _halfCards(context),
                 /*   _fourthCard(
                     context: context,
                     subColor: AppPalette.dark.dark300,
@@ -57,6 +63,7 @@ class HomeScreen extends GetView<HomeController> {
                     title: "Immunizations and\nOther Prophylaxis",
                     showImage: false,
                     fromDelivery: false), */
+
                 50.height,
                 /*  Align(
                     alignment: Alignment.bottomLeft,
@@ -384,7 +391,7 @@ class HomeScreen extends GetView<HomeController> {
                       width: 80.w,
                       color: AppPalette.orangeLight2,
                       child: Center(
-                          child: Assets.images.comodityDispense.image()))),
+                          child: Assets.images.comodityRequisition.image()))),
             ],
           ),
         ),
@@ -452,8 +459,215 @@ class HomeScreen extends GetView<HomeController> {
                       height: 80.w,
                       width: 80.w,
                       color: AppPalette.cloud2,
+                      child: Center(child: Assets.images.commodity2.image()))),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _sixthCard(BuildContext context) {
+    return SizedBox(
+      height: 250,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: AppPalette.cardsix1,
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Encounter Register\nHousehold ',
+                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
+                        color: AppPalette.dark.dark60,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  10.height,
+                  Row(
+                    children: [
+                      Text(
+                        'Get started for to update your\npersonals information',
+                        style: context.theme.appTextTheme.labelLarge12.copyWith(
+                            color: AppPalette.grey.gray400,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      10.width,
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          //  controller.gotoEveryScreen();
+                          // controller.gotoGettingReady();
+                        },
+                        child: _buttonWithArrow(
+                            context,
+                            'Continue',
+                            AppPalette.primary.primary10,
+                            AppPalette.cardsix3,
+                            16),
+                      ),
+                      14.width,
+                    ],
+                  )
+                ],
+              ),
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                      height: 80.w,
+                      width: 80.w,
+                      color: AppPalette.cardsix2,
                       child: Center(
-                          child: Assets.images.comodityRequisition.image()))),
+                          child: Assets.images.encouterRegisterHousehold
+                              .image()))),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _seventhCard(BuildContext context) {
+    return SizedBox(
+      height: 250,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: AppPalette.cardseven1,
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Referral Form ',
+                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
+                        color: AppPalette.dark.dark60,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  10.height,
+                  Row(
+                    children: [
+                      Text(
+                        'Get started for to update your\npersonals information',
+                        style: context.theme.appTextTheme.labelLarge12.copyWith(
+                            color: AppPalette.primary.primary10,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      10.width,
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          //  controller.gotoEveryScreen();
+                          // controller.gotoGettingReady();
+                        },
+                        child: _buttonWithArrow(
+                            context,
+                            'Continue',
+                            AppPalette.primary.primary10,
+                            AppPalette.primary.primary400,
+                            16),
+                      ),
+                      14.width,
+                    ],
+                  )
+                ],
+              ),
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                      height: 80.w,
+                      width: 80.w,
+                      color: AppPalette.cardseven2,
+                      child:
+                          Center(child: Assets.images.houseRegister.image()))),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _eigtthCard(BuildContext context) {
+    return SizedBox(
+      height: 250,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: AppPalette.primary.primary400,
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Referral Form ',
+                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
+                        color: AppPalette.primary.primary10,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  10.height,
+                  Row(
+                    children: [
+                      Text(
+                        'Get started for to update your\npersonals information',
+                        style: context.theme.appTextTheme.labelLarge12.copyWith(
+                            color: AppPalette.primary.primary10,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      10.width,
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          //  controller.gotoEveryScreen();
+                          // controller.gotoGettingReady();
+                        },
+                        child: _buttonWithArrow(
+                            context,
+                            'Continue',
+                            AppPalette.primary.primary400,
+                            AppPalette.white,
+                            16),
+                      ),
+                      14.width,
+                    ],
+                  )
+                ],
+              ),
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                      height: 80.w,
+                      width: 80.w,
+                      color: AppPalette.cardeight1,
+                      child:
+                          Center(child: Assets.images.referralForm.image()))),
             ],
           ),
         ),
@@ -477,7 +691,7 @@ class HomeScreen extends GetView<HomeController> {
       },
       child: SizedBox(
         width: MediaQuery.of(context).size.width / 2 - 15,
-        height: 200,
+        height: 210,
         child: Card(
           color: AppPalette.primary.primary400,
           shape: RoundedRectangleBorder(
@@ -489,11 +703,20 @@ class HomeScreen extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Assets.icons.plug.svg(),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      color: AppPalette.primary.primary10,
+                      child: Center(
+                        child: Assets.images.wallet.image(),
+                      ),
+                    )),
                 10.height,
                 Text(
-                  'Testing',
-                  style: context.theme.appTextTheme.titleSmall24.copyWith(
+                  'Wallet',
+                  style: context.theme.appTextTheme.bodyLarge18.copyWith(
                       color: AppPalette.primary.primary10,
                       fontWeight: FontWeight.w600),
                 ),
@@ -518,7 +741,7 @@ class HomeScreen extends GetView<HomeController> {
       },
       child: SizedBox(
         width: MediaQuery.of(context).size.width / 2 - 15,
-        height: 200,
+        height: 210,
         child: Card(
           color: AppPalette.lime1.lime400,
           shape: RoundedRectangleBorder(
@@ -530,13 +753,29 @@ class HomeScreen extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Assets.icons.heartRate.svg(),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      color: AppPalette.primary.primary10,
+                      child: Center(
+                        child: Assets.images.profileNew.image(),
+                      ),
+                    )),
                 2.height,
                 Text(
-                  'Care\nProvision',
-                  style: context.theme.appTextTheme.titleSmall24.copyWith(
+                  'Profile',
+                  style: context.theme.appTextTheme.bodyLarge18.copyWith(
                       color: AppPalette.primary.primary400,
                       fontWeight: FontWeight.w600),
+                ),
+                10.height,
+                Text(
+                  'Basic ANC Booking\nInvestigations include',
+                  style: context.theme.appTextTheme.labelLarge8.copyWith(
+                      color: AppPalette.primary.primary400,
+                      fontWeight: FontWeight.w500),
                 ),
               ],
             ),

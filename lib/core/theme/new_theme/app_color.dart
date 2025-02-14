@@ -57,6 +57,12 @@ abstract class AppPalette {
   static const button1 = Color(0xff87BC03);
   static const button3 = Color(0xffE35D6A);
   static const button4 = Color(0xff129FE1);
+  static const cardsix1 = Color(0xffFCE2FF);
+  static const cardsix2 = Color(0xffF5CFFA);
+  static const cardsix3 = Color(0xffD72FEB);
+  static const cardseven1 = Color(0xffAEF207);
+  static const cardseven2 = Color(0xffC4FF34);
+  static const cardeight1 = Color(0xff049A66);
 
   //new
 

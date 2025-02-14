@@ -58,31 +58,9 @@ class HomeHeaderWidget extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        if (isOnline)
-          Container(
-            width: 28,
-            height: 28,
-            decoration: BoxDecoration(
-              color: Colors.red.withOpacity(0.25), // border color
-              shape: BoxShape.circle,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(2), // border width
-              child: Container(
-                // or ClipRRect if you need to clip the content
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.green, // inner circle color
-                ),
-                child: Container(), // inner content
-              ),
-            ),
-          ),
-        /*  const Spacer(),
-
         Align(
             alignment: Alignment.topRight,
-            child: Assets.images.icons.notification.image()), */
+            child: Assets.images.notification.image()),
         5.width
       ],
     );

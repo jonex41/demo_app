@@ -216,6 +216,10 @@ class $AssetsImagesGen {
   AssetGenImage get check1000 =>
       const AssetGenImage('assets/images/check1000.png');
 
+  /// File path: assets/images/commodity2.png
+  AssetGenImage get commodity2 =>
+      const AssetGenImage('assets/images/commodity2.png');
+
   /// File path: assets/images/comodity_dispense.png
   AssetGenImage get comodityDispense =>
       const AssetGenImage('assets/images/comodity_dispense.png');
@@ -228,9 +232,21 @@ class $AssetsImagesGen {
   AssetGenImage get encouterRegister =>
       const AssetGenImage('assets/images/encouter_register.png');
 
+  /// File path: assets/images/encouter_register_household.png
+  AssetGenImage get encouterRegisterHousehold =>
+      const AssetGenImage('assets/images/encouter_register_household.png');
+
   /// File path: assets/images/first_visit.svg
   SvgGenImage get firstVisit =>
       const SvgGenImage('assets/images/first_visit.svg');
+
+  /// File path: assets/images/german_logo.png
+  AssetGenImage get germanLogo =>
+      const AssetGenImage('assets/images/german_logo.png');
+
+  /// File path: assets/images/house_register.png
+  AssetGenImage get houseRegister =>
+      const AssetGenImage('assets/images/house_register.png');
 
   /// File path: assets/images/image1.svg
   SvgGenImage get image1 => const SvgGenImage('assets/images/image1.svg');
@@ -240,6 +256,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/notification.png
+  AssetGenImage get notification =>
+      const AssetGenImage('assets/images/notification.png');
 
   /// File path: assets/images/onboard1.png
   AssetGenImage get onboard1 =>
@@ -280,6 +300,14 @@ class $AssetsImagesGen {
   /// File path: assets/images/partners.png
   AssetGenImage get partners =>
       const AssetGenImage('assets/images/partners.png');
+
+  /// File path: assets/images/profile_new.png
+  AssetGenImage get profileNew =>
+      const AssetGenImage('assets/images/profile_new.png');
+
+  /// File path: assets/images/referral_form.png
+  AssetGenImage get referralForm =>
+      const AssetGenImage('assets/images/referral_form.png');
 
   /// File path: assets/images/registraion2.svg
   SvgGenImage get registraion2 =>
@@ -325,6 +353,9 @@ class $AssetsImagesGen {
   AssetGenImage get visualBreastHeader =>
       const AssetGenImage('assets/images/visual_breast_header.png');
 
+  /// File path: assets/images/wallet.png
+  AssetGenImage get wallet => const AssetGenImage('assets/images/wallet.png');
+
   /// List of all assets
   List<dynamic> get values => [
         back,
@@ -332,13 +363,18 @@ class $AssetsImagesGen {
         card3,
         cardAdd,
         check1000,
+        commodity2,
         comodityDispense,
         comodityRequisition,
         encouterRegister,
+        encouterRegisterHousehold,
         firstVisit,
+        germanLogo,
+        houseRegister,
         image1,
         login,
         logo,
+        notification,
         onboard1,
         onboard2,
         onboard3,
@@ -349,6 +385,8 @@ class $AssetsImagesGen {
         partner3,
         partner4,
         partners,
+        profileNew,
+        referralForm,
         registraion2,
         registration1,
         schedule,
@@ -359,7 +397,8 @@ class $AssetsImagesGen {
         visualBreastBody1,
         visualBreastBody2,
         visualBreastBody3,
-        visualBreastHeader
+        visualBreastHeader,
+        wallet
       ];
 }
 
