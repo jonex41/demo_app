@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
