@@ -6,7 +6,6 @@ import 'package:demo_app/feature/checklist/provider/checklist_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 @RoutePage()
