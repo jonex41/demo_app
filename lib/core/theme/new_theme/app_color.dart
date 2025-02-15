@@ -44,6 +44,7 @@ abstract class AppPalette {
   static const grayLight3 = Color(0xffE9E9E9);
   static const grayLight4 = Color(0xff2D2D2D);
   static const grayLight5 = Color(0xffF5F7FC);
+  static const grayLight6 = Color(0xffEAEAEA);
   static const black3 = Color(0xff000C20);
   static const grayNew = Color(0xffA1A1A1);
   static const grayNew1 = Color(0xff7F7F7F);
@@ -63,6 +64,8 @@ abstract class AppPalette {
   static const cardseven1 = Color(0xffAEF207);
   static const cardseven2 = Color(0xffC4FF34);
   static const cardeight1 = Color(0xff049A66);
+  static const backgroundGreen = Color(0xFF88BB24);
+  static const containerGreen = Color(0xFF679B00);
 
   //new
 

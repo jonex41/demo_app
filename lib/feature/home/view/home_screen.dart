@@ -235,7 +235,9 @@ class HomeScreen extends GetView<HomeController> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          controller.gotoChecklistHomeScreen();
+                        },
                         child: _buttonWithArrow(
                             context,
                             'Continue',

@@ -1,7 +1,8 @@
-
+import 'package:demo_app/core/router/locator.dart';
+import 'package:demo_app/core/router/router.dart';
+import 'package:demo_app/feature/checklist/provider/checklist_bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 
 import 'package:get/get.dart' hide ContextExtensionss;
 
@@ -10,9 +11,7 @@ import 'package:nb_utils/nb_utils.dart';
 import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 
-
 import 'package:demo_app/model/home/user_transaction_model.dart';
-
 
 import 'package:demo_app/network/network_client.dart';
 
@@ -26,10 +25,10 @@ class HomeController extends GetxController {
   final userTransactions4 = <TransactionModel?>[].obs;
   final text = ''.obs;
   final selectedTab = 0.obs;
- // final scanModel = Rxn<ScanModel?>();
+  // final scanModel = Rxn<ScanModel?>();
   final mytext = ''.obs;
   final textCOntroller = TextEditingController();
- 
+
   final networkService = Get.find<NetworkService>();
   final storageService = Get.find<StorageService>();
   final FocusNode unitCodeCtrlFocusNode = FocusNode();
@@ -38,7 +37,7 @@ class HomeController extends GetxController {
   void onInit() {
     // TODO: implement onInit
 //   userModel.value = storageService.getUser();
-    
+
     selectedTab.listen((value) {
       print('new $value');
     });
@@ -78,5 +77,10 @@ class HomeController extends GetxController {
       return 'Good Afternoon';
     }
     return 'Good Evening';
+  }
+
+  Future<void> gotoChecklistHomeScreen() async {
+    ChecklistBindings().dependencies();
+    appRoute.push(const ChecklistHomeRoute());
   }
 }

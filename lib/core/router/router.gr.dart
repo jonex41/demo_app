@@ -15,6 +15,54 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AddNewChecklistRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddNewChecklistScreen(),
+      );
+    },
+    AddNewRecordRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddNewRecordScreen(),
+      );
+    },
+    AddNewScheduleRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddNewScheduleScreen(),
+      );
+    },
+    AllRecordsDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AllRecordsDetailScreen(),
+      );
+    },
+    AllRecordsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AllRecordsScreen(),
+      );
+    },
+    AllScheduleDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AllScheduleDetailScreen(),
+      );
+    },
+    AllScheduleRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AllScheduleScreen(),
+      );
+    },
+    ChecklistHomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChecklistHomeScreen(),
+      );
+    },
     GetStartedRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -85,6 +133,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomeScreen(),
+      );
+    },
+    LogsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LogsScreen(),
       );
     },
     PartnersRoute.name: (routeData) {
@@ -281,6 +335,118 @@ class EncouterRegMatRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [AddNewChecklistScreen]
+class AddNewChecklistRoute extends PageRouteInfo<void> {
+  const AddNewChecklistRoute({List<PageRouteInfo>? children})
+      : super(
+          AddNewChecklistRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddNewChecklistRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddNewRecordScreen]
+class AddNewRecordRoute extends PageRouteInfo<void> {
+  const AddNewRecordRoute({List<PageRouteInfo>? children})
+      : super(
+          AddNewRecordRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddNewRecordRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddNewScheduleScreen]
+class AddNewScheduleRoute extends PageRouteInfo<void> {
+  const AddNewScheduleRoute({List<PageRouteInfo>? children})
+      : super(
+          AddNewScheduleRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddNewScheduleRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AllRecordsDetailScreen]
+class AllRecordsDetailRoute extends PageRouteInfo<void> {
+  const AllRecordsDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          AllRecordsDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AllRecordsDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AllRecordsScreen]
+class AllRecordsRoute extends PageRouteInfo<void> {
+  const AllRecordsRoute({List<PageRouteInfo>? children})
+      : super(
+          AllRecordsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AllRecordsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AllScheduleDetailScreen]
+class AllScheduleDetailRoute extends PageRouteInfo<void> {
+  const AllScheduleDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          AllScheduleDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AllScheduleDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AllScheduleScreen]
+class AllScheduleRoute extends PageRouteInfo<void> {
+  const AllScheduleRoute({List<PageRouteInfo>? children})
+      : super(
+          AllScheduleRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AllScheduleRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChecklistHomeScreen]
+class ChecklistHomeRoute extends PageRouteInfo<void> {
+  const ChecklistHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          ChecklistHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChecklistHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [GetStartedScreen]
 class GetStartedRoute extends PageRouteInfo<void> {
   const GetStartedRoute({List<PageRouteInfo>? children})
@@ -388,6 +554,20 @@ class WalletRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'WalletRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [LogsScreen]
+class LogsRoute extends PageRouteInfo<void> {
+  const LogsRoute({List<PageRouteInfo>? children})
+      : super(
+          LogsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LogsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
