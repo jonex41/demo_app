@@ -22,12 +22,8 @@ SearchModel _$SearchModelFromJson(Map<String, dynamic> json) {
 mixin _$SearchModel {
   String? get title => throw _privateConstructorUsedError;
 
-  /// Serializes this SearchModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SearchModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $SearchModelCopyWith<SearchModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,8 +47,6 @@ class _$SearchModelCopyWithImpl<$Res, $Val extends SearchModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SearchModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,8 +80,6 @@ class __$$SearchModelImplCopyWithImpl<$Res>
       _$SearchModelImpl _value, $Res Function(_$SearchModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SearchModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,13 +118,11 @@ class _$SearchModelImpl implements _SearchModel {
             (identical(other.title, title) || other.title == title));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title);
 
-  /// Create a copy of SearchModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchModelImplCopyWith<_$SearchModelImpl> get copyWith =>
@@ -155,11 +145,8 @@ abstract class _SearchModel implements SearchModel {
 
   @override
   String? get title;
-
-  /// Create a copy of SearchModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SearchModelImplCopyWith<_$SearchModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
