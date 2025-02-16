@@ -85,6 +85,7 @@ class _AddNewChecklistScreenState extends State<AddNewChecklistScreen> {
                   child: getRightBody(),
                 );
               }),
+              15.height,
               Obx(() {
                 return updateButtonNext(context);
               }),
@@ -94,6 +95,23 @@ class _AddNewChecklistScreenState extends State<AddNewChecklistScreen> {
         ),
       ),
     );
+  }
+
+  showAlertDialog(String message) {
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              title: const Text("Action Required"),
+              content: Text(message),
+              actions: [
+                TextButton(
+                  child: const Text("OK"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ));
   }
 
   Widget getRightBody() {
@@ -120,12 +138,25 @@ class _AddNewChecklistScreenState extends State<AddNewChecklistScreen> {
           if (!isValid) {
             return;
           }
+          if (checklistController.selectDateRegisteredChipAgent == null) {
+            showAlertDialog('Date registered by Chips Agent cannot be empty');
+            return;
+          }
         }
 
         if (checklistController.currentScreen.value == 2) {
           final isValid =
               checklistController.formKeyScreen2.currentState!.validate();
           if (!isValid) {
+            return;
+          }
+
+          if (checklistController.selectExpectedDateOfDelivery == null) {
+            showAlertDialog('Expected Date of Delivery cannot be empty');
+            return;
+          }
+          if (checklistController.selectDateOfBirth == null) {
+            showAlertDialog('Date of Birth cannot be empty');
             return;
           }
         }

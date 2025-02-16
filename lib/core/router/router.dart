@@ -59,6 +59,7 @@ class AppRouter extends _$AppRouter {
             page: AllScheduleDetailRoute.page),
         AutoRoute(
             path: '/addNewScheduleScreen', page: AddNewScheduleRoute.page),
+        AutoRoute(path: '/logScreen', page: LogsRoute.page),
         AutoRoute(
             path: '/commDispenseHomeScreen', page: CommDispenseHomeRoute.page),
         AutoRoute(

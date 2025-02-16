@@ -93,17 +93,23 @@ class _ChecklistHomeScreenState extends State<ChecklistHomeScreen> {
                     21.height,
                     ChecklistItem(
                       title: 'Records (Update,view)',
-                      onTap: () {},
+                      onTap: () {
+                        checklistController.gotoAllRecordsScreen();
+                      },
                     ),
                     21.height,
                     ChecklistItem(
                       title: 'Schedules',
-                      onTap: () {},
+                      onTap: () {
+                        checklistController.gotoAllScheduleScreen();
+                      },
                     ),
                     21.height,
                     ChecklistItem(
                       title: 'Logs',
-                      onTap: () {},
+                      onTap: () {
+                        checklistController.gotoLogsScreen();
+                      },
                     ),
                     21.height
                   ],

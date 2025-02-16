@@ -108,6 +108,7 @@ class _GreyColors {
   final gray350 = const Color(0xff7A7C7F);
   final gray360 = const Color(0xff6A707F);
   final gray370 = const Color(0xff7c7c7c);
+  final gray380 = const Color(0xffAAA9A9);
 
   final gray400 = const Color(0xff959596);
 

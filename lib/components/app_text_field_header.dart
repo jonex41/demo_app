@@ -20,7 +20,7 @@ class AppTextFieldHeader extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 13,
                       color: AppPalette.black,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w500),
                 ),
                 const TextSpan(
                   text: ' ',
