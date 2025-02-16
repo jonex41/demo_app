@@ -2,8 +2,14 @@ import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
+import 'package:demo_app/feature/chip_referral/provider/chip_referral_binding.dart';
+import 'package:demo_app/feature/encounter_reg_house/provider/encouter_reg_house_binding.dart';
+import 'package:demo_app/feature/encouter_reg_mat/provider/encouter_reg_mat_binding.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
+import 'package:demo_app/feature/house_hold_reg/provider/house_hold_reg_binding.dart';
 import 'package:demo_app/feature/login/provider/login_binding.dart';
+import 'package:demo_app/feature/profile/provider/profile_binding.dart';
+import 'package:demo_app/feature/wallet/provider/wallet_binding.dart';
 import 'package:demo_app/network/network_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,6 +29,12 @@ void main() async {
   });
   HomeBindings().dependencies();
   LoginBindings().dependencies();
+  WalletBinding().dependencies();
+  ProfileBinding().dependencies();
+  EncouterRegHouseBinding().dependencies();
+  EncouterRegMatBinding().dependencies();
+  HouseHoldRegBinding().dependencies();
+  ChipReferralBinding().dependencies();
   runApp(const ProviderScope(child: MyApp()));
 }
 

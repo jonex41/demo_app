@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:demo_app/core/router/locator.dart';
+import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/home/provider/home_controller.dart';
@@ -45,6 +47,7 @@ class HomeScreen extends GetView<HomeController> {
                 _seventhCard(context),
                 _eigtthCard(context),
                 _halfCards(context),
+                20.height,
                 Assets.images.germanLogo.image(
                   width: (context.width - 20).w,
                 ),
@@ -212,7 +215,7 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     '1000 days checklist',
-                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
+                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
                         color: AppPalette.dark.dark60,
                         fontWeight: FontWeight.w600),
                   ),
@@ -220,7 +223,7 @@ class HomeScreen extends GetView<HomeController> {
                   Row(
                     children: [
                       Text(
-                        'Get started for to update your\npersonals information',
+                        'Get started for to update\nyour personals information',
                         style: context.theme.appTextTheme.labelLarge12.copyWith(
                             color: AppPalette.grey.gray400,
                             fontWeight: FontWeight.w500),
@@ -278,7 +281,7 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'Commodity Dispensing\nForm',
-                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
+                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
                         color: AppPalette.dark.dark60,
                         fontWeight: FontWeight.w600),
                   ),
@@ -286,7 +289,7 @@ class HomeScreen extends GetView<HomeController> {
                   Row(
                     children: [
                       Text(
-                        'Get started for to update your\npersonals information',
+                        'Get started for to update\nyour personals information',
                         style: context.theme.appTextTheme.labelLarge12.copyWith(
                             color: AppPalette.grey.gray400,
                             fontWeight: FontWeight.w500),
@@ -347,7 +350,7 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'Commodity Requisition\nand Issuance form',
-                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
+                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
                         color: AppPalette.dark.dark60,
                         fontWeight: FontWeight.w600),
                   ),
@@ -416,7 +419,7 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'Encounter Register\nmaternal & Childhealth',
-                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
+                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
                         color: AppPalette.dark.dark60,
                         fontWeight: FontWeight.w600),
                   ),
@@ -424,7 +427,7 @@ class HomeScreen extends GetView<HomeController> {
                   Row(
                     children: [
                       Text(
-                        'Get started for to update your\npersonals information',
+                        'Get started for to update\nyour personals information',
                         style: context.theme.appTextTheme.labelLarge12.copyWith(
                             color: AppPalette.grey.gray400,
                             fontWeight: FontWeight.w500),
@@ -438,6 +441,7 @@ class HomeScreen extends GetView<HomeController> {
                     children: [
                       InkWell(
                         onTap: () {
+                          appRoute.push(const EncouterRegMatRoute());
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
@@ -492,7 +496,7 @@ class HomeScreen extends GetView<HomeController> {
                   Row(
                     children: [
                       Text(
-                        'Get started for to update your\npersonals information',
+                        'Get started for to update\nyour personals information',
                         style: context.theme.appTextTheme.labelLarge12.copyWith(
                             color: AppPalette.grey.gray400,
                             fontWeight: FontWeight.w500),
@@ -506,6 +510,7 @@ class HomeScreen extends GetView<HomeController> {
                     children: [
                       InkWell(
                         onTap: () {
+                          appRoute.push(const EncouterRegHouseRoute());
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
@@ -553,10 +558,9 @@ class HomeScreen extends GetView<HomeController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Referral Form ',
+                    'House Register',
                     style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                        color: AppPalette.dark.dark60,
-                        fontWeight: FontWeight.w600),
+                        color: AppPalette.black, fontWeight: FontWeight.w800),
                   ),
                   10.height,
                   Row(
@@ -576,6 +580,7 @@ class HomeScreen extends GetView<HomeController> {
                     children: [
                       InkWell(
                         onTap: () {
+                          appRoute.push(const HouseHoldRegRoute());
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
@@ -645,6 +650,7 @@ class HomeScreen extends GetView<HomeController> {
                     children: [
                       InkWell(
                         onTap: () {
+                          appRoute.push(const ChipReferralRoute());
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
@@ -687,6 +693,8 @@ class HomeScreen extends GetView<HomeController> {
   Widget _halfCardOne(BuildContext context) {
     return InkWell(
       onTap: () {
+        appRoute.push(const WalletRoute());
+
         //  controller.gotoTestingPage();
       },
       child: SizedBox(
@@ -737,6 +745,7 @@ class HomeScreen extends GetView<HomeController> {
   Widget _halfCardTwo(BuildContext context) {
     return InkWell(
       onTap: () {
+        appRoute.push(const ProfileRoute());
         // controller.gotoCareProvider();
       },
       child: SizedBox(

@@ -120,6 +120,7 @@ class _PrimaryColor {
 
   final primary10 = const Color(0xFFEEFFF9);
   final primary100 = const Color(0xFF2F71EB);
+  final primary55 = const Color(0xFF14a673);
 
   final primary400 = const Color(0xFF027D52);
   final primary350 = const Color(0xEB1150AE);

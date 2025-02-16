@@ -15,6 +15,7 @@ class MyInputTextWidget extends StatelessWidget {
       required this.hint,
       this.showRequired = false,
       this.keyboardType,
+      this.textColor,
       this.validator,
       this.power,
       required this.callBack});
@@ -23,6 +24,7 @@ class MyInputTextWidget extends StatelessWidget {
   final String? title2;
   final String hint;
   final String? power;
+  final Color? textColor;
   final bool showRequired;
   final Function(String) callBack;
   final TextInputType? keyboardType;
@@ -44,7 +46,7 @@ class MyInputTextWidget extends StatelessWidget {
                       text: title,
                       style: context.theme.appTextTheme.bodyMedium16.copyWith(
                         //s color: AppPalette.dark.dark50,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     WidgetSpan(
@@ -72,7 +74,7 @@ class MyInputTextWidget extends StatelessWidget {
                 child: Text(
                   title,
                   style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                    color: AppPalette.white,
+                    color: textColor ?? AppPalette.white,
                     fontWeight: FontWeight.w400,
                   ),
                 ),

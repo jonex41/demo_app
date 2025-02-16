@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppTypography {
-  static final body1 = GoogleFonts.dmSans( fontWeight: FontWeight.normal);
+  static final body1 = GoogleFonts.poppins( fontWeight: FontWeight.normal);
   
 
   static const h1 = TextStyle(

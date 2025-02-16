@@ -55,7 +55,7 @@ class LoginScreen extends GetView<LoginController> {
               child: Text(
                 'Please enter your login details',
                 style: context.theme.appTextTheme.labelLarge12.copyWith(
-                    color: AppPalette.white, fontWeight: FontWeight.w400),
+                    color: AppPalette.white, fontWeight: FontWeight.w600),
               ),
             ),
             40.height,
@@ -91,8 +91,8 @@ class LoginScreen extends GetView<LoginController> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   RichText(
-                    text: TextSpan(children: [
-                      const TextSpan(
+                    text: const TextSpan(children: [
+                      TextSpan(
                         text: 'Forgot password',
                         style: TextStyle(
                           color: AppPalette.white,
@@ -102,22 +102,22 @@ class LoginScreen extends GetView<LoginController> {
                           letterSpacing: 0.14,
                         ),
                       ),
-                      const TextSpan(
+                      TextSpan(
                         text: ' ',
                         style: TextStyle(
                           fontSize: 14,
                           fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w800,
                           letterSpacing: 0.14,
                         ),
                       ),
                       TextSpan(
                         text: 'Click here?',
                         style: TextStyle(
-                          color: AppPalette.primary.primary100,
+                          color: AppPalette.black,
                           fontSize: 14,
                           fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w800,
                           letterSpacing: 0.14,
                         ),
                       ),

@@ -36,11 +36,21 @@ class $AssetsIconsGen {
   /// File path: assets/icons/back_page.svg
   SvgGenImage get backPage => const SvgGenImage('assets/icons/back_page.svg');
 
+  /// File path: assets/icons/bank_account.svg
+  SvgGenImage get bankAccount =>
+      const SvgGenImage('assets/icons/bank_account.svg');
+
+  /// File path: assets/icons/buy_data.svg
+  SvgGenImage get buyData => const SvgGenImage('assets/icons/buy_data.svg');
+
   /// File path: assets/icons/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
 
   /// File path: assets/icons/calendar2.svg
   SvgGenImage get calendar2 => const SvgGenImage('assets/icons/calendar2.svg');
+
+  /// File path: assets/icons/call.svg
+  SvgGenImage get call => const SvgGenImage('assets/icons/call.svg');
 
   /// File path: assets/icons/cancel.svg
   SvgGenImage get cancel => const SvgGenImage('assets/icons/cancel.svg');
@@ -53,6 +63,20 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/clock.svg
   SvgGenImage get clock => const SvgGenImage('assets/icons/clock.svg');
+
+  /// File path: assets/icons/community.svg
+  SvgGenImage get community => const SvgGenImage('assets/icons/community.svg');
+
+  /// File path: assets/icons/credit_arrow.svg
+  SvgGenImage get creditArrow =>
+      const SvgGenImage('assets/icons/credit_arrow.svg');
+
+  /// File path: assets/icons/date_birth.svg
+  SvgGenImage get dateBirth => const SvgGenImage('assets/icons/date_birth.svg');
+
+  /// File path: assets/icons/debit_arrow.svg
+  SvgGenImage get debitArrow =>
+      const SvgGenImage('assets/icons/debit_arrow.svg');
 
   /// File path: assets/icons/doctor2.svg
   SvgGenImage get doctor2 => const SvgGenImage('assets/icons/doctor2.svg');
@@ -75,11 +99,17 @@ class $AssetsIconsGen {
   SvgGenImage get everyVisit =>
       const SvgGenImage('assets/icons/every_visit.svg');
 
+  /// File path: assets/icons/gender.svg
+  SvgGenImage get gender => const SvgGenImage('assets/icons/gender.svg');
+
   /// File path: assets/icons/heart_rate.svg
   SvgGenImage get heartRate => const SvgGenImage('assets/icons/heart_rate.svg');
 
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
+
+  /// File path: assets/icons/location.svg
+  SvgGenImage get location => const SvgGenImage('assets/icons/location.svg');
 
   /// File path: assets/icons/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/icons/logout.svg');
@@ -103,6 +133,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/picker.svg
   SvgGenImage get picker => const SvgGenImage('assets/icons/picker.svg');
+
+  /// File path: assets/icons/pin_set.svg
+  SvgGenImage get pinSet => const SvgGenImage('assets/icons/pin_set.svg');
 
   /// File path: assets/icons/plug.svg
   SvgGenImage get plug => const SvgGenImage('assets/icons/plug.svg');
@@ -133,12 +166,21 @@ class $AssetsIconsGen {
   SvgGenImage get smallPaper =>
       const SvgGenImage('assets/icons/small_paper.svg');
 
+  /// File path: assets/icons/state.svg
+  SvgGenImage get state => const SvgGenImage('assets/icons/state.svg');
+
   /// File path: assets/icons/successful.svg
   SvgGenImage get successful =>
       const SvgGenImage('assets/icons/successful.svg');
 
   /// File path: assets/icons/support.svg
   SvgGenImage get support => const SvgGenImage('assets/icons/support.svg');
+
+  /// File path: assets/icons/topup.svg
+  SvgGenImage get topup => const SvgGenImage('assets/icons/topup.svg');
+
+  /// File path: assets/icons/transfer1.svg
+  SvgGenImage get transfer1 => const SvgGenImage('assets/icons/transfer1.svg');
 
   /// File path: assets/icons/user.svg
   SvgGenImage get user => const SvgGenImage('assets/icons/user.svg');
@@ -147,8 +189,14 @@ class $AssetsIconsGen {
   SvgGenImage get viewResult =>
       const SvgGenImage('assets/icons/view_result.svg');
 
+  /// File path: assets/icons/ward.svg
+  SvgGenImage get ward => const SvgGenImage('assets/icons/ward.svg');
+
   /// File path: assets/icons/wave.png
   AssetGenImage get wave => const AssetGenImage('assets/icons/wave.png');
+
+  /// File path: assets/icons/withdraw.svg
+  SvgGenImage get withdraw => const SvgGenImage('assets/icons/withdraw.svg');
 
   /// List of all assets
   List<dynamic> get values => [
@@ -159,20 +207,29 @@ class $AssetsIconsGen {
         arrowDown,
         arrowSide,
         backPage,
+        bankAccount,
+        buyData,
         calendar,
         calendar2,
+        call,
         cancel,
         category,
         chat,
         clock,
+        community,
+        creditArrow,
+        dateBirth,
+        debitArrow,
         doctor2,
         doctorGreen,
         doctorMean,
         doneAll,
         draft,
         everyVisit,
+        gender,
         heartRate,
         home,
+        location,
         logout,
         male,
         more,
@@ -180,6 +237,7 @@ class $AssetsIconsGen {
         paper,
         partnerDash,
         picker,
+        pinSet,
         plug,
         profileGuy,
         requestTest,
@@ -188,11 +246,16 @@ class $AssetsIconsGen {
         search,
         smallCalendar,
         smallPaper,
+        state,
         successful,
         support,
+        topup,
+        transfer1,
         user,
         viewResult,
-        wave
+        ward,
+        wave,
+        withdraw
       ];
 }
 
@@ -227,6 +290,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/comodity_requisition.png
   AssetGenImage get comodityRequisition =>
       const AssetGenImage('assets/images/comodity_requisition.png');
+
+  /// File path: assets/images/encounter_reg_house.png
+  AssetGenImage get encounterRegHouse =>
+      const AssetGenImage('assets/images/encounter_reg_house.png');
 
   /// File path: assets/images/encouter_register.png
   AssetGenImage get encouterRegister =>
@@ -356,6 +423,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/wallet.png
   AssetGenImage get wallet => const AssetGenImage('assets/images/wallet.png');
 
+  /// File path: assets/images/wallet_details.png
+  AssetGenImage get walletDetails =>
+      const AssetGenImage('assets/images/wallet_details.png');
+
   /// List of all assets
   List<dynamic> get values => [
         back,
@@ -366,6 +437,7 @@ class $AssetsImagesGen {
         commodity2,
         comodityDispense,
         comodityRequisition,
+        encounterRegHouse,
         encouterRegister,
         encouterRegisterHousehold,
         firstVisit,
@@ -398,7 +470,8 @@ class $AssetsImagesGen {
         visualBreastBody2,
         visualBreastBody3,
         visualBreastHeader,
-        wallet
+        wallet,
+        walletDetails
       ];
 }
 
