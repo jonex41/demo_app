@@ -1,6 +1,8 @@
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/feature/checklist/provider/checklist_bindings.dart';
+import 'package:demo_app/feature/commodity_dispensing/provider/commodity_dispense_bindings.dart';
+import 'package:demo_app/feature/commodity_requisition/provider/commodity_requisition_bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -82,5 +84,15 @@ class HomeController extends GetxController {
   Future<void> gotoChecklistHomeScreen() async {
     ChecklistBindings().dependencies();
     appRoute.push(const ChecklistHomeRoute());
+  }
+
+  Future<void> gotoCommDispenseHomeScreen() async {
+    CommodityDispenseBindings().dependencies();
+    appRoute.push(const CommDispenseHomeRoute());
+  }
+
+  Future<void> gotoCommRequisitionHomeScreen() async {
+    CommodityRequisitionBindings().dependencies();
+    appRoute.push(const CommRequisitionHomeRoute());
   }
 }

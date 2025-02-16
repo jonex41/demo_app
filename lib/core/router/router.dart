@@ -19,6 +19,10 @@ import 'package:demo_app/feature/checklist/view/all_schedule_detail_screen.dart'
 import 'package:demo_app/feature/checklist/view/all_schedule_screen.dart';
 import 'package:demo_app/feature/checklist/view/checklist_home_screen.dart';
 import 'package:demo_app/feature/checklist/view/logs_screen.dart';
+import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_Dashboard_screen.dart';
+import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_home_screen.dart';
+import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_dashboard_screen.dart';
+import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_home_screen.dart';
 
 import 'package:demo_app/feature/home/view/home_screen.dart';
 import 'package:demo_app/feature/onboarding/view/get_started_screen.dart';
@@ -55,6 +59,17 @@ class AppRouter extends _$AppRouter {
             page: AllScheduleDetailRoute.page),
         AutoRoute(
             path: '/addNewScheduleScreen', page: AddNewScheduleRoute.page),
+        AutoRoute(
+            path: '/commDispenseHomeScreen', page: CommDispenseHomeRoute.page),
+        AutoRoute(
+            path: '/commDispenseDashboardScreen',
+            page: CommDispenseDashboardRoute.page),
+        AutoRoute(
+            path: '/commRequisitionHomeScreen',
+            page: CommRequisitionHomeRoute.page),
+        AutoRoute(
+            path: '/commRequisitionDashboardScreen',
+            page: CommRequisitionDashboardRoute.page),
         AutoRoute(path: '/loginScreen', page: LoginRoute.page),
         AutoRoute(path: '/home', page: HomeRoute.page),
         AutoRoute(path: '/encounter_reg_mat', page: EncouterRegMatRoute.page),

@@ -63,6 +63,30 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChecklistHomeScreen(),
       );
     },
+    CommDispenseDashboardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommDispenseDashboardScreen(),
+      );
+    },
+    CommDispenseHomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommDispenseHomeScreen(),
+      );
+    },
+    CommRequisitionDashboardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommRequisitionDashboardScreen(),
+      );
+    },
+    CommRequisitionHomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommRequisitionHomeScreen(),
+      );
+    },
     GetStartedRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -442,6 +466,62 @@ class ChecklistHomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ChecklistHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommDispenseDashboardScreen]
+class CommDispenseDashboardRoute extends PageRouteInfo<void> {
+  const CommDispenseDashboardRoute({List<PageRouteInfo>? children})
+      : super(
+          CommDispenseDashboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommDispenseDashboardRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommDispenseHomeScreen]
+class CommDispenseHomeRoute extends PageRouteInfo<void> {
+  const CommDispenseHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          CommDispenseHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommDispenseHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommRequisitionDashboardScreen]
+class CommRequisitionDashboardRoute extends PageRouteInfo<void> {
+  const CommRequisitionDashboardRoute({List<PageRouteInfo>? children})
+      : super(
+          CommRequisitionDashboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommRequisitionDashboardRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommRequisitionHomeScreen]
+class CommRequisitionHomeRoute extends PageRouteInfo<void> {
+  const CommRequisitionHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          CommRequisitionHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommRequisitionHomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

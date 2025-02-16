@@ -18,6 +18,7 @@ abstract class AppPalette {
   static const cloud2 = Color(0xFFA6F5F1);
   static const green2 = Color(0xFF24B086);
   static const green3 = Color(0xFF02D898);
+  static const green4 = Color(0xFF0C9666);
   static const orange1 = Color(0xFFF1B604);
   static const orange2 = Color(0xFFFFCD34);
   // static const lightblue = Color(0xFFF7F8F9);
@@ -122,6 +123,15 @@ class _PrimaryColor {
   const _PrimaryColor();
 
   final primary10 = const Color(0xFFEEFFF9);
+  final primary50 = const Color(0xffEEFFF9);
+  final primary70 = const Color(0xff14A572);
+  final primary80 = const Color(0xff2ECE96);
+  final primary60 = const Color(0xffEAFFEA);
+  final primary100 = const Color(0xff52F7BE);
+  final primary200 = const Color(0xff2FCF97);
+  final primary300 = const Color(0xff14A673);
+  final primary350 = const Color(0xff2ECE96);
+  final primary400 = const Color(0xff027D52);
   final primary100 = const Color(0xFF2F71EB);
   final primary55 = const Color(0xFF14a673);
 

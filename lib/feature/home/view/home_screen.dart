@@ -304,6 +304,7 @@ class HomeScreen extends GetView<HomeController> {
                     children: [
                       InkWell(
                         onTap: () {
+                          controller.gotoCommDispenseHomeScreen();
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
@@ -373,8 +374,7 @@ class HomeScreen extends GetView<HomeController> {
                     children: [
                       InkWell(
                         onTap: () {
-                          //  controller.gotoEveryScreen();
-                          // controller.gotoGettingReady();
+                          controller.gotoCommRequisitionHomeScreen();
                         },
                         child: _buttonWithArrow(
                             context,
