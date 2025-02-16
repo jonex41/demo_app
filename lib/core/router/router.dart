@@ -10,8 +10,24 @@ import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_scr
 import 'package:demo_app/feature/encouter_reg_mat/view/child_health1_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/encouter_reg_mat_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/maternal_service1_screen.dart';
+import 'package:demo_app/feature/checklist/view/add_new_checklist_screen.dart';
+import 'package:demo_app/feature/checklist/view/add_new_record_screen.dart';
+import 'package:demo_app/feature/checklist/view/add_new_schedule_screen.dart';
+import 'package:demo_app/feature/checklist/view/all_records_detail_screen.dart';
+import 'package:demo_app/feature/checklist/view/all_records_screen.dart';
+import 'package:demo_app/feature/checklist/view/all_schedule_detail_screen.dart';
+import 'package:demo_app/feature/checklist/view/all_schedule_screen.dart';
+import 'package:demo_app/feature/checklist/view/checklist_home_screen.dart';
+import 'package:demo_app/feature/checklist/view/logs_screen.dart';
+import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_Dashboard_screen.dart';
+import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_home_screen.dart';
+import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_dashboard_screen.dart';
+import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_home_screen.dart';
 
 import 'package:demo_app/feature/home/view/home_screen.dart';
+import 'package:demo_app/feature/onboarding/view/get_started_screen.dart';
+import 'package:demo_app/feature/onboarding/view/partners_screen.dart';
+import 'package:demo_app/feature/onboarding/view/splash_screen.dart';
 import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg1_screen.dart';
 import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg_screen.dart';
 import 'package:demo_app/feature/login/view/login_screen.dart';
@@ -24,7 +40,38 @@ part 'router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(path: '/', page: LoginRoute.page),
+        // AutoRoute(path: '/', page: StartRoute.page),
+        //AutoRoute(path: '/', page: HomeRoute.page),
+        AutoRoute(path: '/', page: SplashRoute.page),
+        AutoRoute(path: '/get_started_screen', page: GetStartedRoute.page),
+        AutoRoute(path: '/partnersScreen', page: PartnersRoute.page),
+        AutoRoute(path: '/homeScreen', page: HomeRoute.page),
+        AutoRoute(path: '/checklistHomeScreen', page: ChecklistHomeRoute.page),
+        AutoRoute(
+            path: '/addNewChecklistScreen', page: AddNewChecklistRoute.page),
+        AutoRoute(path: '/allRecordsScreen', page: AllRecordsRoute.page),
+        AutoRoute(
+            path: '/allRecordsDetailScreen', page: AllRecordsDetailRoute.page),
+        AutoRoute(path: '/addNewRecordScreen', page: AddNewRecordRoute.page),
+        AutoRoute(path: '/allScheduleScreen', page: AllScheduleRoute.page),
+        AutoRoute(
+            path: '/allScheduleDetailScreen',
+            page: AllScheduleDetailRoute.page),
+        AutoRoute(
+            path: '/addNewScheduleScreen', page: AddNewScheduleRoute.page),
+        AutoRoute(path: '/logScreen', page: LogsRoute.page),
+        AutoRoute(
+            path: '/commDispenseHomeScreen', page: CommDispenseHomeRoute.page),
+        AutoRoute(
+            path: '/commDispenseDashboardScreen',
+            page: CommDispenseDashboardRoute.page),
+        AutoRoute(
+            path: '/commRequisitionHomeScreen',
+            page: CommRequisitionHomeRoute.page),
+        AutoRoute(
+            path: '/commRequisitionDashboardScreen',
+            page: CommRequisitionDashboardRoute.page),
+        AutoRoute(path: '/loginScreen', page: LoginRoute.page),
         AutoRoute(path: '/home', page: HomeRoute.page),
         AutoRoute(path: '/encounter_reg_mat', page: EncouterRegMatRoute.page),
         AutoRoute(path: '/maternal_service1', page: MaternalService1Route.page),

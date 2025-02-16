@@ -18,6 +18,7 @@ abstract class AppPalette {
   static const cloud2 = Color(0xFFA6F5F1);
   static const green2 = Color(0xFF24B086);
   static const green3 = Color(0xFF02D898);
+  static const green4 = Color(0xFF0C9666);
   static const orange1 = Color(0xFFF1B604);
   static const orange2 = Color(0xFFFFCD34);
   // static const lightblue = Color(0xFFF7F8F9);
@@ -44,6 +45,7 @@ abstract class AppPalette {
   static const grayLight3 = Color(0xffE9E9E9);
   static const grayLight4 = Color(0xff2D2D2D);
   static const grayLight5 = Color(0xffF5F7FC);
+  static const grayLight6 = Color(0xffEAEAEA);
   static const black3 = Color(0xff000C20);
   static const grayNew = Color(0xffA1A1A1);
   static const grayNew1 = Color(0xff7F7F7F);
@@ -63,6 +65,8 @@ abstract class AppPalette {
   static const cardseven1 = Color(0xffAEF207);
   static const cardseven2 = Color(0xffC4FF34);
   static const cardeight1 = Color(0xff049A66);
+  static const backgroundGreen = Color(0xFF88BB24);
+  static const containerGreen = Color(0xFF679B00);
 
   //new
 
@@ -104,6 +108,7 @@ class _GreyColors {
   final gray350 = const Color(0xff7A7C7F);
   final gray360 = const Color(0xff6A707F);
   final gray370 = const Color(0xff7c7c7c);
+  final gray380 = const Color(0xffAAA9A9);
 
   final gray400 = const Color(0xff959596);
 
@@ -119,13 +124,16 @@ class _PrimaryColor {
   const _PrimaryColor();
 
   final primary10 = const Color(0xFFEEFFF9);
-  final primary100 = const Color(0xFF2F71EB);
+  final primary50 = const Color(0xffEEFFF9);
+  final primary70 = const Color(0xff14A572);
+  final primary80 = const Color(0xff2ECE96);
+  final primary60 = const Color(0xffEAFFEA);
+  final primary100 = const Color(0xff52F7BE);
+  final primary200 = const Color(0xff2FCF97);
+  final primary300 = const Color(0xff14A673);
+  final primary350 = const Color(0xff2ECE96);
+  final primary400 = const Color(0xff027D52);
   final primary55 = const Color(0xFF14a673);
-
-  final primary400 = const Color(0xFF027D52);
-  final primary350 = const Color(0xEB1150AE);
-  final primary300 = const Color(0xFF157705);
-  final primary200 = const Color(0xFF0851D9);
 }
 
 class _DarkColors {

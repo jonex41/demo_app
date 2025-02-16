@@ -8,7 +8,6 @@ import 'package:demo_app/feature/home/widget/home_header.dart';
 import 'package:demo_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 
@@ -236,7 +235,9 @@ class HomeScreen extends GetView<HomeController> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          controller.gotoChecklistHomeScreen();
+                        },
                         child: _buttonWithArrow(
                             context,
                             'Continue',
@@ -303,6 +304,7 @@ class HomeScreen extends GetView<HomeController> {
                     children: [
                       InkWell(
                         onTap: () {
+                          controller.gotoCommDispenseHomeScreen();
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
@@ -372,8 +374,7 @@ class HomeScreen extends GetView<HomeController> {
                     children: [
                       InkWell(
                         onTap: () {
-                          //  controller.gotoEveryScreen();
-                          // controller.gotoGettingReady();
+                          controller.gotoCommRequisitionHomeScreen();
                         },
                         child: _buttonWithArrow(
                             context,

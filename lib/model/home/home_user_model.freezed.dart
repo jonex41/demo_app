@@ -32,12 +32,8 @@ mixin _$HomeUserModel {
   KycInfo? get kycInfo => throw _privateConstructorUsedError;
   String? get transactionPin => throw _privateConstructorUsedError;
 
-  /// Serializes this HomeUserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of HomeUserModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $HomeUserModelCopyWith<HomeUserModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,8 +70,6 @@ class _$HomeUserModelCopyWithImpl<$Res, $Val extends HomeUserModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of HomeUserModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,8 +133,6 @@ class _$HomeUserModelCopyWithImpl<$Res, $Val extends HomeUserModel>
     ) as $Val);
   }
 
-  /// Create a copy of HomeUserModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $KycInfoCopyWith<$Res>? get kycInfo {
@@ -187,8 +179,6 @@ class __$$HomeUserModelImplCopyWithImpl<$Res>
       _$HomeUserModelImpl _value, $Res Function(_$HomeUserModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeUserModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -326,7 +316,7 @@ class _$HomeUserModelImpl implements _HomeUserModel {
                 other.transactionPin == transactionPin));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -342,9 +332,7 @@ class _$HomeUserModelImpl implements _HomeUserModel {
       kycInfo,
       transactionPin);
 
-  /// Create a copy of HomeUserModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$HomeUserModelImplCopyWith<_$HomeUserModelImpl> get copyWith =>
@@ -397,11 +385,8 @@ abstract class _HomeUserModel implements HomeUserModel {
   KycInfo? get kycInfo;
   @override
   String? get transactionPin;
-
-  /// Create a copy of HomeUserModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$HomeUserModelImplCopyWith<_$HomeUserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -418,12 +403,8 @@ mixin _$KycInfo {
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get kycType => throw _privateConstructorUsedError;
 
-  /// Serializes this KycInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of KycInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $KycInfoCopyWith<KycInfo> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -450,8 +431,6 @@ class _$KycInfoCopyWithImpl<$Res, $Val extends KycInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of KycInfo
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -509,8 +488,6 @@ class __$$KycInfoImplCopyWithImpl<$Res>
       _$KycInfoImpl _value, $Res Function(_$KycInfoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of KycInfo
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -588,14 +565,12 @@ class _$KycInfoImpl implements _KycInfo {
             (identical(other.kycType, kycType) || other.kycType == kycType));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, fullname, dob, gender, phoneNumber, kycType);
 
-  /// Create a copy of KycInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$KycInfoImplCopyWith<_$KycInfoImpl> get copyWith =>
@@ -629,11 +604,8 @@ abstract class _KycInfo implements KycInfo {
   String? get phoneNumber;
   @override
   String? get kycType;
-
-  /// Create a copy of KycInfo
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$KycInfoImplCopyWith<_$KycInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

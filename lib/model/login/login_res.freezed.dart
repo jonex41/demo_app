@@ -32,12 +32,8 @@ mixin _$LoginResponse {
   String? get token => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
 
-  /// Serializes this LoginResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LoginResponseCopyWith<LoginResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,8 +70,6 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,8 +133,6 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
     ) as $Val);
   }
 
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserAccountResPonseCopyWith<$Res>? get user {
@@ -187,8 +179,6 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
       _$LoginResponseImpl _value, $Res Function(_$LoginResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -324,7 +314,7 @@ class _$LoginResponseImpl implements _LoginResponse {
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -340,9 +330,7 @@ class _$LoginResponseImpl implements _LoginResponse {
       token,
       status);
 
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoginResponseImplCopyWith<_$LoginResponseImpl> get copyWith =>
@@ -395,11 +383,8 @@ abstract class _LoginResponse implements LoginResponse {
   String? get token;
   @override
   int? get status;
-
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LoginResponseImplCopyWith<_$LoginResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -422,12 +407,8 @@ mixin _$UserAccountResPonse {
   String? get transactionPin => throw _privateConstructorUsedError;
   String? get atmCard => throw _privateConstructorUsedError;
 
-  /// Serializes this UserAccountResPonse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of UserAccountResPonse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $UserAccountResPonseCopyWith<UserAccountResPonse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -461,8 +442,6 @@ class _$UserAccountResPonseCopyWithImpl<$Res, $Val extends UserAccountResPonse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UserAccountResPonse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -551,8 +530,6 @@ class __$$UserAccountResPonseImplCopyWithImpl<$Res>
       $Res Function(_$UserAccountResPonseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UserAccountResPonse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -680,7 +657,7 @@ class _$UserAccountResPonseImpl implements _UserAccountResPonse {
             (identical(other.atmCard, atmCard) || other.atmCard == atmCard));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -695,9 +672,7 @@ class _$UserAccountResPonseImpl implements _UserAccountResPonse {
       transactionPin,
       atmCard);
 
-  /// Create a copy of UserAccountResPonse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$UserAccountResPonseImplCopyWith<_$UserAccountResPonseImpl> get copyWith =>
@@ -749,11 +724,8 @@ abstract class _UserAccountResPonse implements UserAccountResPonse {
   String? get transactionPin;
   @override
   String? get atmCard;
-
-  /// Create a copy of UserAccountResPonse
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$UserAccountResPonseImplCopyWith<_$UserAccountResPonseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
