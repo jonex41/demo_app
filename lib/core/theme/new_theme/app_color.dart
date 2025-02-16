@@ -133,13 +133,7 @@ class _PrimaryColor {
   final primary300 = const Color(0xff14A673);
   final primary350 = const Color(0xff2ECE96);
   final primary400 = const Color(0xff027D52);
-  final primary100 = const Color(0xFF2F71EB);
   final primary55 = const Color(0xFF14a673);
-
-  final primary400 = const Color(0xFF027D52);
-  final primary350 = const Color(0xEB1150AE);
-  final primary300 = const Color(0xFF157705);
-  final primary200 = const Color(0xFF0851D9);
 }
 
 class _DarkColors {

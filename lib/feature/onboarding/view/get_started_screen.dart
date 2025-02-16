@@ -5,7 +5,6 @@ import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
-import 'package:demo_app/feature/home/provider/home_binding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 
@@ -168,8 +167,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                         const SizedBox(height: 35),
                         ElevatedButton(
                             onPressed: () {
-                              HomeBindings().dependencies();
-                              appRoute.push(const HomeRoute());
+                              appRoute.push(const LoginRoute());
 
                               // OnboardingBindings().dependencies();
                               // appRoute.push(const AccountVerificationRoute());
