@@ -3,12 +3,12 @@
 ///  FlutterGen
 /// *****************************************************
 
+import 'package:flutter/services.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -37,8 +37,7 @@ class $AssetsIconsGen {
   SvgGenImage get backPage => const SvgGenImage('assets/icons/back_page.svg');
 
   /// File path: assets/icons/bank_account.svg
-  SvgGenImage get bankAccount =>
-      const SvgGenImage('assets/icons/bank_account.svg');
+  SvgGenImage get bankAccount => const SvgGenImage('assets/icons/bank_account.svg');
 
   /// File path: assets/icons/buy_data.svg
   SvgGenImage get buyData => const SvgGenImage('assets/icons/buy_data.svg');
@@ -68,26 +67,22 @@ class $AssetsIconsGen {
   SvgGenImage get community => const SvgGenImage('assets/icons/community.svg');
 
   /// File path: assets/icons/credit_arrow.svg
-  SvgGenImage get creditArrow =>
-      const SvgGenImage('assets/icons/credit_arrow.svg');
+  SvgGenImage get creditArrow => const SvgGenImage('assets/icons/credit_arrow.svg');
 
   /// File path: assets/icons/date_birth.svg
   SvgGenImage get dateBirth => const SvgGenImage('assets/icons/date_birth.svg');
 
   /// File path: assets/icons/debit_arrow.svg
-  SvgGenImage get debitArrow =>
-      const SvgGenImage('assets/icons/debit_arrow.svg');
+  SvgGenImage get debitArrow => const SvgGenImage('assets/icons/debit_arrow.svg');
 
   /// File path: assets/icons/doctor2.svg
   SvgGenImage get doctor2 => const SvgGenImage('assets/icons/doctor2.svg');
 
   /// File path: assets/icons/doctor_green.svg
-  SvgGenImage get doctorGreen =>
-      const SvgGenImage('assets/icons/doctor_green.svg');
+  SvgGenImage get doctorGreen => const SvgGenImage('assets/icons/doctor_green.svg');
 
   /// File path: assets/icons/doctor_mean.svg
-  SvgGenImage get doctorMean =>
-      const SvgGenImage('assets/icons/doctor_mean.svg');
+  SvgGenImage get doctorMean => const SvgGenImage('assets/icons/doctor_mean.svg');
 
   /// File path: assets/icons/done_all.svg
   SvgGenImage get doneAll => const SvgGenImage('assets/icons/done_all.svg');
@@ -96,8 +91,7 @@ class $AssetsIconsGen {
   SvgGenImage get draft => const SvgGenImage('assets/icons/draft.svg');
 
   /// File path: assets/icons/every_visit.svg
-  SvgGenImage get everyVisit =>
-      const SvgGenImage('assets/icons/every_visit.svg');
+  SvgGenImage get everyVisit => const SvgGenImage('assets/icons/every_visit.svg');
 
   /// File path: assets/icons/gender.svg
   SvgGenImage get gender => const SvgGenImage('assets/icons/gender.svg');
@@ -112,8 +106,7 @@ class $AssetsIconsGen {
   SvgGenImage get location => const SvgGenImage('assets/icons/location.svg');
 
   /// File path: assets/icons/logo_checklist.svg
-  SvgGenImage get logoChecklist =>
-      const SvgGenImage('assets/icons/logo_checklist.svg');
+  SvgGenImage get logoChecklist => const SvgGenImage('assets/icons/logo_checklist.svg');
 
   /// File path: assets/icons/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/icons/logout.svg');
@@ -125,23 +118,28 @@ class $AssetsIconsGen {
   SvgGenImage get more => const SvgGenImage('assets/icons/more.svg');
 
   /// File path: assets/icons/notification.png
-  AssetGenImage get notification =>
-      const AssetGenImage('assets/icons/notification.png');
+  AssetGenImage get notification => const AssetGenImage('assets/icons/notification.png');
 
   /// File path: assets/icons/paper.svg
   SvgGenImage get paper => const SvgGenImage('assets/icons/paper.svg');
 
   /// File path: assets/icons/partner_dash.png
-  AssetGenImage get partnerDash =>
-      const AssetGenImage('assets/icons/partner_dash.png');
+  AssetGenImage get partnerDash => const AssetGenImage('assets/icons/partner_dash.png');
 
   /// File path: assets/icons/person_green.svg
-  SvgGenImage get personGreen =>
-      const SvgGenImage('assets/icons/person_green.svg');
+  SvgGenImage get personGreen => const SvgGenImage('assets/icons/person_green.svg');
 
   /// File path: assets/icons/person_grey.svg
-  SvgGenImage get personGrey =>
-      const SvgGenImage('assets/icons/person_grey.svg');
+  SvgGenImage get personGrey => const SvgGenImage('assets/icons/person_grey.svg');
+
+  /// File path: assets/icons/pending_schedule.svg
+  SvgGenImage get pendingSchedule => const SvgGenImage('assets/icons/pending_schedule.svg');
+
+  /// File path: assets/icons/person_green.svg
+  SvgGenImage get personGreen => const SvgGenImage('assets/icons/person_green.svg');
+
+  /// File path: assets/icons/person_grey.svg
+  SvgGenImage get personGrey => const SvgGenImage('assets/icons/person_grey.svg');
 
   /// File path: assets/icons/picker.svg
   SvgGenImage get picker => const SvgGenImage('assets/icons/picker.svg');
@@ -156,20 +154,22 @@ class $AssetsIconsGen {
   SvgGenImage get plug => const SvgGenImage('assets/icons/plug.svg');
 
   /// File path: assets/icons/profile_guy.png
-  AssetGenImage get profileGuy =>
-      const AssetGenImage('assets/icons/profile_guy.png');
+  AssetGenImage get profileGuy => const AssetGenImage('assets/icons/profile_guy.png');
 
   /// File path: assets/icons/profile_icon_bg.svg
-  SvgGenImage get profileIconBg =>
-      const SvgGenImage('assets/icons/profile_icon_bg.svg');
+  SvgGenImage get profileIconBg => const SvgGenImage('assets/icons/profile_icon_bg.svg');
+
+  /// File path: assets/icons/profile_icon_bg.svg
+  SvgGenImage get profileIconBg => const SvgGenImage('assets/icons/profile_icon_bg.svg');
+
+  /// File path: assets/icons/records_added.svg
+  SvgGenImage get recordsAdded => const SvgGenImage('assets/icons/records_added.svg');
 
   /// File path: assets/icons/request_test.svg
-  SvgGenImage get requestTest =>
-      const SvgGenImage('assets/icons/request_test.svg');
+  SvgGenImage get requestTest => const SvgGenImage('assets/icons/request_test.svg');
 
   /// File path: assets/icons/right_arrow.svg
-  SvgGenImage get rightArrow =>
-      const SvgGenImage('assets/icons/right_arrow.svg');
+  SvgGenImage get rightArrow => const SvgGenImage('assets/icons/right_arrow.svg');
 
   /// File path: assets/icons/schedule.svg
   SvgGenImage get schedule => const SvgGenImage('assets/icons/schedule.svg');
@@ -178,19 +178,16 @@ class $AssetsIconsGen {
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
   /// File path: assets/icons/small_calendar.svg
-  SvgGenImage get smallCalendar =>
-      const SvgGenImage('assets/icons/small_calendar.svg');
+  SvgGenImage get smallCalendar => const SvgGenImage('assets/icons/small_calendar.svg');
 
   /// File path: assets/icons/small_paper.svg
-  SvgGenImage get smallPaper =>
-      const SvgGenImage('assets/icons/small_paper.svg');
+  SvgGenImage get smallPaper => const SvgGenImage('assets/icons/small_paper.svg');
 
   /// File path: assets/icons/state.svg
   SvgGenImage get state => const SvgGenImage('assets/icons/state.svg');
 
   /// File path: assets/icons/successful.svg
-  SvgGenImage get successful =>
-      const SvgGenImage('assets/icons/successful.svg');
+  SvgGenImage get successful => const SvgGenImage('assets/icons/successful.svg');
 
   /// File path: assets/icons/support.svg
   SvgGenImage get support => const SvgGenImage('assets/icons/support.svg');
@@ -205,8 +202,7 @@ class $AssetsIconsGen {
   SvgGenImage get user => const SvgGenImage('assets/icons/user.svg');
 
   /// File path: assets/icons/view_result.svg
-  SvgGenImage get viewResult =>
-      const SvgGenImage('assets/icons/view_result.svg');
+  SvgGenImage get viewResult => const SvgGenImage('assets/icons/view_result.svg');
 
   /// File path: assets/icons/ward.svg
   SvgGenImage get ward => const SvgGenImage('assets/icons/ward.svg');
@@ -256,6 +252,9 @@ class $AssetsIconsGen {
         notification,
         paper,
         partnerDash,
+        pendingSchedule,
+        personGreen,
+        personGrey,
         personGreen,
         personGrey,
         picker,
@@ -263,6 +262,8 @@ class $AssetsIconsGen {
         pinSet,
         plug,
         profileGuy,
+        profileIconBg,
+        recordsAdded,
         profileIconBg,
         requestTest,
         rightArrow,
@@ -296,20 +297,16 @@ class $AssetsImagesGen {
   AssetGenImage get card3 => const AssetGenImage('assets/images/card3.png');
 
   /// File path: assets/images/card_add.png
-  AssetGenImage get cardAdd =>
-      const AssetGenImage('assets/images/card_add.png');
+  AssetGenImage get cardAdd => const AssetGenImage('assets/images/card_add.png');
 
   /// File path: assets/images/check1000.png
-  AssetGenImage get check1000 =>
-      const AssetGenImage('assets/images/check1000.png');
+  AssetGenImage get check1000 => const AssetGenImage('assets/images/check1000.png');
 
   /// File path: assets/images/commodity2.png
-  AssetGenImage get commodity2 =>
-      const AssetGenImage('assets/images/commodity2.png');
+  AssetGenImage get commodity2 => const AssetGenImage('assets/images/commodity2.png');
 
   /// File path: assets/images/comodity_dispense.png
-  AssetGenImage get comodityDispense =>
-      const AssetGenImage('assets/images/comodity_dispense.png');
+  AssetGenImage get comodityDispense => const AssetGenImage('assets/images/comodity_dispense.png');
 
   /// File path: assets/images/comodity_requisition.png
   AssetGenImage get comodityRequisition =>
@@ -320,24 +317,20 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/encounter_reg_house.png');
 
   /// File path: assets/images/encouter_register.png
-  AssetGenImage get encouterRegister =>
-      const AssetGenImage('assets/images/encouter_register.png');
+  AssetGenImage get encouterRegister => const AssetGenImage('assets/images/encouter_register.png');
 
   /// File path: assets/images/encouter_register_household.png
   AssetGenImage get encouterRegisterHousehold =>
       const AssetGenImage('assets/images/encouter_register_household.png');
 
   /// File path: assets/images/first_visit.svg
-  SvgGenImage get firstVisit =>
-      const SvgGenImage('assets/images/first_visit.svg');
+  SvgGenImage get firstVisit => const SvgGenImage('assets/images/first_visit.svg');
 
   /// File path: assets/images/german_logo.png
-  AssetGenImage get germanLogo =>
-      const AssetGenImage('assets/images/german_logo.png');
+  AssetGenImage get germanLogo => const AssetGenImage('assets/images/german_logo.png');
 
   /// File path: assets/images/house_register.png
-  AssetGenImage get houseRegister =>
-      const AssetGenImage('assets/images/house_register.png');
+  AssetGenImage get houseRegister => const AssetGenImage('assets/images/house_register.png');
 
   /// File path: assets/images/image1.svg
   SvgGenImage get image1 => const SvgGenImage('assets/images/image1.svg');
@@ -349,84 +342,64 @@ class $AssetsImagesGen {
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/notification.png
-  AssetGenImage get notification =>
-      const AssetGenImage('assets/images/notification.png');
+  AssetGenImage get notification => const AssetGenImage('assets/images/notification.png');
 
   /// File path: assets/images/onboard1.png
-  AssetGenImage get onboard1 =>
-      const AssetGenImage('assets/images/onboard1.png');
+  AssetGenImage get onboard1 => const AssetGenImage('assets/images/onboard1.png');
 
   /// File path: assets/images/onboard2.png
-  AssetGenImage get onboard2 =>
-      const AssetGenImage('assets/images/onboard2.png');
+  AssetGenImage get onboard2 => const AssetGenImage('assets/images/onboard2.png');
 
   /// File path: assets/images/onboard3.png
-  AssetGenImage get onboard3 =>
-      const AssetGenImage('assets/images/onboard3.png');
+  AssetGenImage get onboard3 => const AssetGenImage('assets/images/onboard3.png');
 
   /// File path: assets/images/onboard4.png
-  AssetGenImage get onboard4 =>
-      const AssetGenImage('assets/images/onboard4.png');
+  AssetGenImage get onboard4 => const AssetGenImage('assets/images/onboard4.png');
 
   /// File path: assets/images/onboard5.png
-  AssetGenImage get onboard5 =>
-      const AssetGenImage('assets/images/onboard5.png');
+  AssetGenImage get onboard5 => const AssetGenImage('assets/images/onboard5.png');
 
   /// File path: assets/images/partner1.png
-  AssetGenImage get partner1 =>
-      const AssetGenImage('assets/images/partner1.png');
+  AssetGenImage get partner1 => const AssetGenImage('assets/images/partner1.png');
 
   /// File path: assets/images/partner2.png
-  AssetGenImage get partner2 =>
-      const AssetGenImage('assets/images/partner2.png');
+  AssetGenImage get partner2 => const AssetGenImage('assets/images/partner2.png');
 
   /// File path: assets/images/partner3.png
-  AssetGenImage get partner3 =>
-      const AssetGenImage('assets/images/partner3.png');
+  AssetGenImage get partner3 => const AssetGenImage('assets/images/partner3.png');
 
   /// File path: assets/images/partner4.png
-  AssetGenImage get partner4 =>
-      const AssetGenImage('assets/images/partner4.png');
+  AssetGenImage get partner4 => const AssetGenImage('assets/images/partner4.png');
 
   /// File path: assets/images/partners.png
-  AssetGenImage get partners =>
-      const AssetGenImage('assets/images/partners.png');
+  AssetGenImage get partners => const AssetGenImage('assets/images/partners.png');
 
   /// File path: assets/images/profile_new.png
-  AssetGenImage get profileNew =>
-      const AssetGenImage('assets/images/profile_new.png');
+  AssetGenImage get profileNew => const AssetGenImage('assets/images/profile_new.png');
 
   /// File path: assets/images/referral_form.png
-  AssetGenImage get referralForm =>
-      const AssetGenImage('assets/images/referral_form.png');
+  AssetGenImage get referralForm => const AssetGenImage('assets/images/referral_form.png');
 
   /// File path: assets/images/registraion2.svg
-  SvgGenImage get registraion2 =>
-      const SvgGenImage('assets/images/registraion2.svg');
+  SvgGenImage get registraion2 => const SvgGenImage('assets/images/registraion2.svg');
 
   /// File path: assets/images/registration1.svg
-  SvgGenImage get registration1 =>
-      const SvgGenImage('assets/images/registration1.svg');
+  SvgGenImage get registration1 => const SvgGenImage('assets/images/registration1.svg');
 
   /// File path: assets/images/schedule.png
-  AssetGenImage get schedule =>
-      const AssetGenImage('assets/images/schedule.png');
+  AssetGenImage get schedule => const AssetGenImage('assets/images/schedule.png');
 
   /// File path: assets/images/schedule_avatar.png
-  AssetGenImage get scheduleAvatar =>
-      const AssetGenImage('assets/images/schedule_avatar.png');
+  AssetGenImage get scheduleAvatar => const AssetGenImage('assets/images/schedule_avatar.png');
 
   /// File path: assets/images/self_examine.png
-  AssetGenImage get selfExamine =>
-      const AssetGenImage('assets/images/self_examine.png');
+  AssetGenImage get selfExamine => const AssetGenImage('assets/images/self_examine.png');
 
   /// File path: assets/images/splash_screen_logo.png
-  AssetGenImage get splashScreenLogo =>
-      const AssetGenImage('assets/images/splash_screen_logo.png');
+  AssetGenImage get splashScreenLogo => const AssetGenImage('assets/images/splash_screen_logo.png');
 
   /// File path: assets/images/successful.svg
-  SvgGenImage get successful =>
-      const SvgGenImage('assets/images/successful.svg');
+  SvgGenImage get successful => const SvgGenImage('assets/images/successful.svg');
 
   /// File path: assets/images/visual_breast_body1.png
   AssetGenImage get visualBreastBody1 =>
@@ -448,8 +421,7 @@ class $AssetsImagesGen {
   AssetGenImage get wallet => const AssetGenImage('assets/images/wallet.png');
 
   /// File path: assets/images/wallet_details.png
-  AssetGenImage get walletDetails =>
-      const AssetGenImage('assets/images/wallet_details.png');
+  AssetGenImage get walletDetails => const AssetGenImage('assets/images/wallet_details.png');
 
   /// List of all assets
   List<dynamic> get values => [
@@ -652,8 +624,7 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ??
-          (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
+      colorFilter: colorFilter ?? (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );

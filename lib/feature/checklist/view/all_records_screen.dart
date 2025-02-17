@@ -3,9 +3,11 @@ import 'package:demo_app/components/search_input_decorations.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
+import 'package:demo_app/feature/checklist/provider/checklist_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nb_utils/nb_utils.dart';
+import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 @RoutePage()
 class AllRecordsScreen extends StatefulWidget {
@@ -16,6 +18,8 @@ class AllRecordsScreen extends StatefulWidget {
 }
 
 class _AllRecordsScreenState extends State<AllRecordsScreen> {
+  final checklistController =
+      Get.put<ChecklistController>(ChecklistController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,19 +116,23 @@ class _AllRecordsScreenState extends State<AllRecordsScreen> {
                       mainAxisSpacing: 13.0, // spacing between rows
                       crossAxisSpacing: 13.0, // spacing between columns
 
-                      children: const [
+                      children: [
                         AllRecordsCard(
                             fullName: 'Hauwa Abdullahi Sani hiyiyuy',
-                            recordsNumber: '789 Records'),
+                            recordsNumber: '789 Records',
+                            controller: checklistController),
                         AllRecordsCard(
                             fullName: 'Hauwa Abdullahi Sani hiyiyuy',
-                            recordsNumber: '789 Records'),
+                            recordsNumber: '789 Records',
+                            controller: checklistController),
                         AllRecordsCard(
                             fullName: 'Hauwa Abdullahi Sani hiyiyuy',
-                            recordsNumber: '789 Records'),
+                            recordsNumber: '789 Records',
+                            controller: checklistController),
                         AllRecordsCard(
                             fullName: 'Abdulrahman Abdullahi Sani',
-                            recordsNumber: '789 Records'),
+                            recordsNumber: '789 Records',
+                            controller: checklistController),
                       ]),
                 ),
               )
@@ -139,25 +147,32 @@ class _AllRecordsScreenState extends State<AllRecordsScreen> {
 class AllRecordsCard extends StatelessWidget {
   final String fullName;
   final String recordsNumber;
+  final ChecklistController controller;
   const AllRecordsCard(
-      {super.key, required this.fullName, required this.recordsNumber});
+      {super.key,
+      required this.fullName,
+      required this.recordsNumber,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        controller.gotoAllRecordsDetailScreen();
+      },
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: AppPalette.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.5),
+              color: Colors.grey,
+              //color: Colors.grey.withValues(alpha: 0.5),
               spreadRadius: 2,
               blurRadius: 5,
-              offset: const Offset(0, 3), // changes position of shadow
+              offset: Offset(0, 3), // changes position of shadow
             ),
           ],
         ),

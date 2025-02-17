@@ -16,29 +16,37 @@ class ChecklistController extends GetxController {
   final houseNumber = TextEditingController();
   final houseHoldNumber = TextEditingController();
   final pregnantWomansName = TextEditingController();
+
+  final searchKeyWord = TextEditingController();
   final childName = TextEditingController();
 
   final formKeyScreen1 = GlobalKey<FormState>();
   final formKeyScreen2 = GlobalKey<FormState>();
 
+  final formKeyEditRecord = GlobalKey<FormState>();
+
   final Rxn<DateTime> _dateRegisteredChipAgent = Rxn<DateTime>();
+
   DateTime? get dateRegisteredChipAgent => _dateRegisteredChipAgent.value;
 
   final Rxn<String> _selectDateRegisteredChipAgent = Rxn<String>();
-  String? get selectDateRegisteredChipAgent =>
-      _selectDateRegisteredChipAgent.value;
+
+  String? get selectDateRegisteredChipAgent => _selectDateRegisteredChipAgent.value;
 
   final Rxn<DateTime> _expectedDateOfDelivery = Rxn<DateTime>();
+
   DateTime? get expectedDateOfDelivery => _expectedDateOfDelivery.value;
 
   final Rxn<String> _selectExpectedDateOfDelivery = Rxn<String>();
-  String? get selectExpectedDateOfDelivery =>
-      _selectExpectedDateOfDelivery.value;
+
+  String? get selectExpectedDateOfDelivery => _selectExpectedDateOfDelivery.value;
 
   final Rxn<DateTime> _dateOfBirth = Rxn<DateTime>();
+
   DateTime? get dateOfBirth => _dateOfBirth.value;
 
   final Rxn<String> _selectDateOfBirth = Rxn<String>();
+
   String? get selectDateOfBirth => _selectDateOfBirth.value;
 
   final stateValue = NigerianStatesAndLGA.allStates[0].obs;
@@ -53,13 +61,8 @@ class ChecklistController extends GetxController {
   final List<String> childGender = ['male', 'female'].obs;
 
   final selectedAncFacility = Rxn<String>();
-  final List<String> ancFacility = [
-    'Facility 1',
-    'Facility 2',
-    'Facility 3',
-    'Facility 4',
-    'Facility 5'
-  ].obs;
+  final List<String> ancFacility =
+      ['Facility 1', 'Facility 2', 'Facility 3', 'Facility 4', 'Facility 5'].obs;
 
   final selectedPncFacility = Rxn<String>();
   final List<String> pncFacility =
@@ -159,5 +162,25 @@ class ChecklistController extends GetxController {
   Future<void> gotoLogsScreen() async {
     ChecklistBindings().dependencies();
     appRoute.push(const LogsRoute());
+  }
+
+  Future<void> gotoAllRecordsDetailScreen() async {
+    ChecklistBindings().dependencies();
+    appRoute.push(const AllRecordsDetailRoute());
+  }
+
+  Future<void> gotoEditRecordScreen() async {
+    ChecklistBindings().dependencies();
+    appRoute.push(const EditRecordRoute());
+  }
+
+  Future<void> gotoAllScheduleDetailScreen() async {
+    ChecklistBindings().dependencies();
+    appRoute.push(const AllScheduleDetailRoute());
+  }
+
+  Future<void> gotoAddNewScheduleScreen() async {
+    ChecklistBindings().dependencies();
+    appRoute.push(const AddNewScheduleRoute());
   }
 }
