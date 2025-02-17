@@ -19,6 +19,7 @@ class EncouterRegHouseController extends GetxController {
   var isFinished = false.obs;
   var otpString = ''.obs;
   var presentPhoneNumber = "";
+  var yesNoList = ["Yes", "No"];
   var currrentIndex = 0.obs;
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
@@ -38,6 +39,22 @@ class EncouterRegHouseController extends GetxController {
   final counsellingDiseasePreHepatiController = TextEditingController();
   final counsellingDiseasePreHivController = TextEditingController();
   final searchTextController = TextEditingController();
+
+  //page 2
+    final sickAdolescentController = TextEditingController();
+    final sickAdultController = TextEditingController();
+    final sickkElderlyController = TextEditingController();
+    final familyPlanningController = TextEditingController();
+    final diseasePreventionController = TextEditingController();
+    final majorInjuriesController = TextEditingController();
+    final skinRashMeaslesController = TextEditingController();
+    final stiffNeckFeverController = TextEditingController();
+    final suddenLimbAcuteController = TextEditingController();
+    final bleedingOrificesController = TextEditingController();
+    final waterStoolController = TextEditingController();
+    final feverFollwRashController = TextEditingController();
+    final lightRedSkinSnsController = TextEditingController();
+
 
     final listUser = <SearchModel>[
       SearchModel(title: "Aguda John Omotayo"),

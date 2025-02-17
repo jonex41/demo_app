@@ -19,8 +19,8 @@ import '../../../../gen/assets.gen.dart';
 import '../../../core/theme/new_theme/app_color.dart';
 
 @RoutePage()
-class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
-  const EncounterRegHouse1Screen({super.key});
+class EncounterRegHouse2Screen extends GetView<EncouterRegHouseController> {
+  const EncounterRegHouse2Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,9 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
                   ],
                 ),
                 15.height,
-                MyDropDownWidget(
+                _header(context, "Referral"),
+                20.height,
+                /*   MyDropDownWidget(
                   onChange: (value) {},
                   titile: "Date of Visit",
                   children: const [],
@@ -86,110 +88,133 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
                               return null;
                             } */
                   },
-                ),
+                ), */
                 15.height,
                 MyInputTextWidget(
-                  title: "House No",
+                  title: "Sick Adolescent",
                   showRequired: true,
                   textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.houseNoController,
+                  controller: controller.sickAdolescentController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Household No",
-                  textColor: Colors.black,
+                  title: "Sick Adult",
                   showRequired: true,
+                  textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.householdNoController,
+                  controller: controller.sickAdultController,
+                  hint: '',
+                ),
+                15.height,
+                15.height,
+                MyInputTextWidget(
+                  title: "Sick Elderly",
+                  showRequired: true,
+                  textColor: Colors.black,
+                  callBack: (value) {},
+                  controller: controller.sickkElderlyController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Name",
-                  textColor: Colors.black,
+                  title: "Family Planning",
                   showRequired: true,
+                  textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.nameController,
+                  controller: controller.familyPlanningController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Age(Years)",
-                  textColor: Colors.black,
+                  title: "Disease Prevention",
                   showRequired: true,
+                  textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.ageController,
+                  controller: controller.diseasePreventionController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Counselling on Wash",
-                  textColor: Colors.black,
+                  title: "Major Injuries",
                   showRequired: true,
+                  textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.consellingWashController,
+                  controller: controller.majorInjuriesController,
+                  hint: '',
+                ),
+                15.height,
+                _header2(context, "Community Surveillance"),
+                15.height,
+                MyInputTextWidget(
+                  title: "Skin Rash with Fever (Measles)",
+                  showRequired: true,
+                  textColor: Colors.black,
+                  callBack: (value) {},
+                  controller: controller.skinRashMeaslesController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Counselling on Adolescent Health",
-                  textColor: Colors.black,
+                  title: "Stiff Neck with Fever (Meningitis)",
                   showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.counsellingAdolHealthController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title: "Counselling on Family Planning",
                   textColor: Colors.black,
-                  showRequired: true,
                   callBack: (value) {},
-                  controller: controller.counsellingFamilyController,
+                  controller: controller.stiffNeckFeverController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
                   title:
-                      "Counselling on Disease Prevention\n(Malaria/LLIN Use)",
+                      "Sudden Weakness of the Limbs (Acute Flaccid Paralysis)",
                   showRequired: true,
                   textColor: Colors.black,
                   callBack: (value) {},
-                  controller:
-                      controller.counsellingDiseasePrevMalariaController,
+                  controller: controller.suddenLimbAcuteController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Counselling on Disease Prevention\n(Tuberculosis)",
-                  textColor: Colors.black,
+                  title: "Bleeding from Orifices e.g nose, eyes",
                   showRequired: true,
+                  textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.counsellingDiseasePreTuberController,
+                  controller: controller.bleedingOrificesController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Counselling on Disease Prevention\n(Hepatitis B)",
-                  textColor: Colors.black,
+                  title: "Watery Stool with Blood (Dysentery)",
                   showRequired: true,
+                  textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.counsellingDiseasePreHepatiController,
+                  controller: controller.waterStoolController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Counselling on Disease Prevention\n(HIV/AIDS)",
-                  textColor: Colors.black,
+                  title:
+                      "Fever Followed by Rash on Palm, Soles & Palm (Monkey Pox)",
                   showRequired: true,
+                  textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.counsellingDiseasePreHivController,
+                  controller: controller.feverFollwRashController,
                   hint: '',
                 ),
                 15.height,
-                MyDropDownWidget(
+                MyInputTextWidget(
+                  title:
+                      "Light or Reddish Skin Lesions with Loss of Sensation (Leprosy)",
+                  showRequired: true,
+                  textColor: Colors.black,
+                  callBack: (value) {},
+                  controller: controller.lightRedSkinSnsController,
+                  hint: '',
+                ),
+                15.height,
+
+                /*   MyDropDownWidget(
                   onChange: (value) {},
                   titile: "First Aid Administered",
                   children: const [],
@@ -207,12 +232,13 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
                             } */
                   },
                 ),
+               */
                 40.height,
                 AppElevatedButton(
                   text: "Next",
                   width: context.width,
                   onPressed: () {
-                    appRoute.push(const EncounterRegHouse2Route());
+                    appRoute.push(const EncounterRegHouse3Route());
                   },
                 )
               ],
@@ -221,5 +247,50 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
         ),
       ),
     ));
+  }
+
+  _header(BuildContext context, String s) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          s,
+          style: context.theme.appTextTheme.bodySmall14.copyWith(
+              color: const Color(0xffAAA9A9), fontWeight: FontWeight.w800),
+        ),
+        10.width,
+        Container(
+          color: const Color(0xffD5D5D5),
+          width: context.width / 2,
+          height: 1.5,
+        )
+      ],
+    );
+  }
+
+  _header2(BuildContext context, String s) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 2,
+          child: Text(
+            s,
+            style: context.theme.appTextTheme.bodySmall14.copyWith(
+                color: const Color(0xffAAA9A9), fontWeight: FontWeight.w800),
+          ),
+        ),
+        10.width,
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: const Color(0xffD5D5D5),
+            height: 1.5,
+          ),
+        )
+      ],
+    );
   }
 }

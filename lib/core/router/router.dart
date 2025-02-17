@@ -3,13 +3,20 @@ import 'package:demo_app/feature/chip_referral/view/chip_referral1_screen.dart';
 import 'package:demo_app/feature/chip_referral/view/chip_referral_form1_screen.dart';
 import 'package:demo_app/feature/chip_referral/view/chip_referral_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house1_screen.dart';
+import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house2_screen.dart';
+import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house3_screen.dart';
+import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house4_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_log_screen.dart';
+import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_record1_screen.dart';
+import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_record_details_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_record_screen.dart';
+import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_schedule1_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_schedule_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_screen.dart';
+import 'package:demo_app/feature/encounter_reg_house/view/encouter_schedule_list.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/child_health1_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/encouter_reg_mat_screen.dart';
-import 'package:demo_app/feature/encouter_reg_mat/view/maternal_service1_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service1_screen.dart';
 import 'package:demo_app/feature/checklist/view/add_new_checklist_screen.dart';
 import 'package:demo_app/feature/checklist/view/add_new_record_screen.dart';
 import 'package:demo_app/feature/checklist/view/add_new_schedule_screen.dart';
@@ -102,5 +109,29 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
             path: '/chip_referral_form1_screen',
             page: ChipReferralForm1Route.page),
+
+        AutoRoute(
+            path: '/encounterRegHouse2Screen',
+            page: EncounterRegHouse2Route.page),
+        AutoRoute(
+            path: '/encounterRegHouse3Screen',
+            page: EncounterRegHouse3Route.page),
+        AutoRoute(
+            path: '/encounterRegHouse4Screen',
+            page: EncounterRegHouse4Route.page),
+             AutoRoute(
+            path: '/encouterRegHouseRecordDetailsScreen',
+            page: EncouterRegHouseRecordDetailsRoute.page),
+               AutoRoute(
+            path: '/encouterRegHouseRecord1Screen',
+            page: EncouterRegHouseRecord1Route.page),
+
+             AutoRoute(
+            path: '/encouterRegHouseSchedule1Screen',
+            page: EncouterRegHouseSchedule1Route.page),
+
+              AutoRoute(
+            path: '/encouterRegHoNewScheduleScreen',
+            page: EncouterRegHoNewScheduleRoute.page),
       ];
 }

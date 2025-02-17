@@ -7,10 +7,10 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart' as _svg;
-import 'package:vector_graphics/vector_graphics.dart' as _vg;
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
@@ -111,6 +111,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/location.svg
   SvgGenImage get location => const SvgGenImage('assets/icons/location.svg');
 
+  /// File path: assets/icons/logo_checklist.svg
+  SvgGenImage get logoChecklist =>
+      const SvgGenImage('assets/icons/logo_checklist.svg');
+
   /// File path: assets/icons/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/icons/logout.svg');
 
@@ -131,8 +135,19 @@ class $AssetsIconsGen {
   AssetGenImage get partnerDash =>
       const AssetGenImage('assets/icons/partner_dash.png');
 
+  /// File path: assets/icons/person_green.svg
+  SvgGenImage get personGreen =>
+      const SvgGenImage('assets/icons/person_green.svg');
+
+  /// File path: assets/icons/person_grey.svg
+  SvgGenImage get personGrey =>
+      const SvgGenImage('assets/icons/person_grey.svg');
+
   /// File path: assets/icons/picker.svg
   SvgGenImage get picker => const SvgGenImage('assets/icons/picker.svg');
+
+  /// File path: assets/icons/pie_chart.svg
+  SvgGenImage get pieChart => const SvgGenImage('assets/icons/pie_chart.svg');
 
   /// File path: assets/icons/pin_set.svg
   SvgGenImage get pinSet => const SvgGenImage('assets/icons/pin_set.svg');
@@ -143,6 +158,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/profile_guy.png
   AssetGenImage get profileGuy =>
       const AssetGenImage('assets/icons/profile_guy.png');
+
+  /// File path: assets/icons/profile_icon_bg.svg
+  SvgGenImage get profileIconBg =>
+      const SvgGenImage('assets/icons/profile_icon_bg.svg');
 
   /// File path: assets/icons/request_test.svg
   SvgGenImage get requestTest =>
@@ -230,16 +249,21 @@ class $AssetsIconsGen {
         heartRate,
         home,
         location,
+        logoChecklist,
         logout,
         male,
         more,
         notification,
         paper,
         partnerDash,
+        personGreen,
+        personGrey,
         picker,
+        pieChart,
         pinSet,
         plug,
         profileGuy,
+        profileIconBg,
         requestTest,
         rightArrow,
         schedule,
@@ -476,7 +500,7 @@ class $AssetsImagesGen {
 }
 
 class Assets {
-  const Assets._();
+  Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
@@ -512,10 +536,10 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = true,
+    bool gaplessPlayback = false,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.medium,
+    FilterQuality filterQuality = FilterQuality.low,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -581,7 +605,7 @@ class SvgGenImage {
   final Set<String> flavors;
   final bool _isVecFormat;
 
-  _svg.SvgPicture svg({
+  SvgPicture svg({
     Key? key,
     bool matchTextDirection = false,
     AssetBundle? bundle,
@@ -594,29 +618,29 @@ class SvgGenImage {
     WidgetBuilder? placeholderBuilder,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    _svg.SvgTheme? theme,
+    SvgTheme? theme,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
-    final _svg.BytesLoader loader;
+    final BytesLoader loader;
     if (_isVecFormat) {
-      loader = _vg.AssetBytesLoader(
+      loader = AssetBytesLoader(
         _assetName,
         assetBundle: bundle,
         packageName: package,
       );
     } else {
-      loader = _svg.SvgAssetLoader(
+      loader = SvgAssetLoader(
         _assetName,
         assetBundle: bundle,
         packageName: package,
         theme: theme,
       );
     }
-    return _svg.SvgPicture(
+    return SvgPicture(
       loader,
       key: key,
       matchTextDirection: matchTextDirection,

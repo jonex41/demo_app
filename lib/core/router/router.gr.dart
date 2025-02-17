@@ -117,16 +117,58 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const EncounterRegHouse1Screen(),
       );
     },
+    EncounterRegHouse2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EncounterRegHouse2Screen(),
+      );
+    },
+    EncounterRegHouse3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EncounterRegHouse3Screen(),
+      );
+    },
+    EncounterRegHouse4Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EncounterRegHouse4Screen(),
+      );
+    },
+    EncouterRegHoNewScheduleRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EncouterRegHoNewScheduleScreen(),
+      );
+    },
     EncouterRegHouseLogRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const EncouterRegHouseLogScreen(),
       );
     },
+    EncouterRegHouseRecord1Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EncouterRegHouseRecord1Screen(),
+      );
+    },
+    EncouterRegHouseRecordDetailsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EncouterRegHouseRecordDetailsScreen(),
+      );
+    },
     EncouterRegHouseRecordRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const EncouterRegHouseRecordScreen(),
+      );
+    },
+    EncouterRegHouseSchedule1Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EncouterRegHouseSchedule1Screen(),
       );
     },
     EncouterRegHouseScheduleRoute.name: (routeData) {
@@ -455,6 +497,62 @@ class EncounterRegHouse1Route extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [EncounterRegHouse2Screen]
+class EncounterRegHouse2Route extends PageRouteInfo<void> {
+  const EncounterRegHouse2Route({List<PageRouteInfo>? children})
+      : super(
+          EncounterRegHouse2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EncounterRegHouse2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EncounterRegHouse3Screen]
+class EncounterRegHouse3Route extends PageRouteInfo<void> {
+  const EncounterRegHouse3Route({List<PageRouteInfo>? children})
+      : super(
+          EncounterRegHouse3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EncounterRegHouse3Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EncounterRegHouse4Screen]
+class EncounterRegHouse4Route extends PageRouteInfo<void> {
+  const EncounterRegHouse4Route({List<PageRouteInfo>? children})
+      : super(
+          EncounterRegHouse4Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EncounterRegHouse4Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EncouterRegHoNewScheduleScreen]
+class EncouterRegHoNewScheduleRoute extends PageRouteInfo<void> {
+  const EncouterRegHoNewScheduleRoute({List<PageRouteInfo>? children})
+      : super(
+          EncouterRegHoNewScheduleRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EncouterRegHoNewScheduleRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [EncouterRegHouseLogScreen]
 class EncouterRegHouseLogRoute extends PageRouteInfo<void> {
   const EncouterRegHouseLogRoute({List<PageRouteInfo>? children})
@@ -469,6 +567,34 @@ class EncouterRegHouseLogRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [EncouterRegHouseRecord1Screen]
+class EncouterRegHouseRecord1Route extends PageRouteInfo<void> {
+  const EncouterRegHouseRecord1Route({List<PageRouteInfo>? children})
+      : super(
+          EncouterRegHouseRecord1Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EncouterRegHouseRecord1Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EncouterRegHouseRecordDetailsScreen]
+class EncouterRegHouseRecordDetailsRoute extends PageRouteInfo<void> {
+  const EncouterRegHouseRecordDetailsRoute({List<PageRouteInfo>? children})
+      : super(
+          EncouterRegHouseRecordDetailsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EncouterRegHouseRecordDetailsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [EncouterRegHouseRecordScreen]
 class EncouterRegHouseRecordRoute extends PageRouteInfo<void> {
   const EncouterRegHouseRecordRoute({List<PageRouteInfo>? children})
@@ -478,6 +604,20 @@ class EncouterRegHouseRecordRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'EncouterRegHouseRecordRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EncouterRegHouseSchedule1Screen]
+class EncouterRegHouseSchedule1Route extends PageRouteInfo<void> {
+  const EncouterRegHouseSchedule1Route({List<PageRouteInfo>? children})
+      : super(
+          EncouterRegHouseSchedule1Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EncouterRegHouseSchedule1Route';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -19,8 +19,8 @@ import '../../../../gen/assets.gen.dart';
 import '../../../core/theme/new_theme/app_color.dart';
 
 @RoutePage()
-class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
-  const EncounterRegHouse1Screen({super.key});
+class EncounterRegHouse4Screen extends GetView<EncouterRegHouseController> {
+  const EncounterRegHouse4Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -69,13 +69,16 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
                   ],
                 ),
                 15.height,
+                _header2(context, "Death of Children Under - 5 Years"),
+                15.height,
                 MyDropDownWidget(
                   onChange: (value) {},
-                  titile: "Date of Visit",
-                  children: const [],
+                  titile:
+                      "Since your Last Visit, Did Any Child Under-5 Die in This Household?",
+                  children: controller.yesNoList,
                   //  hintText: controller.selectedDate.value,
                   isEnabled: false,
-                  hintText: "Select Date",
+                  hintText: "Select your answer",
                   showRequired: true,
                   validator: (value) {
                     return null;
@@ -88,8 +91,9 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
                   },
                 ),
                 15.height,
+
                 MyInputTextWidget(
-                  title: "House No",
+                  title: "Name",
                   showRequired: true,
                   textColor: Colors.black,
                   callBack: (value) {},
@@ -98,104 +102,30 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Household No",
-                  textColor: Colors.black,
+                  title: "Age",
                   showRequired: true,
+                  textColor: Colors.black,
                   callBack: (value) {},
-                  controller: controller.householdNoController,
+                  controller: controller.houseNoController,
                   hint: '',
                 ),
                 15.height,
                 MyInputTextWidget(
-                  title: "Name",
-                  textColor: Colors.black,
-                  showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.nameController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title: "Age(Years)",
-                  textColor: Colors.black,
-                  showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.ageController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title: "Counselling on Wash",
-                  textColor: Colors.black,
-                  showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.consellingWashController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title: "Counselling on Adolescent Health",
-                  textColor: Colors.black,
-                  showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.counsellingAdolHealthController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title: "Counselling on Family Planning",
-                  textColor: Colors.black,
-                  showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.counsellingFamilyController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title:
-                      "Counselling on Disease Prevention\n(Malaria/LLIN Use)",
+                  title: "Date of Death",
                   showRequired: true,
                   textColor: Colors.black,
                   callBack: (value) {},
-                  controller:
-                      controller.counsellingDiseasePrevMalariaController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title: "Counselling on Disease Prevention\n(Tuberculosis)",
-                  textColor: Colors.black,
-                  showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.counsellingDiseasePreTuberController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title: "Counselling on Disease Prevention\n(Hepatitis B)",
-                  textColor: Colors.black,
-                  showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.counsellingDiseasePreHepatiController,
-                  hint: '',
-                ),
-                15.height,
-                MyInputTextWidget(
-                  title: "Counselling on Disease Prevention\n(HIV/AIDS)",
-                  textColor: Colors.black,
-                  showRequired: true,
-                  callBack: (value) {},
-                  controller: controller.counsellingDiseasePreHivController,
+                  controller: controller.houseNoController,
                   hint: '',
                 ),
                 15.height,
                 MyDropDownWidget(
                   onChange: (value) {},
-                  titile: "First Aid Administered",
-                  children: const [],
+                  titile: "Was The Child Sick?",
+                  children: controller.yesNoList,
                   //  hintText: controller.selectedDate.value,
                   isEnabled: false,
-
+                  hintText: "Select your answer",
                   showRequired: true,
                   validator: (value) {
                     return null;
@@ -207,12 +137,62 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
                             } */
                   },
                 ),
-                40.height,
+                15.height,
+                MyInputTextWidget(
+                  title: "What is The Cause of Death (If Known)",
+                  showRequired: true,
+                  textColor: Colors.black,
+                  callBack: (value) {},
+                  controller: controller.houseNoController,
+                  hint: '',
+                ),
+                15.height,
+
+                MyInputTextWidget(
+                  title: "Where Did Death Occur?",
+                  showRequired: true,
+                  textColor: Colors.black,
+                  callBack: (value) {},
+                  controller: controller.houseNoController,
+                  hint: '',
+                ),
+                15.height,
+
+                MyInputTextWidget(
+                  title: "What is The Cause of Death (If Known)",
+                  showRequired: true,
+                  textColor: Colors.black,
+                  callBack: (value) {},
+                  controller: controller.houseNoController,
+                  hint: '',
+                ),
+                15.height,
+                // 15.height,
+                MyDropDownWidget(
+                  onChange: (value) {},
+                  titile: "Was The Death Reported?",
+                  children: controller.yesNoList,
+                  //  hintText: controller.selectedDate.value,
+                  isEnabled: false,
+                  hintText: "Select your answer",
+                  showRequired: true,
+                  validator: (value) {
+                    return null;
+
+                    /*  if (controller.selectedDate.value.isEmptyOrNull) {
+                              return 'Field is required';
+                            } else {
+                              return null;
+                            } */
+                  },
+                ),
+                15.height,
+              
                 AppElevatedButton(
-                  text: "Next",
+                  text: "Submit",
                   width: context.width,
                   onPressed: () {
-                    appRoute.push(const EncounterRegHouse2Route());
+                    appRoute.popUntilRoot();
                   },
                 )
               ],
@@ -221,5 +201,50 @@ class EncounterRegHouse1Screen extends GetView<EncouterRegHouseController> {
         ),
       ),
     ));
+  }
+
+  _header(BuildContext context, String s) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          s,
+          style: context.theme.appTextTheme.bodySmall14.copyWith(
+              color: const Color(0xffAAA9A9), fontWeight: FontWeight.w800),
+        ),
+        10.width,
+        Container(
+          color: const Color(0xffD5D5D5),
+          width: context.width / 2,
+          height: 1.5,
+        )
+      ],
+    );
+  }
+
+  _header2(BuildContext context, String s) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 2,
+          child: Text(
+            s,
+            style: context.theme.appTextTheme.bodySmall14.copyWith(
+                color: const Color(0xffAAA9A9), fontWeight: FontWeight.w800),
+          ),
+        ),
+        10.width,
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: const Color(0xffD5D5D5),
+            height: 1.5,
+          ),
+        )
+      ],
+    );
   }
 }

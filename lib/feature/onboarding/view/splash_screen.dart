@@ -21,8 +21,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-     onboardingController.gotoGetStarted();
-   // onboardingController.gotoPartnersScreen();
+    onboardingController.gotoGetStarted();
+    // onboardingController.gotoPartnersScreen();
   }
 
   @override
@@ -38,11 +38,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 //SvgPicture.asset("assets/images/onboarding_logo.svg"),
                 Align(
                   alignment: Alignment.center,
-                  child:Text(
-                  'eCHIS ',
-                  style: context.theme.appTextTheme.headlineMedium32.copyWith(
-                      color: AppPalette.black, fontWeight: FontWeight.w800),
-                ),
+                  child: Text(
+                    'eCHIS ',
+                    style: context.theme.appTextTheme.headlineMedium32.copyWith(
+                        color: AppPalette.black, fontWeight: FontWeight.w800),
+                  ),
                 ),
 
                 /*   Align(

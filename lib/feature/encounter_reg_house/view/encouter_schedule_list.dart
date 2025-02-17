@@ -13,18 +13,20 @@ import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 import '../../../component/search_field.dart';
 
 @RoutePage()
-class EncouterRegHouseRecordScreen extends GetView<EncouterRegHouseController> {
-  const EncouterRegHouseRecordScreen({super.key});
+class EncouterRegHoNewScheduleScreen
+    extends GetView<EncouterRegHouseController> {
+  const EncouterRegHoNewScheduleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         child: Column(
           children: [
-            const AppAppBar(title: "All Records"),
+            const AppAppBar(title: "New Scheduled"),
             10.height,
             MySearchWidget(
               controller: controller.searchTextController,
@@ -70,7 +72,8 @@ class EncouterRegHouseRecordScreen extends GetView<EncouterRegHouseController> {
                       ...controller.listUser.map((e) {
                         return InkWell(
                           onTap: () {
-                            appRoute.push(const EncouterRegHouseRecord1Route());
+                            appRoute
+                                .push(const EncouterRegHouseSchedule1Route());
                             // controller.gotoDeliveryScreen(e);
                           },
                           child: SearchItem(

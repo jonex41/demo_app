@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:demo_app/component/button.dart';
+import 'package:demo_app/core/router/locator.dart';
+import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/encounter_reg_house/provider/encouter_reg_house_controller.dart';
@@ -46,7 +48,9 @@ class EncouterRegHouseScheduleScreen
                 title: "Schedule",
               ),
               AppElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  appRoute.push(const EncouterRegHoNewScheduleRoute());
+                },
                 width: context.width,
                 text: "Add New Schedule",
               ),

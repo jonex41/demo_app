@@ -11,9 +11,9 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
-import '../../../../gen/assets.gen.dart';
+import '../../../../../gen/assets.gen.dart';
 
-import '../../../core/theme/new_theme/app_color.dart';
+import '../../../../core/theme/new_theme/app_color.dart';
 
 @RoutePage()
 class MaternalService1Screen extends GetView<EncouterRegMatController> {
