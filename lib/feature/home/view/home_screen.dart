@@ -37,7 +37,7 @@ class HomeScreen extends GetView<HomeController> {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               children: [
-                _firstCard(context),
+                //  _firstCard(context),
                 _secondCard(context),
                 _thirdCard(context),
                 _fourthCard(context),
@@ -47,9 +47,9 @@ class HomeScreen extends GetView<HomeController> {
                 _eigtthCard(context),
                 _halfCards(context),
                 20.height,
-                Assets.images.germanLogo.image(
+                /*   Assets.images.germanLogo.image(
                   width: (context.width - 20).w,
-                ),
+                ), */
 
                 /*   _fourthCard(
                     context: context,

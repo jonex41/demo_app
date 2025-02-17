@@ -30,7 +30,7 @@ class EncouterRegHouseLogScreen extends GetView<EncouterRegHouseController> {
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: Column(
           children: [
-            const AppAppBar(title: "Activity Log"),
+            const AppAppBar(title: "Activity Log", ),
             // 10.height,
             30.height,
             Row(

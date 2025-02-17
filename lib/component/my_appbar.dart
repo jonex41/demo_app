@@ -23,7 +23,7 @@ class AppAppBar extends StatelessWidget {
           GestureDetector(
               onTap: onPress ??
                   () {
-                    appRoute.pop();
+                    appRoute.back();
                   },
               child: Align(
                   alignment: Alignment.topLeft,

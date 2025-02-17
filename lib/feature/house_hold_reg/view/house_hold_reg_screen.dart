@@ -154,7 +154,7 @@ class HouseHoldRegScreen extends GetView<HouseHoldRegController> {
                       false),
                 ),
                 40.height,
-                Assets.images.germanLogo.image(),
+              //  Assets.images.germanLogo.image(),
                 40.height,
               ],
             ),

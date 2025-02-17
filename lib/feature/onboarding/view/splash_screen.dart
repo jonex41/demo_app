@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
+import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/onboarding/provider/onboarding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:get/state_manager.dart';
 
 @RoutePage()
@@ -19,7 +21,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    onboardingController.gotoPartnersScreen();
+     onboardingController.gotoGetStarted();
+   // onboardingController.gotoPartnersScreen();
   }
 
   @override
@@ -35,11 +38,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 //SvgPicture.asset("assets/images/onboarding_logo.svg"),
                 Align(
                   alignment: Alignment.center,
-                  child: Image.asset(
-                    "assets/images/splash_screen_logo.png",
-                    height: 200,
-                    width: 200,
-                  ),
+                  child:Text(
+                  'eCHIS ',
+                  style: context.theme.appTextTheme.headlineMedium32.copyWith(
+                      color: AppPalette.black, fontWeight: FontWeight.w800),
+                ),
                 ),
 
                 /*   Align(

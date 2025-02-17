@@ -223,7 +223,7 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
                   ),
                 ),
                 40.height,
-                Assets.images.germanLogo.image(),
+              //  Assets.images.germanLogo.image(),
                 40.height,
               ],
             ),

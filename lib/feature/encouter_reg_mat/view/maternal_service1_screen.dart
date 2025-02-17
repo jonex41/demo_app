@@ -168,7 +168,7 @@ class MaternalService1Screen extends GetView<EncouterRegMatController> {
                   ],
                 ),
                 20.height,
-                Assets.images.germanLogo.image(),
+              //  Assets.images.germanLogo.image(),
                 40.height,
               ],
             ),
