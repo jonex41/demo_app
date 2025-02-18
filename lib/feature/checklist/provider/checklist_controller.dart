@@ -26,7 +26,7 @@ class ChecklistController extends GetxController {
 
   final formKeyEditRecord = GlobalKey<FormState>();
 
-  final formKeyNewScheule = GlobalKey<FormState>();
+  final formKeyNewSchedule = GlobalKey<FormState>();
 
   final Rxn<DateTime> _dateRegisteredChipAgent = Rxn<DateTime>();
 

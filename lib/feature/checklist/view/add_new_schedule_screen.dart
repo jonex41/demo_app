@@ -51,7 +51,7 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
             ),
           )),
       body: Form(
-        key: checklistController.formKeyNewScheule,
+        key: checklistController.formKeyNewSchedule,
         child: Container(
           color: AppPalette.white,
           width: MediaQuery.of(context).size.width,
@@ -335,7 +335,7 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                       AppElevatedButton(
                         onPressed: () {
                           final isValid =
-                              checklistController.formKeyNewScheule.currentState!.validate();
+                              checklistController.formKeyNewSchedule.currentState!.validate();
                           if (!isValid) {
                             return;
                           }

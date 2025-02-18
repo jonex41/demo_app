@@ -90,6 +90,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/draft.svg
   SvgGenImage get draft => const SvgGenImage('assets/icons/draft.svg');
 
+  /// File path: assets/icons/edit_profile.svg
+  SvgGenImage get editProfile =>
+      const SvgGenImage('assets/icons/edit_profile.svg');
+
   /// File path: assets/icons/every_visit.svg
   SvgGenImage get everyVisit => const SvgGenImage('assets/icons/every_visit.svg');
 
@@ -240,6 +244,7 @@ class $AssetsIconsGen {
         doctorMean,
         doneAll,
         draft,
+        editProfile,
         everyVisit,
         gender,
         heartRate,

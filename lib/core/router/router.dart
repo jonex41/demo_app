@@ -46,6 +46,7 @@ import 'package:demo_app/feature/login/view/login_screen.dart';
 import 'package:demo_app/feature/onboarding/view/get_started_screen.dart';
 import 'package:demo_app/feature/onboarding/view/partners_screen.dart';
 import 'package:demo_app/feature/onboarding/view/splash_screen.dart';
+import 'package:demo_app/feature/profile/view/edit_profile_screen.dart';
 import 'package:demo_app/feature/profile/view/profile_screen.dart';
 import 'package:demo_app/feature/wallet/view/wallet_screen.dart';
 
@@ -81,6 +82,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/maternal_service1', page: MaternalService1Route.page),
         AutoRoute(path: '/child_health1', page: ChildHealth1Route.page),
         AutoRoute(path: '/profile', page: ProfileRoute.page),
+        AutoRoute(path: '/editProfileScreen', page: EditProfileRoute.page),
         AutoRoute(path: '/wallet', page: WalletRoute.page),
         AutoRoute(path: '/encouter_reg_house_screen', page: EncouterRegHouseRoute.page),
         AutoRoute(path: '/encouter_reg_house1_screen', page: EncounterRegHouse1Route.page),
