@@ -1,5 +1,6 @@
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
+import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/checklist/provider/checklist_bindings.dart';
 import 'package:demo_app/feature/util/nigerian_states_and_lga.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,8 @@ class ChecklistController extends GetxController {
 
   final formKeyEditRecord = GlobalKey<FormState>();
 
+  final formKeyNewScheule = GlobalKey<FormState>();
+
   final Rxn<DateTime> _dateRegisteredChipAgent = Rxn<DateTime>();
 
   DateTime? get dateRegisteredChipAgent => _dateRegisteredChipAgent.value;
@@ -48,6 +51,16 @@ class ChecklistController extends GetxController {
   final Rxn<String> _selectDateOfBirth = Rxn<String>();
 
   String? get selectDateOfBirth => _selectDateOfBirth.value;
+
+  final Rxn<DateTime> _dateOfSchedule = Rxn<DateTime>();
+
+  DateTime? get dateOfSchedule => _dateOfSchedule.value;
+
+  final Rxn<String> _selectDateOfSchedule = Rxn<String>();
+
+  String? get selectDateOfSchedule => _selectDateOfSchedule.value;
+
+  Rxn<TimeOfDay> selectedTime = Rxn<TimeOfDay>();
 
   final stateValue = NigerianStatesAndLGA.allStates[0].obs;
   final lgaValue = 'Select a Local Government Area'.obs;
@@ -90,6 +103,47 @@ class ChecklistController extends GetxController {
     '21 ≤ 24 Months',
   ].obs;
 
+  final selectedState = Rxn<String>();
+  final allStates = [
+    'Abia',
+    'Adamawa',
+    'Akwa Ibom',
+    'Anambra',
+    'Bauchi',
+    'Bayelsa',
+    'Benue',
+    'Borno',
+    'Cross River',
+    'Delta',
+    'Ebonyi',
+    'Edo',
+    'Ekiti',
+    'Enugu',
+    'Gombe',
+    'Imo',
+    'Jigawa',
+    'Kaduna',
+    'Kano',
+    'Katsina',
+    'Kebbi',
+    'Kogi',
+    'Kwara',
+    'Lagos',
+    'Nasarawa',
+    'Niger',
+    'Ogun',
+    'Ondo',
+    'Osun',
+    'Oyo',
+    'Plateau',
+    'Rivers',
+    'Sokoto',
+    'Taraba',
+    'Yobe',
+    'Zamfara',
+    'FCT(Abuja)',
+  ].obs;
+
   final selectedNutritionalService = Rxn<String>();
   final List<String> nutritionalService = [
     '6 Months (Vitamin A)',
@@ -99,6 +153,32 @@ class ChecklistController extends GetxController {
     '12 - 24 Months (Deworming)',
     '24 Months (Vitamin A)',
   ].obs;
+
+  Future<void> pickTime(BuildContext context) async {
+    TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: selectedTime.value ?? TimeOfDay.now(),
+        builder: (context, child) {
+          return Theme(
+            data: ThemeData.light().copyWith(
+              primaryColor: AppPalette.primary.primary400,
+              colorScheme: ColorScheme.light(
+                primary: AppPalette.primary.primary400,
+              ),
+            ),
+            child: child!,
+          );
+        });
+
+    if (pickedTime != null) {
+      selectedTime.value = pickedTime;
+      debugPrint(formatTimeOfDay(selectedTime.value ?? TimeOfDay.now()));
+    }
+  }
+
+  String formatTimeOfDay(TimeOfDay time) {
+    return "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}";
+  }
 
   void setNgState(String ngState) {
     stateValue.value = ngState;
@@ -132,6 +212,14 @@ class ChecklistController extends GetxController {
 
   setDateOfBirth(DateTime? value) {
     _dateOfBirth.value = value;
+  }
+
+  setSelectedDateOfSchedule(String? value) {
+    _selectDateOfSchedule.value = value;
+  }
+
+  setDateOfSchedule(DateTime? value) {
+    _dateOfSchedule.value = value;
   }
 
   List<StepperData> stepsData = [
