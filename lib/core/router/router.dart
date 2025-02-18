@@ -16,7 +16,11 @@ import 'package:demo_app/feature/chip_referral/view/chip_referral_form4_screen.d
 import 'package:demo_app/feature/chip_referral/view/chip_referral_list_screen.dart';
 import 'package:demo_app/feature/chip_referral/view/chip_referral_screen.dart';
 import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_Dashboard_screen.dart';
+import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_add_edit_form_screen.dart';
 import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_home_screen.dart';
+import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_saved_forms_detail_screen.dart';
+import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_saved_forms_screen.dart';
+import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_view_saved_form_screen.dart';
 import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_dashboard_screen.dart';
 import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_home_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house1_screen.dart';
@@ -94,6 +98,13 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/chip_referral_screen', page: ChipReferralRoute.page),
         AutoRoute(path: '/chip_referral1_screen', page: ChipReferral1Route.page),
         AutoRoute(path: '/chip_referral_form1_screen', page: ChipReferralForm1Route.page),
+        AutoRoute(path: '/commDispenseAddEditFormScreen', page: CommDispenseAddEditFormRoute.page),
+        AutoRoute(
+            path: '/commDispenseSavedFormsDetailScreen',
+            page: CommDispenseSavedFormsDetailRoute.page),
+        AutoRoute(path: '/commDispenseSavedFormsScreen', page: CommDispenseSavedFormsRoute.page),
+        AutoRoute(
+            path: '/commDispenseViewSavedFormScreen', page: CommDispenseViewSavedFormRoute.page),
         AutoRoute(path: '/chip_referral1_screen', page: ChipReferral1Route.page),
         AutoRoute(path: '/chip_referral_form1_screen', page: ChipReferralForm1Route.page),
 

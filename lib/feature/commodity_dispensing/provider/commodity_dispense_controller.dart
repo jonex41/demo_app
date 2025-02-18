@@ -6,4 +6,20 @@ class CommodityDispenseController extends GetxController {
   Future<void> gotoCommDispenseDashboardScreen() async {
     appRoute.push(const CommDispenseDashboardRoute());
   }
+
+  Future<void> gotoCommDispenseSavedFormsScreen() async {
+    appRoute.push(const CommDispenseSavedFormsRoute());
+  }
+
+  Future<void> gotoCommDispenseSavedFormsDetailScreen() async {
+    appRoute.push(const CommDispenseSavedFormsDetailRoute());
+  }
+
+  Future<void> gotoCommDispenseAddEditFormScreen() async {
+    appRoute.push(const CommDispenseAddEditFormRoute());
+  }
+
+  Future<void> gotoCommDispenseViewSavedFormScreen() async {
+    appRoute.push(const CommDispenseViewSavedFormRoute());
+  }
 }

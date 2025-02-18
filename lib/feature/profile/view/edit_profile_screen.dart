@@ -25,7 +25,7 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final controller = Get.put(ProfileController());
+  final controller = Get.put<ProfileController>(ProfileController());
 
   @override
   Widget build(BuildContext context) {

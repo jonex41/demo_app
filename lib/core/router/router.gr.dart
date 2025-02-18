@@ -99,6 +99,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChipsReferralListScreen(),
       );
     },
+    CommDispenseAddEditFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommDispenseAddEditFormScreen(),
+      );
+    },
     CommDispenseDashboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -109,6 +115,24 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const CommDispenseHomeScreen(),
+      );
+    },
+    CommDispenseSavedFormsDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommDispenseSavedFormsDetailScreen(),
+      );
+    },
+    CommDispenseSavedFormsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommDispenseSavedFormsScreen(),
+      );
+    },
+    CommDispenseViewSavedFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommDispenseViewSavedFormScreen(),
       );
     },
     CommRequisitionDashboardRoute.name: (routeData) {
@@ -467,6 +491,20 @@ class ChipReferralRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CommDispenseAddEditFormScreen]
+class CommDispenseAddEditFormRoute extends PageRouteInfo<void> {
+  const CommDispenseAddEditFormRoute({List<PageRouteInfo>? children})
+      : super(
+          CommDispenseAddEditFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommDispenseAddEditFormRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ChipsReferralForm3Screen]
 class ChipsReferralForm3Route extends PageRouteInfo<void> {
   const ChipsReferralForm3Route({List<PageRouteInfo>? children})
@@ -532,6 +570,48 @@ class CommDispenseHomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CommDispenseHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommDispenseSavedFormsDetailScreen]
+class CommDispenseSavedFormsDetailRoute extends PageRouteInfo<void> {
+  const CommDispenseSavedFormsDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          CommDispenseSavedFormsDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommDispenseSavedFormsDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommDispenseSavedFormsScreen]
+class CommDispenseSavedFormsRoute extends PageRouteInfo<void> {
+  const CommDispenseSavedFormsRoute({List<PageRouteInfo>? children})
+      : super(
+          CommDispenseSavedFormsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommDispenseSavedFormsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommDispenseViewSavedFormScreen]
+class CommDispenseViewSavedFormRoute extends PageRouteInfo<void> {
+  const CommDispenseViewSavedFormRoute({List<PageRouteInfo>? children})
+      : super(
+          CommDispenseViewSavedFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommDispenseViewSavedFormRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

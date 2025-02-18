@@ -18,8 +18,8 @@ class CommDispenseHomeScreen extends StatefulWidget {
 }
 
 class _CommDispenseHomeScreenState extends State<CommDispenseHomeScreen> {
-  final controller =
-      Get.put<CommodityDispenseController>(CommodityDispenseController());
+  final controller = Get.put<CommodityDispenseController>(CommodityDispenseController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +34,7 @@ class _CommDispenseHomeScreenState extends State<CommDispenseHomeScreen> {
               child: Align(
                 alignment: Alignment.center,
                 child: SvgPicture.asset("assets/images/back.svg",
-                    colorFilter: const ColorFilter.mode(
-                        AppPalette.white, BlendMode.srcIn)),
+                    colorFilter: const ColorFilter.mode(AppPalette.white, BlendMode.srcIn)),
               ),
             ),
           )),
@@ -71,103 +70,86 @@ class _CommDispenseHomeScreenState extends State<CommDispenseHomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     15.height,
-                    Center(
-                        child: Assets.images.firstVisit
-                            .svg(width: 250, height: 250)),
+                    Center(child: Assets.images.firstVisit.svg(width: 250, height: 250)),
                     20.height,
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.only(
-                          left: 20, top: 20, bottom: 20, right: 10),
+                      padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20, right: 10),
                       decoration: BoxDecoration(
                         color: AppPalette.green4,
-                        border: Border.all(
-                            width: 1.5, color: const Color(0xFF2ECE96)),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10.0)),
+                        border: Border.all(width: 1.5, color: const Color(0xFF2ECE96)),
+                        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                       ),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SvgPicture.asset(
-                              "assets/icons/profile_icon_bg.svg",
-                            ),
-                            12.height,
-                            Text(
-                              'Commodity Dispensation  form',
-                              style: context.theme.appTextTheme.bodyMedium16
-                                  .copyWith(
-                                fontSize: 18,
-                                color: AppPalette.white,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            12.height,
-                            InkWell(
-                              onTap: () {
-                                controller.gotoCommDispenseDashboardScreen();
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                      padding: const EdgeInsets.only(
-                                          left: 16,
-                                          top: 8,
-                                          bottom: 8,
-                                          right: 16),
-                                      decoration: BoxDecoration(
-                                        color: AppPalette.green4,
-                                        border: Border.all(
-                                            width: 1.5,
-                                            color: const Color(0xFF2ECE96)),
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(6.0)),
-                                      ),
-                                      child: Text(
-                                        'View & Fill Form',
-                                        style: context
-                                            .theme.appTextTheme.bodyMedium16
-                                            .copyWith(
-                                          fontSize: 14,
-                                          color: AppPalette.white,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      )),
-                                ],
-                              ),
-                            )
-                          ]),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        SvgPicture.asset(
+                          "assets/icons/profile_icon_bg.svg",
+                        ),
+                        12.height,
+                        Text(
+                          'Commodity Dispensation  form',
+                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                            fontSize: 18,
+                            color: AppPalette.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        12.height,
+                        InkWell(
+                          onTap: () {
+                            controller.gotoCommDispenseDashboardScreen();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                  padding:
+                                      const EdgeInsets.only(left: 16, top: 8, bottom: 8, right: 16),
+                                  decoration: BoxDecoration(
+                                    color: AppPalette.green4,
+                                    border: Border.all(width: 1.5, color: const Color(0xFF2ECE96)),
+                                    borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+                                  ),
+                                  child: Text(
+                                    'View & Fill Form',
+                                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                      fontSize: 14,
+                                      color: AppPalette.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        )
+                      ]),
                     ),
                     21.height,
-                    Container(
-                      padding: const EdgeInsets.only(
-                          left: 20, top: 20, bottom: 20, right: 10),
-                      decoration: BoxDecoration(
-                        color: AppPalette.green4,
-                        border: Border.all(
-                            width: 1.5, color: const Color(0xFF2ECE96)),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15.0)),
-                      ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Edit Saved Form',
-                              style: context.theme.appTextTheme.bodyMedium16
-                                  .copyWith(
-                                fontSize: 14,
-                                color: AppPalette.white,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            const Icon(
-                              Icons.arrow_forward_ios,
+                    InkWell(
+                      onTap: () {
+                        controller.gotoCommDispenseAddEditFormScreen();
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20, right: 10),
+                        decoration: BoxDecoration(
+                          color: AppPalette.green4,
+                          border: Border.all(width: 1.5, color: const Color(0xFF2ECE96)),
+                          borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+                        ),
+                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                          Text(
+                            'Edit Saved Form',
+                            style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                              fontSize: 14,
                               color: AppPalette.white,
-                              size: 16,
-                            )
-                          ]),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            color: AppPalette.white,
+                            size: 16,
+                          )
+                        ]),
+                      ),
                     ),
                     21.height,
                   ],
