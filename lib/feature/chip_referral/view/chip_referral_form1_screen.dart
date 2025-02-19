@@ -252,7 +252,9 @@ class ChipReferralForm1Screen extends GetView<ChipReferralController> {
                 AppElevatedButton(
                   text: "Next",
                   width: context.width,
-                  onPressed: () {},
+                  onPressed: () {
+                    appRoute.push(const ChipsReferralFormRoute());
+                  },
                 )
               ],
             ),

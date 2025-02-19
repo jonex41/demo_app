@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/feature/chip_referral/view/chip_referral1_screen.dart';
 import 'package:demo_app/feature/chip_referral/view/chip_referral_form1_screen.dart';
+import 'package:demo_app/feature/chip_referral/view/chip_referral_form2_screen.dart';
+import 'package:demo_app/feature/chip_referral/view/chip_referral_form3_screen.dart';
+import 'package:demo_app/feature/chip_referral/view/chip_referral_form4_screen.dart';
+import 'package:demo_app/feature/chip_referral/view/chip_referral_list_screen.dart';
 import 'package:demo_app/feature/chip_referral/view/chip_referral_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house1_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house2_screen.dart';
@@ -30,8 +34,12 @@ import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_Dashboa
 import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_home_screen.dart';
 import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_dashboard_screen.dart';
 import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_home_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service2_screen.dart';
 
 import 'package:demo_app/feature/home/view/home_screen.dart';
+import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg2_screen.dart';
+import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg4_screen.dart';
+import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg_list_screen.dart';
 import 'package:demo_app/feature/onboarding/view/get_started_screen.dart';
 import 'package:demo_app/feature/onboarding/view/partners_screen.dart';
 import 'package:demo_app/feature/onboarding/view/splash_screen.dart';
@@ -119,19 +127,36 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
             path: '/encounterRegHouse4Screen',
             page: EncounterRegHouse4Route.page),
-             AutoRoute(
+        AutoRoute(
             path: '/encouterRegHouseRecordDetailsScreen',
             page: EncouterRegHouseRecordDetailsRoute.page),
-               AutoRoute(
+        AutoRoute(
             path: '/encouterRegHouseRecord1Screen',
             page: EncouterRegHouseRecord1Route.page),
 
-             AutoRoute(
+        AutoRoute(
             path: '/encouterRegHouseSchedule1Screen',
             page: EncouterRegHouseSchedule1Route.page),
 
-              AutoRoute(
+        AutoRoute(
             path: '/encouterRegHoNewScheduleScreen',
             page: EncouterRegHoNewScheduleRoute.page),
+        AutoRoute(
+            path: '/maternalService2Screen', page: MaternalService2Route.page),
+        AutoRoute(
+            path: '/chipsReferralFormScreen',
+            page: ChipsReferralFormRoute.page),
+
+        AutoRoute(
+            path: '/chipsReferralForm3Screen',
+            page: ChipsReferralForm3Route.page),
+        AutoRoute(path: '/referralForm4Screen', page: ReferralForm4Route.page),
+        AutoRoute(
+            path: '/chipsReferralListScreen',
+            page: ChipsReferralListRoute.page),
+        AutoRoute(
+            path: '/houseHoldRegListScreen', page: HouseHoldRegListRoute.page),
+        AutoRoute(path: '/houseHoldReg2Screen', page: HouseHoldReg2Route.page),
+        AutoRoute(path: '/houseHoldReg3Screen', page: HouseHoldReg3Route.page),
       ];
 }

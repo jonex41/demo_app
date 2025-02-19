@@ -81,7 +81,8 @@ class HouseHoldReg1Screen extends GetView<HouseHoldRegController> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                         // appRoute.push(const MaternalService1Route());
+
+                          appRoute.push(const HouseHoldRegListRoute());
                         },
                         child: _card(
                             context,

@@ -37,7 +37,6 @@ class HomeScreen extends GetView<HomeController> {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               children: [
-                //  _firstCard(context),
                 _secondCard(context),
                 _thirdCard(context),
                 _fourthCard(context),
@@ -47,6 +46,7 @@ class HomeScreen extends GetView<HomeController> {
                 _eigtthCard(context),
                 _halfCards(context),
                 20.height,
+                _firstCard(context),
                 /*   Assets.images.germanLogo.image(
                   width: (context.width - 20).w,
                 ), */
@@ -93,18 +93,18 @@ class HomeScreen extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Getting ready for ANC clinical consultations',
+                  'Settlement Registry',
                   style: context.theme.appTextTheme.bodyLarge18.copyWith(
                       color: AppPalette.primary.primary10,
                       fontWeight: FontWeight.w600),
                 ),
-                // 10.height,
-                /*   Text(
-                  'Get started for you to update your\nPatient personal information',
+                10.height,
+                Text(
+                  'Create community and settlement profile',
                   style: context.theme.appTextTheme.bodySmall14.copyWith(
                       color: AppPalette.primary.primary50,
                       fontWeight: FontWeight.w600),
-                ), */
+                ),
                 // 30.width,
                 /*  Text(
                   'Getting ready for ANC clinical\n consultations',
@@ -120,17 +120,24 @@ class HomeScreen extends GetView<HomeController> {
                       onTap: () {},
                       child: _buttonWithArrow(
                           context,
-                          'Begin ANC Consultation',
+                          'Continue',
                           AppPalette.primary.primary400,
                           AppPalette.primary.primary10,
                           16),
                     ),
                     const Spacer(),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child:
-                          Assets.icons.doctorMean.svg(height: 100, width: 100),
-                    )
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                            height: 80.w,
+                            width: 80.w,
+                            color: AppPalette.cardeight1,
+                            child: const Center(
+                                child: Icon(
+                              Icons.location_on_outlined,
+                              size: 50,
+                              color: Colors.white,
+                            )))),
                   ],
                 ),
               ],

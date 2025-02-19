@@ -124,6 +124,7 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
                                   child: _card(
                                     context,
                                     "Total Registered CHIPS Referral",
+                                    'Start Registration',
                                     Icon(
                                       Icons.house_outlined,
                                       color: AppPalette.primary.primary400,
@@ -143,6 +144,7 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
                                   child: _card(
                                     context,
                                     "Expired CHIPS Referral",
+                                    'Start Registration',
                                     const Icon(
                                       Icons.house_outlined,
                                       color: Color(0xff92CE00),
@@ -163,6 +165,7 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
                             child: _card(
                               context,
                               "Total Registered Household Members",
+                              'Start Registration',
                               const Icon(
                                 Icons.person,
                                 color: Color(0xffEE6471),
@@ -191,11 +194,13 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
                 15.height,
                 GestureDetector(
                   onTap: () {
+                    appRoute.push(const ChipReferral1Route());
                     // appRoute.push(const HouseHoldReg1Route());
                   },
                   child: _card(
                     context,
                     "Register a CHIPS Referral",
+                    'Start Registration',
                     Icon(
                       Icons.person,
                       color: AppPalette.primary.primary400,
@@ -208,11 +213,12 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
                 15.height,
                 GestureDetector(
                   onTap: () {
-                    // appRoute.push(const HouseHoldReg1Route());
+                    appRoute.push(const ChipsReferralListRoute());
                   },
                   child: _card(
                     context,
                     "View Registered CHIPS Referral",
+                    "View all",
                     Icon(
                       Icons.person,
                       color: AppPalette.primary.primary400,
@@ -223,7 +229,7 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
                   ),
                 ),
                 40.height,
-              //  Assets.images.germanLogo.image(),
+                //  Assets.images.germanLogo.image(),
                 40.height,
               ],
             ),
@@ -233,8 +239,8 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
     ));
   }
 
-  _card(BuildContext context, String s, Icon image, bool showSubTitle,
-      Color cardColor, Color iconColor) {
+  _card(BuildContext context, String s, String second, Icon image,
+      bool showSubTitle, Color cardColor, Color iconColor) {
     return Container(
         width: double.infinity,
         height: context.height / 5,
@@ -281,9 +287,9 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
               Align(
                 alignment: Alignment.bottomRight,
                 child: GestureDetector(
-                  onTap: () {
-                    appRoute.push(const ChipReferral1Route());
-                  },
+                  /*  onTap: () {
+                 
+                  }, */
                   child: Container(
                     width: context.width / 2.5,
                     height: 40,
@@ -302,7 +308,7 @@ class ChipReferralScreen extends GetView<ChipReferralController> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 5, horizontal: 10),
                         child: Text(
-                          'Start Registration',
+                          second,
                           style: context.theme.appTextTheme.labelLarge12
                               .copyWith(
                                   color: AppPalette.white,

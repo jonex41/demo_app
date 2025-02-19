@@ -15,6 +15,7 @@ class MyInputTextWidget extends StatelessWidget {
       required this.hint,
       this.showRequired = false,
       this.keyboardType,
+      this.maxLine,
       this.textColor,
       this.validator,
       this.power,
@@ -23,6 +24,7 @@ class MyInputTextWidget extends StatelessWidget {
   final String title;
   final String? title2;
   final String hint;
+  final int? maxLine;
   final String? power;
   final Color? textColor;
   final bool showRequired;
@@ -92,6 +94,7 @@ class MyInputTextWidget extends StatelessWidget {
           child: TextFormField(
               controller: controller,
               onChanged: callBack,
+              maxLines: maxLine,
               keyboardType: keyboardType,
               validator: validator,
               decoration: inputDecoration(

@@ -17,6 +17,7 @@ class HouseHoldRegController extends GetxController {
   var isPlaying = false.obs;
   var isFinished = false.obs;
   var otpString = ''.obs;
+  var headacheGen = [];
   var presentPhoneNumber = "";
   var currrentIndex = 0.obs;
   final emailController = TextEditingController();

@@ -87,6 +87,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChipReferralScreen(),
       );
     },
+    ChipsReferralForm3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChipsReferralForm3Screen(),
+      );
+    },
+    ChipsReferralFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChipsReferralFormScreen(),
+      );
+    },
+    ChipsReferralListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChipsReferralListScreen(),
+      );
+    },
     CommDispenseDashboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -207,6 +225,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HouseHoldReg1Screen(),
       );
     },
+    HouseHoldReg2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HouseHoldReg2Screen(),
+      );
+    },
+    HouseHoldReg3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HouseHoldReg3Screen(),
+      );
+    },
+    HouseHoldRegListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HouseHoldRegListScreen(),
+      );
+    },
     HouseHoldRegRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -231,6 +267,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MaternalService1Screen(),
       );
     },
+    MaternalService2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaternalService2Screen(),
+      );
+    },
     PartnersRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -241,6 +283,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProfileScreen(),
+      );
+    },
+    ReferralForm4Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ReferralForm4Screen(),
       );
     },
     SplashRoute.name: (routeData) {
@@ -422,6 +470,48 @@ class ChipReferralRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ChipReferralRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChipsReferralForm3Screen]
+class ChipsReferralForm3Route extends PageRouteInfo<void> {
+  const ChipsReferralForm3Route({List<PageRouteInfo>? children})
+      : super(
+          ChipsReferralForm3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChipsReferralForm3Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChipsReferralFormScreen]
+class ChipsReferralFormRoute extends PageRouteInfo<void> {
+  const ChipsReferralFormRoute({List<PageRouteInfo>? children})
+      : super(
+          ChipsReferralFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChipsReferralFormRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChipsReferralListScreen]
+class ChipsReferralListRoute extends PageRouteInfo<void> {
+  const ChipsReferralListRoute({List<PageRouteInfo>? children})
+      : super(
+          ChipsReferralListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChipsReferralListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -707,6 +797,48 @@ class HouseHoldReg1Route extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [HouseHoldReg2Screen]
+class HouseHoldReg2Route extends PageRouteInfo<void> {
+  const HouseHoldReg2Route({List<PageRouteInfo>? children})
+      : super(
+          HouseHoldReg2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HouseHoldReg2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HouseHoldReg3Screen]
+class HouseHoldReg3Route extends PageRouteInfo<void> {
+  const HouseHoldReg3Route({List<PageRouteInfo>? children})
+      : super(
+          HouseHoldReg3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HouseHoldReg3Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HouseHoldRegListScreen]
+class HouseHoldRegListRoute extends PageRouteInfo<void> {
+  const HouseHoldRegListRoute({List<PageRouteInfo>? children})
+      : super(
+          HouseHoldRegListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HouseHoldRegListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HouseHoldRegScreen]
 class HouseHoldRegRoute extends PageRouteInfo<void> {
   const HouseHoldRegRoute({List<PageRouteInfo>? children})
@@ -763,6 +895,20 @@ class MaternalService1Route extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MaternalService2Screen]
+class MaternalService2Route extends PageRouteInfo<void> {
+  const MaternalService2Route({List<PageRouteInfo>? children})
+      : super(
+          MaternalService2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaternalService2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [PartnersScreen]
 class PartnersRoute extends PageRouteInfo<void> {
   const PartnersRoute({List<PageRouteInfo>? children})
@@ -786,6 +932,20 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ReferralForm4Screen]
+class ReferralForm4Route extends PageRouteInfo<void> {
+  const ReferralForm4Route({List<PageRouteInfo>? children})
+      : super(
+          ReferralForm4Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ReferralForm4Route';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
