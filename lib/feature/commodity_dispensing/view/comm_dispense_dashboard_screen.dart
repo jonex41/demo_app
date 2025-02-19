@@ -132,7 +132,7 @@ class _CommDispenseDashboardScreenState extends State<CommDispenseDashboardScree
                                         ),
                                         5.height,
                                         Text(
-                                          'Total Hosuehold',
+                                          'Total Household',
                                           style: context.theme.appTextTheme.bodyMedium16.copyWith(
                                             fontSize: 13,
                                             color: AppPalette.primary.primary400,

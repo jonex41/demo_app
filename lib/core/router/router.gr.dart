@@ -135,6 +135,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CommDispenseViewSavedFormScreen(),
       );
     },
+    CommRequisitionAddEditFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommRequisitionAddEditFormScreen(),
+      );
+    },
     CommRequisitionDashboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -145,6 +151,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const CommRequisitionHomeScreen(),
+      );
+    },
+    CommRequisitionSavedFormsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommRequisitionSavedFormsScreen(),
+      );
+    },
+    CommRequisitionViewSavedFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommRequisitionViewSavedFormScreen(),
       );
     },
     EditProfileRoute.name: (routeData) {
@@ -491,20 +509,6 @@ class ChipReferralRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CommDispenseAddEditFormScreen]
-class CommDispenseAddEditFormRoute extends PageRouteInfo<void> {
-  const CommDispenseAddEditFormRoute({List<PageRouteInfo>? children})
-      : super(
-          CommDispenseAddEditFormRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CommDispenseAddEditFormRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [ChipsReferralForm3Screen]
 class ChipsReferralForm3Route extends PageRouteInfo<void> {
   const ChipsReferralForm3Route({List<PageRouteInfo>? children})
@@ -542,6 +546,20 @@ class ChipsReferralListRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ChipsReferralListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommDispenseAddEditFormScreen]
+class CommDispenseAddEditFormRoute extends PageRouteInfo<void> {
+  const CommDispenseAddEditFormRoute({List<PageRouteInfo>? children})
+      : super(
+          CommDispenseAddEditFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommDispenseAddEditFormRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -617,6 +635,20 @@ class CommDispenseViewSavedFormRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CommRequisitionAddEditFormScreen]
+class CommRequisitionAddEditFormRoute extends PageRouteInfo<void> {
+  const CommRequisitionAddEditFormRoute({List<PageRouteInfo>? children})
+      : super(
+          CommRequisitionAddEditFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommRequisitionAddEditFormRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [CommRequisitionDashboardScreen]
 class CommRequisitionDashboardRoute extends PageRouteInfo<void> {
   const CommRequisitionDashboardRoute({List<PageRouteInfo>? children})
@@ -640,6 +672,34 @@ class CommRequisitionHomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CommRequisitionHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommRequisitionSavedFormsScreen]
+class CommRequisitionSavedFormsRoute extends PageRouteInfo<void> {
+  const CommRequisitionSavedFormsRoute({List<PageRouteInfo>? children})
+      : super(
+          CommRequisitionSavedFormsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommRequisitionSavedFormsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommRequisitionViewSavedFormScreen]
+class CommRequisitionViewSavedFormRoute extends PageRouteInfo<void> {
+  const CommRequisitionViewSavedFormRoute({List<PageRouteInfo>? children})
+      : super(
+          CommRequisitionViewSavedFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommRequisitionViewSavedFormRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

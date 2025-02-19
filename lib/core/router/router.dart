@@ -21,8 +21,11 @@ import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_home_sc
 import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_saved_forms_detail_screen.dart';
 import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_saved_forms_screen.dart';
 import 'package:demo_app/feature/commodity_dispensing/view/comm_dispense_view_saved_form_screen.dart';
+import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_add_edit_form_screen.dart';
 import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_dashboard_screen.dart';
 import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_home_screen.dart';
+import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_saved_forms_screen.dart';
+import 'package:demo_app/feature/commodity_requisition/view/comm_requisition_view_saved_form_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house1_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house2_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encounter_reg_house3_screen.dart';
@@ -39,7 +42,6 @@ import 'package:demo_app/feature/encouter_reg_mat/view/child_health1_screen.dart
 import 'package:demo_app/feature/encouter_reg_mat/view/encouter_reg_mat_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service1_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service2_screen.dart';
-import 'package:demo_app/feature/encouter_reg_mat/view/maternal_service1_screen.dart';
 import 'package:demo_app/feature/home/view/home_screen.dart';
 import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg1_screen.dart';
 import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg2_screen.dart';
@@ -75,11 +77,28 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/allScheduleDetailScreen', page: AllScheduleDetailRoute.page),
         AutoRoute(path: '/addNewScheduleScreen', page: AddNewScheduleRoute.page),
         AutoRoute(path: '/logScreen', page: LogsRoute.page),
+
         AutoRoute(path: '/commDispenseHomeScreen', page: CommDispenseHomeRoute.page),
         AutoRoute(path: '/commDispenseDashboardScreen', page: CommDispenseDashboardRoute.page),
+        AutoRoute(path: '/commDispenseAddEditFormScreen', page: CommDispenseAddEditFormRoute.page),
+        AutoRoute(
+            path: '/commDispenseSavedFormsDetailScreen',
+            page: CommDispenseSavedFormsDetailRoute.page),
+        AutoRoute(path: '/commDispenseSavedFormsScreen', page: CommDispenseSavedFormsRoute.page),
+        AutoRoute(
+            path: '/commDispenseViewSavedFormScreen', page: CommDispenseViewSavedFormRoute.page),
+
         AutoRoute(path: '/commRequisitionHomeScreen', page: CommRequisitionHomeRoute.page),
         AutoRoute(
             path: '/commRequisitionDashboardScreen', page: CommRequisitionDashboardRoute.page),
+        AutoRoute(
+            path: '/commRequisitionAddEditFormScreen', page: CommRequisitionAddEditFormRoute.page),
+        AutoRoute(
+            path: '/commRequisitionSavedFormsScreen', page: CommRequisitionSavedFormsRoute.page),
+        AutoRoute(
+            path: '/commRequisitionViewSavedFormScreen',
+            page: CommRequisitionViewSavedFormRoute.page),
+
         AutoRoute(path: '/loginScreen', page: LoginRoute.page),
         AutoRoute(path: '/home', page: HomeRoute.page),
         AutoRoute(path: '/encounter_reg_mat', page: EncouterRegMatRoute.page),
@@ -98,13 +117,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/chip_referral_screen', page: ChipReferralRoute.page),
         AutoRoute(path: '/chip_referral1_screen', page: ChipReferral1Route.page),
         AutoRoute(path: '/chip_referral_form1_screen', page: ChipReferralForm1Route.page),
-        AutoRoute(path: '/commDispenseAddEditFormScreen', page: CommDispenseAddEditFormRoute.page),
-        AutoRoute(
-            path: '/commDispenseSavedFormsDetailScreen',
-            page: CommDispenseSavedFormsDetailRoute.page),
-        AutoRoute(path: '/commDispenseSavedFormsScreen', page: CommDispenseSavedFormsRoute.page),
-        AutoRoute(
-            path: '/commDispenseViewSavedFormScreen', page: CommDispenseViewSavedFormRoute.page),
         AutoRoute(path: '/chip_referral1_screen', page: ChipReferral1Route.page),
         AutoRoute(path: '/chip_referral_form1_screen', page: ChipReferralForm1Route.page),
 

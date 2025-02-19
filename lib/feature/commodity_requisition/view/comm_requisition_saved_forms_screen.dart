@@ -2,23 +2,22 @@ import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
-import 'package:demo_app/feature/commodity_dispensing/provider/commodity_dispense_controller.dart';
+import 'package:demo_app/feature/commodity_requisition/provider/commodity_requisition_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 @RoutePage()
-class CommDispenseSavedFormsDetailScreen extends StatefulWidget {
-  const CommDispenseSavedFormsDetailScreen({super.key});
+class CommRequisitionSavedFormsScreen extends StatefulWidget {
+  const CommRequisitionSavedFormsScreen({super.key});
 
   @override
-  State<CommDispenseSavedFormsDetailScreen> createState() =>
-      _CommDispenseSavedFormsDetailScreenState();
+  State<CommRequisitionSavedFormsScreen> createState() => _CommRequisitionSavedFormsScreenState();
 }
 
-class _CommDispenseSavedFormsDetailScreenState extends State<CommDispenseSavedFormsDetailScreen> {
-  final controller = Get.put<CommodityDispenseController>(CommodityDispenseController());
+class _CommRequisitionSavedFormsScreenState extends State<CommRequisitionSavedFormsScreen> {
+  final controller = Get.put<CommodityRequisitionController>(CommodityRequisitionController());
 
   @override
   Widget build(BuildContext context) {
@@ -70,40 +69,8 @@ class _CommDispenseSavedFormsDetailScreenState extends State<CommDispenseSavedFo
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            width: 54,
-                            height: 54,
-                            child: Stack(
-                              children: [
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    width: 54,
-                                    height: 54,
-                                    decoration: const ShapeDecoration(
-                                      color: Color(0xFF2ECE96),
-                                      shape: OvalBorder(),
-                                    ),
-                                  ),
-                                ),
-                                const Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'H',
-                                    style: TextStyle(
-                                      color: Color(0xFFFEFEFE),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 0.24,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          10.height,
                           Text(
-                            'Household\'s Name:',
+                            'Total Requisition and Issuance',
                             style: context.theme.appTextTheme.bodyMedium16.copyWith(
                               fontSize: 13,
                               color: AppPalette.grey.gray350,
@@ -112,7 +79,7 @@ class _CommDispenseSavedFormsDetailScreenState extends State<CommDispenseSavedFo
                           ),
                           5.height,
                           Text(
-                            'Peter',
+                            '10,000KG',
                             style: context.theme.appTextTheme.bodyMedium16.copyWith(
                               color: AppPalette.black,
                               fontWeight: FontWeight.w600,
@@ -124,7 +91,7 @@ class _CommDispenseSavedFormsDetailScreenState extends State<CommDispenseSavedFo
                             children: [
                               ElevatedButton(
                                   onPressed: () {
-                                    controller.gotoCommDispenseAddEditFormScreen();
+                                    controller.gotoCommRequisitionAddEditFormScreen();
                                   },
                                   style: ElevatedButton.styleFrom(
                                       foregroundColor: AppPalette.white,
@@ -162,13 +129,21 @@ class _CommDispenseSavedFormsDetailScreenState extends State<CommDispenseSavedFo
                     26.height,
                     InkWell(
                         onTap: () {
-                          controller.gotoCommDispenseViewSavedFormScreen();
+                          controller.gotoCommRequisitionViewSavedFormScreen();
                         },
-                        child: const DispenseSavedItem()),
+                        child: const RequisitionSavedItem()),
                     10.height,
-                    InkWell(onTap: () {}, child: const DispenseSavedItem()),
+                    InkWell(
+                        onTap: () {
+                          controller.gotoCommRequisitionViewSavedFormScreen();
+                        },
+                        child: const RequisitionSavedItem()),
                     10.height,
-                    InkWell(onTap: () {}, child: const DispenseSavedItem()),
+                    InkWell(
+                        onTap: () {
+                          controller.gotoCommRequisitionViewSavedFormScreen();
+                        },
+                        child: const RequisitionSavedItem()),
                   ],
                 )),
               )
@@ -180,8 +155,8 @@ class _CommDispenseSavedFormsDetailScreenState extends State<CommDispenseSavedFo
   }
 }
 
-class DispenseSavedItem extends StatelessWidget {
-  const DispenseSavedItem({
+class RequisitionSavedItem extends StatelessWidget {
+  const RequisitionSavedItem({
     super.key,
   });
 
@@ -203,7 +178,7 @@ class DispenseSavedItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Emily Peter',
+                    'Panadol',
                     style: context.theme.appTextTheme.bodyMedium16.copyWith(
                       color: AppPalette.black,
                       fontWeight: FontWeight.w600,

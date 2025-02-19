@@ -2,9 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
+import 'package:demo_app/feature/commodity_requisition/provider/commodity_requisition_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 @RoutePage()
@@ -12,12 +13,12 @@ class CommRequisitionDashboardScreen extends StatefulWidget {
   const CommRequisitionDashboardScreen({super.key});
 
   @override
-  State<CommRequisitionDashboardScreen> createState() =>
-      _CommRequisitionDashboardScreenState();
+  State<CommRequisitionDashboardScreen> createState() => _CommRequisitionDashboardScreenState();
 }
 
-class _CommRequisitionDashboardScreenState
-    extends State<CommRequisitionDashboardScreen> {
+class _CommRequisitionDashboardScreenState extends State<CommRequisitionDashboardScreen> {
+  final controller = Get.put<CommodityRequisitionController>(CommodityRequisitionController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +40,7 @@ class _CommRequisitionDashboardScreenState
               child: Align(
                 alignment: Alignment.center,
                 child: SvgPicture.asset("assets/images/back.svg",
-                    colorFilter: const ColorFilter.mode(
-                        AppPalette.black, BlendMode.srcIn)),
+                    colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
               ),
             ),
           )),
@@ -59,103 +59,177 @@ class _CommRequisitionDashboardScreenState
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(18),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: AppPalette.white,
-                        border: Border.all(
-                            width: 1.5, color: AppPalette.grayLight3),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(width: 1.5, color: AppPalette.grayLight3),
+                        borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                       ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(18),
-                              decoration: BoxDecoration(
-                                color: AppPalette.primary.primary400,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(19.0)),
-                              ),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SvgPicture.asset(
-                                      "assets/icons/pie_chart.svg",
-                                      color: AppPalette.white,
-                                    ),
-                                    16.height,
-                                    Text(
-                                      '0',
-                                      style: context
-                                          .theme.appTextTheme.bodyMedium16
-                                          .copyWith(
-                                        color: AppPalette.white,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    5.height,
-                                    Text(
-                                      'Total Requisition',
-                                      style: context
-                                          .theme.appTextTheme.bodyMedium16
-                                          .copyWith(
-                                        fontSize: 13,
-                                        color: AppPalette.white,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    )
-                                  ]),
-                              //child: ,
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(18),
-                              decoration: BoxDecoration(
-                                color: AppPalette.lime1.lime400,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(19.0)),
-                              ),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SvgPicture.asset(
-                                      "assets/icons/pie_chart.svg",
-                                      color: AppPalette.primary.primary400,
-                                    ),
-                                    16.height,
-                                    Text(
-                                      '0',
-                                      style: context
-                                          .theme.appTextTheme.bodyMedium16
-                                          .copyWith(
-                                        color: AppPalette.primary.primary400,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    5.height,
-                                    Text(
-                                      'Total Issuance',
-                                      style: context
-                                          .theme.appTextTheme.bodyMedium16
-                                          .copyWith(
-                                        fontSize: 13,
-                                        color: AppPalette.primary.primary400,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    )
-                                  ]),
-                              //child: ,
-                            )
-                          ]),
+                      child: Column(
+                        children: [
+                          Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: context.width / 2 - 35,
+                                  height: context.height / 5.5,
+                                  padding: const EdgeInsets.all(18),
+                                  decoration: BoxDecoration(
+                                    color: AppPalette.primary.primary400,
+                                    borderRadius: const BorderRadius.all(Radius.circular(19.0)),
+                                  ),
+                                  child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/icons/pie_chart.svg",
+                                          color: AppPalette.white,
+                                        ),
+                                        16.height,
+                                        Text(
+                                          '0',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            color: AppPalette.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        5.height,
+                                        Text(
+                                          'Unit Quantity',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            fontSize: 13,
+                                            color: AppPalette.white,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ]),
+                                  //child: ,
+                                ),
+                                10.width,
+                                Container(
+                                  width: context.width / 2 - 35,
+                                  height: context.height / 5.5,
+                                  padding: const EdgeInsets.all(18),
+                                  decoration: BoxDecoration(
+                                    color: AppPalette.lime1.lime400,
+                                    borderRadius: const BorderRadius.all(Radius.circular(19.0)),
+                                  ),
+                                  child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/icons/pie_chart.svg",
+                                          color: AppPalette.primary.primary400,
+                                        ),
+                                        16.height,
+                                        Text(
+                                          '0',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            color: AppPalette.primary.primary400,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        5.height,
+                                        Text(
+                                          'Quantity Required',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            fontSize: 13,
+                                            color: AppPalette.primary.primary400,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ]),
+                                  //child: ,
+                                )
+                              ]),
+                          15.height,
+                          Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: context.width / 2 - 35,
+                                  height: context.height / 5.5,
+                                  padding: const EdgeInsets.all(18),
+                                  decoration: BoxDecoration(
+                                    color: AppPalette.lime1.lime400,
+                                    borderRadius: const BorderRadius.all(Radius.circular(19.0)),
+                                  ),
+                                  child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/icons/pie_chart.svg",
+                                          color: AppPalette.primary.primary400,
+                                        ),
+                                        16.height,
+                                        Text(
+                                          '0',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            color: AppPalette.primary.primary400,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        5.height,
+                                        Text(
+                                          'Quantity Issued',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            fontSize: 13,
+                                            color: AppPalette.primary.primary400,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ]),
+                                  //child: ,
+                                ),
+                                10.width,
+                                Container(
+                                  width: context.width / 2 - 35,
+                                  height: context.height / 5.5,
+                                  padding: const EdgeInsets.all(18),
+                                  decoration: BoxDecoration(
+                                    color: AppPalette.primary.primary400,
+                                    borderRadius: const BorderRadius.all(Radius.circular(19.0)),
+                                  ),
+                                  child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/icons/pie_chart.svg",
+                                          color: AppPalette.white,
+                                        ),
+                                        16.height,
+                                        Text(
+                                          '0',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            color: AppPalette.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        5.height,
+                                        Text(
+                                          'Quantity Received',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            fontSize: 13,
+                                            color: AppPalette.white,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ]),
+                                  //child: ,
+                                )
+                              ])
+                        ],
+                      ),
                     ),
                     30.height,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Commodity Requisition',
-                          style:
-                              context.theme.appTextTheme.bodyMedium16.copyWith(
+                          'Commodity Requisition and Issuance',
+                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
                             color: AppPalette.black,
                             fontWeight: FontWeight.w600,
                           ),
@@ -168,71 +242,63 @@ class _CommRequisitionDashboardScreenState
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: const Color(0xffe4e7ec).withOpacity(0.2),
-                        border: Border.all(
-                            width: 1.5, color: AppPalette.grayLight3),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(width: 1.5, color: AppPalette.grayLight3),
+                        borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                       ),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        SvgPicture.asset(
+                          "assets/icons/person_grey.svg",
+                        ),
+                        24.height,
+                        Text(
+                          'View Registered Commodity Requisition and Issuance',
+                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        5.height,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            SvgPicture.asset(
-                              "assets/icons/person_grey.svg",
-                            ),
-                            24.height,
-                            Text(
-                              'View Registered Commodity Requisition and Issuance',
-                              style: context.theme.appTextTheme.bodyMedium16
-                                  .copyWith(
-                                color: AppPalette.black,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            5.height,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                        foregroundColor: AppPalette.white,
-                                        backgroundColor:
-                                            AppPalette.primary.primary400,
-                                        padding: const EdgeInsets.all(10.0),
-                                        fixedSize: const Size(150, 48),
-                                        textStyle: context
-                                            .theme.appTextTheme.bodyMedium16
-                                            .copyWith(
-                                                fontSize: 14,
-                                                fontFamily: 'Poppins',
-                                                color: AppPalette.white,
-                                                fontWeight: FontWeight.w700),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8))),
-                                    child: const Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'View All',
-                                          style: TextStyle(
-                                            color: AppPalette.white,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: AppPalette.white,
-                                          size: 16,
-                                        )
-                                      ],
-                                    )),
-                              ],
-                            )
-                          ]),
+                            ElevatedButton(
+                                onPressed: () {
+                                  controller.gotoCommRequisitionSavedFormsScreen();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    foregroundColor: AppPalette.white,
+                                    backgroundColor: AppPalette.primary.primary400,
+                                    padding: const EdgeInsets.all(10.0),
+                                    fixedSize: const Size(150, 48),
+                                    textStyle: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                        fontSize: 14,
+                                        fontFamily: 'Poppins',
+                                        color: AppPalette.white,
+                                        fontWeight: FontWeight.w700),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8))),
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'View All',
+                                      style: TextStyle(
+                                        color: AppPalette.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: AppPalette.white,
+                                      size: 16,
+                                    )
+                                  ],
+                                )),
+                          ],
+                        )
+                      ]),
                     ),
                     14.height,
                     Container(
@@ -240,74 +306,66 @@ class _CommRequisitionDashboardScreenState
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: const Color(0xff2fcf97).withOpacity(0.2),
-                        border: Border.all(
-                            width: 1.5, color: AppPalette.primary.primary80),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(width: 1.5, color: AppPalette.primary.primary80),
+                        borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                       ),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        SvgPicture.asset(
+                          "assets/icons/person_green.svg",
+                        ),
+                        24.height,
+                        Text(
+                          'Register a Commodity Requisition and Issuance',
+                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        5.height,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            SvgPicture.asset(
-                              "assets/icons/person_green.svg",
-                            ),
-                            24.height,
-                            Text(
-                              'Register a Commodity Requisition and Issuance',
-                              style: context.theme.appTextTheme.bodyMedium16
-                                  .copyWith(
-                                color: AppPalette.black,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            5.height,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                        foregroundColor: AppPalette.white,
-                                        backgroundColor:
-                                            AppPalette.primary.primary400,
-                                        padding: const EdgeInsets.all(5.0),
-                                        fixedSize: const Size(160, 48),
-                                        textStyle: context
-                                            .theme.appTextTheme.bodyMedium16
-                                            .copyWith(
-                                                fontSize: 14,
-                                                fontFamily: 'Poppins',
-                                                color: AppPalette.white,
-                                                fontWeight: FontWeight.w700),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8))),
-                                    child: const Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Start Registration',
-                                          style: TextStyle(
-                                            color: AppPalette.white,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: AppPalette.white,
-                                          size: 16,
-                                        )
-                                      ],
-                                    )),
-                              ],
-                            )
-                          ]),
+                            ElevatedButton(
+                                onPressed: () {
+                                  controller.gotoCommRequisitionAddEditFormScreen();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    foregroundColor: AppPalette.white,
+                                    backgroundColor: AppPalette.primary.primary400,
+                                    padding: const EdgeInsets.all(5.0),
+                                    fixedSize: const Size(160, 48),
+                                    textStyle: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                        fontSize: 14,
+                                        fontFamily: 'Poppins',
+                                        color: AppPalette.white,
+                                        fontWeight: FontWeight.w700),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8))),
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Start Registration',
+                                      style: TextStyle(
+                                        color: AppPalette.white,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: AppPalette.white,
+                                      size: 16,
+                                    )
+                                  ],
+                                )),
+                          ],
+                        )
+                      ]),
                     ),
                     20.height,
-                    Text(
+                    /*Text(
                       'Partner with:',
                       style: context.theme.appTextTheme.bodyMedium16.copyWith(
                         color: AppPalette.primary.primary400,
@@ -316,7 +374,7 @@ class _CommRequisitionDashboardScreenState
                     ),
                     16.height,
                     Image.asset('assets/images/partner1.png'),
-                    16.height,
+                    16.height,*/
                   ],
                 )),
               )

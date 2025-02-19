@@ -3,22 +3,23 @@ import 'package:demo_app/components/app_text_field_header.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
-import 'package:demo_app/feature/commodity_dispensing/provider/commodity_dispense_controller.dart';
+import 'package:demo_app/feature/commodity_requisition/provider/commodity_requisition_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 @RoutePage()
-class CommDispenseViewSavedFormScreen extends StatefulWidget {
-  const CommDispenseViewSavedFormScreen({super.key});
+class CommRequisitionViewSavedFormScreen extends StatefulWidget {
+  const CommRequisitionViewSavedFormScreen({super.key});
 
   @override
-  State<CommDispenseViewSavedFormScreen> createState() => _CommDispenseViewSavedFormScreenState();
+  State<CommRequisitionViewSavedFormScreen> createState() =>
+      _CommRequisitionViewSavedFormScreenState();
 }
 
-class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedFormScreen> {
-  final controller = Get.put<CommodityDispenseController>(CommodityDispenseController());
+class _CommRequisitionViewSavedFormScreenState extends State<CommRequisitionViewSavedFormScreen> {
+  final controller = Get.put<CommodityRequisitionController>(CommodityRequisitionController());
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedF
           actions: [
             InkWell(
               onTap: () {
-                controller.gotoCommDispenseAddEditFormScreen();
+                controller.gotoCommRequisitionAddEditFormScreen();
               },
               child: Padding(
                 padding: const EdgeInsets.only(right: 20),
@@ -90,31 +91,8 @@ class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedF
                     12.height,
                     Row(
                       children: [
-                        Expanded(child: header(context, 'Ward', 'Bosso 1')),
-                        Expanded(child: header(context, 'Community', 'Bosso 2')),
-                      ],
-                    ),
-                    12.height,
-                    const Divider(
-                      color: Color(0xffF5F5F5),
-                    ),
-                    12.height,
-                    header(context, 'Date Registered by CHIPS Agent', '12/02/2025'),
-                    12.height,
-                    const Divider(
-                      color: Color(0xffF5F5F5),
-                    ),
-                    12.height,
-                    header(context, 'Settlement', 'Angwar Hausa'),
-                    12.height,
-                    const Divider(
-                      color: Color(0xffF5F5F5),
-                    ),
-                    12.height,
-                    Row(
-                      children: [
-                        Expanded(child: header(context, 'House No', '50')),
-                        Expanded(child: header(context, 'Household No', '55')),
+                        Expanded(child: header(context, 'Ward', 'Bosso')),
+                        Expanded(child: header(context, 'Date', '12/12/2025')),
                       ],
                     ),
                     12.height,
@@ -124,25 +102,38 @@ class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedF
                     12.height,
                     Row(
                       children: [
-                        Expanded(child: header(context, 'Client First Name', 'James')),
-                        Expanded(child: header(context, 'Client Surname', 'Smith')),
+                        Expanded(child: header(context, 'Chip Agent Name', 'Musa Ibrahim')),
+                        Expanded(child: header(context, 'Chip Agent ID No', '123456')),
                       ],
                     ),
                     12.height,
-                    header(context, 'Phone Number', '07065808595'),
+                    const Divider(
+                      color: Color(0xffF5F5F5),
+                    ),
+                    12.height,
+                    Row(
+                      children: [
+                        Expanded(child: header(context, 'Requisition No', 'James')),
+                        Expanded(child: header(context, 'Unit Quantity', '12KG')),
+                      ],
+                    ),
                     12.height,
                     const Divider(
                       color: Color(0xffF5F5F5),
                     ),
                     12.height,
-                    header(context, 'Commodity Name',
-                        'Lorem ipsum dolor sit amet consectetur. Tortor.'),
+                    Row(
+                      children: [
+                        Expanded(child: header(context, 'Quantity Required', '24KG')),
+                        Expanded(child: header(context, 'Quantity Issued', '16KG')),
+                      ],
+                    ),
                     12.height,
                     const Divider(
                       color: Color(0xffF5F5F5),
                     ),
                     12.height,
-                    header(context, 'Quantity Given', '2'),
+                    header(context, 'Quantity Received', '20KG'),
                     12.height,
                     const Divider(
                       color: Color(0xffF5F5F5),
