@@ -26,15 +26,10 @@ class HomeScreen extends GetView<HomeController> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            child: InkWell(
-              onTap: () {
-                controller.gotoIEVDataHomeScreen();
-              },
-              child: HomeHeaderWidget(
-                name: "Usman Dauda",
-                time: controller.greeting(),
-                isOnline: true,
-              ),
+            child: HomeHeaderWidget(
+              name: "Usman Dauda",
+              time: controller.greeting(),
+              isOnline: true,
             ),
           ),
           Expanded(
@@ -45,18 +40,16 @@ class HomeScreen extends GetView<HomeController> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Overview of collected and pending data',
-                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff2C2D33)),
+                    style: context.theme.appTextTheme.bodyMedium16
+                        .copyWith(fontWeight: FontWeight.w600, color: const Color(0xff2C2D33)),
                   ),
                 ),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Monitor your submissions and pending syncs',
-                    style: context.theme.appTextTheme.bodySmall14.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff8B8D97)),
+                    style: context.theme.appTextTheme.bodySmall14
+                        .copyWith(fontWeight: FontWeight.w400, color: const Color(0xff8B8D97)),
                   ),
                 ),
                 20.height,
@@ -65,8 +58,7 @@ class HomeScreen extends GetView<HomeController> {
                         context,
                         "Total Submissions",
                         "120",
-                        Icon(Icons.feed_outlined,
-                            color: AppPalette.primary.primary400),
+                        Icon(Icons.feed_outlined, color: AppPalette.primary.primary400),
                         const Color(0xffEEFFF9),
                         const Color(0xff2fcf9733).withOpacity(0.2),
                         false)),
@@ -82,15 +74,33 @@ class HomeScreen extends GetView<HomeController> {
                         false)),
                 20.height,
                 GestureDetector(
+                  child: _card2(
+                    context,
+                    "Start new form entry",
+                    "Start a new form entry to collect and save data seamlessly, even offline.",
+                    Icon(Icons.add_box_outlined, color: AppPalette.primary.primary400),
+                    const Color(0xff027D52),
+                    Colors.white,
+                    true,
+                    "Get Started",
+                    onTap: () {
+                      controller.gotoIEVDataHomeScreen();
+                    },
+                  ),
+                ),
+                20.height,
+                GestureDetector(
                     child: _card2(
-                        context,
-                        "Start new form entry",
-                        "Start a new form entry to collect and save data seamlessly, even offline.",
-                        Icon(Icons.add_box_outlined,
-                            color: AppPalette.primary.primary400),
-                        const Color(0xff027D52),
-                        Colors.white,
-                        true)),
+                  context,
+                  "View Records",
+                  "View form entry to collected and saved.",
+                  Icon(Icons.add_box_outlined, color: AppPalette.primary.primary400),
+                  const Color(0xff027D52),
+                  Colors.white,
+                  true,
+                  "View Records",
+                  onTap: () {},
+                )),
                 /*  _secondCard(context),
                 _thirdCard(context),
                 _fourthCard(context),
@@ -175,8 +185,15 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  _card(BuildContext context, String s, String buttonName, Icon image,
-      Color container, Color border, bool showButton) {
+  _card(
+    BuildContext context,
+    String s,
+    String buttonName,
+    Icon image,
+    Color container,
+    Color border,
+    bool showButton,
+  ) {
     return Container(
         width: double.infinity,
         height: context.height / 4.5,
@@ -188,8 +205,8 @@ class HomeScreen extends GetView<HomeController> {
           ),
           borderRadius: BorderRadius.circular(12.0), // Rounded corners
         ),
-        padding:
-            const EdgeInsets.all(16.0), // Optional padding inside the container
+        padding: const EdgeInsets.all(16.0),
+        // Optional padding inside the container
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -204,8 +221,7 @@ class HomeScreen extends GetView<HomeController> {
                           color: border, // White border color
                           width: 1.0, // Border width
                         ),
-                        borderRadius:
-                            BorderRadius.circular(12.0), // Rounded corners
+                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
                       ),
                       height: 40.w,
                       width: 40.w,
@@ -215,14 +231,14 @@ class HomeScreen extends GetView<HomeController> {
             5.height,
             Text(
               s,
-              style: context.theme.appTextTheme.bodySmall14.copyWith(
-                  color: AppPalette.black2, fontWeight: FontWeight.w600),
+              style: context.theme.appTextTheme.bodySmall14
+                  .copyWith(color: AppPalette.black2, fontWeight: FontWeight.w600),
             ),
             5.height,
             Text(
               buttonName,
-              style: context.theme.appTextTheme.labelLarge12.copyWith(
-                  color: AppPalette.black, fontWeight: FontWeight.w400),
+              style: context.theme.appTextTheme.labelLarge12
+                  .copyWith(color: AppPalette.black, fontWeight: FontWeight.w400),
             ),
             if (showButton)
               Align(
@@ -236,8 +252,7 @@ class HomeScreen extends GetView<HomeController> {
                         color: Colors.white, // White border color
                         width: 0.5, // Border width
                       ),
-                      borderRadius:
-                          BorderRadius.circular(12.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(12.0), // Rounded corners
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -248,12 +263,8 @@ class HomeScreen extends GetView<HomeController> {
                             //  controller.gotoEveryScreen();
                             // controller.gotoGettingReady();
                           },
-                          child: _buttonWithArrow(
-                              context,
-                              "Get Started",
-                              AppPalette.primary.primary10,
-                              AppPalette.primary.primary400,
-                              16),
+                          child: _buttonWithArrow(context, "Get Started",
+                              AppPalette.primary.primary10, AppPalette.primary.primary400, 16),
                         ),
                         14.width,
                       ],
@@ -263,11 +274,12 @@ class HomeScreen extends GetView<HomeController> {
         ));
   }
 
-  _card2(BuildContext context, String s, String buttonName, Icon image,
-      Color container, Color border, bool showButton) {
+  _card2(BuildContext context, String s, String buttonName, Icon image, Color container,
+      Color border, bool showButton, String buttonText,
+      {required Function() onTap}) {
     return Container(
         width: double.infinity,
-        height: context.height / 4.2,
+        height: context.height / 4.0,
         decoration: BoxDecoration(
           color: container,
           border: Border.all(
@@ -276,8 +288,8 @@ class HomeScreen extends GetView<HomeController> {
           ),
           borderRadius: BorderRadius.circular(12.0), // Rounded corners
         ),
-        padding:
-            const EdgeInsets.all(16.0), // Optional padding inside the container
+        padding: const EdgeInsets.all(14.0),
+        // Optional padding inside the container
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -292,8 +304,7 @@ class HomeScreen extends GetView<HomeController> {
                           color: border, // White border color
                           width: 1.0, // Border width
                         ),
-                        borderRadius:
-                            BorderRadius.circular(12.0), // Rounded corners
+                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
                       ),
                       height: 40.w,
                       width: 40.w,
@@ -303,14 +314,14 @@ class HomeScreen extends GetView<HomeController> {
             5.height,
             Text(
               s,
-              style: context.theme.appTextTheme.bodySmall14.copyWith(
-                  color: AppPalette.white, fontWeight: FontWeight.w600),
+              style: context.theme.appTextTheme.bodySmall14
+                  .copyWith(color: AppPalette.white, fontWeight: FontWeight.w600),
             ),
             5.height,
             Text(
               buttonName,
-              style: context.theme.appTextTheme.labelLarge12.copyWith(
-                  color: AppPalette.white, fontWeight: FontWeight.w400),
+              style: context.theme.appTextTheme.labelLarge12
+                  .copyWith(color: AppPalette.white, fontWeight: FontWeight.w400),
             ),
             5.height,
             if (showButton)
@@ -325,8 +336,7 @@ class HomeScreen extends GetView<HomeController> {
                         color: Colors.white, // White border color
                         width: 0.5, // Border width
                       ),
-                      borderRadius:
-                          BorderRadius.circular(12.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(14.0), // Rounded corners
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -335,15 +345,12 @@ class HomeScreen extends GetView<HomeController> {
                       children: [
                         InkWell(
                           onTap: () {
+                            onTap.call();
                             //  controller.gotoEveryScreen();
                             // controller.gotoGettingReady();
                           },
-                          child: _buttonWithArrow(
-                              context,
-                              "Get Started",
-                              AppPalette.primary.primary400,
-                              AppPalette.white,
-                              16),
+                          child: _buttonWithArrow(context, buttonText,
+                              AppPalette.primary.primary400, AppPalette.white, 14),
                         ),
                         14.width,
                       ],
@@ -353,14 +360,12 @@ class HomeScreen extends GetView<HomeController> {
         ));
   }
 
-  Widget _buttonWithArrow(BuildContext context, String name, Color textColor,
-      Color containerColor, double fontSize) {
   Widget _buttonWithArrow(
       BuildContext context, String name, Color textColor, Color containerColor, double fontSize) {
     return Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), // radius of 10
+            borderRadius: BorderRadius.circular(8), // radius of 10
             color: containerColor // green as background color
             ),
         child: Row(
@@ -374,6 +379,7 @@ class HomeScreen extends GetView<HomeController> {
             5.width,
             Icon(
               Icons.arrow_forward_ios_rounded,
+              size: 14,
               color: textColor,
             )
             //Assets.images.icons.wave.image(),
