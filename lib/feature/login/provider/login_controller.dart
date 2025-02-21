@@ -1,3 +1,4 @@
+import 'package:demo_app/component/loader.dart';
 import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
@@ -45,7 +46,7 @@ class LoginController extends GetxController {
   gotoHomeScreen(BuildContext c) {
     FocusScope.of(c).requestFocus(FocusNode());
     HomeBindings().dependencies();
-    appRoute.replaceAll([const HomeRoute()]);
+    appRoute.replaceAll([const DashboardRoute()]);
   }
 /* 
   void loginNetwork(BuildContext context) async {

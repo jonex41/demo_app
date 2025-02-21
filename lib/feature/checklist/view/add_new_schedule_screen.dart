@@ -23,7 +23,8 @@ class AddNewScheduleScreen extends StatefulWidget {
 }
 
 class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
-  final checklistController = Get.put<ChecklistController>(ChecklistController());
+  final checklistController =
+      Get.put<ChecklistController>(ChecklistController());
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,8 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
               child: Align(
                 alignment: Alignment.center,
                 child: SvgPicture.asset("assets/images/back.svg",
-                    colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
+                    colorFilter: const ColorFilter.mode(
+                        AppPalette.black, BlendMode.srcIn)),
               ),
             ),
           )),
@@ -70,8 +72,10 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                         padding: const EdgeInsets.all(18),
                         decoration: BoxDecoration(
                           color: AppPalette.white,
-                          border: Border.all(width: 1.5, color: AppPalette.grayLight3),
-                          borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+                          border: Border.all(
+                              width: 1.5, color: AppPalette.grayLight3),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15.0)),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +114,8 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                             10.height,
                             Text(
                               'Hauwa Abdullahi Sani',
-                              style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                              style: context.theme.appTextTheme.bodyMedium16
+                                  .copyWith(
                                 color: AppPalette.black,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -118,7 +123,8 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                             5.height,
                             Text(
                               'Tell: +234 706 580 8595 | Age: 45years',
-                              style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                              style: context.theme.appTextTheme.bodyMedium16
+                                  .copyWith(
                                 fontSize: 13,
                                 color: AppPalette.grey.gray350,
                                 fontWeight: FontWeight.w400,
@@ -164,7 +170,9 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 14,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: checklistController.chipAgentUniqueId,
                       ),
                       29.height,
@@ -175,7 +183,8 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                           //final DateTime now = DateTime.now();
                           var picked = await showDatePicker(
                             context: context,
-                            initialDate: checklistController.dateOfSchedule ?? DateTime.now(),
+                            initialDate: checklistController.dateOfSchedule ??
+                                DateTime.now(),
                             firstDate: DateTime(1900),
                             lastDate: DateTime(2300),
                             //lastDate: DateTime(2100),
@@ -191,20 +200,26 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                               );
                             },
                           );
-                          if (picked != null && picked != checklistController.dateOfSchedule) {
-                            var formattedDate = DateFormat('yyyy-MM-dd').format(picked);
+                          if (picked != null &&
+                              picked != checklistController.dateOfSchedule) {
+                            var formattedDate =
+                                DateFormat('yyyy-MM-dd').format(picked);
                             checklistController.setDateOfSchedule(picked);
 
-                            checklistController.setSelectedDateOfSchedule(formattedDate);
+                            checklistController
+                                .setSelectedDateOfSchedule(formattedDate);
                           }
                         },
                         child: Obx(() {
                           return Container(
-                            padding: const EdgeInsets.only(left: 8, top: 10, bottom: 10, right: 8),
+                            padding: const EdgeInsets.only(
+                                left: 8, top: 10, bottom: 10, right: 8),
                             decoration: BoxDecoration(
                               color: AppPalette.transparent,
-                              border: Border.all(width: 1.5, color: AppPalette.grey.gray300),
-                              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                              border: Border.all(
+                                  width: 1.5, color: AppPalette.grey.gray300),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8.0)),
                             ),
                             child: Row(
                               children: [
@@ -212,10 +227,16 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      checklistController.selectDateOfSchedule != null
-                                          ? checklistController.selectDateOfSchedule.toString()
+                                      checklistController
+                                                  .selectDateOfSchedule !=
+                                              null
+                                          ? checklistController
+                                              .selectDateOfSchedule
+                                              .toString()
                                           : 'Select Date',
-                                      style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                      style: context
+                                          .theme.appTextTheme.bodyMedium16
+                                          .copyWith(
                                         fontSize: 13,
                                         color: AppPalette.grey.gray600,
                                         fontWeight: FontWeight.w500,
@@ -238,11 +259,14 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                         child: Obx(() {
                           final time = checklistController.selectedTime.value;
                           return Container(
-                            padding: const EdgeInsets.only(left: 8, top: 10, bottom: 10, right: 8),
+                            padding: const EdgeInsets.only(
+                                left: 8, top: 10, bottom: 10, right: 8),
                             decoration: BoxDecoration(
                               color: AppPalette.transparent,
-                              border: Border.all(width: 1.5, color: AppPalette.grey.gray300),
-                              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                              border: Border.all(
+                                  width: 1.5, color: AppPalette.grey.gray300),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8.0)),
                             ),
                             child: Row(
                               children: [
@@ -250,8 +274,12 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      time != null ? time.format(context) : "No time selected",
-                                      style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                      time != null
+                                          ? time.format(context)
+                                          : "No time selected",
+                                      style: context
+                                          .theme.appTextTheme.bodyMedium16
+                                          .copyWith(
                                         fontSize: 13,
                                         color: AppPalette.grey.gray600,
                                         fontWeight: FontWeight.w500,
@@ -305,7 +333,9 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 14,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: checklistController.ward,
                       ),
                       29.height,
@@ -328,18 +358,22 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 14,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: checklistController.community,
                       ),
                       30.height,
                       AppElevatedButton(
                         onPressed: () {
-                          final isValid =
-                              checklistController.formKeyNewSchedule.currentState!.validate();
+                          final isValid = checklistController
+                              .formKeyNewSchedule.currentState!
+                              .validate();
                           if (!isValid) {
                             return;
                           }
-                          if (checklistController.selectDateOfSchedule == null) {
+                          if (checklistController.selectDateOfSchedule ==
+                              null) {
                             showAlertDialog('Date of schedule cannot be empty');
                             return;
                           }
@@ -394,8 +428,8 @@ class _AddNewScheduleScreenState extends State<AddNewScheduleScreen> {
       child: Center(
         child: Text(
           name.substring(0, 1),
-          style: context.theme.appTextTheme.bodyLarge18
-              .copyWith(fontWeight: FontWeight.w500, color: AppPalette.grey.gray50),
+          style: context.theme.appTextTheme.bodyLarge18.copyWith(
+              fontWeight: FontWeight.w500, color: AppPalette.grey.gray50),
         ),
       ),
     );

@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    ActivityRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ActivityScreen(),
+      );
+    },
     AddNewChecklistRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -165,6 +171,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CommRequisitionViewSavedFormScreen(),
       );
     },
+    DashboardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DashboardScreen(),
+      );
+    },
     EditProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -255,6 +267,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const EncouterRegMatScreen(),
       );
     },
+    ForgotPasswordRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ForgotPasswordScreen(),
+      );
+    },
     GetStartedRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -321,6 +339,30 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MaternalService2Screen(),
       );
     },
+    MoreRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MoreScreen(),
+      );
+    },
+    OfflineForm1Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OfflineForm1Screen(),
+      );
+    },
+    OfflineForm2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OfflineForm2Screen(),
+      );
+    },
+    OfflineRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OfflineScreen(),
+      );
+    },
     PartnersRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -352,6 +394,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [ActivityScreen]
+class ActivityRoute extends PageRouteInfo<void> {
+  const ActivityRoute({List<PageRouteInfo>? children})
+      : super(
+          ActivityRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ActivityRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -705,6 +761,20 @@ class CommRequisitionViewSavedFormRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DashboardScreen]
+class DashboardRoute extends PageRouteInfo<void> {
+  const DashboardRoute({List<PageRouteInfo>? children})
+      : super(
+          DashboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DashboardRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [EditProfileScreen]
 class EditProfileRoute extends PageRouteInfo<void> {
   const EditProfileRoute({List<PageRouteInfo>? children})
@@ -915,6 +985,20 @@ class EncouterRegMatRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ForgotPasswordScreen]
+class ForgotPasswordRoute extends PageRouteInfo<void> {
+  const ForgotPasswordRoute({List<PageRouteInfo>? children})
+      : super(
+          ForgotPasswordRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ForgotPasswordRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [GetStartedScreen]
 class GetStartedRoute extends PageRouteInfo<void> {
   const GetStartedRoute({List<PageRouteInfo>? children})
@@ -1064,6 +1148,62 @@ class MaternalService2Route extends PageRouteInfo<void> {
         );
 
   static const String name = 'MaternalService2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MoreScreen]
+class MoreRoute extends PageRouteInfo<void> {
+  const MoreRoute({List<PageRouteInfo>? children})
+      : super(
+          MoreRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MoreRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OfflineForm1Screen]
+class OfflineForm1Route extends PageRouteInfo<void> {
+  const OfflineForm1Route({List<PageRouteInfo>? children})
+      : super(
+          OfflineForm1Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OfflineForm1Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OfflineForm2Screen]
+class OfflineForm2Route extends PageRouteInfo<void> {
+  const OfflineForm2Route({List<PageRouteInfo>? children})
+      : super(
+          OfflineForm2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OfflineForm2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OfflineScreen]
+class OfflineRoute extends PageRouteInfo<void> {
+  const OfflineRoute({List<PageRouteInfo>? children})
+      : super(
+          OfflineRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OfflineRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

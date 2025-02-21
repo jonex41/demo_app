@@ -37,7 +37,57 @@ class HomeScreen extends GetView<HomeController> {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               children: [
-                _secondCard(context),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Overview of collected and pending data',
+                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xff2C2D33)),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Monitor your submissions and pending syncs',
+                    style: context.theme.appTextTheme.bodySmall14.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xff8B8D97)),
+                  ),
+                ),
+                20.height,
+                GestureDetector(
+                    child: _card(
+                        context,
+                        "Total Submissions",
+                        "120",
+                        Icon(Icons.feed_outlined,
+                            color: AppPalette.primary.primary400),
+                        const Color(0xffEEFFF9),
+                        const Color(0xff2fcf9733).withOpacity(0.2),
+                        false)),
+                20.height,
+                GestureDetector(
+                    child: _card(
+                        context,
+                        "Pending Sync",
+                        "05",
+                        const Icon(Icons.schedule, color: Color(0xffEE6471)),
+                        const Color(0xffFFF7F2),
+                        const Color(0xffee647133).withOpacity(0.2),
+                        false)),
+                20.height,
+                GestureDetector(
+                    child: _card2(
+                        context,
+                        "Start new form entry",
+                        "Start a new form entry to collect and save data seamlessly, even offline.",
+                        Icon(Icons.add_box_outlined,
+                            color: AppPalette.primary.primary400),
+                        const Color(0xff027D52),
+                        Colors.white,
+                        true)),
+                /*  _secondCard(context),
                 _thirdCard(context),
                 _fourthCard(context),
                 _fifthCard(context),
@@ -47,29 +97,8 @@ class HomeScreen extends GetView<HomeController> {
                 _halfCards(context),
                 20.height,
                 _firstCard(context),
-                /*   Assets.images.germanLogo.image(
-                  width: (context.width - 20).w,
-                ), */
-
-                /*   _fourthCard(
-                    context: context,
-                    subColor: AppPalette.dark.dark300,
-                    cardColor: AppPalette.lime.lime50,
-                    title: "Delivery\nreport",
-                    showImage: true,
-                    fromDelivery: true), */
-                /*    _fourthCard(
-                    context: context,
-                    cardColor: AppPalette.primary.primary60,
-                    subColor: AppPalette.primary.primary400,
-                    title: "Immunizations and\nOther Prophylaxis",
-                    showImage: false,
-                    fromDelivery: false), */
-
+               */
                 50.height,
-                /*  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Assets.images.icons.partnerDash.image()) */
               ],
             ),
           ),
@@ -146,6 +175,184 @@ class HomeScreen extends GetView<HomeController> {
         ),
       ),
     );
+  }
+
+  _card(BuildContext context, String s, String buttonName, Icon image,
+      Color container, Color border, bool showButton) {
+    return Container(
+        width: double.infinity,
+        height: context.height / 4.5,
+        decoration: BoxDecoration(
+          color: container,
+          border: Border.all(
+            color: border, // White border color
+            width: 1.0, // Border width
+          ),
+          borderRadius: BorderRadius.circular(12.0), // Rounded corners
+        ),
+        padding:
+            const EdgeInsets.all(16.0), // Optional padding inside the container
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Card(
+              color: container,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: container,
+                        border: Border.all(
+                          color: border, // White border color
+                          width: 1.0, // Border width
+                        ),
+                        borderRadius:
+                            BorderRadius.circular(12.0), // Rounded corners
+                      ),
+                      height: 40.w,
+                      width: 40.w,
+                      // color: container,
+                      child: Center(child: image))),
+            ),
+            5.height,
+            Text(
+              s,
+              style: context.theme.appTextTheme.bodySmall14.copyWith(
+                  color: AppPalette.black2, fontWeight: FontWeight.w600),
+            ),
+            5.height,
+            Text(
+              buttonName,
+              style: context.theme.appTextTheme.labelLarge12.copyWith(
+                  color: AppPalette.black, fontWeight: FontWeight.w400),
+            ),
+            if (showButton)
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                    //  width: context.width / 2.5,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent, // Background color (optional)
+                      border: Border.all(
+                        color: Colors.white, // White border color
+                        width: 0.5, // Border width
+                      ),
+                      borderRadius:
+                          BorderRadius.circular(12.0), // Rounded corners
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            //  controller.gotoEveryScreen();
+                            // controller.gotoGettingReady();
+                          },
+                          child: _buttonWithArrow(
+                              context,
+                              "Get Started",
+                              AppPalette.primary.primary10,
+                              AppPalette.primary.primary400,
+                              16),
+                        ),
+                        14.width,
+                      ],
+                    )),
+              )
+          ],
+        ));
+  }
+
+  _card2(BuildContext context, String s, String buttonName, Icon image,
+      Color container, Color border, bool showButton) {
+    return Container(
+        width: double.infinity,
+        height: context.height / 4.2,
+        decoration: BoxDecoration(
+          color: container,
+          border: Border.all(
+            color: border, // White border color
+            width: 1.0, // Border width
+          ),
+          borderRadius: BorderRadius.circular(12.0), // Rounded corners
+        ),
+        padding:
+            const EdgeInsets.all(16.0), // Optional padding inside the container
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Card(
+              color: container,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: AppPalette.primary.primary50,
+                        border: Border.all(
+                          color: border, // White border color
+                          width: 1.0, // Border width
+                        ),
+                        borderRadius:
+                            BorderRadius.circular(12.0), // Rounded corners
+                      ),
+                      height: 40.w,
+                      width: 40.w,
+                      // color: container,
+                      child: Center(child: image))),
+            ),
+            5.height,
+            Text(
+              s,
+              style: context.theme.appTextTheme.bodySmall14.copyWith(
+                  color: AppPalette.white, fontWeight: FontWeight.w600),
+            ),
+            5.height,
+            Text(
+              buttonName,
+              style: context.theme.appTextTheme.labelLarge12.copyWith(
+                  color: AppPalette.white, fontWeight: FontWeight.w400),
+            ),
+            5.height,
+            if (showButton)
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                    //  width: context.width / 2.5,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: Colors.white, // Background color (optional)
+                      border: Border.all(
+                        color: Colors.white, // White border color
+                        width: 0.5, // Border width
+                      ),
+                      borderRadius:
+                          BorderRadius.circular(12.0), // Rounded corners
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            //  controller.gotoEveryScreen();
+                            // controller.gotoGettingReady();
+                          },
+                          child: _buttonWithArrow(
+                              context,
+                              "Get Started",
+                              AppPalette.primary.primary400,
+                              AppPalette.white,
+                              16),
+                        ),
+                        14.width,
+                      ],
+                    )),
+              )
+          ],
+        ));
   }
 
   Widget _buttonWithArrow(BuildContext context, String name, Color textColor,
