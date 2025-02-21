@@ -1,21 +1,16 @@
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
+import 'package:demo_app/core/storage_service.dart';
+import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/checklist/provider/checklist_bindings.dart';
 import 'package:demo_app/feature/commodity_dispensing/provider/commodity_dispense_bindings.dart';
 import 'package:demo_app/feature/commodity_requisition/provider/commodity_requisition_bindings.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
-import 'package:get/get.dart' hide ContextExtensionss;
-
-import 'package:nb_utils/nb_utils.dart';
-
-import 'package:demo_app/core/storage_service.dart';
-import 'package:demo_app/core/theme/new_theme/app_color.dart';
-
+import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_bindings.dart';
 import 'package:demo_app/model/home/user_transaction_model.dart';
-
 import 'package:demo_app/network/network_client.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart' hide ContextExtensionss;
+import 'package:nb_utils/nb_utils.dart';
 
 class HomeController extends GetxController {
   final isFirst = true.obs;
@@ -94,5 +89,10 @@ class HomeController extends GetxController {
   Future<void> gotoCommRequisitionHomeScreen() async {
     CommodityRequisitionBindings().dependencies();
     appRoute.push(const CommRequisitionHomeRoute());
+  }
+
+  Future<void> gotoIEVDataHomeScreen() async {
+    IEVDataCollectionBindings().dependencies();
+    appRoute.push(const IEVDataHomeRoute());
   }
 }
