@@ -315,6 +315,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HouseHoldRegScreen(),
       );
     },
+    IEVDataHomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const IEVDataHomeScreen(),
+      );
+    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -1092,6 +1098,20 @@ class HouseHoldRegRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HouseHoldRegRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [IEVDataHomeScreen]
+class IEVDataHomeRoute extends PageRouteInfo<void> {
+  const IEVDataHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          IEVDataHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'IEVDataHomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

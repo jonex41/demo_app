@@ -359,6 +359,10 @@ class $AssetsImagesGen {
   AssetGenImage get germanLogo =>
       const AssetGenImage('assets/images/german_logo.png');
 
+  /// File path: assets/images/get_started_image.png
+  AssetGenImage get getStartedImage =>
+      const AssetGenImage('assets/images/get_started_image.png');
+
   /// File path: assets/images/house_register.png
   AssetGenImage get houseRegister =>
       const AssetGenImage('assets/images/house_register.png');
@@ -444,6 +448,10 @@ class $AssetsImagesGen {
   AssetGenImage get selfExamine =>
       const AssetGenImage('assets/images/self_examine.png');
 
+  /// File path: assets/images/splash_logo.png
+  AssetGenImage get splashLogo =>
+      const AssetGenImage('assets/images/splash_logo.png');
+
   /// File path: assets/images/splash_screen_logo.png
   AssetGenImage get splashScreenLogo =>
       const AssetGenImage('assets/images/splash_screen_logo.png');
@@ -490,6 +498,7 @@ class $AssetsImagesGen {
         encouterRegisterHousehold,
         firstVisit,
         germanLogo,
+        getStartedImage,
         houseRegister,
         image1,
         login,
@@ -512,6 +521,7 @@ class $AssetsImagesGen {
         schedule,
         scheduleAvatar,
         selfExamine,
+        splashLogo,
         splashScreenLogo,
         successful,
         visualBreastBody1,

@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
-
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 //  Assets.images.image1.svg(),
@@ -41,18 +40,16 @@ class HomeScreen extends GetView<HomeController> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Overview of collected and pending data',
-                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff2C2D33)),
+                    style: context.theme.appTextTheme.bodyMedium16
+                        .copyWith(fontWeight: FontWeight.w600, color: const Color(0xff2C2D33)),
                   ),
                 ),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Monitor your submissions and pending syncs',
-                    style: context.theme.appTextTheme.bodySmall14.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff8B8D97)),
+                    style: context.theme.appTextTheme.bodySmall14
+                        .copyWith(fontWeight: FontWeight.w400, color: const Color(0xff8B8D97)),
                   ),
                 ),
                 20.height,
@@ -61,8 +58,7 @@ class HomeScreen extends GetView<HomeController> {
                         context,
                         "Total Submissions",
                         "120",
-                        Icon(Icons.feed_outlined,
-                            color: AppPalette.primary.primary400),
+                        Icon(Icons.feed_outlined, color: AppPalette.primary.primary400),
                         const Color(0xffEEFFF9),
                         const Color(0xff2fcf9733).withOpacity(0.2),
                         false)),
@@ -78,15 +74,33 @@ class HomeScreen extends GetView<HomeController> {
                         false)),
                 20.height,
                 GestureDetector(
+                  child: _card2(
+                    context,
+                    "Start new form entry",
+                    "Start a new form entry to collect and save data seamlessly, even offline.",
+                    Icon(Icons.add_box_outlined, color: AppPalette.primary.primary400),
+                    const Color(0xff027D52),
+                    Colors.white,
+                    true,
+                    "Get Started",
+                    onTap: () {
+                      controller.gotoIEVDataHomeScreen();
+                    },
+                  ),
+                ),
+                20.height,
+                GestureDetector(
                     child: _card2(
-                        context,
-                        "Start new form entry",
-                        "Start a new form entry to collect and save data seamlessly, even offline.",
-                        Icon(Icons.add_box_outlined,
-                            color: AppPalette.primary.primary400),
-                        const Color(0xff027D52),
-                        Colors.white,
-                        true)),
+                  context,
+                  "View Records",
+                  "View form entry to collected and saved.",
+                  Icon(Icons.add_box_outlined, color: AppPalette.primary.primary400),
+                  const Color(0xff027D52),
+                  Colors.white,
+                  true,
+                  "View Records",
+                  onTap: () {},
+                )),
                 /*  _secondCard(context),
                 _thirdCard(context),
                 _fourthCard(context),
@@ -123,16 +137,14 @@ class HomeScreen extends GetView<HomeController> {
               children: [
                 Text(
                   'Settlement Registry',
-                  style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                      color: AppPalette.primary.primary10,
-                      fontWeight: FontWeight.w600),
+                  style: context.theme.appTextTheme.bodyLarge18
+                      .copyWith(color: AppPalette.primary.primary10, fontWeight: FontWeight.w600),
                 ),
                 10.height,
                 Text(
                   'Create community and settlement profile',
-                  style: context.theme.appTextTheme.bodySmall14.copyWith(
-                      color: AppPalette.primary.primary50,
-                      fontWeight: FontWeight.w600),
+                  style: context.theme.appTextTheme.bodySmall14
+                      .copyWith(color: AppPalette.primary.primary50, fontWeight: FontWeight.w600),
                 ),
                 // 30.width,
                 /*  Text(
@@ -147,12 +159,8 @@ class HomeScreen extends GetView<HomeController> {
                   children: [
                     InkWell(
                       onTap: () {},
-                      child: _buttonWithArrow(
-                          context,
-                          'Continue',
-                          AppPalette.primary.primary400,
-                          AppPalette.primary.primary10,
-                          16),
+                      child: _buttonWithArrow(context, 'Continue', AppPalette.primary.primary400,
+                          AppPalette.primary.primary10, 16),
                     ),
                     const Spacer(),
                     ClipRRect(
@@ -177,8 +185,15 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  _card(BuildContext context, String s, String buttonName, Icon image,
-      Color container, Color border, bool showButton) {
+  _card(
+    BuildContext context,
+    String s,
+    String buttonName,
+    Icon image,
+    Color container,
+    Color border,
+    bool showButton,
+  ) {
     return Container(
         width: double.infinity,
         height: context.height / 4.5,
@@ -190,8 +205,8 @@ class HomeScreen extends GetView<HomeController> {
           ),
           borderRadius: BorderRadius.circular(12.0), // Rounded corners
         ),
-        padding:
-            const EdgeInsets.all(16.0), // Optional padding inside the container
+        padding: const EdgeInsets.all(16.0),
+        // Optional padding inside the container
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -206,8 +221,7 @@ class HomeScreen extends GetView<HomeController> {
                           color: border, // White border color
                           width: 1.0, // Border width
                         ),
-                        borderRadius:
-                            BorderRadius.circular(12.0), // Rounded corners
+                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
                       ),
                       height: 40.w,
                       width: 40.w,
@@ -217,14 +231,14 @@ class HomeScreen extends GetView<HomeController> {
             5.height,
             Text(
               s,
-              style: context.theme.appTextTheme.bodySmall14.copyWith(
-                  color: AppPalette.black2, fontWeight: FontWeight.w600),
+              style: context.theme.appTextTheme.bodySmall14
+                  .copyWith(color: AppPalette.black2, fontWeight: FontWeight.w600),
             ),
             5.height,
             Text(
               buttonName,
-              style: context.theme.appTextTheme.labelLarge12.copyWith(
-                  color: AppPalette.black, fontWeight: FontWeight.w400),
+              style: context.theme.appTextTheme.labelLarge12
+                  .copyWith(color: AppPalette.black, fontWeight: FontWeight.w400),
             ),
             if (showButton)
               Align(
@@ -238,8 +252,7 @@ class HomeScreen extends GetView<HomeController> {
                         color: Colors.white, // White border color
                         width: 0.5, // Border width
                       ),
-                      borderRadius:
-                          BorderRadius.circular(12.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(12.0), // Rounded corners
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -250,12 +263,8 @@ class HomeScreen extends GetView<HomeController> {
                             //  controller.gotoEveryScreen();
                             // controller.gotoGettingReady();
                           },
-                          child: _buttonWithArrow(
-                              context,
-                              "Get Started",
-                              AppPalette.primary.primary10,
-                              AppPalette.primary.primary400,
-                              16),
+                          child: _buttonWithArrow(context, "Get Started",
+                              AppPalette.primary.primary10, AppPalette.primary.primary400, 16),
                         ),
                         14.width,
                       ],
@@ -265,11 +274,12 @@ class HomeScreen extends GetView<HomeController> {
         ));
   }
 
-  _card2(BuildContext context, String s, String buttonName, Icon image,
-      Color container, Color border, bool showButton) {
+  _card2(BuildContext context, String s, String buttonName, Icon image, Color container,
+      Color border, bool showButton, String buttonText,
+      {required Function() onTap}) {
     return Container(
         width: double.infinity,
-        height: context.height / 4.2,
+        height: context.height / 4.0,
         decoration: BoxDecoration(
           color: container,
           border: Border.all(
@@ -278,8 +288,8 @@ class HomeScreen extends GetView<HomeController> {
           ),
           borderRadius: BorderRadius.circular(12.0), // Rounded corners
         ),
-        padding:
-            const EdgeInsets.all(16.0), // Optional padding inside the container
+        padding: const EdgeInsets.all(14.0),
+        // Optional padding inside the container
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -294,8 +304,7 @@ class HomeScreen extends GetView<HomeController> {
                           color: border, // White border color
                           width: 1.0, // Border width
                         ),
-                        borderRadius:
-                            BorderRadius.circular(12.0), // Rounded corners
+                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
                       ),
                       height: 40.w,
                       width: 40.w,
@@ -305,14 +314,14 @@ class HomeScreen extends GetView<HomeController> {
             5.height,
             Text(
               s,
-              style: context.theme.appTextTheme.bodySmall14.copyWith(
-                  color: AppPalette.white, fontWeight: FontWeight.w600),
+              style: context.theme.appTextTheme.bodySmall14
+                  .copyWith(color: AppPalette.white, fontWeight: FontWeight.w600),
             ),
             5.height,
             Text(
               buttonName,
-              style: context.theme.appTextTheme.labelLarge12.copyWith(
-                  color: AppPalette.white, fontWeight: FontWeight.w400),
+              style: context.theme.appTextTheme.labelLarge12
+                  .copyWith(color: AppPalette.white, fontWeight: FontWeight.w400),
             ),
             5.height,
             if (showButton)
@@ -327,8 +336,7 @@ class HomeScreen extends GetView<HomeController> {
                         color: Colors.white, // White border color
                         width: 0.5, // Border width
                       ),
-                      borderRadius:
-                          BorderRadius.circular(12.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(14.0), // Rounded corners
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -337,15 +345,12 @@ class HomeScreen extends GetView<HomeController> {
                       children: [
                         InkWell(
                           onTap: () {
+                            onTap.call();
                             //  controller.gotoEveryScreen();
                             // controller.gotoGettingReady();
                           },
-                          child: _buttonWithArrow(
-                              context,
-                              "Get Started",
-                              AppPalette.primary.primary400,
-                              AppPalette.white,
-                              16),
+                          child: _buttonWithArrow(context, buttonText,
+                              AppPalette.primary.primary400, AppPalette.white, 14),
                         ),
                         14.width,
                       ],
@@ -355,12 +360,12 @@ class HomeScreen extends GetView<HomeController> {
         ));
   }
 
-  Widget _buttonWithArrow(BuildContext context, String name, Color textColor,
-      Color containerColor, double fontSize) {
+  Widget _buttonWithArrow(
+      BuildContext context, String name, Color textColor, Color containerColor, double fontSize) {
     return Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), // radius of 10
+            borderRadius: BorderRadius.circular(8), // radius of 10
             color: containerColor // green as background color
             ),
         child: Row(
@@ -368,14 +373,13 @@ class HomeScreen extends GetView<HomeController> {
           children: [
             Text(
               name,
-              style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                  color: textColor,
-                  fontWeight: FontWeight.w600,
-                  fontSize: fontSize),
+              style: context.theme.appTextTheme.bodyLarge18
+                  .copyWith(color: textColor, fontWeight: FontWeight.w600, fontSize: fontSize),
             ),
             5.width,
             Icon(
               Icons.arrow_forward_ios_rounded,
+              size: 14,
               color: textColor,
             )
             //Assets.images.icons.wave.image(),
@@ -383,8 +387,8 @@ class HomeScreen extends GetView<HomeController> {
         ));
   }
 
-  Widget _buttonWithArrowTwo(BuildContext context, String name, Color textColor,
-      Color containerColor, double fontSize) {
+  Widget _buttonWithArrowTwo(
+      BuildContext context, String name, Color textColor, Color containerColor, double fontSize) {
     return Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -396,10 +400,8 @@ class HomeScreen extends GetView<HomeController> {
           children: [
             Text(
               name,
-              style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                  color: textColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: fontSize),
+              style: context.theme.appTextTheme.bodyLarge18
+                  .copyWith(color: textColor, fontWeight: FontWeight.w700, fontSize: fontSize),
             ),
             5.width,
             Icon(
@@ -428,18 +430,16 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     '1000 days checklist',
-                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                        color: AppPalette.dark.dark60,
-                        fontWeight: FontWeight.w600),
+                    style: context.theme.appTextTheme.bodyMedium16
+                        .copyWith(color: AppPalette.dark.dark60, fontWeight: FontWeight.w600),
                   ),
                   10.height,
                   Row(
                     children: [
                       Text(
                         'Get started for to update\nyour personals information',
-                        style: context.theme.appTextTheme.labelLarge12.copyWith(
-                            color: AppPalette.grey.gray400,
-                            fontWeight: FontWeight.w500),
+                        style: context.theme.appTextTheme.labelLarge12
+                            .copyWith(color: AppPalette.grey.gray400, fontWeight: FontWeight.w500),
                       ),
                       30.width
                     ],
@@ -452,12 +452,8 @@ class HomeScreen extends GetView<HomeController> {
                         onTap: () {
                           controller.gotoChecklistHomeScreen();
                         },
-                        child: _buttonWithArrow(
-                            context,
-                            'Continue',
-                            AppPalette.primary.primary10,
-                            AppPalette.button1,
-                            16),
+                        child: _buttonWithArrow(context, 'Continue', AppPalette.primary.primary10,
+                            AppPalette.button1, 16),
                       ),
                       14.width,
                     ],
@@ -496,18 +492,16 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'Commodity Dispensing\nForm',
-                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                        color: AppPalette.dark.dark60,
-                        fontWeight: FontWeight.w600),
+                    style: context.theme.appTextTheme.bodyMedium16
+                        .copyWith(color: AppPalette.dark.dark60, fontWeight: FontWeight.w600),
                   ),
                   10.height,
                   Row(
                     children: [
                       Text(
                         'Get started for to update\nyour personals information',
-                        style: context.theme.appTextTheme.labelLarge12.copyWith(
-                            color: AppPalette.grey.gray400,
-                            fontWeight: FontWeight.w500),
+                        style: context.theme.appTextTheme.labelLarge12
+                            .copyWith(color: AppPalette.grey.gray400, fontWeight: FontWeight.w500),
                       ),
                       10.width,
                     ],
@@ -522,12 +516,8 @@ class HomeScreen extends GetView<HomeController> {
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
-                        child: _buttonWithArrow(
-                            context,
-                            'Continue',
-                            AppPalette.primary.primary10,
-                            AppPalette.primary.primary400,
-                            16),
+                        child: _buttonWithArrow(context, 'Continue', AppPalette.primary.primary10,
+                            AppPalette.primary.primary400, 16),
                       ),
                       14.width,
                     ],
@@ -540,8 +530,7 @@ class HomeScreen extends GetView<HomeController> {
                       height: 80.w,
                       width: 80.w,
                       color: AppPalette.green1,
-                      child: Center(
-                          child: Assets.images.comodityDispense.image()))),
+                      child: Center(child: Assets.images.comodityDispense.image()))),
             ],
           ),
         ),
@@ -566,18 +555,16 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'Commodity Requisition\nand Issuance form',
-                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                        color: AppPalette.dark.dark60,
-                        fontWeight: FontWeight.w600),
+                    style: context.theme.appTextTheme.bodyMedium16
+                        .copyWith(color: AppPalette.dark.dark60, fontWeight: FontWeight.w600),
                   ),
                   10.height,
                   Row(
                     children: [
                       Text(
                         'Get started for to update your\npersonals information',
-                        style: context.theme.appTextTheme.labelLarge12.copyWith(
-                            color: AppPalette.grey.gray400,
-                            fontWeight: FontWeight.w500),
+                        style: context.theme.appTextTheme.labelLarge12
+                            .copyWith(color: AppPalette.grey.gray400, fontWeight: FontWeight.w500),
                       ),
                       10.width,
                     ],
@@ -590,12 +577,8 @@ class HomeScreen extends GetView<HomeController> {
                         onTap: () {
                           controller.gotoCommRequisitionHomeScreen();
                         },
-                        child: _buttonWithArrow(
-                            context,
-                            'Continue',
-                            AppPalette.primary.primary10,
-                            AppPalette.button3,
-                            16),
+                        child: _buttonWithArrow(context, 'Continue', AppPalette.primary.primary10,
+                            AppPalette.button3, 16),
                       ),
                       14.width,
                     ],
@@ -608,8 +591,7 @@ class HomeScreen extends GetView<HomeController> {
                       height: 80.w,
                       width: 80.w,
                       color: AppPalette.orangeLight2,
-                      child: Center(
-                          child: Assets.images.comodityRequisition.image()))),
+                      child: Center(child: Assets.images.comodityRequisition.image()))),
             ],
           ),
         ),
@@ -634,18 +616,16 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'Encounter Register\nmaternal & Childhealth',
-                    style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                        color: AppPalette.dark.dark60,
-                        fontWeight: FontWeight.w600),
+                    style: context.theme.appTextTheme.bodyMedium16
+                        .copyWith(color: AppPalette.dark.dark60, fontWeight: FontWeight.w600),
                   ),
                   10.height,
                   Row(
                     children: [
                       Text(
                         'Get started for to update\nyour personals information',
-                        style: context.theme.appTextTheme.labelLarge12.copyWith(
-                            color: AppPalette.grey.gray400,
-                            fontWeight: FontWeight.w500),
+                        style: context.theme.appTextTheme.labelLarge12
+                            .copyWith(color: AppPalette.grey.gray400, fontWeight: FontWeight.w500),
                       ),
                       10.width,
                     ],
@@ -660,12 +640,8 @@ class HomeScreen extends GetView<HomeController> {
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
-                        child: _buttonWithArrow(
-                            context,
-                            'Continue',
-                            AppPalette.primary.primary10,
-                            AppPalette.button4,
-                            16),
+                        child: _buttonWithArrow(context, 'Continue', AppPalette.primary.primary10,
+                            AppPalette.button4, 16),
                       ),
                       14.width,
                     ],
@@ -703,18 +679,16 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'Encounter Register\nHousehold ',
-                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                        color: AppPalette.dark.dark60,
-                        fontWeight: FontWeight.w600),
+                    style: context.theme.appTextTheme.bodyLarge18
+                        .copyWith(color: AppPalette.dark.dark60, fontWeight: FontWeight.w600),
                   ),
                   10.height,
                   Row(
                     children: [
                       Text(
                         'Get started for to update\nyour personals information',
-                        style: context.theme.appTextTheme.labelLarge12.copyWith(
-                            color: AppPalette.grey.gray400,
-                            fontWeight: FontWeight.w500),
+                        style: context.theme.appTextTheme.labelLarge12
+                            .copyWith(color: AppPalette.grey.gray400, fontWeight: FontWeight.w500),
                       ),
                       10.width,
                     ],
@@ -729,12 +703,8 @@ class HomeScreen extends GetView<HomeController> {
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
-                        child: _buttonWithArrow(
-                            context,
-                            'Continue',
-                            AppPalette.primary.primary10,
-                            AppPalette.cardsix3,
-                            16),
+                        child: _buttonWithArrow(context, 'Continue', AppPalette.primary.primary10,
+                            AppPalette.cardsix3, 16),
                       ),
                       14.width,
                     ],
@@ -747,9 +717,7 @@ class HomeScreen extends GetView<HomeController> {
                       height: 80.w,
                       width: 80.w,
                       color: AppPalette.cardsix2,
-                      child: Center(
-                          child: Assets.images.encouterRegisterHousehold
-                              .image()))),
+                      child: Center(child: Assets.images.encouterRegisterHousehold.image()))),
             ],
           ),
         ),
@@ -774,8 +742,8 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'House Register',
-                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                        color: AppPalette.black, fontWeight: FontWeight.w800),
+                    style: context.theme.appTextTheme.bodyLarge18
+                        .copyWith(color: AppPalette.black, fontWeight: FontWeight.w800),
                   ),
                   10.height,
                   Row(
@@ -783,8 +751,7 @@ class HomeScreen extends GetView<HomeController> {
                       Text(
                         'Get started for to update your\npersonals information',
                         style: context.theme.appTextTheme.labelLarge12.copyWith(
-                            color: AppPalette.primary.primary10,
-                            fontWeight: FontWeight.w500),
+                            color: AppPalette.primary.primary10, fontWeight: FontWeight.w500),
                       ),
                       10.width,
                     ],
@@ -799,12 +766,8 @@ class HomeScreen extends GetView<HomeController> {
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
-                        child: _buttonWithArrow(
-                            context,
-                            'Continue',
-                            AppPalette.primary.primary10,
-                            AppPalette.primary.primary400,
-                            16),
+                        child: _buttonWithArrow(context, 'Continue', AppPalette.primary.primary10,
+                            AppPalette.primary.primary400, 16),
                       ),
                       14.width,
                     ],
@@ -817,8 +780,7 @@ class HomeScreen extends GetView<HomeController> {
                       height: 80.w,
                       width: 80.w,
                       color: AppPalette.cardseven2,
-                      child:
-                          Center(child: Assets.images.houseRegister.image()))),
+                      child: Center(child: Assets.images.houseRegister.image()))),
             ],
           ),
         ),
@@ -843,9 +805,8 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
                   Text(
                     'Referral Form ',
-                    style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                        color: AppPalette.primary.primary10,
-                        fontWeight: FontWeight.w600),
+                    style: context.theme.appTextTheme.bodyLarge18
+                        .copyWith(color: AppPalette.primary.primary10, fontWeight: FontWeight.w600),
                   ),
                   10.height,
                   Row(
@@ -853,8 +814,7 @@ class HomeScreen extends GetView<HomeController> {
                       Text(
                         'Get started for to update your\npersonals information',
                         style: context.theme.appTextTheme.labelLarge12.copyWith(
-                            color: AppPalette.primary.primary10,
-                            fontWeight: FontWeight.w500),
+                            color: AppPalette.primary.primary10, fontWeight: FontWeight.w500),
                       ),
                       10.width,
                     ],
@@ -869,12 +829,8 @@ class HomeScreen extends GetView<HomeController> {
                           //  controller.gotoEveryScreen();
                           // controller.gotoGettingReady();
                         },
-                        child: _buttonWithArrow(
-                            context,
-                            'Continue',
-                            AppPalette.primary.primary400,
-                            AppPalette.white,
-                            16),
+                        child: _buttonWithArrow(context, 'Continue', AppPalette.primary.primary400,
+                            AppPalette.white, 16),
                       ),
                       14.width,
                     ],
@@ -887,8 +843,7 @@ class HomeScreen extends GetView<HomeController> {
                       height: 80.w,
                       width: 80.w,
                       color: AppPalette.cardeight1,
-                      child:
-                          Center(child: Assets.images.referralForm.image()))),
+                      child: Center(child: Assets.images.referralForm.image()))),
             ],
           ),
         ),
@@ -939,15 +894,13 @@ class HomeScreen extends GetView<HomeController> {
                 10.height,
                 Text(
                   'Wallet',
-                  style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                      color: AppPalette.primary.primary10,
-                      fontWeight: FontWeight.w600),
+                  style: context.theme.appTextTheme.bodyLarge18
+                      .copyWith(color: AppPalette.primary.primary10, fontWeight: FontWeight.w600),
                 ),
                 Text(
                   'Basic ANC Booking Investigations\ninclude',
-                  style: context.theme.appTextTheme.labelLarge8.copyWith(
-                      color: AppPalette.primary.primary10,
-                      fontWeight: FontWeight.w500),
+                  style: context.theme.appTextTheme.labelLarge8
+                      .copyWith(color: AppPalette.primary.primary10, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -990,16 +943,14 @@ class HomeScreen extends GetView<HomeController> {
                 2.height,
                 Text(
                   'Profile',
-                  style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                      color: AppPalette.primary.primary400,
-                      fontWeight: FontWeight.w600),
+                  style: context.theme.appTextTheme.bodyLarge18
+                      .copyWith(color: AppPalette.primary.primary400, fontWeight: FontWeight.w600),
                 ),
                 10.height,
                 Text(
                   'Basic ANC Booking\nInvestigations include',
-                  style: context.theme.appTextTheme.labelLarge8.copyWith(
-                      color: AppPalette.primary.primary400,
-                      fontWeight: FontWeight.w500),
+                  style: context.theme.appTextTheme.labelLarge8
+                      .copyWith(color: AppPalette.primary.primary400, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
