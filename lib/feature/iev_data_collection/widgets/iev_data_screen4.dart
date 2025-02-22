@@ -4,6 +4,7 @@ import 'package:demo_app/components/input_decoration.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
+import 'package:demo_app/feature/util/LocationHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -386,7 +387,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                         ),
                                       ),
                                       Text(
-                                        '0',
+                                        '${controller.currentPosition.value?.longitude ?? '0'}',
                                         style: context.theme.appTextTheme.bodyMedium16.copyWith(
                                           fontSize: 13,
                                           color: AppPalette.grey.gray350,
@@ -408,7 +409,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                         ),
                                       ),
                                       Text(
-                                        '0',
+                                        '${controller.currentPosition.value?.latitude ?? '0'}',
                                         style: context.theme.appTextTheme.bodyMedium16.copyWith(
                                           fontSize: 13,
                                           color: AppPalette.grey.gray350,
@@ -424,7 +425,12 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        controller.loadingCoordinate.value = true;
+                                        controller.currentPosition.value =
+                                            await LocationHandler.getCurrentPosition();
+                                        controller.loadingCoordinate.value = false;
+                                      },
                                       style: ElevatedButton.styleFrom(
                                           foregroundColor: AppPalette.white,
                                           backgroundColor: AppPalette.primary.primary400,
@@ -437,17 +443,20 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                                   fontWeight: FontWeight.w700),
                                           shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.circular(4))),
-                                      child: const Row(
+                                      child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            'Take Geo-Coordinate',
-                                            style: TextStyle(color: AppPalette.white, fontSize: 12),
+                                            controller.loadingCoordinate.value
+                                                ? 'Loading...'
+                                                : 'Take Geo-Coordinate',
+                                            style: const TextStyle(
+                                                color: AppPalette.white, fontSize: 12),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           ),
-                                          Icon(
+                                          const Icon(
                                             Icons.location_on_outlined,
                                             color: AppPalette.white,
                                             size: 18,
