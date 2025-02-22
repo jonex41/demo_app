@@ -13,7 +13,11 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
   }) {
+<<<<<<< HEAD
     baseUrl ??= 'https://echis.up.railway.app/api/';
+=======
+    baseUrl ??= 'https://echis.up.railway.app/';
+>>>>>>> 6346456 (feat: 🎸 integrated iev form submiasion)
   }
 
   final Dio _dio;
@@ -21,7 +25,11 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
+<<<<<<< HEAD
   Future<BaseResponse<LoginResponse>> login(
+=======
+  Future<BaseResponse<IevSubmissionResponse>> submitIEVData(
+>>>>>>> 6346456 (feat: 🎸 integrated iev form submiasion)
       Map<String, dynamic> request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -29,14 +37,22 @@ class _RestClient implements RestClient {
     final _data = <String, dynamic>{};
     _data.addAll(request);
     final _result = await _dio.fetch<Map<String, dynamic>>(
+<<<<<<< HEAD
         _setStreamType<BaseResponse<LoginResponse>>(Options(
+=======
+        _setStreamType<BaseResponse<IevSubmissionResponse>>(Options(
+>>>>>>> 6346456 (feat: 🎸 integrated iev form submiasion)
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
+<<<<<<< HEAD
               'Enumerator/Login',
+=======
+              'api/IEV/data/submit',
+>>>>>>> 6346456 (feat: 🎸 integrated iev form submiasion)
               queryParameters: queryParameters,
               data: _data,
             )
@@ -45,9 +61,15 @@ class _RestClient implements RestClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
+<<<<<<< HEAD
     final _value = BaseResponse<LoginResponse>.fromJson(
       _result.data!,
       (json) => LoginResponse.fromJson(json as Map<String, dynamic>),
+=======
+    final _value = BaseResponse<IevSubmissionResponse>.fromJson(
+      _result.data!,
+      (json) => IevSubmissionResponse.fromJson(json as Map<String, dynamic>),
+>>>>>>> 6346456 (feat: 🎸 integrated iev form submiasion)
     );
     return _value;
   }

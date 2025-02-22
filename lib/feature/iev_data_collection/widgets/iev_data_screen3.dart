@@ -272,6 +272,30 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                           }),
                           18.height,
                           const AppTextFieldHeader(
+                              title: 'How many visits has the child had to the Health facility?'),
+                          5.height,
+                          AppTextField(
+                            textFieldType: TextFieldType.NUMBER,
+                            isValidationRequired: true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Field is required';
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: inputDecoration().copyWith(
+                                hintText: 'Enter your answer',
+                                hintStyle: const TextStyle(
+                                  color: Color(0xFF899197),
+                                )),
+                            suffixIconColor: AppPalette.white,
+                            textStyle: const TextStyle(
+                                fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            controller: controller.howManyVisitChildHadToHealthFacility,
+                          ),
+                          18.height,
+                          const AppTextFieldHeader(
                               title: 'Number of ANC visits made to the health facility:'),
                           5.height,
                           AppTextField(

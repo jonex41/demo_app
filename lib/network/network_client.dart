@@ -1,15 +1,8 @@
-import 'dart:io';
-
-import 'package:get/get.dart';
-
-import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:demo_app/model/base_res/base_response.dart';
-import 'package:demo_app/model/home/home_user_model.dart';
-import 'package:demo_app/model/home/user_transaction_model.dart';
-import 'package:demo_app/model/login/login_res.dart';
-
+import 'package:demo_app/model/iev_response/IevResponse.dart';
 import 'package:demo_app/network/rest_client.dart';
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../core/storage_service.dart';
 
@@ -44,6 +37,12 @@ class NetworkService extends GetxService {
     var response = await _restClient.login(request);
     storageService.saveToken(response.result?.accessToken ?? '');
     if (response.statusCode != 200) throw Exception("Unable to Login");
+    return response.result;
+  }
+
+  Future<IevSubmissionResponse?> submitIEVData(Map<String, dynamic> request) async {
+    final response = await _restClient.submitIEVData(request);
+    if (response.statusCode! != 201) throw Exception(response.message);
     return response.result;
   }
 }

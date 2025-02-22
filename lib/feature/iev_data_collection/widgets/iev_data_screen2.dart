@@ -161,6 +161,51 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                             fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                         controller: controller.mothersPhoneNumber,
                       ),
+                      18.height,
+                      const AppTextFieldHeader(title: 'How many mothers are there in the house?'),
+                      5.height,
+                      AppTextField(
+                        textFieldType: TextFieldType.NUMBER,
+                        isValidationRequired: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Field is required';
+                          } else {
+                            return null;
+                          }
+                        },
+                        decoration: inputDecoration().copyWith(
+                            hintText: 'Enter your answer',
+                            hintStyle: const TextStyle(
+                              color: Color(0xFF899197),
+                            )),
+                        suffixIconColor: AppPalette.white,
+                        textStyle: const TextStyle(
+                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                        controller: controller.numberOfMothersInTheHouse,
+                      ),
+                      18.height,
+                      const AppTextFieldHeader(title: 'Is the mother pregnant??'),
+                      5.height,
+                      Obx(() {
+                        return AncDropDownButton(
+                          hint: 'Select an Option',
+                          value: controller.selectedIsMotherPregnant.value,
+                          items: controller.isMotherPregnant,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please Select Option';
+                            } else {
+                              return null;
+                            }
+                          },
+                          onChanged: (value) {
+                            controller.selectedIsMotherPregnant.value = value;
+                            debugPrint(controller.selectedIsMotherPregnant.value);
+                          },
+                        );
+                      }),
+                      18.height,
                     ],
                   )),
                 )

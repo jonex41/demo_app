@@ -3,7 +3,6 @@ import 'package:demo_app/component/button.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
-import 'package:demo_app/feature/iev_data_collection/modal/success_modal.dart';
 import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
 import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen1.dart';
 import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen2.dart';
@@ -137,93 +136,48 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
       text: controller.currentScreen.value == 4 ? 'Submit' : 'Next',
       onPressed: () async {
         if (controller.currentScreen.value == 1) {
-          /*final isValid =
-          controller.formKeyScreen1.currentState!.validate();
+          final isValid = controller.formKeyScreen1.currentState!.validate();
           if (!isValid) {
             return;
           }
-          if (controller.selectDateRegisteredChipAgent == null) {
-            showAlertDialog('Date registered by Chips Agent cannot be empty');
-            return;
-          }*/
         }
 
         if (controller.currentScreen.value == 2) {
-          /* final isValid =
-          controller.formKeyScreen2.currentState!.validate();
+          final isValid = controller.formKeyScreen2.currentState!.validate();
           if (!isValid) {
             return;
-          }*/
-
-          /*if (controller.selectExpectedDateOfDelivery == null) {
-            showAlertDialog('Expected Date of Delivery cannot be empty');
-            return;
-          }*/
-          /*if (controller.selectDateOfBirth == null) {
-            showAlertDialog('Date of Birth cannot be empty');
-            return;
-          }*/
+          }
         }
+
         if (controller.currentScreen.value == 3) {
-          /* final isValid =
-          controller.formKeyScreen2.currentState!.validate();
+          final isValid = controller.formKeyScreen2.currentState!.validate();
           if (!isValid) {
             return;
-          }*/
+          }
 
-          /*if (controller.selectExpectedDateOfDelivery == null) {
-            showAlertDialog('Expected Date of Delivery cannot be empty');
-            return;
-          }*/
-          /*if (controller.selectDateOfBirth == null) {
+          if (controller.selectDateOfBirth == null) {
             showAlertDialog('Date of Birth cannot be empty');
             return;
-          }*/
+          }
         }
 
         if (controller.currentScreen.value == 4) {
-          /* final isValid =
-          controller.formKeyScreen2.currentState!.validate();
+          final isValid = controller.formKeyScreen2.currentState!.validate();
           if (!isValid) {
             return;
-          }*/
+          }
 
-          /*if (controller.selectExpectedDateOfDelivery == null) {
+          if (controller.selectExpectedDateOfDelivery == null) {
             showAlertDialog('Expected Date of Delivery cannot be empty');
             return;
-          }*/
-          /*if (controller.selectDateOfBirth == null) {
-            showAlertDialog('Date of Birth cannot be empty');
-            return;
-          }*/
+          }
         }
 
         controller.currentScreen.value++;
 
         if (controller.currentScreen.value == 5) {
           controller.currentScreen.value--;
-          showModalBottomSheet(
-              backgroundColor: const Color(0xffFEFEFE),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(15),
-                ),
-              ),
-              isScrollControlled: true,
-              enableDrag: true,
-              context: context,
-              builder: (builder) {
-                return Container(
-                  padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom,
-                  ),
-                  child: const Wrap(
-                    children: [
-                      SuccessModal(),
-                    ],
-                  ),
-                );
-              });
+          controller.submitData(context);
           return;
         }
       },
