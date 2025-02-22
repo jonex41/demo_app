@@ -40,7 +40,9 @@ class MoreScreen extends GetView<MoreController> {
                 // controller.gotoProfile();
               },
               child: _myHeader(
-                  context, "Usman Fori", "contactusmanfori@gmail.come"),
+                  context,
+                  "${controller.loginModel.value?.firstName} ${controller.loginModel.value?.lastName}",
+                  controller.loginModel.value?.phone ?? ""),
             ),
             /*   InkWell(
                 onTap: () {
@@ -62,7 +64,32 @@ class MoreScreen extends GetView<MoreController> {
                     "View Profile")),
             InkWell(
                 onTap: () {
-                  appRoute.push(const LoginRoute());
+                  showDialog(
+                      context: context,
+                      builder: (context1) => AlertDialog(
+                            title: const Text("Logout"),
+                            content: const Text(
+                                'Are you sure you want to Logout of your account?'),
+                            actions: [
+                              TextButton(
+                                child: const Text("Cancel"),
+                                onPressed: () async {
+                                  appRoute.pop();
+                                },
+                              ),
+                              TextButton(
+                                style: const ButtonStyle(),
+                                onPressed: () async {
+                                  appRoute.push(const LoginRoute());
+                                  /* controller.deleteAccount(
+                                    context,
+                                    controller.userDetails.value!.id!
+                                        .toString()); */
+                                },
+                                child: const Text("Logout Account"),
+                              )
+                            ],
+                          ));
                 },
                 child: _eachItem(context,
                     SvgPicture.asset(Assets.icons.logout.path), "Logout")),

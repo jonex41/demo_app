@@ -6,7 +6,10 @@ import 'package:demo_app/feature/checklist/provider/checklist_bindings.dart';
 import 'package:demo_app/feature/commodity_dispensing/provider/commodity_dispense_bindings.dart';
 import 'package:demo_app/feature/commodity_requisition/provider/commodity_requisition_bindings.dart';
 import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_bindings.dart';
+import 'package:demo_app/feature/login/provider/login_controller.dart';
+import 'package:demo_app/feature/settlement_registry.dart/provider/settlement_registry_binding.dart';
 import 'package:demo_app/model/home/user_transaction_model.dart';
+import 'package:demo_app/model/login/login_res.dart';
 import 'package:demo_app/network/network_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -30,11 +33,12 @@ class HomeController extends GetxController {
   final storageService = Get.find<StorageService>();
   final FocusNode unitCodeCtrlFocusNode = FocusNode();
 
+  final loginModel = Rxn<LoginResponse?>();
   @override
   void onInit() {
     // TODO: implement onInit
 //   userModel.value = storageService.getUser();
-
+ loginModel.value = Get.find<LoginController>().loginModel.value;
     selectedTab.listen((value) {
       print('new $value');
     });
@@ -79,6 +83,11 @@ class HomeController extends GetxController {
   Future<void> gotoChecklistHomeScreen() async {
     ChecklistBindings().dependencies();
     appRoute.push(const ChecklistHomeRoute());
+  }
+  
+  Future<void> gotoSettlementRegistryScreen() async {
+    SettlementRegistryBinding().dependencies();
+    appRoute.push(const SettlementRegistryRoute());
   }
 
   Future<void> gotoCommDispenseHomeScreen() async {

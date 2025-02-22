@@ -2,6 +2,7 @@ import 'package:demo_app/component/loader.dart';
 import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
+import 'package:demo_app/model/login/login_res.dart';
 import 'package:demo_app/network/network_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class LoginController extends GetxController {
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final resetPasswordController = TextEditingController();
   final resetConfirmPasswordController = TextEditingController();
+  final loginModel = Rxn<LoginResponse?>();
 
   String pinId = '';
 
@@ -48,25 +50,22 @@ class LoginController extends GetxController {
     HomeBindings().dependencies();
     appRoute.replaceAll([const DashboardRoute()]);
   }
-/* 
+
   void loginNetwork(BuildContext context) async {
     final isValidForm = loginFormKey.currentState?.validate() ?? false;
     if (!isValidForm) return;
     try {
-      String phoneNumber = getPhoneNumber(emailController.text.trim());
       showLoaderNew(context);
-      final authResponse = await networkService.loginUser(
-          {"phone": phoneNumber, "password": passwordController.text.trim()});
+      final authResponse = await networkService.loginUser({
+        "userId": emailController.text.trim(),
+        "password": passwordController.text.trim()
+      });
 
       if (authResponse != null) {
-        if (authResponse.others!.verified == 1) {
-          storageService.saveHasLogin(true);
+        loginModel.value = authResponse;
+        storageService.saveHasLogin(true);
 
-          gotoHomeScreen(context);
-        } else {
-          showErrorSnackbar(context,
-              'Please wait for verification, the account is not verified yet!');
-        }
+        gotoHomeScreen(context);
       } else {
         showErrorSnackbar(context, 'An error occurred');
       }
@@ -83,7 +82,7 @@ class LoginController extends GetxController {
       } */
     }
   }
- */
+
   showErrorSnackbar(
     BuildContext context,
     String title,

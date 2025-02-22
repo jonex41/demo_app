@@ -1,5 +1,7 @@
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
+import 'package:demo_app/feature/login/provider/login_controller.dart';
+import 'package:demo_app/model/login/login_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -16,9 +18,18 @@ class MoreController extends GetxController {
   final List<String> gender = ['male', 'female'].obs;
 
   final Rxn<DateTime> _dateOfBirth = Rxn<DateTime>();
+  
+  final loginModel = Rxn<LoginResponse?>();
+  @override
+  void onInit() {
+    loginModel.value = Get.find<LoginController>().loginModel.value;
+
+    super.onInit();
+  }
 
   setDateOfBirth(DateTime? value) {
     _dateOfBirth.value = value;
+
   }
 
   gotoHomeScreen(BuildContext c) {

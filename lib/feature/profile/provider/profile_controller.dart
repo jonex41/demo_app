@@ -1,5 +1,7 @@
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
+import 'package:demo_app/feature/login/provider/login_controller.dart';
+import 'package:demo_app/model/login/login_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -69,6 +71,15 @@ class ProfileController extends GetxController {
     'FCT(Abuja)',
   ].obs;
 
+  final loginModel = Rxn<LoginResponse?>();
+
+  @override
+  void onInit() {
+    loginModel.value = Get.find<LoginController>().loginModel.value;
+
+    super.onInit();
+  }
+
   setSelectedDateOfBirth(String? value) {
     _selectDateOfBirth.value = value;
   }
@@ -88,13 +99,18 @@ class ProfileController extends GetxController {
     String title,
   ) {
     snackBar(context,
-        title: title, backgroundColor: AppPalette.red.red350, textColor: AppPalette.white);
+        title: title,
+        backgroundColor: AppPalette.red.red350,
+        textColor: AppPalette.white);
   }
 
   String getPhoneNumber(String value) {
     String phoneNumber = value;
-    phoneNumber = phoneNumber.contains('+') ? phoneNumber.substring(1) : phoneNumber;
-    phoneNumber = phoneNumber.contains('234') ? phoneNumber : '234${phoneNumber.substring(1)}';
+    phoneNumber =
+        phoneNumber.contains('+') ? phoneNumber.substring(1) : phoneNumber;
+    phoneNumber = phoneNumber.contains('234')
+        ? phoneNumber
+        : '234${phoneNumber.substring(1)}';
     //presentPhoneNumber = phoneNumber;
     return phoneNumber;
   }

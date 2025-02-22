@@ -39,12 +39,11 @@ class NetworkService extends GetxService {
     return this;
   }
 
-/*   Future<LoginResponse?> loginUser(Map<String, dynamic> request) async {
+  Future<LoginResponse?> loginUser(Map<String, dynamic> request) async {
     // try {
     var response = await _restClient.login(request);
-    storageService.saveToken(response.token ?? '');
-    return response;
-   
-  } */
-
+    storageService.saveToken(response.result?.accessToken ?? '');
+    if (response.statusCode != 200) throw Exception("Unable to Login");
+    return response.result;
+  }
 }

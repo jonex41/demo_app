@@ -387,6 +387,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ReferralForm4Screen(),
       );
     },
+    SettlementRegistryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettlementRegistryScreen(),
+      );
+    },
     SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -1266,6 +1272,20 @@ class ReferralForm4Route extends PageRouteInfo<void> {
         );
 
   static const String name = 'ReferralForm4Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SettlementRegistryScreen]
+class SettlementRegistryRoute extends PageRouteInfo<void> {
+  const SettlementRegistryRoute({List<PageRouteInfo>? children})
+      : super(
+          SettlementRegistryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettlementRegistryRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

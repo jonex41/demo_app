@@ -10,6 +10,7 @@ class InputWithTextHead extends StatelessWidget {
   const InputWithTextHead(
       {super.key,
       required this.title,
+       this.hintText,
       required this.controller,
       required this.textFieldType,
       this.textColor = AppPalette.white,
@@ -18,6 +19,7 @@ class InputWithTextHead extends StatelessWidget {
       this.onChange});
 
   final String title;
+  final String? hintText;
   final TextEditingController controller;
   final TextFieldType textFieldType;
   final Color textColor;
@@ -48,7 +50,7 @@ class InputWithTextHead extends StatelessWidget {
         ),
         AppTextField(
           textFieldType: textFieldType,
-          decoration: inputDecoration(fillColor: Colors.transparent),
+          decoration: inputDecoration(fillColor: Colors.transparent, hintText: hintText),
           isValidationRequired: true,
           validator: (value) {
             if (value == null || value.isEmpty) {

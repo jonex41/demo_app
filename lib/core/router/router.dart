@@ -62,6 +62,7 @@ import 'package:demo_app/feature/onboarding/view/partners_screen.dart';
 import 'package:demo_app/feature/onboarding/view/splash_screen.dart';
 import 'package:demo_app/feature/profile/view/edit_profile_screen.dart';
 import 'package:demo_app/feature/profile/view/profile_screen.dart';
+import 'package:demo_app/feature/settlement_registry.dart/view/settlement_registry_screen.dart';
 import 'package:demo_app/feature/wallet/view/wallet_screen.dart';
 
 part 'router.gr.dart';
@@ -156,6 +157,7 @@ class AppRouter extends _$AppRouter {
         //   AutoRoute( path: '/activity_screen', page: ActivityRoute.page),
         AutoRoute(path: '/offline_form1_screen', page: OfflineForm1Route.page),
         AutoRoute(path: '/offline_form2_screen', page: OfflineForm2Route.page),
+        AutoRoute(path: '/settlementRegistryScreen', page: SettlementRegistryRoute.page),
 
         AutoRoute(
           path: '/dashboard',

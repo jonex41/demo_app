@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/component/button.dart';
+import 'package:demo_app/component/input_text.dart';
 import 'package:demo_app/component/input_text_with_text.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
@@ -65,19 +66,29 @@ class LoginScreen extends GetView<LoginController> {
               key: controller.loginFormKey,
               child: Column(
                 children: [
-                  MyInputTextWidget(
-                    title: "Username",
-                    hint: "Enter your username",
-                    callBack: (value) {},
+                  InputWithTextHead(
+                    title: "User Id",
+                    textFieldType: TextFieldType.NAME,
+                    hintText: "Enter your user Id",
+//callBack: (value) {},
+
                     controller: controller.emailController,
                   ),
                   20.height,
-                  MyInputTextWidget(
+                  InputWithTextHead(
                     title: "Password",
-                    hint: "Enter your password",
-                    callBack: (value) {},
+                    textFieldType: TextFieldType.PASSWORD,
+                    hintText: "Enter your password",
+                    // callBack: (value) {},
+                    /*  validator: (value) {
+                      if (value.isEmptyOrNull) {
+                        return "Password cannot be empty";
+                      }
+                      return null;
+                    }, */
                     controller: controller.passwordController,
-                    keyboardType: TextInputType.visiblePassword,
+
+                    // keyboardType: TextInputType.,
                   ),
                   30.height,
                 ],
@@ -156,8 +167,7 @@ class LoginScreen extends GetView<LoginController> {
               height: 56,
               text: 'Log in',
               onPressed: () {
-                // print('i must be logged in');
-                controller.gotoHomeScreen(context);
+                controller.loginNetwork(context);
               },
               /*  textStyle: context.theme.appTextTheme.labelLarge12.copyWith(
                   color: AppPalette.white, fontWeight: FontWeight.w400), */

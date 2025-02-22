@@ -89,21 +89,19 @@ class MyInputTextWidget extends StatelessWidget {
               ),
           ],
         ),
-        SizedBox(
-          height: 50,
-          child: TextFormField(
-              controller: controller,
-              onChanged: callBack,
-              maxLines: maxLine,
-              keyboardType: keyboardType,
-              validator: validator,
-              decoration: inputDecoration(
-                hintText: hint,
-                hintStyle: context.theme.appTextTheme.bodyMedium16.copyWith(
-                    color: AppPalette.grey.gray360,
-                    fontWeight: FontWeight.w400),
-              )),
-        ),
+        TextFormField(
+            controller: controller,
+            onChanged: callBack,
+            
+            maxLines: maxLine,
+            keyboardType: keyboardType,
+            validator: validator,
+            
+            decoration: inputDecoration(
+              hintText: hint,
+              hintStyle: context.theme.appTextTheme.bodyMedium16.copyWith(
+                  color: AppPalette.grey.gray360, fontWeight: FontWeight.w400),
+            )),
         10.height
       ],
     );
