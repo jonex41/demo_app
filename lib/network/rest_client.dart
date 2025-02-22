@@ -1,5 +1,6 @@
 import 'package:demo_app/model/base_res/base_response.dart';
 import 'package:demo_app/model/iev_response/IevResponse.dart';
+import 'package:demo_app/model/login/login_res.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
