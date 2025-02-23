@@ -1,5 +1,10 @@
+import 'package:demo_app/core/offline_storage.dart';
+import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
+import 'package:demo_app/feature/home/provider/home_controller.dart';
 import 'package:demo_app/feature/iev_data_collection/modal/success_modal.dart';
+import 'package:demo_app/feature/login/provider/login_controller.dart';
+import 'package:demo_app/feature/offline/provider/offline_controller.dart';
 import 'package:demo_app/feature/util/nigerian_states_and_lga.dart';
 import 'package:demo_app/feature/util/utils.dart';
 import 'package:demo_app/network/network_client.dart';
@@ -7,7 +12,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:progress_bar_steppers/stepper_data.dart';
+import 'package:uuid/uuid.dart';
 
 class IEVDataCollectionController extends GetxController {
   final networkService = Get.find<NetworkService>();
@@ -61,7 +68,8 @@ class IEVDataCollectionController extends GetxController {
 
   final Rxn<String> _selectExpectedDateOfDelivery = Rxn<String>();
 
-  String? get selectExpectedDateOfDelivery => _selectExpectedDateOfDelivery.value;
+  String? get selectExpectedDateOfDelivery =>
+      _selectExpectedDateOfDelivery.value;
 
   List<StepperData> stepsData = [
     StepperData(
@@ -180,7 +188,8 @@ class IEVDataCollectionController extends GetxController {
   ].obs;
 
   final selectedDosesTDVaccineTaken = Rxn<String>();
-  final List<String> dosesTDVaccineTaken = ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
+  final List<String> dosesTDVaccineTaken =
+      ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
 
   final selectedCommenceANCVisits = Rxn<String>();
   final List<String> commenceANCVisits = [
@@ -239,45 +248,64 @@ class IEVDataCollectionController extends GetxController {
     debugPrint(lgaValue.value);
   }
 
-  Future<void> submitData(BuildContext context) async {
-    try {
-      showLoaderDialog(context, true);
-      List<Map<String, dynamic>> answersListMap = [
-        {'questionId': 'IEV001', 'answerText': nameOfEnumerator.text},
-        {'questionId': "IEV002", 'answerText': phoneNumber.text},
-        {'questionId': "IEV002", 'answerText': phoneNumber.text},
-        {'questionId': 'IEV003', 'answerText': teamCode.text},
-        {'questionId': 'IEV004', 'answerText': stateValue.value},
-        {'questionId': 'IEV005', 'answerText': lgaValue.value},
-        {'questionId': 'IEV006', 'answerText': ward.text},
-        {'questionId': 'IEV007', 'answerText': selectedSettlement.value},
-        {'questionId': 'IEV008', 'answerText': houseNumber.text},
-        {'questionId': 'IEV010', 'answerText': headOfHouseHoldName.text},
-        {'questionId': 'IEV011', 'answerText': headOfHousePhoneNumber.text},
-        {'questionId': 'IEV012', 'answerText': numberOfMothersInTheHouse.text},
-        {'questionId': 'IEV013', 'answerText': mothersName.text},
-        {'questionId': 'IEV015', 'answerText': selectedIsMotherPregnant.value},
-        {'questionId': 'IEV016', 'answerText': selectedMonthsPregnant.value},
-        {'questionId': 'IEV017', 'answerText': selectedDosesTDVaccineTaken.value},
-        {'questionId': 'IEV018', 'answerText': numberOfAncVisitsToHealthFacility.text},
-        {'questionId': 'IEV019', 'answerText': selectedChildrenUnder5Years.value},
-        {'questionId': 'IEV020', 'answerText': nameofChild.text},
-        {'questionId': 'IEV021', 'answerText': selectDateOfBirth.toString()},
-        {'questionId': 'IEV022', 'answerText': selectedAgeCategory.value},
-        {'questionId': 'IEV023', 'answerText': selectedGender.value},
-        {'questionId': 'IEV024', 'answerText': selectedHaveRiVaccinationCard.value},
-        {'questionId': 'IEV026', 'answerText': howManyVisitChildHadToHealthFacility.text},
-        {'questionId': 'IEV027', 'answerText': siteOfLastVaccine.text},
-        {'questionId': 'IEV028', 'answerText': numberOfPregnantWomen.text},
-        {'questionId': 'IEV029', 'answerText': '${firstname.text}  ${surname.text}'},
-        {'questionId': 'IEV030', 'answerText': selectedMonthsPregnant.value},
-        {'questionId': 'IEV031', 'answerText': selectedDosesTDVaccineTaken.value},
-        {'questionId': 'IEV033', 'answerText': selectedOtherWomenInTheHousehold.value},
-        {'questionId': 'IEV034', 'answerText': '${firstname.text}  ${surname.text}'},
-      ];
+  Future<Map<String, dynamic>> getMap() async {
+    List<Map<String, dynamic>> answersListMap = [
+      {'questionId': 'IEV001', 'answerText': nameOfEnumerator.text},
+      {'questionId': "IEV002", 'answerText': phoneNumber.text},
+      {'questionId': "IEV002", 'answerText': phoneNumber.text},
+      {'questionId': 'IEV003', 'answerText': teamCode.text},
+      {'questionId': 'IEV004', 'answerText': stateValue.value},
+      {'questionId': 'IEV005', 'answerText': lgaValue.value},
+      {'questionId': 'IEV006', 'answerText': ward.text},
+      {'questionId': 'IEV007', 'answerText': selectedSettlement.value},
+      {'questionId': 'IEV008', 'answerText': houseNumber.text},
+      {'questionId': 'IEV010', 'answerText': headOfHouseHoldName.text},
+      {'questionId': 'IEV011', 'answerText': headOfHousePhoneNumber.text},
+      //mothers phone number
+      {'questionId': 'IEV012', 'answerText': numberOfMothersInTheHouse.text},
+      {'questionId': 'IEV013', 'answerText': mothersName.text},
 
-      //TODO Please don't remove this commented code until we have final confirmation that this fields are not needed
-      /*var answersListMap2 = {
+      {'questionId': 'IEV014', 'answerText': mothersPhoneNumber.text},
+      {'questionId': 'IEV015', 'answerText': selectedIsMotherPregnant.value},
+      {'questionId': 'IEV016', 'answerText': selectedMonthsPregnant.value},
+      {'questionId': 'IEV017', 'answerText': selectedDosesTDVaccineTaken.value},
+      {
+        'questionId': 'IEV018',
+        'answerText': numberOfAncVisitsToHealthFacility.text
+      },
+      {'questionId': 'IEV019', 'answerText': selectedChildrenUnder5Years.value},
+      {'questionId': 'IEV020', 'answerText': nameofChild.text},
+      {'questionId': 'IEV021', 'answerText': selectDateOfBirth.toString()},
+      {'questionId': 'IEV022', 'answerText': selectedAgeCategory.value},
+      {'questionId': 'IEV023', 'answerText': selectedGender.value},
+      {
+        'questionId': 'IEV024',
+        'answerText': selectedHaveRiVaccinationCard.value
+      },
+      {
+        'questionId': 'IEV026',
+        'answerText': howManyVisitChildHadToHealthFacility.text
+      },
+      {'questionId': 'IEV027', 'answerText': siteOfLastVaccine.text},
+      {'questionId': 'IEV028', 'answerText': numberOfPregnantWomen.text},
+      {
+        'questionId': 'IEV029',
+        'answerText': '${firstname.text}  ${surname.text}'
+      },
+      {'questionId': 'IEV030', 'answerText': selectedMonthsPregnant.value},
+      {'questionId': 'IEV031', 'answerText': selectedDosesTDVaccineTaken.value},
+      {
+        'questionId': 'IEV033',
+        'answerText': selectedOtherWomenInTheHousehold.value
+      },
+      {
+        'questionId': 'IEV034',
+        'answerText': '${firstname.text}  ${surname.text}'
+      },
+    ];
+
+    //TODO Please don't remove this commented code until we have final confirmation that this fields are not needed
+    /*var answersListMap2 = {
         'selectedAreTherePregnantWomenInHousehold': selectedAreTherePregnantWomenInHousehold.value,
         'age': age.text,
         'selectedMonthsPregnant': selectedMonthsPregnant.value,
@@ -286,21 +314,32 @@ class IEVDataCollectionController extends GetxController {
         'selectExpectedDateOfDelivery': selectExpectedDateOfDelivery.toString(),
       };*/
 
-      List<Map<String, dynamic>> antigenAnswersList = selectReceivedAntigens
-          .map((antigen) => {
-                'name': antigen,
-                'response':
-                    selectedReceivedAntigens.value?.contains(antigen) == true ? "true" : "false"
-              })
-          .toList();
+    List<Map<String, dynamic>> antigenAnswersList = selectReceivedAntigens
+        .map((antigen) => {
+              'name': antigen,
+              'response':
+                  selectedReceivedAntigens.value.contains(antigen) == true
+                      ? "true"
+                      : "false"
+            })
+        .toList();
 
-      Map<String, dynamic> iEVData = {
-        'submittedBy': '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-        'longitude': currentPosition.value?.longitude,
-        'latitude': currentPosition.value?.latitude,
-        'answers': answersListMap,
-        'antigenAnswers': antigenAnswersList,
-      };
+    Map<String, dynamic> iEVData = {
+      'submittedBy': Get.find<LoginController>().loginModel.value?.id ??
+          '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+      'longitude': currentPosition.value?.longitude,
+      'latitude': currentPosition.value?.latitude,
+      'answers': answersListMap,
+      'antigenAnswers': antigenAnswersList,
+    };
+    return iEVData;
+  }
+
+  Future<void> submitData(BuildContext context) async {
+    try {
+      showLoaderDialog(context, true);
+      Map<String, dynamic> iEVData = await getMap();
+
       final response = await networkService.submitIEVData(iEVData);
       if (response != null) {
         showLoaderDialog(context, false);
@@ -314,6 +353,26 @@ class IEVDataCollectionController extends GetxController {
           textColor: AppPalette.white);
       debugPrint(e.toString());
     }
+  }
+
+  void submitDataLocally(BuildContext context) async {
+    DateTime now = DateTime.now();
+
+    Map<String, dynamic> iEVData = await getMap();
+    iEVData["date"] = DateFormat('MM/dd/yyyy').format(now);
+    iEVData["time"] = DateFormat('hh:mm a').format(now);
+    iEVData["myUniqueId"] = const Uuid().v4().toString();
+    final storageService = LocalStorageService(key: "my_storage_key");
+    var list = await storageService.getList();
+    if (list.isEmpty) {
+      await storageService.saveList([iEVData]);
+    } else {
+      await storageService.addItem(iEVData);
+    }
+    Get.find<OfflineController>().listMap.refresh();
+    Get.find<OfflineController>().getLocal();
+    Get.find<HomeController>().getLocal();
+    showSuccessModal(context);
   }
 
   void showSuccessModal(BuildContext context) {

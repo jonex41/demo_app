@@ -12,6 +12,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nb_utils/nb_utils.dart';
+
 /* import 'package:opticcs_app/src/component/my_appbar.dart';
 import 'package:opticcs_app/src/component/my_button.dart';
 import 'package:opticcs_app/src/core/router/locator.dart';
@@ -106,15 +107,12 @@ class ForgotPasswordScreen extends GetView<LoginController> {
                     radius: 30,
                     text: getRightString(),
                     onPressed: () {
-                    
                       if (controller.currrentIndex.value == 0) {
-                       
-                        //controller.sendOtpForPasswordReset(context);
+                        controller.forgotPasswordSendOtp(context);
                       } else if (controller.currrentIndex.value == 1) {
-                       
-                       // controller.confirmOtpForPasswordReset(context);
+                        controller.forgotPasswordConfirmOtp(context);
                       } else {
-                       // controller.sendNewPassword(context);
+                        controller.forgotPasswordReset(context);
                       }
                     },
                   ),
@@ -135,13 +133,13 @@ class ForgotPasswordScreen extends GetView<LoginController> {
     return Column(
       children: [
         PinCodeFields(
-          length: 6,
+          length: 4,
           fieldBorderStyle: FieldBorderStyle.square,
           obscureText: true,
           obscureCharacter: '●',
           responsive: false,
-          fieldHeight: 40.0,
-          fieldWidth: 40.0,
+          fieldHeight: 60.0,
+          fieldWidth: 60.0,
           borderWidth: 1.0,
           controller: otpController,
           activeBorderColor: const Color(0xFF027D52),
@@ -158,7 +156,8 @@ class ForgotPasswordScreen extends GetView<LoginController> {
           ),
           onComplete: (output) {
             // Your logic with pin code
-            controller.otpString.value += output;
+
+            controller.otpString.value = output;
             print(output);
             //  controller.setOtpCode(output);
           },
@@ -171,12 +170,25 @@ class ForgotPasswordScreen extends GetView<LoginController> {
   Widget _enterNumberWidget(BuildContext context) {
     return Column(
       children: [
-        InputWithTextHead(
-          title: "Phone number",
-          textColor: AppPalette.primary.primary400,
-          anotherColor: Colors.black,
-          controller: controller.phoneController,
-          textFieldType: TextFieldType.NUMBER,
+        Form(
+          key: controller.forgotPhoneKey,
+          child: InputWithTextHead(
+            title: "Phone number",
+            hintText: "07010261589",
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Phone Number cannot be empty";
+              }
+              if (value.length != 11) {
+                return "Phone Number must be 11 digits";
+              }
+              return null;
+            },
+            textColor: AppPalette.primary.primary400,
+            anotherColor: Colors.black,
+            controller: controller.phoneController,
+            textFieldType: TextFieldType.NUMBER,
+          ),
         ),
         20.height,
       ],
@@ -184,27 +196,56 @@ class ForgotPasswordScreen extends GetView<LoginController> {
   }
 
   Widget _confirmPassword(BuildContext context) {
-    return Column(
-      children: [
-        InputWithTextHead(
-          title: "Password",
-          textColor: AppPalette.primary.primary400,
-          suffixColor: Colors.black,
-          anotherColor: Colors.black,
-          controller: controller.resetPasswordController,
-          textFieldType: TextFieldType.PASSWORD,
-        ),
-        20.height,
-        InputWithTextHead(
-          title: "Confirm Password",
-          textColor: AppPalette.primary.primary400,
-          suffixColor: Colors.black,
-          anotherColor: Colors.black,
-          controller: controller.resetConfirmPasswordController,
-          textFieldType: TextFieldType.PASSWORD,
-        ),
-        30.height,
-      ],
+    return Form(
+      key: controller.passwordKey,
+      child: Column(
+        children: [
+          InputWithTextHead(
+            title: "Password",
+            textColor: AppPalette.primary.primary400,
+            suffixColor: Colors.black,
+            anotherColor: Colors.black,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Password cannot be empty";
+              }
+              if (!RegExp(
+                      r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+                  .hasMatch(value)) {
+                return "Password must be at least 8 characters\n"
+                    "Include 1 capital letter, 1 number, and 1 symbol";
+              }
+              return null;
+            },
+            hintText: "Enter your Password",
+            controller: controller.resetPasswordController,
+            textFieldType: TextFieldType.PASSWORD,
+          ),
+          20.height,
+          InputWithTextHead(
+            title: "Confirm Password",
+            textColor: AppPalette.primary.primary400,
+            hintText: "Confirm your Password",
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Password cannot be empty";
+              }
+              if (!RegExp(
+                      r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+                  .hasMatch(value)) {
+                return "Password must be at least 8 characters\n"
+                    "Include 1 capital letter, 1 number, and 1 symbol";
+              }
+              return null;
+            },
+            suffixColor: Colors.black,
+            anotherColor: Colors.black,
+            controller: controller.resetConfirmPasswordController,
+            textFieldType: TextFieldType.PASSWORD,
+          ),
+          30.height,
+        ],
+      ),
     );
   }
 

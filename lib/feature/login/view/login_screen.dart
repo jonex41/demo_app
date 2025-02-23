@@ -79,6 +79,7 @@ class LoginScreen extends GetView<LoginController> {
                     title: "Password",
                     textFieldType: TextFieldType.PASSWORD,
                     hintText: "Enter your password",
+
                     // callBack: (value) {},
                     /*  validator: (value) {
                       if (value.isEmptyOrNull) {
@@ -167,7 +168,8 @@ class LoginScreen extends GetView<LoginController> {
               height: 56,
               text: 'Log in',
               onPressed: () {
-                controller.loginNetwork(context);
+                controller.gotoHomeScreen(context);
+                // controller.loginNetwork(context);
               },
               /*  textStyle: context.theme.appTextTheme.labelLarge12.copyWith(
                   color: AppPalette.white, fontWeight: FontWeight.w400), */

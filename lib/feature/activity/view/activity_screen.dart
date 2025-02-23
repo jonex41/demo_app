@@ -1,8 +1,12 @@
 import 'package:auto_route/annotations.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/activity/provider/actiivity_controller.dart';
+import 'package:demo_app/feature/home/provider/home_controller.dart';
+import 'package:demo_app/feature/offline/provider/offline_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
@@ -56,13 +60,18 @@ class ActivityScreen extends GetView<ActivityController> {
                     onTap: () {
                       // controller.gotoFistVisit();
                     },
-                    child: _myContainer(
-                        context,
-                        const Color(0xffEEFFF9),
-                        const Color(0xff2fcf9733).withOpacity(0.2),
-                        "Pending Sync",
-                        "2333",
-                        Assets.icons.smallPaper.path),
+                    child: Obx(
+                      () => _myContainer(
+                          context,
+                          const Color(0xffEEFFF9),
+                          const Color(0xff2fcf9733).withOpacity(0.2),
+                          "Recent\nSubmissions",
+                          Get.find<HomeController>()
+                              .submittedList
+                              .value
+                              .toString(),
+                          Assets.icons.smallPaper.path),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -70,13 +79,18 @@ class ActivityScreen extends GetView<ActivityController> {
                     onTap: () {
                       // controller.gotoEveryVisit();
                     },
-                    child: _myContainer(
-                        context,
-                        const Color(0xffFFF7F2),
-                        const Color(0xff2fcf9733).withOpacity(0.2),
-                        "Households",
-                        "4454",
-                        Assets.icons.smallPaper.path),
+                    child: Obx(
+                      () => _myContainer(
+                          context,
+                          const Color(0xffFFF7F2),
+                          const Color(0xff2fcf9733).withOpacity(0.2),
+                          "Pending Sync",
+                          Get.find<OfflineController>()
+                              .listMap
+                              .length
+                              .toString(),
+                          Assets.icons.smallPaper.path),
+                    ),
                   ),
                 ),
               ],
@@ -94,7 +108,7 @@ class ActivityScreen extends GetView<ActivityController> {
                         const Color(0xffFFF7F2),
                         const Color(0xff2fcf9733).withOpacity(0.2),
                         "Households",
-                        "9099",
+                        "0",
                         Assets.icons.smallCalendar.path),
                   ),
                 ),
@@ -108,7 +122,7 @@ class ActivityScreen extends GetView<ActivityController> {
                         const Color(0xffEEFFF9),
                         const Color(0xff2fcf9733).withOpacity(0.2),
                         "Total Pregnant\nWomen",
-                        "2344",
+                        "0",
                         Assets.icons.smallPaper.path),
                   ),
                 ),

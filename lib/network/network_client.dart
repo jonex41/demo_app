@@ -1,4 +1,6 @@
+import 'package:demo_app/model/base_res/base_response.dart';
 import 'package:demo_app/model/iev_response/IevResponse.dart';
+import 'package:demo_app/model/login/forgot_password_model.dart';
 import 'package:demo_app/model/login/login_res.dart';
 import 'package:demo_app/network/rest_client.dart';
 import 'package:dio/dio.dart';
@@ -41,9 +43,44 @@ class NetworkService extends GetxService {
     return response.result;
   }
 
-  Future<IevSubmissionResponse?> submitIEVData(Map<String, dynamic> request) async {
+  Future<IevSubmissionResponse?> submitIEVData(
+      Map<String, dynamic> request) async {
     final response = await _restClient.submitIEVData(request);
     if (response.statusCode! != 201) throw Exception(response.message);
+    return response.result;
+  }
+
+  Future<BaseResponse<ForgotPasswordModel>> forgotPasswordSendOtp(
+      Map<String, dynamic> request) async {
+    final response = await _restClient.forgotPasswordSendOtp(request);
+    if (response.statusCode! != 200) throw Exception(response.message);
+    return response;
+  }
+
+  Future<bool> forgotPasswordConfirmOtp(Map<String, dynamic> request) async {
+    final response = await _restClient.forgotPasswordConfirmOtp(request);
+    if (response.statusCode! != 200) {
+      throw Exception(response.message ?? response.result?.message ?? '');
+    }
+
+    if (response.result!.verified == "False") {
+      throw Exception(response.result?.message ?? response.result!.verified);
+    }
+    return true;
+  }
+
+  Future<bool> forgotPasswordReset(Map<String, dynamic> request) async {
+    final response = await _restClient.forgotPasswordResetOtp(request);
+    if (response.statusCode! != 200) throw Exception(response.message);
+    return true;
+  }
+  
+  Future<List<dynamic>> getAllIEVData() async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getAllDataIEV();
+    if (response.statusCode != 201) {
+      throw Exception(response.message);
+    }
     return response.result;
   }
 }

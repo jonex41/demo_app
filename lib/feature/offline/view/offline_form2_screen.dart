@@ -55,31 +55,47 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               15.height,
               _buildSection("U5 Child Profile and Immunization Status"),
               buildQuestion(
-                  "Are there children under 5 years in the household?", "Yes"),
-              buildQuestion("Date of Birth", "January 12, 2021"),
-              Row(
-                children: [
-                  buildQuestion("Age Category", "4 years"),
-                  20.width,
-                  buildQuestion("Gender", "Female"),
-                ],
-              ),
-              buildQuestion("Does the child have a vaccination card?", "Yes"),
-              buildQuestion(
-                  "If Yes, select received antigens", "BCG, OPV, HepB"),
-              buildQuestion("Site of last vaccination", "Left thigh"),
+                  "Are there children under 5 years in the household?",
+                  controller.getValueMap(controller.selectedIndex, "IEV019")),
+              buildQuestion("Date of Birth",
+                  controller.getValueMap(controller.selectedIndex, "IEV021")),
+              buildQuestion("Age Category",
+                  controller.getValueMap(controller.selectedIndex, "IEV022")),
+              buildQuestion("Name of Child",
+                  controller.getValueMap(controller.selectedIndex, "IEV020")),
+              buildQuestion("Gender",
+                  controller.getValueMap(controller.selectedIndex, "IEV023")),
+              buildQuestion("Does the child have a vaccination card?",
+                  controller.getValueMap(controller.selectedIndex, "IEV024")),
+              if (controller.getValueMap(controller.selectedIndex, "IEV024") ==
+                  "Yes")
+                ...controller
+                    .getValueAntigenMap(controller.selectedIndex)
+                    .map((e) => buildQuestion(e["name"], e["response"])),
+              buildQuestion("Number of ANC visits made to the health facility",
+                  controller.getValueMap(controller.selectedIndex, "IEV026")),
+              buildQuestion("If Yes, select received antigens",
+                  controller.getValueMap(controller.selectedIndex, "IEV025")),
+              buildQuestion("Site of last vaccination",
+                  controller.getValueMap(controller.selectedIndex, "IEV027")),
               _buildSection("Women of Childbearing Age (WCBA) Profile"),
               buildQuestion(
                   "Are there pregnant women in the household?", "Yes"),
-              buildQuestion("Number of pregnant women in the household", "5"),
+              buildQuestion("Number of pregnant women in the household",
+                  controller.getValueMap(controller.selectedIndex, "IEV028")),
               Row(
                 children: [
-                  buildQuestion("First Name", "Jessica"),
-                  20.width,
-                  buildQuestion("Surname", "Kofi"),
+                  buildQuestion(
+                      "Name",
+                      controller.getValueMap(
+                          controller.selectedIndex, "IEV029")),
                 ],
               ),
-              Row(
+              buildQuestion("Has the woman taken T.T1 vaccine?", "Yes"),
+              buildQuestion("If yes, what doses were taken?",
+                  controller.getValueMap(controller.selectedIndex, "IEV031")),
+
+              /*     Row(
                 children: [
                   buildQuestion("Age", "27 years"),
                   20.width,
@@ -90,16 +106,18 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               buildQuestion("If yes, what doses were taken?", "T1"),
               buildQuestion("Has the woman commenced ANC visits?", "Yes"),
               buildQuestion(
-                  "Number of ANC visits made to the health facility", "3"),
-              buildQuestion("Expected Date of Delivery (EDD)", "July 2025"),
+                  "Number of ANC visits made to the health facility", controller.getValueMap(controller.selectedIndex, "")),
+              buildQuestion("Expected Date of Delivery (EDD)", "July 2025"), */
               30.height,
-              AppElevatedButton(
-                text: "Submit Record",
-                width: context.width(),
-                onPressed: () {
-                  //  appRoute.push(const OfflineForm2Route());
-                },
-              )
+              if (!controller.isOnline.value)
+                AppElevatedButton(
+                  text: "Submit Record",
+                  width: context.width(),
+                  onPressed: () {
+                    controller.submitDataOnline(context);
+                    //  appRoute.push(const OfflineForm2Route());
+                  },
+                )
             ],
           ),
         ),
@@ -108,7 +126,7 @@ class OfflineForm2Screen extends GetView<OfflineController> {
   }
 
   Widget _stepperHorizontal() {
-    var currentStep = 1;
+    var currentStep = 2;
     //var totalSteps = 0;
     final stepsData = [
       StepperData(

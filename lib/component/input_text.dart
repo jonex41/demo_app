@@ -16,7 +16,7 @@ class InputWithTextHead extends StatelessWidget {
       this.textColor = AppPalette.white,
       this.suffixColor = AppPalette.white,
       this.anotherColor,
-      this.onChange});
+      this.onChange, this.validator});
 
   final String title;
   final String? hintText;
@@ -26,6 +26,7 @@ class InputWithTextHead extends StatelessWidget {
   final Color? anotherColor;
   final Color? suffixColor;
   final Function(String)? onChange;
+ final FormFieldValidator<String>? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class InputWithTextHead extends StatelessWidget {
           textFieldType: textFieldType,
           decoration: inputDecoration(fillColor: Colors.transparent, hintText: hintText),
           isValidationRequired: true,
-          validator: (value) {
+          validator:validator ?? (value) {
             if (value == null || value.isEmpty) {
               return 'Field is required';
             } else {

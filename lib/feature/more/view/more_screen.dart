@@ -86,7 +86,7 @@ class MoreScreen extends GetView<MoreController> {
                                     controller.userDetails.value!.id!
                                         .toString()); */
                                 },
-                                child: const Text("Logout Account"),
+                                child: const Text("Logout"),
                               )
                             ],
                           ));
@@ -94,7 +94,7 @@ class MoreScreen extends GetView<MoreController> {
                 child: _eachItem(context,
                     SvgPicture.asset(Assets.icons.logout.path), "Logout")),
             const Spacer(),
-            AppElevatedButton(
+            /*   AppElevatedButton(
               color: AppPalette.red.red300,
               textColor: AppPalette.white,
               height: 56,
@@ -127,6 +127,7 @@ class MoreScreen extends GetView<MoreController> {
                         ));
               },
             ),
+           */
             24.height,
           ],
         ),

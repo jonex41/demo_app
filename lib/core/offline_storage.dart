@@ -1,35 +1,34 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class StorageService<T> {
+class LocalStorageService {
   final String key;
-  final T Function(Map<String, dynamic>) fromJson;
-  final Map<String, dynamic> Function(T) toJson;
 
-  StorageService(
-      {required this.key, required this.fromJson, required this.toJson});
+  LocalStorageService({required this.key});
 
-  Future<void> saveList(List<T> items) async {
+  Future<void> saveList(List<Map<String, dynamic>> items) async {
     final prefs = await SharedPreferences.getInstance();
-    final jsonList = items.map((item) => jsonEncode(toJson(item))).toList();
-    await prefs.setStringList(key, jsonList);
+    final jsonString = jsonEncode(items);
+    await prefs.setString(key, jsonString);
   }
 
-  Future<List<T>> getList() async {
+  Future<List<Map<String, dynamic>>> getList() async {
     final prefs = await SharedPreferences.getInstance();
-    final jsonList = prefs.getStringList(key) ?? [];
-    return jsonList.map((json) => fromJson(jsonDecode(json))).toList();
+    final jsonString = prefs.getString(key);
+    if (jsonString == null) return [];
+    return List<Map<String, dynamic>>.from(jsonDecode(jsonString));
   }
 
-  Future<void> addItem(T item) async {
-    List<T> currentList = await getList();
-    currentList.add(item);
-    await saveList(currentList);
+  Future<void> addItem(Map<String, dynamic> item) async {
+    final list = await getList();
+    list.add(item);
+    await saveList(list);
   }
 
-  Future<void> clear() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(key);
+  Future<void> deleteItem(String value) async {
+    final list = await getList();
+    list.removeWhere((item) => item["myUniqueId"] == value);
+    await saveList(list);
   }
 }
 

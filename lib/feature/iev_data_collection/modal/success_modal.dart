@@ -53,7 +53,7 @@ class _SuccessModalState extends State<SuccessModal> {
               32.height,
               AppElevatedButton(
                 onPressed: () {
-                  appRoute.pop();
+                  appRoute.popUntilRoot();
                 },
                 width: context.width,
                 text: "Done",

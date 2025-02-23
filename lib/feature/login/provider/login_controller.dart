@@ -25,6 +25,8 @@ class LoginController extends GetxController {
   final phoneController = TextEditingController();
   final passwordController = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> passwordKey = GlobalKey<FormState>();
+  GlobalKey<FormState> forgotPhoneKey = GlobalKey<FormState>();
   final resetPasswordController = TextEditingController();
   final resetConfirmPasswordController = TextEditingController();
   final loginModel = Rxn<LoginResponse?>();
@@ -93,7 +95,9 @@ class LoginController extends GetxController {
         textColor: AppPalette.white);
   }
 
-/*   void sendOtpForPasswordReset(BuildContext context) async {
+  void forgotPasswordSendOtp(BuildContext context) async {
+    final isValidForm = forgotPhoneKey.currentState?.validate() ?? false;
+    if (!isValidForm) return;
     if (phoneController.text.trim().isEmptyOrNull) {
       snackBar(context,
           title: 'please make sure you enter your phone number',
@@ -106,10 +110,10 @@ class LoginController extends GetxController {
       String phoneNumber = getPhoneNumber(phoneController.text.trim());
       presentPhoneNumber = phoneNumber;
       final response = await networkService
-          .passwordResetSendOtp({"mobile_number": phoneNumber});
-      if (response.status == 200) {
+          .forgotPasswordSendOtp({"mobileNumber": phoneNumber});
+      if (response.statusCode == 200) {
         currrentIndex.value = 1;
-        pinId = response.pinId!;
+        pinId = response.result!.pinId!;
       }
       emailController.text = phoneController.text.trim();
       hideLoaderNew();
@@ -124,7 +128,7 @@ class LoginController extends GetxController {
     }
   }
 
-  void confirmOtpForPasswordReset(BuildContext context) async {
+  void forgotPasswordConfirmOtp(BuildContext context) async {
     if (phoneController.text.trim().isEmptyOrNull) {
       snackBar(context,
           title: 'please make sure you enter your phone number',
@@ -136,8 +140,16 @@ class LoginController extends GetxController {
     try {
       String phoneNumber = getPhoneNumber(phoneController.text.trim());
       presentPhoneNumber = phoneNumber;
-      final response = await networkService.confirmpasswordResetSendOtp(
-          {"pinId": pinId, "otp": otpString.value});
+      print({
+        "pinId": pinId,
+        "otp": otpString.value,
+        "mobileNumber": phoneNumber
+      });
+      final response = await networkService.forgotPasswordConfirmOtp({
+        "pinId": pinId,
+        "otp": otpString.value,
+        "mobileNumber": phoneNumber
+      });
       if (response) {
         currrentIndex.value = 2;
       }
@@ -152,7 +164,9 @@ class LoginController extends GetxController {
     }
   }
 
-  void sendNewPassword(BuildContext context) async {
+  void forgotPasswordReset(BuildContext context) async {
+    final isValidForm = passwordKey.currentState?.validate() ?? false;
+    if (!isValidForm) return;
     if (resetConfirmPasswordController.text.trim().isEmptyOrNull ||
         resetPasswordController.text.trim().isEmptyOrNull ||
         (resetConfirmPasswordController.text.trim().isEmptyOrNull !=
@@ -166,12 +180,26 @@ class LoginController extends GetxController {
     }
     showLoaderNew(context);
     try {
-      final response =
-          await networkService.resetTheMeanPassword(presentPhoneNumber, {
+      final response = await networkService.forgotPasswordReset({
+        "phoneNumber": presentPhoneNumber,
         "password": getPhoneNumber(resetConfirmPasswordController.text.trim()),
       });
       if (response) {
-        appRoute.replaceAll([const LoginRoute()]);
+        snackBar(context,
+            title: "Password updated Successfully",
+            backgroundColor: AppPalette.green,
+            textColor: AppPalette.white);
+        1.delay(() {
+          phoneController.text = "";
+          passwordController.text = "";
+          resetConfirmPasswordController.text = "";
+          resetPasswordController.text = "";
+          emailController.text = "";
+          appRoute.replaceAll([const LoginRoute()]);
+          1.delay(() {
+            currrentIndex.value = 0;
+          });
+        });
       }
       hideLoaderNew();
     } on DioException catch (e) {
@@ -183,7 +211,7 @@ class LoginController extends GetxController {
           textColor: AppPalette.white);
     }
   }
- */
+
   String getPhoneNumber(String value) {
     String phoneNumber = value;
     phoneNumber =

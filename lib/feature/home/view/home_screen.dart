@@ -5,9 +5,12 @@ import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/home/provider/home_controller.dart';
 import 'package:demo_app/feature/home/widget/home_header.dart';
+import 'package:demo_app/feature/offline/provider/offline_controller.dart';
 import 'package:demo_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
@@ -1049,24 +1052,26 @@ class HomeScreen extends GetView<HomeController> {
         ),
         20.height,
         GestureDetector(
-            child: _card(
-                context,
-                "Total Submissions",
-                "120",
-                Icon(Icons.feed_outlined, color: AppPalette.primary.primary400),
-                const Color(0xffEEFFF9),
-                const Color(0xff2fcf9733).withOpacity(0.2),
-                false)),
+          child: Obx(() => _card(
+              context,
+              "Total Submissions",
+              controller.submittedList.value.toString(),
+              Icon(Icons.feed_outlined, color: AppPalette.primary.primary400),
+              const Color(0xffEEFFF9),
+              const Color(0xff2fcf9733).withOpacity(0.2),
+              false)),
+        ),
         20.height,
         GestureDetector(
-            child: _card(
-                context,
-                "Pending Sync",
-                "05",
-                const Icon(Icons.schedule, color: Color(0xffEE6471)),
-                const Color(0xffFFF7F2),
-                const Color(0xffee647133).withOpacity(0.2),
-                false)),
+          child: Obx(() => _card(
+              context,
+              "Pending Sync",
+              controller.pendingSync.value.toString(),
+              const Icon(Icons.schedule, color: Color(0xffEE6471)),
+              const Color(0xffFFF7F2),
+              const Color(0xffee647133).withOpacity(0.2),
+              false)),
+        ),
         20.height,
         GestureDetector(
           child: _card2(
@@ -1095,7 +1100,9 @@ class HomeScreen extends GetView<HomeController> {
           true,
           "View Records",
           onTap: () {
-            appRoute.push(const OfflineForm1Route());
+            Get.find<OfflineController>().isOnline.value = true;
+            Get.find<OfflineController>().getDataOnline();
+            appRoute.push(const AllRecordIevRoute());
           },
         )),
       ],

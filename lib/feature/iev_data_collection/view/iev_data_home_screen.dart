@@ -24,7 +24,8 @@ class IEVDataHomeScreen extends StatefulWidget {
 }
 
 class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
-  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller =
+      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,8 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
               child: Align(
                 alignment: Alignment.center,
                 child: SvgPicture.asset("assets/images/back.svg",
-                    colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
+                    colorFilter: const ColorFilter.mode(
+                        AppPalette.black, BlendMode.srcIn)),
               ),
             ),
           )),
@@ -88,7 +90,8 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
               Obx(() {
                 return updateButtonNext(context);
               }),
-              15.height
+              15.height,
+              Obx(() => _offlineButton()),
             ],
           ),
         ),
@@ -150,7 +153,7 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
         }
 
         if (controller.currentScreen.value == 3) {
-          final isValid = controller.formKeyScreen2.currentState!.validate();
+          final isValid = controller.formKeyScreen3.currentState!.validate();
           if (!isValid) {
             return;
           }
@@ -162,7 +165,7 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
         }
 
         if (controller.currentScreen.value == 4) {
-          final isValid = controller.formKeyScreen2.currentState!.validate();
+          final isValid = controller.formKeyScreen4.currentState!.validate();
           if (!isValid) {
             return;
           }
@@ -182,5 +185,26 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
         }
       },
     );
+  }
+
+  Widget _offlineButton() {
+    return controller.currentScreen.value == 4
+        ? Column(
+            children: [
+              AppElevatedButton(
+                textColor: AppPalette.white,
+                color: AppPalette.primary.primary400,
+                height: 56,
+                width: MediaQuery.of(context).size.width,
+                radius: 8,
+                text: 'Save Locally',
+                onPressed: () {
+                  controller.submitDataLocally(context);
+                },
+              ),
+              15.height
+            ],
+          )
+        : Container();
   }
 }

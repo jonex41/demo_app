@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AddNewScheduleScreen(),
       );
     },
+    AllRecordIevRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AllRecordIevScreen(),
+      );
+    },
     AllRecordsDetailRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -446,6 +452,20 @@ class AddNewScheduleRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AddNewScheduleRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AllRecordIevScreen]
+class AllRecordIevRoute extends PageRouteInfo<void> {
+  const AllRecordIevRoute({List<PageRouteInfo>? children})
+      : super(
+          AllRecordIevRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AllRecordIevRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

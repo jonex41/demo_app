@@ -1,3 +1,4 @@
+import 'package:demo_app/core/offline_storage.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/storage_service.dart';
@@ -25,6 +26,8 @@ class HomeController extends GetxController {
   final userTransactions4 = <TransactionModel?>[].obs;
   final text = ''.obs;
   final selectedTab = 0.obs;
+  final pendingSync = 0.obs;
+  final submittedList = 0.obs;
   // final scanModel = Rxn<ScanModel?>();
   final mytext = ''.obs;
   final textCOntroller = TextEditingController();
@@ -38,7 +41,9 @@ class HomeController extends GetxController {
   void onInit() {
     // TODO: implement onInit
 //   userModel.value = storageService.getUser();
- loginModel.value = Get.find<LoginController>().loginModel.value;
+    loginModel.value = Get.find<LoginController>().loginModel.value;
+    getLocal();
+    getDataOnline();
     selectedTab.listen((value) {
       print('new $value');
     });
@@ -69,6 +74,27 @@ class HomeController extends GetxController {
         textColor: AppPalette.white);
   }
 
+  void getDataOnline() async {
+    var map = await networkService.getAllIEVData();
+    print("online data $map");
+
+    submittedList.value = convertList(map).length;
+
+    /*
+    listMapCopy.addAll(listMap); */
+  }
+
+  List<Map<String, dynamic>> convertList(List<dynamic> data) {
+    return List<Map<String, dynamic>>.from(
+        data.map((item) => Map<String, dynamic>.from(item)));
+  }
+
+  void getLocal() async {
+    final storageService = LocalStorageService(key: "my_storage_key");
+    var list = await storageService.getList();
+    pendingSync.value = list.length;
+  }
+
   String greeting() {
     var hour = DateTime.now().hour;
     if (hour < 12) {
@@ -84,7 +110,7 @@ class HomeController extends GetxController {
     ChecklistBindings().dependencies();
     appRoute.push(const ChecklistHomeRoute());
   }
-  
+
   Future<void> gotoSettlementRegistryScreen() async {
     SettlementRegistryBinding().dependencies();
     appRoute.push(const SettlementRegistryRoute());

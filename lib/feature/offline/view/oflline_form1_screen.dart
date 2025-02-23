@@ -55,32 +55,51 @@ class OfflineForm1Screen extends GetView<OfflineController> {
             _stepperHorizontal(),
             15.height,
             _buildSection("Enumerator Information", [
-              _buildRow("Name of Enumerator", "Angwar Kousa"),
+              _buildRow("Name of Enumerator",
+                  controller.getValueMap(controller.selectedIndex, "IEV001")),
               Row(
                 children: [
-                  _buildRow("Phone Number", "08037874249"),
+                  _buildRow(
+                      "Phone Number",
+                      controller.getValueMap(
+                          controller.selectedIndex, "IEV002")),
                   20.width,
-                  _buildRow("Team Code", "NDASC/21/09273"),
+                  _buildRow(
+                      "Team Code",
+                      controller.getValueMap(
+                          controller.selectedIndex, "IEV003")),
                 ],
               ),
             ]),
             _buildSection("Settlement Demographics", [
               Row(
                 children: [
-                  _buildRow("State", "Garun Mallam"),
+                  _buildRow(
+                      "State",
+                      controller.getValueMap(
+                          controller.selectedIndex, "IEV004")),
                   20.width,
-                  _buildRow("State", "Kano State"),
+                  _buildRow(
+                      "LGA",
+                      controller.getValueMap(
+                          controller.selectedIndex, "IEV005")),
                 ],
               ),
               Row(
                 children: [
-                  _buildRow("Ward", "Ward 10"),
+                  _buildRow(
+                      "Ward",
+                      controller.getValueMap(
+                          controller.selectedIndex, "IEV006")),
                   20.width,
-                  _buildRow("House Number", "CHIPS/29002/01/01"),
+                  _buildRow(
+                      "House Number",
+                      controller.getValueMap(
+                          controller.selectedIndex, "IEV008")),
                 ],
               ),
               _buildRow("Settlement",
-                  "Settlement 1, Settlement 2, Settlement 3, Settlement 4"),
+                  controller.getValueMap(controller.selectedIndex, "IEV007")),
             ]),
             _buildSection("Enumerator Introduction", [
               const Padding(
@@ -94,10 +113,14 @@ class OfflineForm1Screen extends GetView<OfflineController> {
               _buildRow("At this time, do you want me to proceed?", "Yes"),
             ]),
             _buildSection("Caregiver’s Profile", [
-              _buildRow("Head of Household Name", "Usman For"),
-              _buildRow("Head of Household Phone Number", "+234 806 804 6546"),
-              _buildRow("Mother’s Name", "Aisha For"),
-              _buildRow("Mother’s Phone Number", "+234 806 804 6548"),
+              _buildRow("Head of Household Name",
+                  controller.getValueMap(controller.selectedIndex, "IEV010")),
+              _buildRow("Head of Household Phone Number",
+                  controller.getValueMap(controller.selectedIndex, "IEV011")),
+              _buildRow("Mother’s Name",
+                  controller.getValueMap(controller.selectedIndex, "IEV013")),
+              _buildRow("Mother’s Phone Number",
+                  controller.getValueMap(controller.selectedIndex, "IEV014")),
             ]),
             30.height,
             AppElevatedButton(

@@ -7,6 +7,8 @@ part 'search_model.g.dart';
 class SearchModel with _$SearchModel {
   const factory SearchModel({
     required String? title,
+    String? date,
+    String? time,
   }) = _SearchModel;
 
   factory SearchModel.fromJson(Map<String, dynamic> json) =>

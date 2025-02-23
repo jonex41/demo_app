@@ -29,10 +29,10 @@ class OfflineCard extends StatelessWidget {
               ),
               10.height,
               Text(
-                "CHIPS/260102/01/01",
+                searchModel.title ?? "Name",
                 style: context.theme.appTextTheme.labelLarge12.copyWith(
                     color: const Color(0xff7A7C7F),
-                    fontSize: 12,
+                    fontSize: 10,
                     fontWeight: FontWeight.w800),
               ),
               5.height,
@@ -48,7 +48,7 @@ class OfflineCard extends StatelessWidget {
                       ),
                       5.width,
                       Text(
-                        "04/04/2023",
+                        searchModel.date ?? "",
                         style: context.theme.appTextTheme.labelLarge12.copyWith(
                             color: const Color(0xff7A7C7F),
                             fontSize: 8,
@@ -67,7 +67,7 @@ class OfflineCard extends StatelessWidget {
                       ),
                       5.width,
                       Text(
-                        "05:38PM",
+                        searchModel.time ?? "",
                         style: context.theme.appTextTheme.labelLarge12.copyWith(
                             color: const Color(0xff7A7C7F),
                             fontSize: 8,

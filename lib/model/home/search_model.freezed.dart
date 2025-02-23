@@ -21,6 +21,8 @@ SearchModel _$SearchModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SearchModel {
   String? get title => throw _privateConstructorUsedError;
+  String? get date => throw _privateConstructorUsedError;
+  String? get time => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,7 @@ abstract class $SearchModelCopyWith<$Res> {
           SearchModel value, $Res Function(SearchModel) then) =
       _$SearchModelCopyWithImpl<$Res, SearchModel>;
   @useResult
-  $Res call({String? title});
+  $Res call({String? title, String? date, String? time});
 }
 
 /// @nodoc
@@ -51,11 +53,21 @@ class _$SearchModelCopyWithImpl<$Res, $Val extends SearchModel>
   @override
   $Res call({
     Object? title = freezed,
+    Object? date = freezed,
+    Object? time = freezed,
   }) {
     return _then(_value.copyWith(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -69,7 +81,7 @@ abstract class _$$SearchModelImplCopyWith<$Res>
       __$$SearchModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? title});
+  $Res call({String? title, String? date, String? time});
 }
 
 /// @nodoc
@@ -84,11 +96,21 @@ class __$$SearchModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = freezed,
+    Object? date = freezed,
+    Object? time = freezed,
   }) {
     return _then(_$SearchModelImpl(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -97,17 +119,21 @@ class __$$SearchModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SearchModelImpl implements _SearchModel {
-  const _$SearchModelImpl({required this.title});
+  const _$SearchModelImpl({required this.title, this.date, this.time});
 
   factory _$SearchModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SearchModelImplFromJson(json);
 
   @override
   final String? title;
+  @override
+  final String? date;
+  @override
+  final String? time;
 
   @override
   String toString() {
-    return 'SearchModel(title: $title)';
+    return 'SearchModel(title: $title, date: $date, time: $time)';
   }
 
   @override
@@ -115,12 +141,14 @@ class _$SearchModelImpl implements _SearchModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchModelImpl &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.time, time) || other.time == time));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title);
+  int get hashCode => Object.hash(runtimeType, title, date, time);
 
   @JsonKey(ignore: true)
   @override
@@ -137,14 +165,20 @@ class _$SearchModelImpl implements _SearchModel {
 }
 
 abstract class _SearchModel implements SearchModel {
-  const factory _SearchModel({required final String? title}) =
-      _$SearchModelImpl;
+  const factory _SearchModel(
+      {required final String? title,
+      final String? date,
+      final String? time}) = _$SearchModelImpl;
 
   factory _SearchModel.fromJson(Map<String, dynamic> json) =
       _$SearchModelImpl.fromJson;
 
   @override
   String? get title;
+  @override
+  String? get date;
+  @override
+  String? get time;
   @override
   @JsonKey(ignore: true)
   _$$SearchModelImplCopyWith<_$SearchModelImpl> get copyWith =>
