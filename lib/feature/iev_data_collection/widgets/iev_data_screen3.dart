@@ -41,25 +41,28 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                       children: [
                         18.height,
                         const AppTextFieldHeader(
-                            title: 'Are there children under 5 years in the household?'),
+                            title: 'How many under 5 children does this mother have?'),
                         5.height,
-                        Obx(() {
-                          return AncDropDownButton(
-                            hint: 'Select an answer',
-                            value: controller.selectedChildrenUnder5Years.value,
-                            items: controller.childrenUnder5Years,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Select Settlement';
-                              } else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value) {
-                              controller.selectedChildrenUnder5Years.value = value;
-                            },
-                          );
-                        }),
+                        AppTextField(
+                          textFieldType: TextFieldType.NUMBER,
+                          isValidationRequired: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Field is required';
+                            } else {
+                              return null;
+                            }
+                          },
+                          decoration: inputDecoration().copyWith(
+                              hintText: 'Enter your answer',
+                              hintStyle: const TextStyle(
+                                color: Color(0xFF899197),
+                              )),
+                          suffixIconColor: AppPalette.white,
+                          textStyle: const TextStyle(
+                              fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                          controller: controller.under5ChildrenMotherHave,
+                        ),
                         18.height,
                         const AppTextFieldHeader(title: 'Name of Child:'),
                         5.height,
@@ -84,103 +87,108 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                           controller: controller.nameofChild,
                         ),
                         18.height,
-                        Row(
-                          children: [
-                            Expanded(
-                                child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const AppTextFieldHeader(title: 'Date of Birth:'),
-                                5.height,
-                                InkWell(
-                                  onTap: () async {
-                                    final DateTime now = DateTime.now();
-                                    var picked = await showDatePicker(
-                                      context: context,
-                                      initialDate: controller.dateOfBirth ?? DateTime.now(),
-                                      firstDate: DateTime(1900),
-                                      lastDate: now,
-                                      //lastDate: DateTime(2100),
-                                      builder: (context, child) {
-                                        return Theme(
-                                          data: ThemeData.light().copyWith(
-                                            primaryColor: AppPalette.primary.primary400,
-                                            colorScheme: ColorScheme.light(
-                                              primary: AppPalette.primary.primary400,
-                                            ),
-                                          ),
-                                          child: child!,
-                                        );
-                                      },
-                                    );
-                                    if (picked != null && picked != controller.dateOfBirth) {
-                                      var formattedDate = DateFormat('yyyy-MM-dd').format(picked);
-                                      controller.setDateOfBirth(picked);
-                                      controller.setSelectedDateOfBirth(formattedDate);
-                                    }
-                                  },
-                                  child: Obx(() {
-                                    return Container(
-                                      padding: const EdgeInsets.only(
-                                          left: 8, top: 10, bottom: 10, right: 8),
-                                      decoration: BoxDecoration(
-                                        color: AppPalette.transparent,
-                                        border:
-                                            Border.all(width: 1.5, color: AppPalette.grey.gray300),
-                                        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                        const AppTextFieldHeader(title: 'Do you know the date of birth?'),
+                        5.height,
+                        Obx(() {
+                          return AncDropDownButton(
+                            hint: 'Select an answer',
+                            value: controller.selectedKnowDateOfBirth.value,
+                            items: controller.knowDateOfBirth,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please select an option';
+                              } else {
+                                return null;
+                              }
+                            },
+                            onChanged: (value) {
+                              controller.selectedKnowDateOfBirth.value = value;
+                            },
+                          );
+                        }),
+                        18.height,
+                        if (controller.selectedKnowDateOfBirth.value == 'Yes') ...[
+                          const AppTextFieldHeader(title: 'Date of Birth:'),
+                          5.height,
+                          InkWell(
+                            onTap: () async {
+                              final DateTime now = DateTime.now();
+                              var picked = await showDatePicker(
+                                context: context,
+                                initialDate: controller.dateOfBirth ?? DateTime.now(),
+                                firstDate: DateTime(1900),
+                                lastDate: now,
+                                //lastDate: DateTime(2100),
+                                builder: (context, child) {
+                                  return Theme(
+                                    data: ThemeData.light().copyWith(
+                                      primaryColor: AppPalette.primary.primary400,
+                                      colorScheme: ColorScheme.light(
+                                        primary: AppPalette.primary.primary400,
                                       ),
-                                      child: Row(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                controller.selectDateOfBirth != null
-                                                    ? controller.selectDateOfBirth.toString()
-                                                    : 'Select Date',
-                                                style: context.theme.appTextTheme.bodyMedium16
-                                                    .copyWith(
-                                                  fontSize: 13,
-                                                  color: AppPalette.grey.gray600,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }),
-                                ),
-                              ],
-                            )),
-                            18.width,
-                            Expanded(
-                                child: Column(
-                              children: [
-                                const AppTextFieldHeader(title: 'Age Category:'),
-                                5.height,
-                                Obx(() {
-                                  return AncDropDownButton(
-                                    hint: 'Select an answer',
-                                    value: controller.selectedAgeCategory.value,
-                                    items: controller.ageCategory,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please Select Age Category';
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onChanged: (value) {
-                                      controller.selectedAgeCategory.value = value;
-                                    },
+                                    ),
+                                    child: child!,
                                   );
-                                })
-                              ],
-                            ))
-                          ],
-                        ),
+                                },
+                              );
+                              if (picked != null && picked != controller.dateOfBirth) {
+                                var formattedDate = DateFormat('yyyy-MM-dd').format(picked);
+                                controller.setDateOfBirth(picked);
+                                controller.setSelectedDateOfBirth(formattedDate);
+                              }
+                            },
+                            child: Obx(() {
+                              return Container(
+                                padding:
+                                    const EdgeInsets.only(left: 8, top: 10, bottom: 10, right: 8),
+                                decoration: BoxDecoration(
+                                  color: AppPalette.transparent,
+                                  border: Border.all(width: 1.5, color: AppPalette.grey.gray300),
+                                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          controller.selectDateOfBirth != null
+                                              ? controller.selectDateOfBirth.toString()
+                                              : 'Select Date',
+                                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                                            fontSize: 13,
+                                            color: AppPalette.grey.gray600,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }),
+                          ),
+                        ] else ...[
+                          const AppTextFieldHeader(title: 'Age Category:'),
+                          5.height,
+                          Obx(() {
+                            return AncDropDownButton(
+                              hint: 'Select an answer',
+                              value: controller.selectedAgeCategory.value,
+                              items: controller.ageCategory,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Select Age Category';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              onChanged: (value) {
+                                controller.selectedAgeCategory.value = value;
+                              },
+                            );
+                          })
+                        ],
                         18.height,
                         const AppTextFieldHeader(title: 'Gender'),
                         5.height,
@@ -293,30 +301,6 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                             textStyle: const TextStyle(
                                 fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                             controller: controller.howManyVisitChildHadToHealthFacility,
-                          ),
-                          18.height,
-                          const AppTextFieldHeader(
-                              title: 'Number of ANC visits made to the health facility:'),
-                          5.height,
-                          AppTextField(
-                            textFieldType: TextFieldType.NUMBER,
-                            isValidationRequired: true,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Field is required';
-                              } else {
-                                return null;
-                              }
-                            },
-                            decoration: inputDecoration().copyWith(
-                                hintText: 'Enter your answer',
-                                hintStyle: const TextStyle(
-                                  color: Color(0xFF899197),
-                                )),
-                            suffixIconColor: AppPalette.white,
-                            textStyle: const TextStyle(
-                                fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
-                            controller: controller.numberOfAncVisitsToHealthFacility,
                           ),
                           18.height,
                           const AppTextFieldHeader(

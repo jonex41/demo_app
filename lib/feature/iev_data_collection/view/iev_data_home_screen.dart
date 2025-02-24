@@ -24,8 +24,7 @@ class IEVDataHomeScreen extends StatefulWidget {
 }
 
 class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
-  final controller =
-      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +55,7 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
               child: Align(
                 alignment: Alignment.center,
                 child: SvgPicture.asset("assets/images/back.svg",
-                    colorFilter: const ColorFilter.mode(
-                        AppPalette.black, BlendMode.srcIn)),
+                    colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
               ),
             ),
           )),
@@ -158,20 +156,15 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
             return;
           }
 
-          if (controller.selectDateOfBirth == null) {
+          /*if (controller.selectDateOfBirth == null) {
             showAlertDialog('Date of Birth cannot be empty');
             return;
-          }
+          }*/
         }
 
         if (controller.currentScreen.value == 4) {
           final isValid = controller.formKeyScreen4.currentState!.validate();
           if (!isValid) {
-            return;
-          }
-
-          if (controller.selectExpectedDateOfDelivery == null) {
-            showAlertDialog('Expected Date of Delivery cannot be empty');
             return;
           }
         }
