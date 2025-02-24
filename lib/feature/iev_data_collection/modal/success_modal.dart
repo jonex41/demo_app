@@ -2,8 +2,12 @@ import 'package:demo_app/component/button.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
+import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_bindings.dart';
+import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
@@ -53,6 +57,8 @@ class _SuccessModalState extends State<SuccessModal> {
               32.height,
               AppElevatedButton(
                 onPressed: () {
+                  Get.delete<IEVDataCollectionController>();
+                   IEVDataCollectionBindings().dependencies();
                   appRoute.popUntilRoot();
                 },
                 width: context.width,

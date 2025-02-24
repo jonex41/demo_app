@@ -8,9 +8,10 @@ import '../core/router/locator.dart';
 
 class AppAppBar extends StatelessWidget {
   const AppAppBar(
-      {super.key, required this.title, this.textColor, this.onPress});
+      {super.key, required this.title, this.textColor,this.showBackButton, this.onPress});
   final String title;
   final Color? textColor;
+  final bool? showBackButton;
   final VoidCallback? onPress;
 
   @override
@@ -20,7 +21,7 @@ class AppAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          GestureDetector(
+        if(showBackButton!)  GestureDetector(
               onTap: onPress ??
                   () {
                     appRoute.back();

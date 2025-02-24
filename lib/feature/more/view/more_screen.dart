@@ -80,7 +80,10 @@ class MoreScreen extends GetView<MoreController> {
                               TextButton(
                                 style: const ButtonStyle(),
                                 onPressed: () async {
-                                  appRoute.push(const LoginRoute());
+                                  Navigator.pop(context);
+
+                                  appRoute.replaceAll([const LoginRoute()]);
+
                                   /* controller.deleteAccount(
                                     context,
                                     controller.userDetails.value!.id!

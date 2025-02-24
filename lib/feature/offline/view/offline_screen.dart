@@ -32,7 +32,7 @@ class OfflineScreen extends GetView<OfflineController> {
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         child: Column(
           children: [
-            const AppAppBar(title: "New Scheduled"),
+            const AppAppBar(title: "Offline Record", showBackButton:false),
             10.height,
             Align(
               alignment: Alignment.topLeft,
