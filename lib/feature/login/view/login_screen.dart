@@ -70,6 +70,7 @@ class LoginScreen extends GetView<LoginController> {
                     title: "User Id",
                     textFieldType: TextFieldType.NAME,
                     hintText: "Enter your user Id",
+                    
 //callBack: (value) {},
 
                     controller: controller.emailController,
@@ -79,6 +80,18 @@ class LoginScreen extends GetView<LoginController> {
                     title: "Password",
                     textFieldType: TextFieldType.PASSWORD,
                     hintText: "Enter your password",
+                    validator: (value){
+                       if (value == null || value.isEmpty) {
+                return "Password cannot be empty";
+              }
+              if (!RegExp(
+                      r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+                  .hasMatch(value)) {
+                return "Password must be at least 8 characters\n"
+                    "Include 1 capital letter, 1 number, and 1 symbol";
+              }
+              return null;
+                    },
 
                     // callBack: (value) {},
                     /*  validator: (value) {
@@ -168,8 +181,8 @@ class LoginScreen extends GetView<LoginController> {
               height: 56,
               text: 'Log in',
               onPressed: () {
-                controller.gotoHomeScreen(context);
-                // controller.loginNetwork(context);
+                //controller.gotoHomeScreen(context);
+                controller.loginNetwork(context);
               },
               /*  textStyle: context.theme.appTextTheme.labelLarge12.copyWith(
                   color: AppPalette.white, fontWeight: FontWeight.w400), */
