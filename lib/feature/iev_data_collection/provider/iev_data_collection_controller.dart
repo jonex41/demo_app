@@ -1,5 +1,4 @@
 import 'package:demo_app/core/offline_storage.dart';
-import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_controller.dart';
 import 'package:demo_app/feature/iev_data_collection/modal/success_modal.dart';
@@ -38,10 +37,14 @@ class IEVDataCollectionController extends GetxController {
   final numberOfPregnantWomen = TextEditingController();
   final firstname = TextEditingController();
   final surname = TextEditingController();
-  final age = TextEditingController();
+
+  final firstnameWoman = TextEditingController();
+  final surnameWoman = TextEditingController();
   final numberOfAncVisitsToHealthFacility = TextEditingController();
+  final numberOfAncVisitsToHealthFacilityMother = TextEditingController();
   final numberOfMothersInTheHouse = TextEditingController();
   final howManyVisitChildHadToHealthFacility = TextEditingController();
+  final under5ChildrenMotherHave = TextEditingController();
 
   final stateValue = NigerianStatesAndLGA.allStates[0].obs;
   final lgaValue = 'Select a Local Government Area'.obs;
@@ -61,15 +64,6 @@ class IEVDataCollectionController extends GetxController {
   final Rxn<String> _selectDateOfBirth = Rxn<String>();
 
   String? get selectDateOfBirth => _selectDateOfBirth.value;
-
-  final Rxn<DateTime> _expectedDateOfDelivery = Rxn<DateTime>();
-
-  DateTime? get expectedDateOfDelivery => _expectedDateOfDelivery.value;
-
-  final Rxn<String> _selectExpectedDateOfDelivery = Rxn<String>();
-
-  String? get selectExpectedDateOfDelivery =>
-      _selectExpectedDateOfDelivery.value;
 
   List<StepperData> stepsData = [
     StepperData(
@@ -92,13 +86,6 @@ class IEVDataCollectionController extends GetxController {
     'Yes',
     'No',
   ].obs;
-
-  final selectedChildrenUnder5Years = Rxn<String>();
-  final List<String> childrenUnder5Years = [
-    'Yes',
-    'No',
-  ].obs;
-
   final selectedSettlement = Rxn<String>();
   final List<String> settlement = [
     'Settlement 1',
@@ -162,12 +149,6 @@ class IEVDataCollectionController extends GetxController {
     'HPV',
   ].obs;
 
-  final selectedAreTherePregnantWomenInHousehold = Rxn<String>();
-  final List<String> areTherePregnantWomenInHousehold = [
-    'Yes',
-    'No',
-  ].obs;
-
   final selectedMonthsPregnant = Rxn<String>();
   final List<String> monthsPregnant = [
     '1 month',
@@ -181,21 +162,24 @@ class IEVDataCollectionController extends GetxController {
     '9 months'
   ].obs;
 
-  final selectedTakenTDVaccine = Rxn<String>();
-  final List<String> takenTDVaccine = [
-    'Yes',
-    'No',
+  final selectedMonthsPregnantMother = Rxn<String>();
+  final List<String> monthsPregnantMother = [
+    '1 month',
+    '2 months',
+    '3 months',
+    '4 months',
+    '5 months',
+    '6 months',
+    '7 months',
+    '8 months',
+    '9 months'
   ].obs;
+
+  final selectedDosesTDVaccineTakenMother = Rxn<String>();
+  final List<String> dosesTDVaccineTakenMother = ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
 
   final selectedDosesTDVaccineTaken = Rxn<String>();
-  final List<String> dosesTDVaccineTaken =
-      ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
-
-  final selectedCommenceANCVisits = Rxn<String>();
-  final List<String> commenceANCVisits = [
-    'Yes',
-    'No',
-  ].obs;
+  final List<String> dosesTDVaccineTaken = ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
 
   final selectedOtherWomenInTheHousehold = Rxn<String>();
   final List<String> otherWomenInTheHousehold = [
@@ -205,6 +189,12 @@ class IEVDataCollectionController extends GetxController {
 
   final selectedIsMotherPregnant = Rxn<String>();
   final List<String> isMotherPregnant = [
+    'Yes',
+    'No',
+  ].obs;
+
+  final selectedKnowDateOfBirth = Rxn<String>();
+  final List<String> knowDateOfBirth = [
     'Yes',
     'No',
   ].obs;
@@ -228,14 +218,6 @@ class IEVDataCollectionController extends GetxController {
 
   setDateOfBirth(DateTime? value) {
     _dateOfBirth.value = value;
-  }
-
-  setSelectedExpectedDateOfDelivery(String? value) {
-    _selectExpectedDateOfDelivery.value = value;
-  }
-
-  setExpectedDateOfDelivery(DateTime? value) {
-    _expectedDateOfDelivery.value = value;
   }
 
   void setNgState(String ngState) {
@@ -267,60 +249,31 @@ class IEVDataCollectionController extends GetxController {
 
       {'questionId': 'IEV014', 'answerText': mothersPhoneNumber.text},
       {'questionId': 'IEV015', 'answerText': selectedIsMotherPregnant.value},
-      {'questionId': 'IEV016', 'answerText': selectedMonthsPregnant.value},
-      {'questionId': 'IEV017', 'answerText': selectedDosesTDVaccineTaken.value},
-      {
-        'questionId': 'IEV018',
-        'answerText': numberOfAncVisitsToHealthFacility.text
-      },
-      {'questionId': 'IEV019', 'answerText': selectedChildrenUnder5Years.value},
+      {'questionId': 'IEV016', 'answerText': selectedMonthsPregnantMother.value},
+      {'questionId': 'IEV017', 'answerText': selectedDosesTDVaccineTakenMother.value},
+      {'questionId': 'IEV018', 'answerText': numberOfAncVisitsToHealthFacilityMother.text},
+      {'questionId': 'IEV019', 'answerText': under5ChildrenMotherHave.text},
       {'questionId': 'IEV020', 'answerText': nameofChild.text},
       {'questionId': 'IEV021', 'answerText': selectDateOfBirth.toString()},
       {'questionId': 'IEV022', 'answerText': selectedAgeCategory.value},
       {'questionId': 'IEV023', 'answerText': selectedGender.value},
-      {
-        'questionId': 'IEV024',
-        'answerText': selectedHaveRiVaccinationCard.value
-      },
-      {
-        'questionId': 'IEV026',
-        'answerText': howManyVisitChildHadToHealthFacility.text
-      },
+      {'questionId': 'IEV024', 'answerText': selectedHaveRiVaccinationCard.value},
+      {'questionId': 'IEV026', 'answerText': howManyVisitChildHadToHealthFacility.text},
       {'questionId': 'IEV027', 'answerText': siteOfLastVaccine.text},
       {'questionId': 'IEV028', 'answerText': numberOfPregnantWomen.text},
-      {
-        'questionId': 'IEV029',
-        'answerText': '${firstname.text}  ${surname.text}'
-      },
+      {'questionId': 'IEV029', 'answerText': '${firstname.text} ${surname.text}'},
       {'questionId': 'IEV030', 'answerText': selectedMonthsPregnant.value},
       {'questionId': 'IEV031', 'answerText': selectedDosesTDVaccineTaken.value},
-      {
-        'questionId': 'IEV033',
-        'answerText': selectedOtherWomenInTheHousehold.value
-      },
-      {
-        'questionId': 'IEV034',
-        'answerText': '${firstname.text}  ${surname.text}'
-      },
+      {'questionId': 'IEV032', 'answerText': numberOfAncVisitsToHealthFacility.text},
+      {'questionId': 'IEV033', 'answerText': selectedOtherWomenInTheHousehold.value},
+      {'questionId': 'IEV034', 'answerText': '${firstnameWoman.text} ${surnameWoman.text}'},
     ];
-
-    //TODO Please don't remove this commented code until we have final confirmation that this fields are not needed
-    /*var answersListMap2 = {
-        'selectedAreTherePregnantWomenInHousehold': selectedAreTherePregnantWomenInHousehold.value,
-        'age': age.text,
-        'selectedMonthsPregnant': selectedMonthsPregnant.value,
-        'selectedTakenTDVaccine': selectedTakenTDVaccine.value,
-        'selectedCommenceANCVisits.value': selectedCommenceANCVisits.value,
-        'selectExpectedDateOfDelivery': selectExpectedDateOfDelivery.toString(),
-      };*/
 
     List<Map<String, dynamic>> antigenAnswersList = selectReceivedAntigens
         .map((antigen) => {
               'name': antigen,
               'response':
-                  selectedReceivedAntigens.value.contains(antigen) == true
-                      ? "true"
-                      : "false"
+                  selectedReceivedAntigens.value.contains(antigen) == true ? "true" : "false"
             })
         .toList();
 

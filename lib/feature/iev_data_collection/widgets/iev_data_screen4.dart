@@ -7,7 +7,6 @@ import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collectio
 import 'package:demo_app/feature/util/LocationHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 class IEVDataScreen4 extends StatefulWidget {
@@ -40,28 +39,8 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const AppTextFieldHeader(
-                            title: 'Are there pregnant women in the household?'),
-                        5.height,
-                        Obx(() {
-                          return AncDropDownButton(
-                            hint: 'Select an answer',
-                            value: controller.selectedAreTherePregnantWomenInHousehold.value,
-                            items: controller.areTherePregnantWomenInHousehold,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Select an answer';
-                              } else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value) {
-                              controller.selectedAreTherePregnantWomenInHousehold.value = value;
-                            },
-                          );
-                        }),
-                        18.height,
-                        const AppTextFieldHeader(
-                            title: 'Number of pregnant women in the household:'),
+                            title:
+                                'How many other pregnant women are in the household (pregnant women who are not mothers)?'),
                         5.height,
                         AppTextField(
                           textFieldType: TextFieldType.NUMBER,
@@ -82,6 +61,137 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                           textStyle: const TextStyle(
                               fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                           controller: controller.numberOfPregnantWomen,
+                        ),
+                        18.height,
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const AppTextFieldHeader(title: 'First Name of pregnant woman:'),
+                                5.height,
+                                AppTextField(
+                                  textFieldType: TextFieldType.NAME,
+                                  isValidationRequired: true,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Field is required';
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  decoration: inputDecoration().copyWith(
+                                      hintText: 'Enter your answer',
+                                      hintStyle: const TextStyle(
+                                        color: Color(0xFF899197),
+                                      )),
+                                  suffixIconColor: AppPalette.white,
+                                  textStyle: const TextStyle(
+                                      fontSize: 14,
+                                      color: AppPalette.black,
+                                      fontWeight: FontWeight.w400),
+                                  controller: controller.firstname,
+                                ),
+                              ],
+                            )),
+                            18.width,
+                            Expanded(
+                                child: Column(
+                              children: [
+                                const AppTextFieldHeader(title: 'Surname of pregnant woman:'),
+                                5.height,
+                                AppTextField(
+                                  textFieldType: TextFieldType.NAME,
+                                  isValidationRequired: true,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Field is required';
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  decoration: inputDecoration().copyWith(
+                                      hintText: 'Enter your answer',
+                                      hintStyle: const TextStyle(
+                                        color: Color(0xFF899197),
+                                      )),
+                                  suffixIconColor: AppPalette.white,
+                                  textStyle: const TextStyle(
+                                      fontSize: 14,
+                                      color: AppPalette.black,
+                                      fontWeight: FontWeight.w400),
+                                  controller: controller.surname,
+                                ),
+                              ],
+                            ))
+                          ],
+                        ),
+                        18.height,
+                        const AppTextFieldHeader(title: 'How many months pregnant is the woman?'),
+                        5.height,
+                        Obx(() {
+                          return AncDropDownButton(
+                            hint: 'Select an answer',
+                            value: controller.selectedMonthsPregnant.value,
+                            items: controller.monthsPregnant,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please Select an answer';
+                              } else {
+                                return null;
+                              }
+                            },
+                            onChanged: (value) {
+                              controller.selectedMonthsPregnant.value = value;
+                            },
+                          );
+                        }),
+                        18.height,
+                        const AppTextFieldHeader(
+                            title: 'How many doses of TT/Td vaccine has the woman taken?'),
+                        5.height,
+                        Obx(() {
+                          return AncDropDownButton(
+                            hint: 'Select an answer',
+                            value: controller.selectedDosesTDVaccineTaken.value,
+                            items: controller.dosesTDVaccineTaken,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please Select an answer';
+                              } else {
+                                return null;
+                              }
+                            },
+                            onChanged: (value) {
+                              controller.selectedDosesTDVaccineTaken.value = value;
+                            },
+                          );
+                        }),
+                        18.height,
+                        const AppTextFieldHeader(
+                            title:
+                                'How many times has the woman visited the health facility for ANC?'),
+                        5.height,
+                        AppTextField(
+                          textFieldType: TextFieldType.NUMBER,
+                          isValidationRequired: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Field is required';
+                            } else {
+                              return null;
+                            }
+                          },
+                          decoration: inputDecoration().copyWith(
+                              hintText: 'Enter your answer',
+                              hintStyle: const TextStyle(
+                                color: Color(0xFF899197),
+                              )),
+                          suffixIconColor: AppPalette.white,
+                          textStyle: const TextStyle(
+                              fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                          controller: controller.numberOfAncVisitsToHealthFacility,
                         ),
                         18.height,
                         const AppTextFieldHeader(
@@ -105,73 +215,6 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                             },
                           );
                         }),
-                        if (controller.selectedOtherWomenInTheHousehold.value == 'Yes') ...[
-                          18.height,
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const AppTextFieldHeader(title: 'First Name:'),
-                                  5.height,
-                                  AppTextField(
-                                    textFieldType: TextFieldType.NAME,
-                                    isValidationRequired: true,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Field is required';
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    decoration: inputDecoration().copyWith(
-                                        hintText: 'Enter your answer',
-                                        hintStyle: const TextStyle(
-                                          color: Color(0xFF899197),
-                                        )),
-                                    suffixIconColor: AppPalette.white,
-                                    textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        color: AppPalette.black,
-                                        fontWeight: FontWeight.w400),
-                                    controller: controller.firstname,
-                                  ),
-                                ],
-                              )),
-                              18.width,
-                              Expanded(
-                                  child: Column(
-                                children: [
-                                  const AppTextFieldHeader(title: 'Surname:'),
-                                  5.height,
-                                  AppTextField(
-                                    textFieldType: TextFieldType.NAME,
-                                    isValidationRequired: true,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Field is required';
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    decoration: inputDecoration().copyWith(
-                                        hintText: 'Enter your answer',
-                                        hintStyle: const TextStyle(
-                                          color: Color(0xFF899197),
-                                        )),
-                                    suffixIconColor: AppPalette.white,
-                                    textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        color: AppPalette.black,
-                                        fontWeight: FontWeight.w400),
-                                    controller: controller.surname,
-                                  ),
-                                ],
-                              ))
-                            ],
-                          )
-                        ],
                         18.height,
                         Row(
                           children: [
@@ -179,10 +222,10 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                 child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const AppTextFieldHeader(title: 'Age: '),
+                                const AppTextFieldHeader(title: 'Firstname of the woman:'),
                                 5.height,
                                 AppTextField(
-                                  textFieldType: TextFieldType.NUMBER,
+                                  textFieldType: TextFieldType.NAME,
                                   isValidationRequired: true,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -201,7 +244,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       fontSize: 14,
                                       color: AppPalette.black,
                                       fontWeight: FontWeight.w400),
-                                  controller: controller.age,
+                                  controller: controller.firstnameWoman,
                                 ),
                               ],
                             )),
@@ -209,149 +252,33 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                             Expanded(
                                 child: Column(
                               children: [
-                                const AppTextFieldHeader(title: 'Months Pregnant:'),
+                                const AppTextFieldHeader(title: 'Surname of the woman:'),
                                 5.height,
-                                Obx(() {
-                                  return AncDropDownButton(
-                                    hint: 'Select an answer',
-                                    value: controller.selectedMonthsPregnant.value,
-                                    items: controller.monthsPregnant,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please Select an answer';
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onChanged: (value) {
-                                      controller.selectedMonthsPregnant.value = value;
-                                    },
-                                  );
-                                }),
+                                AppTextField(
+                                  textFieldType: TextFieldType.NAME,
+                                  isValidationRequired: true,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Field is required';
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  decoration: inputDecoration().copyWith(
+                                      hintText: 'Enter your answer',
+                                      hintStyle: const TextStyle(
+                                        color: Color(0xFF899197),
+                                      )),
+                                  suffixIconColor: AppPalette.white,
+                                  textStyle: const TextStyle(
+                                      fontSize: 14,
+                                      color: AppPalette.black,
+                                      fontWeight: FontWeight.w400),
+                                  controller: controller.surnameWoman,
+                                ),
                               ],
                             ))
                           ],
-                        ),
-                        18.height,
-                        const AppTextFieldHeader(title: 'Has the woman taken TT/Td vaccine?'),
-                        5.height,
-                        Obx(() {
-                          return AncDropDownButton(
-                            hint: 'Select an answer',
-                            value: controller.selectedTakenTDVaccine.value,
-                            items: controller.takenTDVaccine,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Select an answer';
-                              } else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value) {
-                              controller.selectedTakenTDVaccine.value = value;
-                            },
-                          );
-                        }),
-                        18.height,
-                        const AppTextFieldHeader(title: 'If Yes, what doses were taken?'),
-                        5.height,
-                        Obx(() {
-                          return AncDropDownButton(
-                            hint: 'Select an answer',
-                            value: controller.selectedDosesTDVaccineTaken.value,
-                            items: controller.dosesTDVaccineTaken,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Select an answer';
-                              } else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value) {
-                              controller.selectedDosesTDVaccineTaken.value = value;
-                            },
-                          );
-                        }),
-                        18.height,
-                        const AppTextFieldHeader(title: 'Has the woman commenced ANC visits?'),
-                        5.height,
-                        Obx(() {
-                          return AncDropDownButton(
-                            hint: 'Select an answer',
-                            value: controller.selectedCommenceANCVisits.value,
-                            items: controller.commenceANCVisits,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Select an answer';
-                              } else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value) {
-                              controller.selectedCommenceANCVisits.value = value;
-                            },
-                          );
-                        }),
-                        18.height,
-                        const AppTextFieldHeader(title: 'Expected Date of Delivery (EDD):'),
-                        5.height,
-                        InkWell(
-                          onTap: () async {
-                            final DateTime now = DateTime.now();
-                            var picked = await showDatePicker(
-                              context: context,
-                              initialDate: controller.expectedDateOfDelivery ?? DateTime.now(),
-                              firstDate: DateTime(1900),
-                              lastDate: now,
-                              //lastDate: DateTime(2100),
-                              builder: (context, child) {
-                                return Theme(
-                                  data: ThemeData.light().copyWith(
-                                    primaryColor: AppPalette.primary.primary400,
-                                    colorScheme: ColorScheme.light(
-                                      primary: AppPalette.primary.primary400,
-                                    ),
-                                  ),
-                                  child: child!,
-                                );
-                              },
-                            );
-                            if (picked != null && picked != controller.dateOfBirth) {
-                              var formattedDate = DateFormat('yyyy-MM-dd').format(picked);
-                              controller.setExpectedDateOfDelivery(picked);
-                              controller.setSelectedExpectedDateOfDelivery(formattedDate);
-                            }
-                          },
-                          child: Obx(() {
-                            return Container(
-                              padding:
-                                  const EdgeInsets.only(left: 8, top: 10, bottom: 10, right: 8),
-                              decoration: BoxDecoration(
-                                color: AppPalette.transparent,
-                                border: Border.all(width: 1.5, color: AppPalette.grey.gray300),
-                                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                              ),
-                              child: Row(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        controller.selectExpectedDateOfDelivery != null
-                                            ? controller.selectExpectedDateOfDelivery.toString()
-                                            : 'Select Date',
-                                        style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                                          fontSize: 13,
-                                          color: AppPalette.grey.gray600,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            );
-                          }),
                         ),
                         18.height,
                         Container(
