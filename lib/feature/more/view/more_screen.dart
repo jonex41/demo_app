@@ -1,10 +1,14 @@
 import 'package:auto_route/annotations.dart';
 import 'package:demo_app/component/button.dart';
+import 'package:demo_app/core/offline_storage.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
+import 'package:demo_app/feature/home/provider/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
@@ -81,6 +85,10 @@ class MoreScreen extends GetView<MoreController> {
                                 style: const ButtonStyle(),
                                 onPressed: () async {
                                   Navigator.pop(context);
+                                  final storageService = LocalStorageService(
+                                      key: "my_storage_key");
+                                  storageService.deleteAll();
+                                  Get.delete<HomeController>();
 
                                   appRoute.replaceAll([const LoginRoute()]);
 

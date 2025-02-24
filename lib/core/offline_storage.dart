@@ -30,6 +30,11 @@ class LocalStorageService {
     list.removeWhere((item) => item["myUniqueId"] == value);
     await saveList(list);
   }
+    Future<void> deleteAll() async {
+    //final list = await getList();
+  //  list.removeWhere((item) => item["myUniqueId"] == value);
+    await saveList([]);
+  }
 }
 
 //use cases
