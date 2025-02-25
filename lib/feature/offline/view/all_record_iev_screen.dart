@@ -95,7 +95,7 @@ class AllRecordIevScreen extends GetView<OfflineController> {
                     childAspectRatio: 1,
                     // Generate 100 Widgets that display their index in the List
                     children: [
-                      ...controller.listMap.reversed.map((e) {
+                      ...controller.listMap.value.reversed.map((e) {
                         int index = controller.listMap.indexOf(e);
                         DateTime dateTime = DateTime.parse(
                             controller.listMap[index]["submittedAt"] ??
