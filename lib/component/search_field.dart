@@ -7,10 +7,11 @@ import '../../gen/assets.gen.dart';
 import '../core/theme/new_theme/app_color.dart';
 
 class MySearchWidget extends StatelessWidget {
-  const MySearchWidget(
-      {super.key, required this.controller, required this.callBack});
+   MySearchWidget(
+      {super.key, required this.controller, required this.callBack, this.hintText});
   final TextEditingController controller;
   final Function(String) callBack;
+  String? hintText;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,7 +32,7 @@ class MySearchWidget extends StatelessWidget {
             errorBorder: InputBorder.none,
             disabledBorder: InputBorder.none,
             fillColor: AppPalette.grey.gray150,
-            hintText: "Search for users’ name",
+            hintText:hintText?? "Search for users’ name",
             hintStyle: context.theme.appTextTheme.bodyMedium16.copyWith(
                 color: AppPalette.grey.gray360, fontWeight: FontWeight.w400),
             prefixIcon: SizedBox(

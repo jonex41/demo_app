@@ -184,10 +184,9 @@ class OfflineController extends GetxController {
   void onTextChange(String value) {
     if (value.trim().isNotEmpty) {
       List<Map<String, dynamic>> results = listMapCopy.where((item) {
-        return getValueMap2(convertList(item["answers"]), "IEV001")
+        return getValueMap2(convertList(item["answers"]), "IEV008")
             .toString()
-            .toLowerCase()
-            .contains(value.trim().toLowerCase());
+            .contains(value.trim());
       }).toList();
       listMap.clear();
       listMap.addAll(results);

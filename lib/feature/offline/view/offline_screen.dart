@@ -32,7 +32,7 @@ class OfflineScreen extends GetView<OfflineController> {
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         child: Column(
           children: [
-            const AppAppBar(title: "Offline Record", showBackButton:false),
+            const AppAppBar(title: "Offline Record", showBackButton: false),
             10.height,
             Align(
               alignment: Alignment.topLeft,
@@ -95,7 +95,7 @@ class OfflineScreen extends GetView<OfflineController> {
                     childAspectRatio: 1,
                     // Generate 100 Widgets that display their index in the List
                     children: [
-                      ...controller.listMap.map((e) {
+                      ...controller.listMap.reversed.map((e) {
                         int index = controller.listMap.indexOf(e);
                         return InkWell(
                           onTap: () {
@@ -105,7 +105,7 @@ class OfflineScreen extends GetView<OfflineController> {
                           },
                           child: OfflineCard(
                             searchModel: SearchModel(
-                                title: controller.getValueMap(index, "IEV001"),
+                                title: controller.getValueMap(index, "IEV008"),
                                 time: controller.listMap[index]["time"],
                                 date: controller.listMap[index]["date"]),
                           ),

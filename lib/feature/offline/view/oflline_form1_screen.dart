@@ -121,6 +121,15 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                   controller.getValueMap(controller.selectedIndex, "IEV013")),
               _buildRow("Mother’s Phone Number",
                   controller.getValueMap(controller.selectedIndex, "IEV014")),
+                   _buildRow("Is the mother pregnant?",
+                  controller.getValueMap(controller.selectedIndex, "IEV015")),
+                    _buildRow("How many months pregnant is the woman?",
+                  controller.getValueMap(controller.selectedIndex, "IEV016")),
+                     _buildRow("How many doses of TT/Td vaccine has the woman taken?",
+                  controller.getValueMap(controller.selectedIndex, "IEV017")),
+                   _buildRow("How many times has the woman visited the health facility for ANC?",
+                  controller.getValueMap(controller.selectedIndex, "IEV018")),
+                  
             ]),
             30.height,
             AppElevatedButton(

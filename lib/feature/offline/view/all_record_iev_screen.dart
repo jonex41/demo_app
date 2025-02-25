@@ -28,7 +28,10 @@ class AllRecordIevScreen extends GetView<OfflineController> {
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         child: Column(
           children: [
-            const AppAppBar(title: "All Record"),
+            const AppAppBar(
+              title: "All Record",
+              showBackButton: true,
+            ),
             10.height,
             Align(
               alignment: Alignment.topLeft,
@@ -52,6 +55,7 @@ class AllRecordIevScreen extends GetView<OfflineController> {
             10.height,
             MySearchWidget(
               controller: controller.searchTextController,
+              hintText: "Search by house number",
               callBack: (value) {
                 controller.onTextChange(value);
               },
@@ -91,7 +95,7 @@ class AllRecordIevScreen extends GetView<OfflineController> {
                     childAspectRatio: 1,
                     // Generate 100 Widgets that display their index in the List
                     children: [
-                      ...controller.listMap.map((e) {
+                      ...controller.listMap.reversed.map((e) {
                         int index = controller.listMap.indexOf(e);
                         DateTime dateTime = DateTime.parse(
                             controller.listMap[index]["submittedAt"] ??
@@ -108,7 +112,7 @@ class AllRecordIevScreen extends GetView<OfflineController> {
                           },
                           child: OfflineCard(
                             searchModel: SearchModel(
-                                title: controller.getValueMap(index, "IEV001"),
+                                title: controller.getValueMap(index, "IEV008"),
                                 time: formattedTime,
                                 date: formattedDate),
                           ),

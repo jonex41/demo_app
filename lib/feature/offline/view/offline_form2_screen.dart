@@ -54,18 +54,17 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               _stepperHorizontal(),
               15.height,
               _buildSection("U5 Child Profile and Immunization Status"),
-              buildQuestion(
-                  "Are there children under 5 years in the household?",
+              buildQuestion("'How many under 5 children does this mother have?",
                   controller.getValueMap(controller.selectedIndex, "IEV019")),
+              buildQuestion("Name of Child",
+                  controller.getValueMap(controller.selectedIndex, "IEV020")),
               buildQuestion("Date of Birth",
                   controller.getValueMap(controller.selectedIndex, "IEV021")),
               buildQuestion("Age Category",
                   controller.getValueMap(controller.selectedIndex, "IEV022")),
-              buildQuestion("Name of Child",
-                  controller.getValueMap(controller.selectedIndex, "IEV020")),
               buildQuestion("Gender",
                   controller.getValueMap(controller.selectedIndex, "IEV023")),
-              buildQuestion("Does the child have a vaccination card?",
+              buildQuestion("Does the child have a RI vaccination card?",
                   controller.getValueMap(controller.selectedIndex, "IEV024")),
               if (controller.getValueMap(controller.selectedIndex, "IEV024") ==
                   "Yes")
@@ -74,8 +73,11 @@ class OfflineForm2Screen extends GetView<OfflineController> {
                     .map((e) => buildQuestion(e["name"], e["response"])),
               buildQuestion("Number of ANC visits made to the health facility",
                   controller.getValueMap(controller.selectedIndex, "IEV026")),
-              buildQuestion("If Yes, select received antigens",
+              buildQuestion(
+                  "On which part of the body did the child take the last vaccine?:",
                   controller.getValueMap(controller.selectedIndex, "IEV025")),
+              /*   buildQuestion("If Yes, select received antigens",
+                  controller.getValueMap(controller.selectedIndex, "IEV025")), */
               buildQuestion("Site of last vaccination",
                   controller.getValueMap(controller.selectedIndex, "IEV027")),
               _buildSection("Women of Childbearing Age (WCBA) Profile"),
@@ -86,14 +88,29 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               Row(
                 children: [
                   buildQuestion(
-                      "Name",
+                      "Name of pregnant woman",
                       controller.getValueMap(
                           controller.selectedIndex, "IEV029")),
+                  /*   20.width,
+                  buildQuestion("Surname of pregnant woman",
+                      controller.getValueMap(controller.selectedIndex, "")), */
                 ],
               ),
-              buildQuestion("Has the woman taken T.T1 vaccine?", "Yes"),
-              buildQuestion("If yes, what doses were taken?",
+              buildQuestion("How many months pregnant is the woman?",
+                  controller.getValueMap(controller.selectedIndex, "IEV030")),
+              buildQuestion(
+                  "How many doses of TT/Td vaccine has the woman taken?",
                   controller.getValueMap(controller.selectedIndex, "IEV031")),
+              buildQuestion(
+                  "How many times has the woman visited the health facility for ANC?",
+                  controller.getValueMap(controller.selectedIndex, "IEV032")),
+              buildQuestion(
+                  "Are there other women in the household aged between 15 and 55?",
+                  controller.getValueMap(controller.selectedIndex, "IEV033")),
+              buildQuestion("First Name of the woman",
+                  controller.getValueMap(controller.selectedIndex, "IEV034")),
+              buildQuestion("Location",
+                  "longitude ${controller.listMap[controller.selectedIndex]["longitude"]} latitude ${controller.listMap[controller.selectedIndex]["latitude"]}"),
 
               /*     Row(
                 children: [

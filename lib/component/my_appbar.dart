@@ -8,7 +8,7 @@ import '../core/router/locator.dart';
 
 class AppAppBar extends StatelessWidget {
   const AppAppBar(
-      {super.key, required this.title, this.textColor,this.showBackButton, this.onPress});
+      {super.key, required this.title, this.textColor,this.showBackButton= false, this.onPress});
   final String title;
   final Color? textColor;
   final bool? showBackButton;
