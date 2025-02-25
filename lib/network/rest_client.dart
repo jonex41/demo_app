@@ -38,4 +38,22 @@ abstract class RestClient {
   Future<BaseResponse> getAllDataIEV();
   @GET("Analytics/mobile/widget")
   Future<BaseResponse<ActivityModel>> getAnalytics();
+
+  @GET("National/states")
+  Future<BaseResponse<List<String>>> getStates();
+
+  @GET("National/lgas?State={state}")
+  Future<BaseResponse<List<String>>> getLga(@Path("state") state);
+
+  @GET("National/wards?Lga={lga}&State={state}")
+  Future<BaseResponse<List<String>>> getWards(
+      @Path("state") state, @Path("lga") lga);
+
+  @GET("National/settlements?Lga={lga}&Ward={ward}&State={state}&teamCode")
+  Future<BaseResponse<List<String>>> getSettlement(
+    @Path("state") state,
+    @Path("lga") lga,
+    @Path("teamCode") teamCode,
+    @Path("ward") ward,
+  );
 }

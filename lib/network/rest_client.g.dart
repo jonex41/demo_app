@@ -240,6 +240,142 @@ class _RestClient implements RestClient {
     return _value;
   }
 
+  @override
+  Future<BaseResponse<List<String>>> getStates() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<List<String>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'National/states',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BaseResponse<List<String>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json.map<String>((i) => i as String).toList()
+          : List.empty(),
+    );
+    return _value;
+  }
+
+  @override
+  Future<BaseResponse<List<String>>> getLga(dynamic state) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<List<String>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'National/lgas?State=${state}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BaseResponse<List<String>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json.map<String>((i) => i as String).toList()
+          : List.empty(),
+    );
+    return _value;
+  }
+
+  @override
+  Future<BaseResponse<List<String>>> getWards(
+    dynamic state,
+    dynamic lga,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<List<String>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'National/wards?Lga=${lga}&State=${state}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BaseResponse<List<String>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json.map<String>((i) => i as String).toList()
+          : List.empty(),
+    );
+    return _value;
+  }
+
+  @override
+  Future<BaseResponse<List<String>>> getSettlement(
+    dynamic state,
+    dynamic lga,
+    dynamic teamCode,
+    dynamic ward,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<List<String>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'National/settlements?Lga=${lga}&Ward=${ward}&State=${state}&teamCode',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BaseResponse<List<String>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json.map<String>((i) => i as String).toList()
+          : List.empty(),
+    );
+    return _value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

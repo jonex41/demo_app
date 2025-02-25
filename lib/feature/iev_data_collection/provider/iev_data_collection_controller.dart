@@ -47,7 +47,8 @@ class IEVDataCollectionController extends GetxController {
   final under5ChildrenMotherHave = TextEditingController();
 
   final stateValue = NigerianStatesAndLGA.allStates[0].obs;
-  final lgaValue = 'Select a Local Government Area'.obs;
+  final lgaValue = Rxn<String>();
+  final wardValue = Rxn<String>();
   final statesLga = Rxn<List<String>>([]);
 
   final formKeyScreen1 = GlobalKey<FormState>();
@@ -176,10 +177,13 @@ class IEVDataCollectionController extends GetxController {
   ].obs;
 
   final selectedDosesTDVaccineTakenMother = Rxn<String>();
-  final List<String> dosesTDVaccineTakenMother = ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
+  final hasWomanTTIDVaccine = Rxn<String>();
+  final List<String> dosesTDVaccineTakenMother =
+      ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
 
   final selectedDosesTDVaccineTaken = Rxn<String>();
-  final List<String> dosesTDVaccineTaken = ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
+  final List<String> dosesTDVaccineTaken =
+      ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
 
   final selectedOtherWomenInTheHousehold = Rxn<String>();
   final List<String> otherWomenInTheHousehold = [
@@ -198,6 +202,20 @@ class IEVDataCollectionController extends GetxController {
     'Yes',
     'No',
   ].obs;
+
+  @override
+  void onInit() {
+    getState();
+    var model = Get.find<HomeController>().loginModel.value;
+    nameOfEnumerator.text = "${model?.firstName} ${model?.lastName}";
+    phoneNumber.text = model?.phone ?? "";
+    super.onInit();
+  }
+
+  final listState = <String>[].obs;
+  final listWard = <String>[].obs;
+  final listSettlement = <String>[].obs;
+  final listLga = <String>[].obs;
 
   String title() {
     if (currentScreen.value == 1) {
@@ -238,7 +256,7 @@ class IEVDataCollectionController extends GetxController {
       {'questionId': 'IEV003', 'answerText': teamCode.text},
       {'questionId': 'IEV004', 'answerText': stateValue.value},
       {'questionId': 'IEV005', 'answerText': lgaValue.value},
-      {'questionId': 'IEV006', 'answerText': ward.text},
+      {'questionId': 'IEV006', 'answerText': wardValue.value},
       {'questionId': 'IEV007', 'answerText': selectedSettlement.value},
       {'questionId': 'IEV008', 'answerText': houseNumber.text},
       {'questionId': 'IEV010', 'answerText': headOfHouseHoldName.text},
@@ -249,31 +267,61 @@ class IEVDataCollectionController extends GetxController {
 
       {'questionId': 'IEV014', 'answerText': mothersPhoneNumber.text},
       {'questionId': 'IEV015', 'answerText': selectedIsMotherPregnant.value},
-      {'questionId': 'IEV016', 'answerText': selectedMonthsPregnantMother.value},
-      {'questionId': 'IEV017', 'answerText': selectedDosesTDVaccineTakenMother.value},
-      {'questionId': 'IEV018', 'answerText': numberOfAncVisitsToHealthFacilityMother.text},
+      {
+        'questionId': 'IEV016',
+        'answerText': selectedMonthsPregnantMother.value
+      },
+      {
+        'questionId': 'IEV017',
+        'answerText': selectedDosesTDVaccineTakenMother.value
+      },
+      {
+        'questionId': 'IEV018',
+        'answerText': numberOfAncVisitsToHealthFacilityMother.text
+      },
       {'questionId': 'IEV019', 'answerText': under5ChildrenMotherHave.text},
       {'questionId': 'IEV020', 'answerText': nameofChild.text},
       {'questionId': 'IEV021', 'answerText': selectDateOfBirth.toString()},
       {'questionId': 'IEV022', 'answerText': selectedAgeCategory.value},
       {'questionId': 'IEV023', 'answerText': selectedGender.value},
-      {'questionId': 'IEV024', 'answerText': selectedHaveRiVaccinationCard.value},
-      {'questionId': 'IEV026', 'answerText': howManyVisitChildHadToHealthFacility.text},
+      {
+        'questionId': 'IEV024',
+        'answerText': selectedHaveRiVaccinationCard.value
+      },
+      {
+        'questionId': 'IEV026',
+        'answerText': howManyVisitChildHadToHealthFacility.text
+      },
       {'questionId': 'IEV027', 'answerText': siteOfLastVaccine.text},
       {'questionId': 'IEV028', 'answerText': numberOfPregnantWomen.text},
-      {'questionId': 'IEV029', 'answerText': '${firstname.text} ${surname.text}'},
+      {
+        'questionId': 'IEV029',
+        'answerText': '${firstname.text} ${surname.text}'
+      },
       {'questionId': 'IEV030', 'answerText': selectedMonthsPregnant.value},
       {'questionId': 'IEV031', 'answerText': selectedDosesTDVaccineTaken.value},
-      {'questionId': 'IEV032', 'answerText': numberOfAncVisitsToHealthFacility.text},
-      {'questionId': 'IEV033', 'answerText': selectedOtherWomenInTheHousehold.value},
-      {'questionId': 'IEV034', 'answerText': '${firstnameWoman.text} ${surnameWoman.text}'},
+      {
+        'questionId': 'IEV032',
+        'answerText': numberOfAncVisitsToHealthFacility.text
+      },
+      {
+        'questionId': 'IEV033',
+        'answerText': selectedOtherWomenInTheHousehold.value
+      },
+      {
+        'questionId': 'IEV034',
+        'answerText': '${firstnameWoman.text} ${surnameWoman.text}'
+      },
+      {'questionId': 'IEV036', 'answerText': hasWomanTTIDVaccine.value},
     ];
 
     List<Map<String, dynamic>> antigenAnswersList = selectReceivedAntigens
         .map((antigen) => {
               'name': antigen,
               'response':
-                  selectedReceivedAntigens.value.contains(antigen) == true ? "true" : "false"
+                  selectedReceivedAntigens.value.contains(antigen) == true
+                      ? "true"
+                      : "false"
             })
         .toList();
 
@@ -286,6 +334,44 @@ class IEVDataCollectionController extends GetxController {
       'antigenAnswers': antigenAnswersList,
     };
     return iEVData;
+  }
+
+  void getState() async {
+    List<String> states = await networkService.getState() ?? [];
+
+    listState.clear();
+
+    states.insert(0, "Select State");
+    stateValue.value = "Select State";
+
+    listState.assignAll(states ?? []);
+  }
+
+  void getLga(String state) async {
+    var states = await networkService.getLga(state);
+
+    // listLga.clear();
+    states!.insert(0, "Select Lga");
+    lgaValue.value = states[0];
+    listLga.assignAll(states ?? []);
+  }
+
+  void getWard(String state, String lga) async {
+    var states = await networkService.getwards(state, lga);
+
+    // listWard.clear();
+    states!.insert(0, "Select Ward");
+    wardValue.value = states[0];
+    listWard.assignAll(states ?? []);
+  }
+
+  void getSettlement(
+      String state, String lga, String ward, String teamCode) async {
+    var states = await networkService.getSettlement(state, lga, ward, teamCode);
+
+    listSettlement.clear();
+    states!.insert(0, "Select Settlement");
+    listSettlement.assignAll(states ?? []);
   }
 
   Future<void> submitData(BuildContext context) async {

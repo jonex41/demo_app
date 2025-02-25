@@ -17,7 +17,8 @@ class IEVDataScreen1 extends StatefulWidget {
 }
 
 class _IEVDataScreen1State extends State<IEVDataScreen1> {
-  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller =
+      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +45,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                       AppTextField(
                         textFieldType: TextFieldType.NAME,
                         isValidationRequired: true,
+                        readOnly: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Field is required';
@@ -58,7 +60,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 14,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: controller.nameOfEnumerator,
                       ),
                       18.height,
@@ -67,6 +71,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                       AppTextField(
                         textFieldType: TextFieldType.PHONE,
                         isValidationRequired: true,
+                        readOnly: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Field is required';
@@ -81,7 +86,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 14,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: controller.phoneNumber,
                       ),
                       18.height,
@@ -104,7 +111,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 14,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: controller.teamCode,
                       ),
                       18.height,
@@ -122,7 +131,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   AncDropDownButton(
                                     hint: 'Select a State',
                                     value: controller.stateValue.value,
-                                    items: NigerianStatesAndLGA.allStates,
+                                    items: controller.listState.value,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Please Select State';
@@ -131,13 +140,19 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                       }
                                     },
                                     onChanged: (value) {
-                                      controller.lgaValue.value = 'Select a Local Government Area';
-                                      controller.statesLga.value?.clear();
-                                      controller.statesLga.value?.add(controller.lgaValue.value);
+                                      /* controller.lgaValue.value =
+                                          'Select a Local Government Area'; */
+                                      /*   controller.statesLga.value?.clear();
                                       controller.statesLga.value
-                                          ?.addAll(NigerianStatesAndLGA.getStateLGAs(value));
+                                          ?.add(controller.lgaValue.value!);
+                                      controller.statesLga.value?.addAll(
+                                          NigerianStatesAndLGA.getStateLGAs(
+                                              value)); */
 
                                       controller.setNgState(value);
+                                      // controller.lgaValue.value = "";
+                                      controller
+                                          .getLga(controller.stateValue.value);
                                     },
                                   ),
                                 ],
@@ -154,9 +169,10 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   AncDropDownButton(
                                     hint: 'Select a Local Government Area',
                                     value: controller.lgaValue.value,
-                                    items: controller.statesLga.value,
+                                    items: controller.listLga,
                                     validator: (value) {
-                                      if (value == 'Select a Local Government Area' ||
+                                      if (value ==
+                                              'Select a Local Government Area' ||
                                           value!.isEmpty) {
                                         return 'Please Select Local Government Area';
                                       } else {
@@ -165,6 +181,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                     },
                                     onChanged: (value) {
                                       controller.setNgLGA(value);
+                                      // controller.wardValue.value = "";
+                                      controller.getWard(
+                                          controller.stateValue.value, value);
                                     },
                                   ),
                                 ],
@@ -182,7 +201,32 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                               children: [
                                 const AppTextFieldHeader(title: 'Ward'),
                                 5.height,
-                                AppTextField(
+                                Obx(
+                                  () => AncDropDownButton(
+                                    hint: 'Select a Ward',
+                                    value: controller.wardValue.value,
+                                    items: controller.listWard.value,
+                                    validator: (value) {
+                                      if (value == 'Select a Ward' ||
+                                          value!.isEmpty) {
+                                        return 'Please Select Ward';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onChanged: (value) {
+                                      // controller.listWard.value = value;
+                                      controller.wardValue.value = value;
+
+                                      controller.getSettlement(
+                                          controller.stateValue.value,
+                                          controller.lgaValue.value!,
+                                          value,
+                                          "");
+                                    },
+                                  ),
+                                ),
+                                /*  AppTextField(
                                   textFieldType: TextFieldType.OTHER,
                                   isValidationRequired: true,
                                   validator: (value) {
@@ -203,7 +247,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                       color: AppPalette.black,
                                       fontWeight: FontWeight.w400),
                                   controller: controller.ward,
-                                ),
+                                ), */
                               ],
                             ),
                           ),
@@ -211,7 +255,8 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           Expanded(
                             child: Column(
                               children: [
-                                const AppTextFieldHeader(title: 'House Number:'),
+                                const AppTextFieldHeader(
+                                    title: 'House Number:'),
                                 5.height,
                                 AppTextField(
                                   textFieldType: TextFieldType.OTHER,
@@ -247,7 +292,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         return AncDropDownButton(
                           hint: 'Select a Settlement',
                           value: controller.selectedSettlement.value,
-                          items: controller.settlement,
+                          items: controller.listSettlement.value,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please Select Settlement';

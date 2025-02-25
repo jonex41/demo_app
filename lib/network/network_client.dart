@@ -93,4 +93,38 @@ class NetworkService extends GetxService {
     }
     return response.result;
   }
+  
+  Future<List<String>?> getState() async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getStates();
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result;
+  }
+
+   Future<List<String>?> getLga(String state) async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getLga(state);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result;
+  }
+     Future<List<String>?> getwards(String state, String lga) async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getWards(state, lga);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result;
+  }
+    Future<List<String>?> getSettlement(String state, String lga, String ward, String teamCode) async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getSettlement(state, lga, ward, teamCode);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result;
+  }
 }

@@ -148,6 +148,29 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                           );
                         }),
                         18.height,
+                       
+                        const AppTextFieldHeader(
+                            title:
+                                'Has the woman taken TT/Td vaccine?'),
+                        5.height,
+                          Obx(() {
+                          return AncDropDownButton(
+                            hint: 'Select an answer',
+                            value: controller.hasWomanTTIDVaccine.value,
+                            items: controller.isMotherPregnant,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please Select an answer';
+                              } else {
+                                return null;
+                              }
+                            },
+                            onChanged: (value) {
+                              controller.hasWomanTTIDVaccine.value = value;
+                            },
+                          );
+                        }),
+                        18.height,
                         const AppTextFieldHeader(
                             title: 'How many doses of TT/Td vaccine has the woman taken?'),
                         5.height,
