@@ -66,6 +66,7 @@ class LoginController extends GetxController {
       if (authResponse != null) {
         loginModel.value = authResponse;
         storageService.saveHasLogin(true);
+        storageService.saveUser(loginModel.value!);
 
         gotoHomeScreen(context);
       } else {

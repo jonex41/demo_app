@@ -1,3 +1,4 @@
+import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
 import 'package:demo_app/feature/login/provider/login_controller.dart';
@@ -10,7 +11,7 @@ import '../../../core/router/locator.dart';
 import '../../../core/router/router.dart';
 
 class MoreController extends GetxController {
-
+ final storageService = Get.find<StorageService>();
 
   final formKeyEditProfile = GlobalKey<FormState>();
 
@@ -22,7 +23,7 @@ class MoreController extends GetxController {
   final loginModel = Rxn<LoginResponse?>();
   @override
   void onInit() {
-    loginModel.value = Get.find<LoginController>().loginModel.value;
+      loginModel.value = storageService.getUser();
 
     super.onInit();
   }

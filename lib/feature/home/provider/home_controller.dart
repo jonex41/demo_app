@@ -41,7 +41,7 @@ class HomeController extends GetxController {
   void onInit() {
     // TODO: implement onInit
 //   userModel.value = storageService.getUser();
-    loginModel.value = Get.find<LoginController>().loginModel.value;
+    loginModel.value = storageService.getUser();
     getLocal();
     getDataOnline();
     selectedTab.listen((value) {

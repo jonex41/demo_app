@@ -1,3 +1,4 @@
+import 'package:demo_app/model/login/login_res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -233,14 +234,14 @@ class StorageService extends GetxService {
     return DateTime.fromMillisecondsSinceEpoch(millis);
   }
 
-  void saveUser(Contact contact) {
+  void saveUser(LoginResponse contact) {
     final contactJson = contact.toJson();
     _saveJson(_keyContact, contactJson);
   }
 
-  Contact? getUser() {
+  LoginResponse? getUser() {
     final userJson = _readJson(_keyContact);
-    return userJson == null ? null : Contact.fromJson(userJson);
+    return userJson == null ? null : LoginResponse.fromJson(userJson);
   }
 
   void saveHasFreeSpin(bool freeSpin) {
