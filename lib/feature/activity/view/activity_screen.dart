@@ -66,10 +66,9 @@ class ActivityScreen extends GetView<ActivityController> {
                           const Color(0xffEEFFF9),
                           const Color(0xff2fcf9733).withOpacity(0.2),
                           "Recent\nSubmissions",
-                          Get.find<HomeController>()
-                              .submittedList
-                              .value
-                              .toString(),
+                          controller.model.value?.recentSubmissions
+                                  .toString() ??
+                              "0",
                           Assets.icons.smallPaper.path),
                     ),
                   ),
@@ -103,13 +102,15 @@ class ActivityScreen extends GetView<ActivityController> {
                     onTap: () {
                       //  controller.gotoSchedule();
                     },
-                    child: _myContainer(
-                        context,
-                        const Color(0xffFFF7F2),
-                        const Color(0xff2fcf9733).withOpacity(0.2),
-                        "Households",
-                        "0",
-                        Assets.icons.smallCalendar.path),
+                    child: Obx(
+                      () => _myContainer(
+                          context,
+                          const Color(0xffFFF7F2),
+                          const Color(0xff2fcf9733).withOpacity(0.2),
+                          "Households",
+                          controller.model.value?.households.toString() ?? "0",
+                          Assets.icons.smallCalendar.path),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -117,13 +118,17 @@ class ActivityScreen extends GetView<ActivityController> {
                     onTap: () {
                       // controller.gotoDelivery();
                     },
-                    child: _myContainer(
-                        context,
-                        const Color(0xffEEFFF9),
-                        const Color(0xff2fcf9733).withOpacity(0.2),
-                        "Total Pregnant\nWomen",
-                        "0",
-                        Assets.icons.smallPaper.path),
+                    child: Obx(
+                      () => _myContainer(
+                          context,
+                          const Color(0xffEEFFF9),
+                          const Color(0xff2fcf9733).withOpacity(0.2),
+                          "Total Pregnant\nWomen",
+                          controller.model.value?.totalPregnantWomen
+                                  .toString() ??
+                              "0",
+                          Assets.icons.smallPaper.path),
+                    ),
                   ),
                 ),
               ],

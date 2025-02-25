@@ -7,6 +7,7 @@ part 'login_res.g.dart';
 class LoginResponse with _$LoginResponse {
   const factory LoginResponse({
     required String? id,
+    required String? userId,
     required String? firstName,
     required String? lastName,
     required String? phone,

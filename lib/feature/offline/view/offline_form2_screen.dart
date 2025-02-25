@@ -98,6 +98,8 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               ),
               buildQuestion("How many months pregnant is the woman?",
                   controller.getValueMap(controller.selectedIndex, "IEV030")),
+                   buildQuestion("Has the woman taken TT/Td vaccine?",
+                      controller.getValueMap(controller.selectedIndex, "IEV036")),
               buildQuestion(
                   "How many doses of TT/Td vaccine has the woman taken?",
                   controller.getValueMap(controller.selectedIndex, "IEV031")),

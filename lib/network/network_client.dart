@@ -1,4 +1,5 @@
 import 'package:demo_app/model/base_res/base_response.dart';
+import 'package:demo_app/model/home/activity_model.dart';
 import 'package:demo_app/model/iev_response/IevResponse.dart';
 import 'package:demo_app/model/login/forgot_password_model.dart';
 import 'package:demo_app/model/login/login_res.dart';
@@ -74,11 +75,20 @@ class NetworkService extends GetxService {
     if (response.statusCode! != 200) throw Exception(response.message);
     return true;
   }
-  
+
   Future<List<dynamic>> getAllIEVData() async {
     //final token = storageService.getToken();
     final response = await _restClient.getAllDataIEV();
     if (response.statusCode != 201) {
+      throw Exception(response.message);
+    }
+    return response.result;
+  }
+
+  Future<ActivityModel?> getAnalytics() async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getAnalytics();
+    if (response.statusCode != 200) {
       throw Exception(response.message);
     }
     return response.result;

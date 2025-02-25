@@ -21,6 +21,7 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LoginResponse {
   String? get id => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
   String? get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $LoginResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
+      String? userId,
       String? firstName,
       String? lastName,
       String? phone,
@@ -72,6 +74,7 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
   @override
   $Res call({
     Object? id = freezed,
+    Object? userId = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? phone = freezed,
@@ -87,6 +90,10 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String?,
       firstName: freezed == firstName
           ? _value.firstName
@@ -142,6 +149,7 @@ abstract class _$$LoginResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? id,
+      String? userId,
       String? firstName,
       String? lastName,
       String? phone,
@@ -166,6 +174,7 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? userId = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? phone = freezed,
@@ -181,6 +190,10 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String?,
       firstName: freezed == firstName
           ? _value.firstName
@@ -231,6 +244,7 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
 class _$LoginResponseImpl implements _LoginResponse {
   const _$LoginResponseImpl(
       {required this.id,
+      required this.userId,
       required this.firstName,
       required this.lastName,
       required this.phone,
@@ -247,6 +261,8 @@ class _$LoginResponseImpl implements _LoginResponse {
 
   @override
   final String? id;
+  @override
+  final String? userId;
   @override
   final String? firstName;
   @override
@@ -270,7 +286,7 @@ class _$LoginResponseImpl implements _LoginResponse {
 
   @override
   String toString() {
-    return 'LoginResponse(id: $id, firstName: $firstName, lastName: $lastName, phone: $phone, gender: $gender, state: $state, lga: $lga, ward: $ward, settlement: $settlement, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'LoginResponse(id: $id, userId: $userId, firstName: $firstName, lastName: $lastName, phone: $phone, gender: $gender, state: $state, lga: $lga, ward: $ward, settlement: $settlement, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -279,6 +295,7 @@ class _$LoginResponseImpl implements _LoginResponse {
         (other.runtimeType == runtimeType &&
             other is _$LoginResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -298,8 +315,8 @@ class _$LoginResponseImpl implements _LoginResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, firstName, lastName, phone,
-      gender, state, lga, ward, settlement, accessToken, refreshToken);
+  int get hashCode => Object.hash(runtimeType, id, userId, firstName, lastName,
+      phone, gender, state, lga, ward, settlement, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -318,6 +335,7 @@ class _$LoginResponseImpl implements _LoginResponse {
 abstract class _LoginResponse implements LoginResponse {
   const factory _LoginResponse(
       {required final String? id,
+      required final String? userId,
       required final String? firstName,
       required final String? lastName,
       required final String? phone,
@@ -334,6 +352,8 @@ abstract class _LoginResponse implements LoginResponse {
 
   @override
   String? get id;
+  @override
+  String? get userId;
   @override
   String? get firstName;
   @override

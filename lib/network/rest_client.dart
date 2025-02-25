@@ -1,4 +1,5 @@
 import 'package:demo_app/model/base_res/base_response.dart';
+import 'package:demo_app/model/home/activity_model.dart';
 import 'package:demo_app/model/iev_response/IevResponse.dart';
 import 'package:demo_app/model/login/forgot_password_model.dart';
 import 'package:demo_app/model/login/login_res.dart';
@@ -35,4 +36,6 @@ abstract class RestClient {
 
   @GET("IEV/data")
   Future<BaseResponse> getAllDataIEV();
+  @GET("Analytics/mobile/widget")
+  Future<BaseResponse<ActivityModel>> getAnalytics();
 }

@@ -9,6 +9,7 @@ part of 'login_res.dart';
 _$LoginResponseImpl _$$LoginResponseImplFromJson(Map<String, dynamic> json) =>
     _$LoginResponseImpl(
       id: json['id'] as String?,
+      userId: json['userId'] as String?,
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
       phone: json['phone'] as String?,
@@ -24,6 +25,7 @@ _$LoginResponseImpl _$$LoginResponseImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$LoginResponseImplToJson(_$LoginResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'userId': instance.userId,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'phone': instance.phone,
