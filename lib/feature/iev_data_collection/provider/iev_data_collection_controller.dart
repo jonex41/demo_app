@@ -179,12 +179,10 @@ class IEVDataCollectionController extends GetxController {
 
   final selectedDosesTDVaccineTakenMother = Rxn<String>();
   final hasWomanTTIDVaccine = Rxn<String>();
-  final List<String> dosesTDVaccineTakenMother =
-      ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
+  final List<String> dosesTDVaccineTakenMother = ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
 
   final selectedDosesTDVaccineTaken = Rxn<String>();
-  final List<String> dosesTDVaccineTaken =
-      ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
+  final List<String> dosesTDVaccineTaken = ['TT1', 'TT2', 'TT3', 'TT4', 'TT5', 'None'].obs;
 
   final selectedOtherWomenInTheHousehold = Rxn<String>();
   final List<String> otherWomenInTheHousehold = [
@@ -256,10 +254,10 @@ class IEVDataCollectionController extends GetxController {
       {'questionId': "IEV002", 'answerText': phoneNumber.text},
       {'questionId': "IEV002", 'answerText': phoneNumber.text},
       {'questionId': 'IEV003', 'answerText': teamCode.text},
-      {'questionId': 'IEV004', 'answerText': stateValue.value},
-      {'questionId': 'IEV005', 'answerText': lgaValue.value},
-      {'questionId': 'IEV006', 'answerText': wardValue.value},
-      {'questionId': 'IEV007', 'answerText': selectedSettlement.value},
+      {'questionId': 'IEV004', 'answerText': stateValue.value ?? ''},
+      {'questionId': 'IEV005', 'answerText': lgaValue.value ?? ''},
+      {'questionId': 'IEV006', 'answerText': wardValue.value ?? ''},
+      {'questionId': 'IEV007', 'answerText': selectedSettlement.value ?? ''},
       {'questionId': 'IEV008', 'answerText': houseNumber.text},
       {'questionId': 'IEV010', 'answerText': headOfHouseHoldName.text},
       {'questionId': 'IEV011', 'answerText': headOfHousePhoneNumber.text},
@@ -268,62 +266,33 @@ class IEVDataCollectionController extends GetxController {
       {'questionId': 'IEV013', 'answerText': mothersName.text},
 
       {'questionId': 'IEV014', 'answerText': mothersPhoneNumber.text},
-      {'questionId': 'IEV015', 'answerText': selectedIsMotherPregnant.value},
-      {
-        'questionId': 'IEV016',
-        'answerText': selectedMonthsPregnantMother.value
-      },
-      {
-        'questionId': 'IEV017',
-        'answerText': selectedDosesTDVaccineTakenMother.value
-      },
-      {
-        'questionId': 'IEV018',
-        'answerText': numberOfAncVisitsToHealthFacilityMother.text
-      },
+      {'questionId': 'IEV015', 'answerText': selectedIsMotherPregnant.value ?? ''},
+      {'questionId': 'IEV016', 'answerText': selectedMonthsPregnantMother.value ?? ''},
+      {'questionId': 'IEV017', 'answerText': selectedDosesTDVaccineTakenMother.value ?? ''},
+      {'questionId': 'IEV018', 'answerText': numberOfAncVisitsToHealthFacilityMother.text},
       {'questionId': 'IEV019', 'answerText': under5ChildrenMotherHave.text},
       {'questionId': 'IEV020', 'answerText': nameofChild.text},
       {'questionId': 'IEV021', 'answerText': selectDateOfBirth.toString()},
-      {'questionId': 'IEV022', 'answerText': selectedAgeCategory.value},
-      {'questionId': 'IEV023', 'answerText': selectedGender.value},
-      {
-        'questionId': 'IEV024',
-        'answerText': selectedHaveRiVaccinationCard.value
-      },
-      {
-        'questionId': 'IEV026',
-        'answerText': howManyVisitChildHadToHealthFacility.text
-      },
+      {'questionId': 'IEV022', 'answerText': selectedAgeCategory.value ?? ''},
+      {'questionId': 'IEV023', 'answerText': selectedGender.value ?? ''},
+      {'questionId': 'IEV024', 'answerText': selectedHaveRiVaccinationCard.value ?? ''},
+      {'questionId': 'IEV026', 'answerText': howManyVisitChildHadToHealthFacility.text},
       {'questionId': 'IEV027', 'answerText': siteOfLastVaccine.text},
       {'questionId': 'IEV028', 'answerText': numberOfPregnantWomen.text},
-      {
-        'questionId': 'IEV029',
-        'answerText': '${firstname.text} ${surname.text}'
-      },
-      {'questionId': 'IEV030', 'answerText': selectedMonthsPregnant.value},
-      {'questionId': 'IEV031', 'answerText': selectedDosesTDVaccineTaken.value},
-      {
-        'questionId': 'IEV032',
-        'answerText': numberOfAncVisitsToHealthFacility.text
-      },
-      {
-        'questionId': 'IEV033',
-        'answerText': selectedOtherWomenInTheHousehold.value
-      },
-      {
-        'questionId': 'IEV034',
-        'answerText': '${firstnameWoman.text} ${surnameWoman.text}'
-      },
-      {'questionId': 'IEV036', 'answerText': hasWomanTTIDVaccine.value},
+      {'questionId': 'IEV029', 'answerText': '${firstname.text} ${surname.text}'},
+      {'questionId': 'IEV030', 'answerText': selectedMonthsPregnant.value ?? ''},
+      {'questionId': 'IEV031', 'answerText': selectedDosesTDVaccineTaken.value ?? ''},
+      {'questionId': 'IEV032', 'answerText': numberOfAncVisitsToHealthFacility.text},
+      {'questionId': 'IEV033', 'answerText': selectedOtherWomenInTheHousehold.value ?? ''},
+      {'questionId': 'IEV034', 'answerText': '${firstnameWoman.text} ${surnameWoman.text}'},
+      {'questionId': 'IEV036', 'answerText': hasWomanTTIDVaccine.value ?? ''},
     ];
 
     List<Map<String, dynamic>> antigenAnswersList = selectReceivedAntigens
         .map((antigen) => {
               'name': antigen,
               'response':
-                  selectedReceivedAntigens.value.contains(antigen) == true
-                      ? "true"
-                      : "false"
+                  selectedReceivedAntigens.value.contains(antigen) == true ? "true" : "false"
             })
         .toList();
 
@@ -367,8 +336,7 @@ class IEVDataCollectionController extends GetxController {
     listWard.assignAll(states ?? []);
   }
 
-  void getSettlement(
-      String state, String lga, String ward, String teamCode) async {
+  void getSettlement(String state, String lga, String ward, String teamCode) async {
     var states = await networkService.getSettlement(state, lga, ward, teamCode);
 
     // listSettlement.clear();
