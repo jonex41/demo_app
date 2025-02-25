@@ -17,3 +17,17 @@ class ActivityModel with _$ActivityModel {
   // Map<String, dynamic> toJsodsn() => this.toJson();
 }
 
+
+@freezed
+class SettlementModel with _$SettlementModel {
+  const factory SettlementModel({
+   
+    String? name,
+    String? teamCode,
+  }) = _SettlementModel;
+
+  factory SettlementModel.fromJson(Map<String, dynamic> json) =>
+      _$SettlementModelFromJson(json);
+
+  // Map<String, dynamic> toJsodsn() => this.toJson();
+}

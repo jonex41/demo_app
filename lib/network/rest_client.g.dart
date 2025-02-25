@@ -340,25 +340,25 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<BaseResponse<List<String>>> getSettlement(
+  Future<BaseResponse<List<SettlementModel>>> getSettlement(
     dynamic state,
     dynamic lga,
-    dynamic teamCode,
     dynamic ward,
+    dynamic teamCode,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<List<String>>>(Options(
+        _setStreamType<BaseResponse<List<SettlementModel>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'National/settlements?Lga=${lga}&Ward=${ward}&State=${state}&teamCode',
+              'National/settlements?Lga=${lga}&Ward=${ward}&State=${state}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -367,10 +367,13 @@ class _RestClient implements RestClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = BaseResponse<List<String>>.fromJson(
+    final _value = BaseResponse<List<SettlementModel>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
-          ? json.map<String>((i) => i as String).toList()
+          ? json
+              .map<SettlementModel>(
+                  (i) => SettlementModel.fromJson(i as Map<String, dynamic>))
+              .toList()
           : List.empty(),
     );
     return _value;

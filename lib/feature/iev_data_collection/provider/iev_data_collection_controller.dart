@@ -6,6 +6,7 @@ import 'package:demo_app/feature/login/provider/login_controller.dart';
 import 'package:demo_app/feature/offline/provider/offline_controller.dart';
 import 'package:demo_app/feature/util/nigerian_states_and_lga.dart';
 import 'package:demo_app/feature/util/utils.dart';
+import 'package:demo_app/model/home/activity_model.dart';
 import 'package:demo_app/network/network_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -215,6 +216,7 @@ class IEVDataCollectionController extends GetxController {
   final listState = <String>[].obs;
   final listWard = <String>[].obs;
   final listSettlement = <String>[].obs;
+  final listSettlementModel = <SettlementModel>[];
   final listLga = <String>[].obs;
 
   String title() {
@@ -369,9 +371,11 @@ class IEVDataCollectionController extends GetxController {
       String state, String lga, String ward, String teamCode) async {
     var states = await networkService.getSettlement(state, lga, ward, teamCode);
 
-    listSettlement.clear();
-    states!.insert(0, "Select Settlement");
-    listSettlement.assignAll(states ?? []);
+    // listSettlement.clear();
+    List<String> mylistSettle = [];
+    mylistSettle = states!.map((user) => user.name ?? "").toList() ?? [];
+    mylistSettle.insert(0, "Select Settlement");
+    listSettlement.assignAll(mylistSettle);
   }
 
   Future<void> submitData(BuildContext context) async {

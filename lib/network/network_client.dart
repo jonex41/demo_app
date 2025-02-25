@@ -119,7 +119,7 @@ class NetworkService extends GetxService {
     }
     return response.result;
   }
-    Future<List<String>?> getSettlement(String state, String lga, String ward, String teamCode) async {
+    Future<List<SettlementModel>?> getSettlement(String state, String lga, String ward, String teamCode) async {
     //final token = storageService.getToken();
     final response = await _restClient.getSettlement(state, lga, ward, teamCode);
     if (response.statusCode != 200) {

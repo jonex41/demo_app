@@ -86,7 +86,7 @@ class OfflineController extends GetxController {
 
   void getLocal() async {
     final storageService = LocalStorageService(key: "my_storage_key");
-    listMap.value.clear();
+    listMap.clear();
     print("i am in reload screen");
     listMap.value = await storageService.getList();
     listMap.value.assignAll(await storageService.getList());

@@ -217,11 +217,13 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                     onChanged: (value) {
                                       // controller.listWard.value = value;
                                       controller.wardValue.value = value;
+                                      controller.selectedSettlement.value =
+                                          "Select Settlement";
 
                                       controller.getSettlement(
                                           controller.stateValue.value,
                                           controller.lgaValue.value!,
-                                          value,
+                                          controller.wardValue.value!,
                                           "");
                                     },
                                   ),
@@ -292,7 +294,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         return AncDropDownButton(
                           hint: 'Select a Settlement',
                           value: controller.selectedSettlement.value,
-                          items: controller.listSettlement.value,
+                          items: controller.listSettlement.value ?? [],
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please Select Settlement';

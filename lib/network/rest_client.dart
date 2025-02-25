@@ -49,11 +49,11 @@ abstract class RestClient {
   Future<BaseResponse<List<String>>> getWards(
       @Path("state") state, @Path("lga") lga);
 
-  @GET("National/settlements?Lga={lga}&Ward={ward}&State={state}&teamCode")
-  Future<BaseResponse<List<String>>> getSettlement(
+  @GET("National/settlements?Lga={lga}&Ward={ward}&State={state}")
+  Future<BaseResponse<List<SettlementModel>>> getSettlement(
     @Path("state") state,
     @Path("lga") lga,
-    @Path("teamCode") teamCode,
     @Path("ward") ward,
+    @Path("teamCode") teamCode,
   );
 }

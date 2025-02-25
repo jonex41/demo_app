@@ -191,3 +191,158 @@ abstract class _ActivityModel implements ActivityModel {
   _$$ActivityModelImplCopyWith<_$ActivityModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+SettlementModel _$SettlementModelFromJson(Map<String, dynamic> json) {
+  return _SettlementModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SettlementModel {
+  String? get name => throw _privateConstructorUsedError;
+  String? get teamCode => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SettlementModelCopyWith<SettlementModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SettlementModelCopyWith<$Res> {
+  factory $SettlementModelCopyWith(
+          SettlementModel value, $Res Function(SettlementModel) then) =
+      _$SettlementModelCopyWithImpl<$Res, SettlementModel>;
+  @useResult
+  $Res call({String? name, String? teamCode});
+}
+
+/// @nodoc
+class _$SettlementModelCopyWithImpl<$Res, $Val extends SettlementModel>
+    implements $SettlementModelCopyWith<$Res> {
+  _$SettlementModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? teamCode = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      teamCode: freezed == teamCode
+          ? _value.teamCode
+          : teamCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SettlementModelImplCopyWith<$Res>
+    implements $SettlementModelCopyWith<$Res> {
+  factory _$$SettlementModelImplCopyWith(_$SettlementModelImpl value,
+          $Res Function(_$SettlementModelImpl) then) =
+      __$$SettlementModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? name, String? teamCode});
+}
+
+/// @nodoc
+class __$$SettlementModelImplCopyWithImpl<$Res>
+    extends _$SettlementModelCopyWithImpl<$Res, _$SettlementModelImpl>
+    implements _$$SettlementModelImplCopyWith<$Res> {
+  __$$SettlementModelImplCopyWithImpl(
+      _$SettlementModelImpl _value, $Res Function(_$SettlementModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? teamCode = freezed,
+  }) {
+    return _then(_$SettlementModelImpl(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      teamCode: freezed == teamCode
+          ? _value.teamCode
+          : teamCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SettlementModelImpl implements _SettlementModel {
+  const _$SettlementModelImpl({this.name, this.teamCode});
+
+  factory _$SettlementModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SettlementModelImplFromJson(json);
+
+  @override
+  final String? name;
+  @override
+  final String? teamCode;
+
+  @override
+  String toString() {
+    return 'SettlementModel(name: $name, teamCode: $teamCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SettlementModelImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.teamCode, teamCode) ||
+                other.teamCode == teamCode));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, teamCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SettlementModelImplCopyWith<_$SettlementModelImpl> get copyWith =>
+      __$$SettlementModelImplCopyWithImpl<_$SettlementModelImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SettlementModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SettlementModel implements SettlementModel {
+  const factory _SettlementModel({final String? name, final String? teamCode}) =
+      _$SettlementModelImpl;
+
+  factory _SettlementModel.fromJson(Map<String, dynamic> json) =
+      _$SettlementModelImpl.fromJson;
+
+  @override
+  String? get name;
+  @override
+  String? get teamCode;
+  @override
+  @JsonKey(ignore: true)
+  _$$SettlementModelImplCopyWith<_$SettlementModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
