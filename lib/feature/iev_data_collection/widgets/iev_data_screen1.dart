@@ -131,7 +131,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   AncDropDownButton(
                                     hint: 'Select a State',
                                     value: controller.stateValue.value,
-                                    items: controller.listState.value,
+                                    items: NigerianStatesAndLGA.allStates,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Please Select State';
@@ -140,19 +140,23 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                       }
                                     },
                                     onChanged: (value) {
-                                      /* controller.lgaValue.value =
-                                          'Select a Local Government Area'; */
-                                      /*   controller.statesLga.value?.clear();
-                                      controller.statesLga.value
-                                          ?.add(controller.lgaValue.value!);
-                                      controller.statesLga.value?.addAll(
-                                          NigerianStatesAndLGA.getStateLGAs(
-                                              value)); */
-
-                                      controller.setNgState(value);
-                                      // controller.lgaValue.value = "";
+                                       controller.setNgState(value);
+                                      /*  controller.setNgState(value);
+                                    
                                       controller
-                                          .getLga(controller.stateValue.value);
+                                          .getLga(controller.stateValue.value); */
+                                      //listOfSettlementValue
+                                      print("selected state $value");
+                                      List<String> listLga = [];
+                                      listLga =
+                                          NigerianStatesAndLGA.getStateLGAs(
+                                              value);
+
+                                      //  listLga.insert(0, "Select Lga");
+                                      controller.lgaValue.value = listLga[0];
+                                      controller.listLga
+                                          .assignAll(listLga ?? []);
+                                            controller.lgaValue.value = listLga[0];
                                     },
                                   ),
                                 ],
@@ -182,8 +186,13 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                     onChanged: (value) {
                                       controller.setNgLGA(value);
                                       // controller.wardValue.value = "";
-                                      controller.getWard(
+
+                                      controller.getWardLocally(
                                           controller.stateValue.value, value);
+                                      //  print("i am here $wards");
+
+                                      /*  controller.getWard(
+                                          controller.stateValue.value, value); */
                                     },
                                   ),
                                 ],
@@ -217,14 +226,19 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                     onChanged: (value) {
                                       // controller.listWard.value = value;
                                       controller.wardValue.value = value;
-                                      controller.selectedSettlement.value =
+
+                                      controller.getSettlementLocally(
+                                          controller.stateValue.value,
+                                          controller.lgaValue.value!,
+                                          value);
+                                      /*  controller.selectedSettlement.value =
                                           "Select Settlement";
 
                                       controller.getSettlement(
                                           controller.stateValue.value,
                                           controller.lgaValue.value!,
                                           controller.wardValue.value!,
-                                          "");
+                                          ""); */
                                     },
                                   ),
                                 ),

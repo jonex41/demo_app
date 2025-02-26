@@ -36,7 +36,7 @@ class NigerianStatesAndLGA {
     'Taraba',
     'Yobe',
     'Zamfara',
-    'FCT(Abuja)',
+    'FCT',
   ];
 
   static const abiaLGAs = [
@@ -307,7 +307,7 @@ class NigerianStatesAndLGA {
     'Etsako East',
     'Etsako West',
     'Igueben',
-    'Ikpoba Okha',
+    'Ikpoba-Okha',
     'Orhionmwon',
     'Oredo',
     'Ovia North-East',
