@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-
 import 'package:demo_app/core/router/locator.dart';
+import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/encouter_reg_mat/provider/encouter_reg_mat_controller.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +9,8 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
-import '../../../../gen/assets.gen.dart';
-
-import '../../../core/theme/new_theme/app_color.dart';
+import '../../../../../gen/assets.gen.dart';
+import '../../../../core/theme/new_theme/app_color.dart';
 
 @RoutePage()
 class ChildHealth1Screen extends GetView<EncouterRegMatController> {
@@ -57,7 +56,7 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                     Text(
                       "Child Health: Focused Care for\nChild's Well-being",
                       style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                          color: AppPalette.black, fontWeight: FontWeight.w600),
+                          fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -75,9 +74,7 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                           child: Text(
                             'Dashboard',
                             style: context.theme.appTextTheme.bodyLarge18
-                                .copyWith(
-                                    color: AppPalette.black,
-                                    fontWeight: FontWeight.bold),
+                                .copyWith(color: AppPalette.black, fontWeight: FontWeight.bold),
                           ),
                         ),
                         10.height,
@@ -86,10 +83,9 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                             GestureDetector(
                               child: _card(
                                   context,
-                                  "Fully Immunized Children",
-                                  "85% immunized",
-                                  Icon(Icons.person,
-                                      color: AppPalette.primary.primary400),
+                                  "Total Registered Children",
+                                  "250",
+                                  Icon(Icons.person, color: AppPalette.primary.primary400),
                                   const Color(0xffEEFFF9),
                                   const Color(0xff2fcf9733).withOpacity(0.2),
                                   false),
@@ -99,7 +95,7 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                               child: _card(
                                   context,
                                   "Total Registered Children ",
-                                  "250",
+                                  "85% Immunized",
                                   const Icon(
                                     Icons.group,
                                     color: Colors.grey,
@@ -118,7 +114,7 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                             _halfChild(
                               context,
                               "Children with Growth Issues",
-                              "30 upcoming visits",
+                              "10% underweight",
                               const Color(0xffFFF7F2),
                               const Color(0xffee647133),
                               const Color(0xffee647133).withOpacity(0.2),
@@ -127,7 +123,7 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                             _halfChild(
                               context,
                               "Follow-Up Visits Needed",
-                              "10% underweight",
+                              "30 upcoming visits",
                               const Color(0xffFEF6FF),
                               const Color(0xffd72feb33),
                               const Color(0xffd72feb33).withOpacity(0.2),
@@ -141,8 +137,8 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                 20.height,
                 Text(
                   'Caring for Pregnant Women',
-                  style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                      color: AppPalette.black, fontWeight: FontWeight.w600),
+                  style: context.theme.appTextTheme.bodyLarge18
+                      .copyWith(color: AppPalette.black, fontWeight: FontWeight.w600),
                 ),
                 15.height,
                 Column(
@@ -158,7 +154,8 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                           ),
                           const Color(0xffF9FAFB),
                           const Color(0xffe4e7ec33).withOpacity(0.2),
-                          true),
+                          true,
+                          onClick: () => appRoute.push(const ChildrenRegisteredRoute())),
                     ),
                     20.height,
                     GestureDetector(
@@ -166,15 +163,15 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                             context,
                             "Register a Newborn &\nMother’s Details",
                             "Start Registration",
-                            Icon(Icons.person,
-                                color: AppPalette.primary.primary400),
+                            Icon(Icons.person, color: AppPalette.primary.primary400),
                             const Color(0xffEEFFF9),
                             const Color(0xff2fcf9733).withOpacity(0.2),
-                            true)),
+                            true,
+                            onClick: () => appRoute.push(const NewBornRegisterHomeRoute()))),
                   ],
                 ),
                 20.height,
-              //  Assets.images.germanLogo.image(),
+                //  Assets.images.germanLogo.image(),
                 40.height,
               ],
             ),
@@ -184,11 +181,12 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
     ));
   }
 
-  _card(BuildContext context, String s, String buttonName, Icon image,
-      Color container, Color border, bool showButton) {
+  _card(BuildContext context, String s, String buttonName, Icon image, Color container,
+      Color border, bool showButton,
+      {Function()? onClick}) {
     return Container(
         width: double.infinity,
-        height: context.height / 4.5,
+        height: context.height / 4.4,
         decoration: BoxDecoration(
           color: container,
           border: Border.all(
@@ -197,8 +195,8 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
           ),
           borderRadius: BorderRadius.circular(12.0), // Rounded corners
         ),
-        padding:
-            const EdgeInsets.all(16.0), // Optional padding inside the container
+        padding: const EdgeInsets.all(16.0),
+        // Optional padding inside the container
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -213,8 +211,7 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                           color: border, // White border color
                           width: 1.0, // Border width
                         ),
-                        borderRadius:
-                            BorderRadius.circular(12.0), // Rounded corners
+                        borderRadius: BorderRadius.circular(12.0), // Rounded corners
                       ),
                       height: 40.w,
                       width: 40.w,
@@ -224,15 +221,15 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
             5.height,
             Text(
               s,
-              style: context.theme.appTextTheme.bodySmall14.copyWith(
-                  color: AppPalette.black2, fontWeight: FontWeight.w600),
+              style: context.theme.appTextTheme.bodySmall14
+                  .copyWith(color: AppPalette.black2, fontWeight: FontWeight.w600),
             ),
             5.height,
             if (!showButton)
               Text(
                 buttonName,
-                style: context.theme.appTextTheme.bodySmall14.copyWith(
-                    color: AppPalette.black, fontWeight: FontWeight.w400),
+                style: context.theme.appTextTheme.bodySmall14
+                    .copyWith(color: AppPalette.black, fontWeight: FontWeight.w400),
               ),
             if (showButton)
               Align(
@@ -246,8 +243,7 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                         color: Colors.white, // White border color
                         width: 0.5, // Border width
                       ),
-                      borderRadius:
-                          BorderRadius.circular(12.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(5.0), // Rounded corners
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -255,15 +251,10 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
                       children: [
                         InkWell(
                           onTap: () {
-                            //  controller.gotoEveryScreen();
-                            // controller.gotoGettingReady();
+                            onClick?.call();
                           },
-                          child: _buttonWithArrow(
-                              context,
-                              buttonName,
-                              AppPalette.primary.primary10,
-                              AppPalette.primary.primary400,
-                              16),
+                          child: _buttonWithArrow(context, buttonName, AppPalette.primary.primary10,
+                              AppPalette.primary.primary400, 13),
                         ),
                         14.width,
                       ],
@@ -273,11 +264,10 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
         ));
   }
 
-  _halfChild(BuildContext context, String s, String t, Color color1,
-      Color color2, Color colors3) {
+  _halfChild(BuildContext context, String s, String t, Color color1, Color color2, Color colors3) {
     return Container(
       width: context.width / 2 - 30,
-      height: context.height / 5,
+      height: context.height / 4.6,
       decoration: BoxDecoration(
         color: color1,
         border: Border.all(
@@ -296,17 +286,17 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
               color: color2,
               size: 12,
             ),
-            40.height,
+            30.height,
             Text(
               s,
-              style: context.theme.appTextTheme.bodySmall14.copyWith(
-                  color: AppPalette.black, fontWeight: FontWeight.w600),
+              style: context.theme.appTextTheme.bodySmall14
+                  .copyWith(color: AppPalette.black, fontWeight: FontWeight.w600),
             ),
             10.height,
             Text(
               t,
-              style: context.theme.appTextTheme.labelLarge12.copyWith(
-                  color: AppPalette.black, fontWeight: FontWeight.w400),
+              style: context.theme.appTextTheme.labelLarge12
+                  .copyWith(color: AppPalette.black, fontWeight: FontWeight.w400),
             ),
           ],
         ),
@@ -314,8 +304,8 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
     );
   }
 
-  Widget _buttonWithArrow(BuildContext context, String name, Color textColor,
-      Color containerColor, double fontSize) {
+  Widget _buttonWithArrow(
+      BuildContext context, String name, Color textColor, Color containerColor, double fontSize) {
     return Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -327,10 +317,8 @@ class ChildHealth1Screen extends GetView<EncouterRegMatController> {
           children: [
             Text(
               name,
-              style: context.theme.appTextTheme.bodyLarge18.copyWith(
-                  color: textColor,
-                  fontWeight: FontWeight.w600,
-                  fontSize: fontSize),
+              style: context.theme.appTextTheme.bodyLarge18
+                  .copyWith(color: textColor, fontWeight: FontWeight.w600, fontSize: fontSize),
             ),
             5.width,
             Icon(

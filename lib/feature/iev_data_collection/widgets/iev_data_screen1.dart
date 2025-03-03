@@ -17,8 +17,7 @@ class IEVDataScreen1 extends StatefulWidget {
 }
 
 class _IEVDataScreen1State extends State<IEVDataScreen1> {
-  final controller =
-      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +59,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14,
-                            color: AppPalette.black,
-                            fontWeight: FontWeight.w400),
+                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                         controller: controller.nameOfEnumerator,
                       ),
                       18.height,
@@ -86,9 +83,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14,
-                            color: AppPalette.black,
-                            fontWeight: FontWeight.w400),
+                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                         controller: controller.phoneNumber,
                       ),
                       18.height,
@@ -111,9 +106,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14,
-                            color: AppPalette.black,
-                            fontWeight: FontWeight.w400),
+                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                         controller: controller.teamCode,
                       ),
                       18.height,
@@ -140,23 +133,20 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                       }
                                     },
                                     onChanged: (value) {
-                                       controller.setNgState(value);
+                                      controller.setNgState(value);
                                       /*  controller.setNgState(value);
-                                    
+
                                       controller
                                           .getLga(controller.stateValue.value); */
                                       //listOfSettlementValue
                                       print("selected state $value");
                                       List<String> listLga = [];
-                                      listLga =
-                                          NigerianStatesAndLGA.getStateLGAs(
-                                              value);
+                                      listLga = NigerianStatesAndLGA.getStateLGAs(value);
 
                                       //  listLga.insert(0, "Select Lga");
                                       controller.lgaValue.value = listLga[0];
-                                      controller.listLga
-                                          .assignAll(listLga ?? []);
-                                            controller.lgaValue.value = listLga[0];
+                                      controller.listLga.assignAll(listLga ?? []);
+                                      controller.lgaValue.value = listLga[0];
                                     },
                                   ),
                                 ],
@@ -175,8 +165,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                     value: controller.lgaValue.value,
                                     items: controller.listLga,
                                     validator: (value) {
-                                      if (value ==
-                                              'Select a Local Government Area' ||
+                                      if (value == 'Select a Local Government Area' ||
                                           value!.isEmpty) {
                                         return 'Please Select Local Government Area';
                                       } else {
@@ -187,8 +176,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                       controller.setNgLGA(value);
                                       // controller.wardValue.value = "";
 
-                                      controller.getWardLocally(
-                                          controller.stateValue.value, value);
+                                      controller.getWardLocally(controller.stateValue.value, value);
                                       //  print("i am here $wards");
 
                                       /*  controller.getWard(
@@ -216,8 +204,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                     value: controller.wardValue.value,
                                     items: controller.listWard.value,
                                     validator: (value) {
-                                      if (value == 'Select a Ward' ||
-                                          value!.isEmpty) {
+                                      if (value == 'Select a Ward' || value!.isEmpty) {
                                         return 'Please Select Ward';
                                       } else {
                                         return null;
@@ -227,10 +214,8 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                       // controller.listWard.value = value;
                                       controller.wardValue.value = value;
 
-                                      controller.getSettlementLocally(
-                                          controller.stateValue.value,
-                                          controller.lgaValue.value!,
-                                          value);
+                                      controller.getSettlementLocally(controller.stateValue.value,
+                                          controller.lgaValue.value!, value);
                                       /*  controller.selectedSettlement.value =
                                           "Select Settlement";
 
@@ -271,8 +256,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           Expanded(
                             child: Column(
                               children: [
-                                const AppTextFieldHeader(
-                                    title: 'House Number:'),
+                                const AppTextFieldHeader(title: 'House Number:'),
                                 5.height,
                                 AppTextField(
                                   textFieldType: TextFieldType.OTHER,

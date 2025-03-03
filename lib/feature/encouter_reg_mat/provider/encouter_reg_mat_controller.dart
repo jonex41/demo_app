@@ -2,10 +2,10 @@ import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
 import 'package:demo_app/network/network_client.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:progress_bar_steppers/stepper_data.dart';
 
 import '../../../core/router/locator.dart';
 import '../../../core/router/router.dart';
@@ -26,7 +26,191 @@ class EncouterRegMatController extends GetxController {
   final resetPasswordController = TextEditingController();
   final resetConfirmPasswordController = TextEditingController();
 
+  final careGiversNameController = TextEditingController();
+  final careGiversContactController = TextEditingController();
+  final childsNameController = TextEditingController();
+  final ageInMonthsController = TextEditingController();
+  final settlementController = TextEditingController();
+  final houseNoController = TextEditingController();
+  final houseHoldNoController = TextEditingController();
+
+  final formKeyNewBornScreen1 = GlobalKey<FormState>();
+  final formKeyNewBornScreen2 = GlobalKey<FormState>();
+  final formKeyNewBornScreen3 = GlobalKey<FormState>();
+  final formKeyNewBornScreen4 = GlobalKey<FormState>();
+  final formKeyNewBornScreen5 = GlobalKey<FormState>();
+
+  final selectedSex = Rxn<String>();
+  final List<String> sex = [
+    'Male',
+    'Female',
+  ].obs;
+
+  final selectedChildFullyImmunized = Rxn<String>();
+  final List<String> optionYesNo = [
+    'Yes',
+    'No',
+  ].obs;
+
+  final selectedTypeOfVisit = Rxn<String>();
+  final List<String> typeOfVisit = [
+    'Routine',
+    'Follow-up',
+    'Emergency',
+  ].obs;
+
+  final Rxn<DateTime> _dateOfBirth = Rxn<DateTime>();
+
+  DateTime? get dateOfBirth => _dateOfBirth.value;
+
+  final Rxn<String> _selectDateOfBirth = Rxn<String>();
+
+  String? get selectDateOfBirth => _selectDateOfBirth.value;
+
+  final Rxn<DateTime> _dateOfVisit = Rxn<DateTime>();
+
+  DateTime? get dateOfVisit => _dateOfVisit.value;
+
+  final Rxn<String> _selectDateOfVisit = Rxn<String>();
+
+  String? get selectDateOfVisit => _selectDateOfVisit.value;
+
   String pinId = '';
+
+  List<StepperData> stepsData = [
+    StepperData(
+      label: '',
+    ),
+    StepperData(
+      label: '',
+    ),
+    StepperData(
+      label: '',
+    ),
+    StepperData(
+      label: '',
+    ),
+    StepperData(
+      label: '',
+    ),
+  ];
+  final currentScreen = 1.obs;
+
+  setSelectedDateOfBirth(String? value) {
+    _selectDateOfBirth.value = value;
+  }
+
+  setDateOfBirth(DateTime? value) {
+    _dateOfBirth.value = value;
+  }
+
+  setSelectedDateOfVisit(String? value) {
+    _selectDateOfVisit.value = value;
+  }
+
+  setDateOfVisit(DateTime? value) {
+    _dateOfVisit.value = value;
+  }
+
+  String title() {
+    if (currentScreen.value == 1) {
+      return 'Child & Caregiver Details';
+    } else if (currentScreen.value == 2) {
+      return 'Immunization Status';
+    } else if (currentScreen.value == 3) {
+      return 'Growth Monitoring & Nutrition';
+    } else if (currentScreen.value == 4) {
+      return 'Child Health Services & Follow-Up';
+    } else if (currentScreen.value == 5) {
+      return 'Referral & Pre-Referral Treatment';
+    }
+    return 'Child & Caregiver Details';
+  }
+
+  var atBirthVaccines = {
+    "BCG": false,
+    "OPV 0": false,
+    "Hepatitis B": false,
+  }.obs;
+
+  var sixWeeksVaccines = {
+    "OPV 1": false,
+    "Rotavirus 1": false,
+    "PCV 1": false,
+    "Pentavalent 1": false,
+  }.obs;
+
+  var tenWeeksVaccines = {
+    "OPV 2": false,
+    "Penta 2": false,
+    "PCV 2": false,
+    "Rotavirus 2": false,
+  }.obs;
+
+  var fourteenWeeksVaccines = {
+    "OPV 3": false,
+    "Pentavalent 3": false,
+    "PCV 3": false,
+    "IPV (Inactivated Polio Vaccine)": false,
+  }.obs;
+
+  var nineMonthsVaccines = {
+    "Measles 1st Dose": false,
+    "Meningitis": false,
+    "Yellow Fever Vaccine": false,
+  }.obs;
+
+  var fifteenMonthsVaccines = {
+    "Measles 2nd Dose": false,
+  }.obs;
+
+  void toggleSelection(String key, bool? value) {
+    atBirthVaccines[key] = value ?? false;
+    debugPrint(selectedVaccines.join(", "));
+  }
+
+  void toggleSelectionSixWeeks(String key, bool? value) {
+    sixWeeksVaccines[key] = value ?? false;
+    debugPrint(selected6WeekVaccines.join(", "));
+  }
+
+  void toggleSelectionTenWeeks(String key, bool? value) {
+    tenWeeksVaccines[key] = value ?? false;
+    debugPrint(selected10WeekVaccines.join(", "));
+  }
+
+  void toggleSelection14Weeks(String key, bool? value) {
+    fourteenWeeksVaccines[key] = value ?? false;
+    debugPrint(selected14WeekVaccines.join(", "));
+  }
+
+  void toggleSelection9Months(String key, bool? value) {
+    nineMonthsVaccines[key] = value ?? false;
+    debugPrint(selected9MonthsVaccines.join(", "));
+  }
+
+  void toggleSelection15Months(String key, bool? value) {
+    fifteenMonthsVaccines[key] = value ?? false;
+    debugPrint(selected15MonthsVaccines.join(", "));
+  }
+
+  List<String> get selectedVaccines =>
+      atBirthVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
+
+  List<String> get selected6WeekVaccines =>
+      sixWeeksVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
+
+  List<String> get selected10WeekVaccines =>
+      tenWeeksVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
+
+  List<String> get selected14WeekVaccines =>
+      fourteenWeeksVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
+
+  List<String> get selected9MonthsVaccines =>
+      nineMonthsVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
+
+  List<String> get selected15MonthsVaccines =>
+      fifteenMonthsVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
 
   @override
   void onInit() {
@@ -47,7 +231,8 @@ class EncouterRegMatController extends GetxController {
     HomeBindings().dependencies();
     appRoute.replaceAll([const HomeRoute()]);
   }
-/* 
+
+/*
   void loginNetwork(BuildContext context) async {
     final isValidForm = loginFormKey.currentState?.validate() ?? false;
     if (!isValidForm) return;
@@ -88,9 +273,7 @@ class EncouterRegMatController extends GetxController {
     String title,
   ) {
     snackBar(context,
-        title: title,
-        backgroundColor: AppPalette.red.red350,
-        textColor: AppPalette.white);
+        title: title, backgroundColor: AppPalette.red.red350, textColor: AppPalette.white);
   }
 
 /*   void sendOtpForPasswordReset(BuildContext context) async {
@@ -186,11 +369,8 @@ class EncouterRegMatController extends GetxController {
  */
   String getPhoneNumber(String value) {
     String phoneNumber = value;
-    phoneNumber =
-        phoneNumber.contains('+') ? phoneNumber.substring(1) : phoneNumber;
-    phoneNumber = phoneNumber.contains('234')
-        ? phoneNumber
-        : '234${phoneNumber.substring(1)}';
+    phoneNumber = phoneNumber.contains('+') ? phoneNumber.substring(1) : phoneNumber;
+    phoneNumber = phoneNumber.contains('234') ? phoneNumber : '234${phoneNumber.substring(1)}';
     //presentPhoneNumber = phoneNumber;
     return phoneNumber;
   }

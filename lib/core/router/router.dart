@@ -40,7 +40,11 @@ import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_sch
 import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_schedule_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encouter_reg_house_screen.dart';
 import 'package:demo_app/feature/encounter_reg_house/view/encouter_schedule_list.dart';
-import 'package:demo_app/feature/encouter_reg_mat/view/child_health1_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/child_health1_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/children_registered_detail_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/children_registered_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/children_registered_view_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/new_born_register_home_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/encouter_reg_mat_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service1_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service2_screen.dart';
@@ -87,50 +91,32 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/partnersScreen', page: PartnersRoute.page),
         AutoRoute(path: '/homeScreen', page: HomeRoute.page),
         AutoRoute(path: '/checklistHomeScreen', page: ChecklistHomeRoute.page),
-        AutoRoute(
-            path: '/addNewChecklistScreen', page: AddNewChecklistRoute.page),
+        AutoRoute(path: '/addNewChecklistScreen', page: AddNewChecklistRoute.page),
         AutoRoute(path: '/allRecordsScreen', page: AllRecordsRoute.page),
-        AutoRoute(
-            path: '/allRecordsDetailScreen', page: AllRecordsDetailRoute.page),
+        AutoRoute(path: '/allRecordsDetailScreen', page: AllRecordsDetailRoute.page),
         AutoRoute(path: '/editRecordScreen', page: EditRecordRoute.page),
         AutoRoute(path: '/allScheduleScreen', page: AllScheduleRoute.page),
-        AutoRoute(
-            path: '/allScheduleDetailScreen',
-            page: AllScheduleDetailRoute.page),
-        AutoRoute(
-            path: '/addNewScheduleScreen', page: AddNewScheduleRoute.page),
+        AutoRoute(path: '/allScheduleDetailScreen', page: AllScheduleDetailRoute.page),
+        AutoRoute(path: '/addNewScheduleScreen', page: AddNewScheduleRoute.page),
         AutoRoute(path: '/logScreen', page: LogsRoute.page),
 
-        AutoRoute(
-            path: '/commDispenseHomeScreen', page: CommDispenseHomeRoute.page),
-        AutoRoute(
-            path: '/commDispenseDashboardScreen',
-            page: CommDispenseDashboardRoute.page),
-        AutoRoute(
-            path: '/commDispenseAddEditFormScreen',
-            page: CommDispenseAddEditFormRoute.page),
+        AutoRoute(path: '/commDispenseHomeScreen', page: CommDispenseHomeRoute.page),
+        AutoRoute(path: '/commDispenseDashboardScreen', page: CommDispenseDashboardRoute.page),
+        AutoRoute(path: '/commDispenseAddEditFormScreen', page: CommDispenseAddEditFormRoute.page),
         AutoRoute(
             path: '/commDispenseSavedFormsDetailScreen',
             page: CommDispenseSavedFormsDetailRoute.page),
+        AutoRoute(path: '/commDispenseSavedFormsScreen', page: CommDispenseSavedFormsRoute.page),
         AutoRoute(
-            path: '/commDispenseSavedFormsScreen',
-            page: CommDispenseSavedFormsRoute.page),
-        AutoRoute(
-            path: '/commDispenseViewSavedFormScreen',
-            page: CommDispenseViewSavedFormRoute.page),
+            path: '/commDispenseViewSavedFormScreen', page: CommDispenseViewSavedFormRoute.page),
 
+        AutoRoute(path: '/commRequisitionHomeScreen', page: CommRequisitionHomeRoute.page),
         AutoRoute(
-            path: '/commRequisitionHomeScreen',
-            page: CommRequisitionHomeRoute.page),
+            path: '/commRequisitionDashboardScreen', page: CommRequisitionDashboardRoute.page),
         AutoRoute(
-            path: '/commRequisitionDashboardScreen',
-            page: CommRequisitionDashboardRoute.page),
+            path: '/commRequisitionAddEditFormScreen', page: CommRequisitionAddEditFormRoute.page),
         AutoRoute(
-            path: '/commRequisitionAddEditFormScreen',
-            page: CommRequisitionAddEditFormRoute.page),
-        AutoRoute(
-            path: '/commRequisitionSavedFormsScreen',
-            page: CommRequisitionSavedFormsRoute.page),
+            path: '/commRequisitionSavedFormsScreen', page: CommRequisitionSavedFormsRoute.page),
         AutoRoute(
             path: '/commRequisitionViewSavedFormScreen',
             page: CommRequisitionViewSavedFormRoute.page),
@@ -140,96 +126,59 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/encounter_reg_mat', page: EncouterRegMatRoute.page),
         AutoRoute(path: '/maternal_service1', page: MaternalService1Route.page),
         AutoRoute(path: '/child_health1', page: ChildHealth1Route.page),
+        AutoRoute(path: '/childrenRegisteredScreen', page: ChildrenRegisteredRoute.page),
+        AutoRoute(
+            path: '/childrenRegisteredDetailScreen', page: ChildrenRegisteredDetailRoute.page),
+        AutoRoute(path: '/childrenRegisteredViewScreen', page: ChildrenRegisteredViewRoute.page),
+        AutoRoute(path: '/newBornRegisterHomeScreen', page: NewBornRegisterHomeRoute.page),
         AutoRoute(path: '/profile', page: ProfileRoute.page),
         AutoRoute(path: '/editProfileScreen', page: EditProfileRoute.page),
         AutoRoute(path: '/wallet', page: WalletRoute.page),
-        AutoRoute(
-            path: '/encouter_reg_house_screen',
-            page: EncouterRegHouseRoute.page),
-        AutoRoute(
-            path: '/encouter_reg_house1_screen',
-            page: EncounterRegHouse1Route.page),
-        AutoRoute(
-            path: '/encouter_reg_house_record',
-            page: EncouterRegHouseRecordRoute.page),
-        AutoRoute(
-            path: '/encouter_reg_house_log',
-            page: EncouterRegHouseLogRoute.page),
-        AutoRoute(
-            path: '/encouter_reg_house_schedule',
-            page: EncouterRegHouseScheduleRoute.page),
+        AutoRoute(path: '/encouter_reg_house_screen', page: EncouterRegHouseRoute.page),
+        AutoRoute(path: '/encouter_reg_house1_screen', page: EncounterRegHouse1Route.page),
+        AutoRoute(path: '/encouter_reg_house_record', page: EncouterRegHouseRecordRoute.page),
+        AutoRoute(path: '/encouter_reg_house_log', page: EncouterRegHouseLogRoute.page),
+        AutoRoute(path: '/encouter_reg_house_schedule', page: EncouterRegHouseScheduleRoute.page),
         AutoRoute(path: '/houseHold_reg_screen', page: HouseHoldRegRoute.page),
-        AutoRoute(
-            path: '/house_hold_reg1_screen', page: HouseHoldReg1Route.page),
+        AutoRoute(path: '/house_hold_reg1_screen', page: HouseHoldReg1Route.page),
         AutoRoute(path: '/chip_referral_screen', page: ChipReferralRoute.page),
-        AutoRoute(
-            path: '/chip_referral1_screen', page: ChipReferral1Route.page),
-        AutoRoute(
-            path: '/chip_referral_form1_screen',
-            page: ChipReferralForm1Route.page),
-        AutoRoute(
-            path: '/chip_referral1_screen', page: ChipReferral1Route.page),
-        AutoRoute(
-            path: '/chip_referral_form1_screen',
-            page: ChipReferralForm1Route.page),
+        AutoRoute(path: '/chip_referral1_screen', page: ChipReferral1Route.page),
+        AutoRoute(path: '/chip_referral_form1_screen', page: ChipReferralForm1Route.page),
+        AutoRoute(path: '/chip_referral1_screen', page: ChipReferral1Route.page),
+        AutoRoute(path: '/chip_referral_form1_screen', page: ChipReferralForm1Route.page),
 
-        AutoRoute(
-            path: '/encounterRegHouse2Screen',
-            page: EncounterRegHouse2Route.page),
-        AutoRoute(
-            path: '/encounterRegHouse3Screen',
-            page: EncounterRegHouse3Route.page),
-        AutoRoute(
-            path: '/encounterRegHouse4Screen',
-            page: EncounterRegHouse4Route.page),
+        AutoRoute(path: '/encounterRegHouse2Screen', page: EncounterRegHouse2Route.page),
+        AutoRoute(path: '/encounterRegHouse3Screen', page: EncounterRegHouse3Route.page),
+        AutoRoute(path: '/encounterRegHouse4Screen', page: EncounterRegHouse4Route.page),
         AutoRoute(
             path: '/encouterRegHouseRecordDetailsScreen',
             page: EncouterRegHouseRecordDetailsRoute.page),
-        AutoRoute(
-            path: '/encouterRegHouseRecord1Screen',
-            page: EncouterRegHouseRecord1Route.page),
+        AutoRoute(path: '/encouterRegHouseRecord1Screen', page: EncouterRegHouseRecord1Route.page),
 
         AutoRoute(
-            path: '/encouterRegHouseSchedule1Screen',
-            page: EncouterRegHouseSchedule1Route.page),
+            path: '/encouterRegHouseSchedule1Screen', page: EncouterRegHouseSchedule1Route.page),
 
         AutoRoute(
-            path: '/encouterRegHoNewScheduleScreen',
-            page: EncouterRegHoNewScheduleRoute.page),
-        AutoRoute(
-            path: '/maternalService2Screen', page: MaternalService2Route.page),
-        AutoRoute(
-            path: '/chipsReferralFormScreen',
-            page: ChipsReferralFormRoute.page),
+            path: '/encouterRegHoNewScheduleScreen', page: EncouterRegHoNewScheduleRoute.page),
+        AutoRoute(path: '/maternalService2Screen', page: MaternalService2Route.page),
+        AutoRoute(path: '/chipsReferralFormScreen', page: ChipsReferralFormRoute.page),
 
-        AutoRoute(
-            path: '/chipsReferralForm3Screen',
-            page: ChipsReferralForm3Route.page),
+        AutoRoute(path: '/chipsReferralForm3Screen', page: ChipsReferralForm3Route.page),
         AutoRoute(path: '/referralForm4Screen', page: ReferralForm4Route.page),
-        AutoRoute(
-            path: '/chipsReferralListScreen',
-            page: ChipsReferralListRoute.page),
-        AutoRoute(
-            path: '/houseHoldRegListScreen', page: HouseHoldRegListRoute.page),
+        AutoRoute(path: '/chipsReferralListScreen', page: ChipsReferralListRoute.page),
+        AutoRoute(path: '/houseHoldRegListScreen', page: HouseHoldRegListRoute.page),
         AutoRoute(path: '/houseHoldReg2Screen', page: HouseHoldReg2Route.page),
         AutoRoute(path: '/houseHoldReg3Screen', page: HouseHoldReg3Route.page),
         AutoRoute(path: '/iEVDataHomeScreen', page: IEVDataHomeRoute.page),
-        AutoRoute(
-            path: '/forgot_password_screen', page: ForgotPasswordRoute.page),
+        AutoRoute(path: '/forgot_password_screen', page: ForgotPasswordRoute.page),
         //   AutoRoute( path: '/more_screen', page: MoreRoute.page),
         //   AutoRoute( path: '/activity_screen', page: ActivityRoute.page),
         AutoRoute(path: '/offline_form1_screen', page: OfflineForm1Route.page),
         AutoRoute(path: '/offline_form2_screen', page: OfflineForm2Route.page),
-        AutoRoute(
-            path: '/settlementRegistryScreen',
-            page: SettlementRegistryRoute.page),
+        AutoRoute(path: '/settlementRegistryScreen', page: SettlementRegistryRoute.page),
         AutoRoute(path: '/allRecordIevScreen', page: AllRecordIevRoute.page),
-        AutoRoute(
-            path: '/maternalServiceListScreen',
-            page: MaternalServiceListRoute.page),
-        AutoRoute(
-            path: '/maternalServiceList2Screen',
-            page: MaternalServiceList2Route.page),
+        AutoRoute(path: '/maternalServiceListScreen', page: MaternalServiceListRoute.page),
+        AutoRoute(path: '/maternalServiceList2Screen', page: MaternalServiceList2Route.page),
         AutoRoute(path: '/materDetailsScreen', page: MaterDetailsRoute.page),
         //
         AutoRoute(path: '/maternalReg1Screen', page: MaternalReg1Route.page),
