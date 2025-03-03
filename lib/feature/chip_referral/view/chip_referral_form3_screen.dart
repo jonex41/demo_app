@@ -209,7 +209,7 @@ class _ChipsReferralForm3ScreenState extends State<ChipsReferralForm3Screen> {
   }
 
   Widget _stepperHorizontal() {
-    var currentStep = 3;
+    var currentStep = 1;
     //var totalSteps = 0;
     final stepsData = [
       StepperData(
@@ -224,14 +224,16 @@ class _ChipsReferralForm3ScreenState extends State<ChipsReferralForm3Screen> {
       StepperData(
         label: '',
       ),
-    
+      StepperData(
+        label: '',
+      ),
     ];
     return Steppers(
       direction: StepperDirection.horizontal,
       labels: stepsData,
       currentStep: currentStep,
       stepBarStyle: StepperStyle(
-        // activeColor: StepperColors.red500,
+        activeColor: AppPalette.primary.primary400,
         maxLineLabel: 2,
         // inactiveColor: StepperColors.ink200s
       ),

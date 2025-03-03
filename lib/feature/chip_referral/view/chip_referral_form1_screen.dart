@@ -289,7 +289,7 @@ class ChipReferralForm1Screen extends GetView<ChipReferralController> {
       labels: stepsData,
       currentStep: currentStep,
       stepBarStyle: StepperStyle(
-        // activeColor: StepperColors.red500,
+        activeColor: AppPalette.primary.primary400,
         maxLineLabel: 2,
         // inactiveColor: StepperColors.ink200s
       ),

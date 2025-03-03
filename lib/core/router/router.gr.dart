@@ -339,6 +339,42 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LogsScreen(),
       );
     },
+    MaterDetailsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaterDetailsScreen(),
+      );
+    },
+    MaternalReg1Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaternalReg1Screen(),
+      );
+    },
+    MaternalReg2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaternalReg2Screen(),
+      );
+    },
+    MaternalReg3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaternalReg3Screen(),
+      );
+    },
+    MaternalReg4Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaternalReg4Screen(),
+      );
+    },
+    MaternalReg5Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaternalReg5Screen(),
+      );
+    },
     MaternalService1Route.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -349,6 +385,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const MaternalService2Screen(),
+      );
+    },
+    MaternalServiceList2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaternalServiceList2Screen(),
+      );
+    },
+    MaternalServiceListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MaternalServiceListScreen(),
       );
     },
     MoreRoute.name: (routeData) {
@@ -1171,6 +1219,90 @@ class LogsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MaterDetailsScreen]
+class MaterDetailsRoute extends PageRouteInfo<void> {
+  const MaterDetailsRoute({List<PageRouteInfo>? children})
+      : super(
+          MaterDetailsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaterDetailsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MaternalReg1Screen]
+class MaternalReg1Route extends PageRouteInfo<void> {
+  const MaternalReg1Route({List<PageRouteInfo>? children})
+      : super(
+          MaternalReg1Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaternalReg1Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MaternalReg2Screen]
+class MaternalReg2Route extends PageRouteInfo<void> {
+  const MaternalReg2Route({List<PageRouteInfo>? children})
+      : super(
+          MaternalReg2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaternalReg2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MaternalReg3Screen]
+class MaternalReg3Route extends PageRouteInfo<void> {
+  const MaternalReg3Route({List<PageRouteInfo>? children})
+      : super(
+          MaternalReg3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaternalReg3Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MaternalReg4Screen]
+class MaternalReg4Route extends PageRouteInfo<void> {
+  const MaternalReg4Route({List<PageRouteInfo>? children})
+      : super(
+          MaternalReg4Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaternalReg4Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MaternalReg5Screen]
+class MaternalReg5Route extends PageRouteInfo<void> {
+  const MaternalReg5Route({List<PageRouteInfo>? children})
+      : super(
+          MaternalReg5Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaternalReg5Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [MaternalService1Screen]
 class MaternalService1Route extends PageRouteInfo<void> {
   const MaternalService1Route({List<PageRouteInfo>? children})
@@ -1194,6 +1326,34 @@ class MaternalService2Route extends PageRouteInfo<void> {
         );
 
   static const String name = 'MaternalService2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MaternalServiceList2Screen]
+class MaternalServiceList2Route extends PageRouteInfo<void> {
+  const MaternalServiceList2Route({List<PageRouteInfo>? children})
+      : super(
+          MaternalServiceList2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaternalServiceList2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MaternalServiceListScreen]
+class MaternalServiceListRoute extends PageRouteInfo<void> {
+  const MaternalServiceListRoute({List<PageRouteInfo>? children})
+      : super(
+          MaternalServiceListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MaternalServiceListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

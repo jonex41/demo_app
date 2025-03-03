@@ -44,6 +44,14 @@ import 'package:demo_app/feature/encouter_reg_mat/view/child_health1_screen.dart
 import 'package:demo_app/feature/encouter_reg_mat/view/encouter_reg_mat_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service1_screen.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service2_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service_uis/mater_details_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service_uis/maternal_reg1_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service_uis/maternal_reg2_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service_uis/maternal_reg3_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service_uis/maternal_reg4_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service_uis/maternal_reg5_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service_uis/maternal_service_list2_screen.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/maternal/maternal_service_uis/maternal_service_list_screen.dart';
 import 'package:demo_app/feature/forgot_password/forgot_password_screen.dart';
 import 'package:demo_app/feature/home/view/home_screen.dart';
 import 'package:demo_app/feature/house_hold_reg/view/house_hold_reg1_screen.dart';
@@ -216,6 +224,19 @@ class AppRouter extends _$AppRouter {
             path: '/settlementRegistryScreen',
             page: SettlementRegistryRoute.page),
         AutoRoute(path: '/allRecordIevScreen', page: AllRecordIevRoute.page),
+        AutoRoute(
+            path: '/maternalServiceListScreen',
+            page: MaternalServiceListRoute.page),
+        AutoRoute(
+            path: '/maternalServiceList2Screen',
+            page: MaternalServiceList2Route.page),
+        AutoRoute(path: '/materDetailsScreen', page: MaterDetailsRoute.page),
+        //
+        AutoRoute(path: '/maternalReg1Screen', page: MaternalReg1Route.page),
+        AutoRoute(path: '/maternalReg2Screen', page: MaternalReg2Route.page),
+        AutoRoute(path: '/maternalReg3Screen', page: MaternalReg3Route.page),
+        AutoRoute(path: '/maternalReg4Screen', page: MaternalReg4Route.page),
+        AutoRoute(path: '/maternalReg5Screen', page: MaternalReg5Route.page),
         AutoRoute(
           path: '/dashboard',
           page: DashboardRoute.page,

@@ -3,6 +3,7 @@ import 'package:demo_app/component/button.dart';
 import 'package:demo_app/component/input_text_with_text.dart';
 import 'package:demo_app/component/my_appbar.dart';
 import 'package:demo_app/core/router/locator.dart';
+import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/encouter_reg_mat/provider/encouter_reg_mat_controller.dart';
 import 'package:flutter/material.dart';
@@ -156,6 +157,9 @@ class MaternalService2Screen extends GetView<EncouterRegMatController> {
                     ),
                     20.height,
                     GestureDetector(
+                      onTap: () {
+                        appRoute.push(const MaternalReg1Route());
+                      },
                       child: _card(
                           context,
                           "Register a Newborn &\nMother’s Details",
@@ -168,7 +172,7 @@ class MaternalService2Screen extends GetView<EncouterRegMatController> {
                   ],
                 ),
                 20.height,
-              //  Assets.images.germanLogo.image(),
+                //  Assets.images.germanLogo.image(),
                 40.height,
               ],
             ),
