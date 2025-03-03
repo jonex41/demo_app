@@ -25,28 +25,28 @@ class _CommRequisitionViewSavedFormScreenState extends State<CommRequisitionView
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          elevation: 0,
-          title: Text(
-            'Emily Peters',
-            style: context.theme.appTextTheme.bodyMedium16.copyWith(
-              color: AppPalette.black,
-              fontWeight: FontWeight.w600,
+        elevation: 0,
+        title: Text(
+          'Emily Peters',
+          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+            color: AppPalette.black,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        //centerTitle: true,
+        backgroundColor: AppPalette.white,
+        leading: Padding(
+          padding: const EdgeInsets.only(bottom: 5),
+          child: InkWell(
+            onTap: () => appRoute.pop(),
+            child: Align(
+              alignment: Alignment.center,
+              child: SvgPicture.asset("assets/images/back.svg",
+                  colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
             ),
           ),
-          //centerTitle: true,
-          backgroundColor: AppPalette.white,
-          leading: Padding(
-            padding: const EdgeInsets.only(bottom: 5),
-            child: InkWell(
-              onTap: () => appRoute.pop(),
-              child: Align(
-                alignment: Alignment.center,
-                child: SvgPicture.asset("assets/images/back.svg",
-                    colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
-              ),
-            ),
-          ),
-          actions: [
+        ),
+/*          actions: [
             InkWell(
               onTap: () {
                 controller.gotoCommRequisitionAddEditFormScreen();
@@ -63,7 +63,8 @@ class _CommRequisitionViewSavedFormScreenState extends State<CommRequisitionView
                 ),
               ),
             )
-          ]),
+          ]*/
+      ),
       body: Container(
         color: AppPalette.white,
         width: MediaQuery.of(context).size.width,

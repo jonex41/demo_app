@@ -17,8 +17,7 @@ class IEVDataScreen1 extends StatefulWidget {
 }
 
 class _IEVDataScreen1State extends State<IEVDataScreen1> {
-  final controller =
-      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +59,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14,
-                            color: AppPalette.black,
-                            fontWeight: FontWeight.w400),
+                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                         controller: controller.nameOfEnumerator,
                       ),
                       18.height,
@@ -86,9 +83,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14,
-                            color: AppPalette.black,
-                            fontWeight: FontWeight.w400),
+                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                         controller: controller.phoneNumber,
                       ),
                       18.height,
@@ -111,9 +106,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14,
-                            color: AppPalette.black,
-                            fontWeight: FontWeight.w400),
+                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
                         controller: controller.teamCode,
                       ),
                       18.height,
@@ -142,7 +135,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                     onChanged: (value) {
                                       controller.setNgState(value);
                                       /*  controller.setNgState(value);
-                                    
+
                                       controller
                                           .getLga(controller.stateValue.value); */
                                       //listOfSettlementValue

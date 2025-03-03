@@ -25,8 +25,7 @@ class IEVDataCollectionController extends GetxController {
   var textFieldCountMothersInTheHouseHold = 0.obs;
   var mothersNameControllerLoop = <TextEditingController>[].obs;
   var mothersPhoneNumberControllerLoop = <TextEditingController>[].obs;
-  var timesTheWomanVisitedHealthFacilityControllerLoop =
-      <TextEditingController>[].obs;
+  var timesTheWomanVisitedHealthFacilityControllerLoop = <TextEditingController>[].obs;
   var selectedIsMotherPregnantLoop = <RxString>[].obs;
   var selectedMonthsPregnantMotherLoop = <RxString>[].obs;
   var selectedDosesTDVaccineTakenMotherLoop = <RxString>[].obs;
@@ -42,8 +41,7 @@ class IEVDataCollectionController extends GetxController {
     for (int i = 0; i < count; i++) {
       mothersNameControllerLoop.add(TextEditingController());
       mothersPhoneNumberControllerLoop.add(TextEditingController());
-      timesTheWomanVisitedHealthFacilityControllerLoop
-          .add(TextEditingController());
+      timesTheWomanVisitedHealthFacilityControllerLoop.add(TextEditingController());
       selectedIsMotherPregnantLoop.add('No'.obs);
       selectedMonthsPregnantMotherLoop.add('None'.obs);
       selectedDosesTDVaccineTakenMotherLoop.add('None'.obs);
@@ -91,12 +89,7 @@ class IEVDataCollectionController extends GetxController {
       "IPV1",
       "Rota virus vaccine 1"
     ],
-    "10 weeks": [
-      "Pentavalent (DPT, Hep B and Hib)2",
-      "PCV 2",
-      "OPV2",
-      "Rota virus vaccine 2"
-    ],
+    "10 weeks": ["Pentavalent (DPT, Hep B and Hib)2", "PCV 2", "OPV2", "Rota virus vaccine 2"],
     "14 weeks": [
       "Pentavalent (DPT, Hep B and Hib)3",
       "PCV 3",
@@ -125,8 +118,7 @@ class IEVDataCollectionController extends GetxController {
   var selectedHowManyMonthsPregnantLoop = <RxString>[].obs;
   var selectedHasWomanTakenTTIDVaccineLoop = <RxString>[].obs;
   var selectedDosesTDVaccineTakenPregnantLoop = <RxString>[].obs;
-  var timesTheWomanVisitedHealthFacilityControllerPregnantLoop =
-      <TextEditingController>[].obs;
+  var timesTheWomanVisitedHealthFacilityControllerPregnantLoop = <TextEditingController>[].obs;
 
   void updateFieldCountOtherPregnantWomenInHouseHold(int count) {
     textFieldCountOtherPregnantWomenInHouseHold.value = count;
@@ -143,8 +135,7 @@ class IEVDataCollectionController extends GetxController {
       selectedHowManyMonthsPregnantLoop.add('None'.obs);
       selectedHasWomanTakenTTIDVaccineLoop.add('No'.obs);
       selectedDosesTDVaccineTakenPregnantLoop.add('None'.obs);
-      timesTheWomanVisitedHealthFacilityControllerPregnantLoop
-          .add(TextEditingController());
+      timesTheWomanVisitedHealthFacilityControllerPregnantLoop.add(TextEditingController());
     }
   }
 
@@ -173,9 +164,7 @@ class IEVDataCollectionController extends GetxController {
   List<String> getSelectedVaccines() {
     List<String> vaccines = [];
     vaccineSelections.forEach((index, selection) {
-      vaccines.addAll(selection.entries
-          .where((entry) => entry.value)
-          .map((entry) => entry.key));
+      vaccines.addAll(selection.entries.where((entry) => entry.value).map((entry) => entry.key));
     });
     return vaccines;
   }
@@ -214,6 +203,7 @@ class IEVDataCollectionController extends GetxController {
   final lgaValue = Rxn<String>();
   final wardValue = Rxn<String>();
   final statesLga = Rxn<List<String>>([]);
+
   //List<String> listOfSettlementValue = [];
 
   final formKeyScreen1 = GlobalKey<FormState>();
@@ -395,10 +385,7 @@ class IEVDataCollectionController extends GetxController {
         const Duration(
           seconds: 1,
         ), () {
-      List<String> kklist = [
-        "Select Lga",
-        ...NigerianStatesAndLGA.getStateLGAs("Abia")
-      ];
+      List<String> kklist = ["Select Lga", ...NigerianStatesAndLGA.getStateLGAs("Abia")];
 
       //  kklist.insert(0, "Select Lga");
       lgaValue.value = kklist[0];
@@ -481,44 +468,35 @@ class IEVDataCollectionController extends GetxController {
         "ward": wardValue.value ?? '',
         "settlement": selectedSettlement.value ?? ''
       },
-      "household": {
-        "houseNumber": houseNumber.text,
-        "consent": selectedProceed.value ?? ''
-      },
+      "household": {"houseNumber": houseNumber.text, "consent": selectedProceed.value ?? ''},
       "headOfHousehold": {
         "name": headOfHouseHoldName.text,
         "phoneNumber": headOfHousePhoneNumber.text
       },
       "motherDetails": {
         "numberOfMothers": textFieldCountMothersInTheHouseHold.value,
-        "mothers":
-            List.generate(textFieldCountMothersInTheHouseHold.value, (i) {
+        "mothers": List.generate(textFieldCountMothersInTheHouseHold.value, (i) {
           return {
             "name": mothersNameControllerLoop[i].text,
             "phoneNumber": mothersPhoneNumberControllerLoop[i].text,
             "isPregnant": selectedIsMotherPregnantLoop[i].value == "Yes",
-            "monthsPregnant": selectedMonthsPregnantMotherLoop[i].value,
+            "monthsPregnant": selectedMonthsPregnantMotherLoop[i].value ?? '',
             "ttTdDoses": selectedDosesTDVaccineTakenMotherLoop[i].value ?? '',
-            "ancVisits": int.tryParse(
-                    timesTheWomanVisitedHealthFacilityControllerLoop[i].text) ??
-                0,
-            "numberOfChildrenUnder5":
-                textFieldCountNumberOfUnder5Children.value,
-            "children":
-                List.generate(textFieldCountNumberOfUnder5Children.value, (j) {
+            "ancVisits":
+                int.tryParse(timesTheWomanVisitedHealthFacilityControllerLoop[i].text) ?? 0,
+            "numberOfChildrenUnder5": textFieldCountNumberOfUnder5Children.value ?? '',
+            "children": List.generate(textFieldCountNumberOfUnder5Children.value, (j) {
               return {
                 "name": nameofChildControllerLoop[j].text,
                 "age": selectedAges[j],
                 "gender": selectedGenderLoop[j].value,
-                "hasVaccinationCard":
-                    selectedHaveRiVaccinationCardLoop[j].value == "Yes",
+                "hasVaccinationCard": selectedHaveRiVaccinationCardLoop[j].value == "Yes",
                 "antigensReceived": vaccineSelections[j]
                     ?.keys
                     .where((key) => vaccineSelections[j]?[key] == true)
                     .toList(),
-                "healthFacilityVisits": int.tryParse(
-                        howManyVisitChildHadToHealthFacilityLoop[j].text) ??
-                    0,
+                "healthFacilityVisits":
+                    int.tryParse(howManyVisitChildHadToHealthFacilityLoop[j].text) ?? 0,
                 "lastVaccinationSite": siteOfLastVaccineLoop[j].text,
               };
             })
@@ -527,27 +505,23 @@ class IEVDataCollectionController extends GetxController {
       },
       "pregnantWomenDetails": {
         "numberOfPregnantWomenWhoAreNotMothers":
-            textFieldCountOtherPregnantWomenInHouseHold.value,
-        "pregnantWomen": List.generate(
-            textFieldCountOtherPregnantWomenInHouseHold.value, (i) {
+            textFieldCountOtherPregnantWomenInHouseHold.value ?? '',
+        "pregnantWomen": List.generate(textFieldCountOtherPregnantWomenInHouseHold.value, (i) {
           return {
             "firstName": firstNamePregnantWomanControllerLoop[i].text,
             "lastName": surNamePregnantWomanControllerLoop[i].text,
-            "monthsPregnant": selectedHowManyMonthsPregnantLoop[i].value,
+            "monthsPregnant": selectedHowManyMonthsPregnantLoop[i].value ?? '',
             "ttTdDoses": selectedDosesTDVaccineTakenPregnantLoop[i].value ?? '',
-            "ancVisits": int.tryParse(
-                    timesTheWomanVisitedHealthFacilityControllerPregnantLoop[i]
-                        .text) ??
-                0,
+            "ancVisits":
+                int.tryParse(timesTheWomanVisitedHealthFacilityControllerPregnantLoop[i].text) ?? 0,
           };
         })
       },
       "wcbaDetails": {
-        "otherWomenAgedBetween15And55": selectedOtherWomenInTheHousehold.value,
+        "otherWomenAgedBetween15And55": selectedOtherWomenInTheHousehold.value ?? '',
         "howManyOtherWomenAgedBetween15And55":
-            textFieldCountHowManyOtherWomenAreThereInHouseHold.value,
-        "wcbAs": List.generate(
-            textFieldCountHowManyOtherWomenAreThereInHouseHold.value, (i) {
+            textFieldCountHowManyOtherWomenAreThereInHouseHold.value ?? '',
+        "wcbAs": List.generate(textFieldCountHowManyOtherWomenAreThereInHouseHold.value, (i) {
           return {
             "firstName": firstNameOtherWomenControllerLoop[i].text,
             "lastName": surNameOtherWomenControllerLoop[i].text
@@ -556,8 +530,8 @@ class IEVDataCollectionController extends GetxController {
       },
       "latitude": currentPosition.value?.latitude,
       "longitude": currentPosition.value?.longitude,
-      "submittedBy": Get.find<LoginController>().loginModel.value?.id ??
-          '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+      "submittedBy":
+          Get.find<LoginController>().loginModel.value?.id ?? '3fa85f64-5717-4562-b3fc-2c963f66afa6'
     };
 
     //debugPrint(data.toString());
@@ -584,61 +558,25 @@ class IEVDataCollectionController extends GetxController {
       {'questionId': 'IEV013', 'answerText': mothersName.text},
 
       {'questionId': 'IEV014', 'answerText': mothersPhoneNumber.text},
-      {
-        'questionId': 'IEV015',
-        'answerText': selectedIsMotherPregnant.value ?? ''
-      },
-      {
-        'questionId': 'IEV016',
-        'answerText': selectedMonthsPregnantMother.value ?? ''
-      },
-      {
-        'questionId': 'IEV017',
-        'answerText': selectedDosesTDVaccineTakenMother.value ?? ''
-      },
-      {
-        'questionId': 'IEV018',
-        'answerText': numberOfAncVisitsToHealthFacilityMother.text
-      },
+      {'questionId': 'IEV015', 'answerText': selectedIsMotherPregnant.value ?? ''},
+      {'questionId': 'IEV016', 'answerText': selectedMonthsPregnantMother.value ?? ''},
+      {'questionId': 'IEV017', 'answerText': selectedDosesTDVaccineTakenMother.value ?? ''},
+      {'questionId': 'IEV018', 'answerText': numberOfAncVisitsToHealthFacilityMother.text},
       {'questionId': 'IEV019', 'answerText': under5ChildrenMotherHave.text},
       {'questionId': 'IEV020', 'answerText': nameofChild.text},
       {'questionId': 'IEV021', 'answerText': selectDateOfBirth.toString()},
       {'questionId': 'IEV022', 'answerText': selectedAgeCategory.value ?? ''},
       {'questionId': 'IEV023', 'answerText': selectedGender.value ?? ''},
-      {
-        'questionId': 'IEV024',
-        'answerText': selectedHaveRiVaccinationCard.value ?? ''
-      },
-      {
-        'questionId': 'IEV026',
-        'answerText': howManyVisitChildHadToHealthFacility.text
-      },
+      {'questionId': 'IEV024', 'answerText': selectedHaveRiVaccinationCard.value ?? ''},
+      {'questionId': 'IEV026', 'answerText': howManyVisitChildHadToHealthFacility.text},
       {'questionId': 'IEV027', 'answerText': siteOfLastVaccine.text},
       {'questionId': 'IEV028', 'answerText': numberOfPregnantWomen.text},
-      {
-        'questionId': 'IEV029',
-        'answerText': '${firstname.text} ${surname.text}'
-      },
-      {
-        'questionId': 'IEV030',
-        'answerText': selectedMonthsPregnant.value ?? ''
-      },
-      {
-        'questionId': 'IEV031',
-        'answerText': selectedDosesTDVaccineTaken.value ?? ''
-      },
-      {
-        'questionId': 'IEV032',
-        'answerText': numberOfAncVisitsToHealthFacility.text
-      },
-      {
-        'questionId': 'IEV033',
-        'answerText': selectedOtherWomenInTheHousehold.value ?? ''
-      },
-      {
-        'questionId': 'IEV034',
-        'answerText': '${firstnameWoman.text} ${surnameWoman.text}'
-      },
+      {'questionId': 'IEV029', 'answerText': '${firstname.text} ${surname.text}'},
+      {'questionId': 'IEV030', 'answerText': selectedMonthsPregnant.value ?? ''},
+      {'questionId': 'IEV031', 'answerText': selectedDosesTDVaccineTaken.value ?? ''},
+      {'questionId': 'IEV032', 'answerText': numberOfAncVisitsToHealthFacility.text},
+      {'questionId': 'IEV033', 'answerText': selectedOtherWomenInTheHousehold.value ?? ''},
+      {'questionId': 'IEV034', 'answerText': '${firstnameWoman.text} ${surnameWoman.text}'},
       {'questionId': 'IEV036', 'answerText': hasWomanTTIDVaccine.value ?? ''},
     ];
 
@@ -646,9 +584,7 @@ class IEVDataCollectionController extends GetxController {
         .map((antigen) => {
               'name': antigen,
               'response':
-                  selectedReceivedAntigens.value.contains(antigen) == true
-                      ? "true"
-                      : "false"
+                  selectedReceivedAntigens.value.contains(antigen) == true ? "true" : "false"
             })
         .toList();
 
@@ -692,8 +628,7 @@ class IEVDataCollectionController extends GetxController {
     listWard.assignAll(states ?? []);
   }
 
-  void getSettlement(
-      String state, String lga, String ward, String teamCode) async {
+  void getSettlement(String state, String lga, String ward, String teamCode) async {
     var states = await networkService.getSettlement(state, lga, ward, teamCode);
 
     // listSettlement.clear();
@@ -751,8 +686,7 @@ class IEVDataCollectionController extends GetxController {
     List<String> wards = listStateWardLgaMap
         .where((item) =>
             item["state"].toLowerCase() == selectedState.toLowerCase() &&
-            item["lga"].toLowerCase() ==
-                selectedLGA.toLowerCase()) // Filter by state
+            item["lga"].toLowerCase() == selectedLGA.toLowerCase()) // Filter by state
         .map((item) => item["ward"] as String) // Extract LGAs
         .toSet() // Ensure unique LGAs
         .toList(); // Convert back to list
@@ -761,14 +695,12 @@ class IEVDataCollectionController extends GetxController {
     listWard.assignAll(wards ?? []);
   }
 
-  getSettlementLocally(
-      String selectedState, String selectedLGA, String selectedWard) {
+  getSettlementLocally(String selectedState, String selectedLGA, String selectedWard) {
     List<String> settlements = listStateWardLgaMap
         .where((item) =>
             item["state"].toLowerCase() == selectedState.toLowerCase() &&
             item["lga"].toLowerCase() == selectedLGA.toLowerCase() &&
-            item["ward"].toLowerCase() ==
-                selectedWard.toLowerCase()) // Filter by state
+            item["ward"].toLowerCase() == selectedWard.toLowerCase()) // Filter by state
         .map((item) => item["settlement"] as String) // Extract LGAs
         .toSet() // Ensure unique LGAs
         .toList(); // Convert back to list
