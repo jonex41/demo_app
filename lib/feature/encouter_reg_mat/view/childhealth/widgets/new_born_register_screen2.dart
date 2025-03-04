@@ -14,7 +14,8 @@ class NewBornRegisterScreen2 extends StatefulWidget {
 }
 
 class _NewBornRegisterScreen2State extends State<NewBornRegisterScreen2> {
-  final controller = Get.put<EncouterRegMatController>(EncouterRegMatController());
+  final controller =
+      Get.put<EncouterRegMatController>(EncouterRegMatController());
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,8 @@ class _NewBornRegisterScreen2State extends State<NewBornRegisterScreen2> {
                       child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const AppTextFieldHeader(title: 'Most Recent Immunization Received'),
+                      const AppTextFieldHeader(
+                          title: 'Most Recent Immunization Received'),
                       10.height,
                       const Text(
                         '🌱 At Birth:',
@@ -50,28 +52,35 @@ class _NewBornRegisterScreen2State extends State<NewBornRegisterScreen2> {
                       Obx(() => Wrap(
                             spacing: 8.0, // Space between checkboxes
                             runSpacing: 10.0, // Space between rows
-                            children: controller.atBirthVaccines.keys.map((vaccine) {
-                              return Container(
-                                padding: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: const Color(0xFFF4F4F4)),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  color: const Color(0xFFF9FAFB),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Checkbox(
-                                      value: controller.atBirthVaccines[vaccine],
-                                      onChanged: (bool? value) {
-                                        controller.toggleSelection(vaccine, value);
-                                      },
-                                    ),
-                                    Text(
-                                      vaccine,
-                                      style: const TextStyle(fontSize: 12),
-                                    ),
-                                  ],
+                            children:
+                                controller.atBirthVaccines.keys.map((vaccine) {
+                              return InkWell(
+                                onTap: () =>
+                                    controller.toggleSelection(vaccine),
+                                child: Container(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xFFF4F4F4)),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    color: const Color(0xFFF9FAFB),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Checkbox(
+                                        value:
+                                            controller.atBirthVaccines[vaccine],
+                                        onChanged: (bool? value) {
+                                          controller.toggleSelection(vaccine);
+                                        },
+                                      ),
+                                      Text(
+                                        vaccine,
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -91,28 +100,36 @@ class _NewBornRegisterScreen2State extends State<NewBornRegisterScreen2> {
                       Obx(() => Wrap(
                             spacing: 8.0, // Space between checkboxes
                             runSpacing: 10.0, // Space between rows
-                            children: controller.sixWeeksVaccines.keys.map((vaccine) {
-                              return Container(
-                                padding: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: const Color(0xFFF4F4F4)),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  color: const Color(0xFFF9FAFB),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Checkbox(
-                                      value: controller.sixWeeksVaccines[vaccine],
-                                      onChanged: (bool? value) {
-                                        controller.toggleSelectionSixWeeks(vaccine, value);
-                                      },
-                                    ),
-                                    Text(
-                                      vaccine,
-                                      style: const TextStyle(fontSize: 12),
-                                    ),
-                                  ],
+                            children:
+                                controller.sixWeeksVaccines.keys.map((vaccine) {
+                              return InkWell(
+                                onTap: () =>
+                                    controller.toggleSelectionSixWeeks(vaccine),
+                                child: Container(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xFFF4F4F4)),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    color: const Color(0xFFF9FAFB),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Checkbox(
+                                        value: controller
+                                            .sixWeeksVaccines[vaccine],
+                                        onChanged: (bool? value) {
+                                          controller
+                                              .toggleSelectionSixWeeks(vaccine);
+                                        },
+                                      ),
+                                      Text(
+                                        vaccine,
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -132,28 +149,36 @@ class _NewBornRegisterScreen2State extends State<NewBornRegisterScreen2> {
                       Obx(() => Wrap(
                             spacing: 8.0, // Space between checkboxes
                             runSpacing: 10.0, // Space between rows
-                            children: controller.tenWeeksVaccines.keys.map((vaccine) {
-                              return Container(
-                                padding: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: const Color(0xFFF4F4F4)),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  color: const Color(0xFFF9FAFB),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Checkbox(
-                                      value: controller.tenWeeksVaccines[vaccine],
-                                      onChanged: (bool? value) {
-                                        controller.toggleSelectionTenWeeks(vaccine, value);
-                                      },
-                                    ),
-                                    Text(
-                                      vaccine,
-                                      style: const TextStyle(fontSize: 12),
-                                    ),
-                                  ],
+                            children:
+                                controller.tenWeeksVaccines.keys.map((vaccine) {
+                              return InkWell(
+                                onTap: () =>
+                                    controller.toggleSelectionTenWeeks(vaccine),
+                                child: Container(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xFFF4F4F4)),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    color: const Color(0xFFF9FAFB),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Checkbox(
+                                        value: controller
+                                            .tenWeeksVaccines[vaccine],
+                                        onChanged: (bool? value) {
+                                          controller
+                                              .toggleSelectionTenWeeks(vaccine);
+                                        },
+                                      ),
+                                      Text(
+                                        vaccine,
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -173,28 +198,36 @@ class _NewBornRegisterScreen2State extends State<NewBornRegisterScreen2> {
                       Obx(() => Wrap(
                             spacing: 8.0, // Space between checkboxes
                             runSpacing: 10.0, // Space between rows
-                            children: controller.fourteenWeeksVaccines.keys.map((vaccine) {
-                              return Container(
-                                padding: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: const Color(0xFFF4F4F4)),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  color: const Color(0xFFF9FAFB),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Checkbox(
-                                      value: controller.fourteenWeeksVaccines[vaccine],
-                                      onChanged: (bool? value) {
-                                        controller.toggleSelection14Weeks(vaccine, value);
-                                      },
-                                    ),
-                                    Text(
-                                      vaccine,
-                                      style: const TextStyle(fontSize: 12),
-                                    ),
-                                  ],
+                            children: controller.fourteenWeeksVaccines.keys
+                                .map((vaccine) {
+                              return InkWell(
+                                onTap: () =>
+                                    controller.toggleSelection14Weeks(vaccine),
+                                child: Container(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xFFF4F4F4)),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    color: const Color(0xFFF9FAFB),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Checkbox(
+                                        value: controller
+                                            .fourteenWeeksVaccines[vaccine],
+                                        onChanged: (bool? value) {
+                                          controller
+                                              .toggleSelection14Weeks(vaccine);
+                                        },
+                                      ),
+                                      Text(
+                                        vaccine,
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -214,28 +247,36 @@ class _NewBornRegisterScreen2State extends State<NewBornRegisterScreen2> {
                       Obx(() => Wrap(
                             spacing: 8.0, // Space between checkboxes
                             runSpacing: 10.0, // Space between rows
-                            children: controller.nineMonthsVaccines.keys.map((vaccine) {
-                              return Container(
-                                padding: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: const Color(0xFFF4F4F4)),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  color: const Color(0xFFF9FAFB),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Checkbox(
-                                      value: controller.nineMonthsVaccines[vaccine],
-                                      onChanged: (bool? value) {
-                                        controller.toggleSelection9Months(vaccine, value);
-                                      },
-                                    ),
-                                    Text(
-                                      vaccine,
-                                      style: const TextStyle(fontSize: 12),
-                                    ),
-                                  ],
+                            children: controller.nineMonthsVaccines.keys
+                                .map((vaccine) {
+                              return InkWell(
+                                onTap: () =>
+                                    controller.toggleSelection9Months(vaccine),
+                                child: Container(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xFFF4F4F4)),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    color: const Color(0xFFF9FAFB),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Checkbox(
+                                        value: controller
+                                            .nineMonthsVaccines[vaccine],
+                                        onChanged: (bool? value) {
+                                          controller
+                                              .toggleSelection9Months(vaccine);
+                                        },
+                                      ),
+                                      Text(
+                                        vaccine,
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -255,34 +296,43 @@ class _NewBornRegisterScreen2State extends State<NewBornRegisterScreen2> {
                       Obx(() => Wrap(
                             spacing: 8.0, // Space between checkboxes
                             runSpacing: 10.0, // Space between rows
-                            children: controller.fifteenMonthsVaccines.keys.map((vaccine) {
-                              return Container(
-                                padding: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: const Color(0xFFF4F4F4)),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  color: const Color(0xFFF9FAFB),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Checkbox(
-                                      value: controller.fifteenMonthsVaccines[vaccine],
-                                      onChanged: (bool? value) {
-                                        controller.toggleSelection15Months(vaccine, value);
-                                      },
-                                    ),
-                                    Text(
-                                      vaccine,
-                                      style: const TextStyle(fontSize: 12),
-                                    ),
-                                  ],
+                            children: controller.fifteenMonthsVaccines.keys
+                                .map((vaccine) {
+                              return InkWell(
+                                onTap: () =>
+                                    controller.toggleSelection15Months(vaccine),
+                                child: Container(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xFFF4F4F4)),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    color: const Color(0xFFF9FAFB),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Checkbox(
+                                        value: controller
+                                            .fifteenMonthsVaccines[vaccine],
+                                        onChanged: (bool? value) {
+                                          controller
+                                              .toggleSelection15Months(vaccine);
+                                        },
+                                      ),
+                                      Text(
+                                        vaccine,
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }).toList(),
                           )),
                       18.height,
-                      const AppTextFieldHeader(title: 'Is the child fully immunized?'),
+                      const AppTextFieldHeader(
+                          title: 'Is the child fully immunized?'),
                       5.height,
                       AncDropDownButton(
                         hint: 'Select an option',

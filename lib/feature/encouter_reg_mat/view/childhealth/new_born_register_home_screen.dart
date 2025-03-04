@@ -3,6 +3,7 @@ import 'package:demo_app/component/button.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
+import 'package:demo_app/feature/encouter_reg_mat/modal/success_modal.dart';
 import 'package:demo_app/feature/encouter_reg_mat/provider/encouter_reg_mat_controller.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/widgets/new_born_register_screen1.dart';
 import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/widgets/new_born_register_screen2.dart';
@@ -21,11 +22,13 @@ class NewBornRegisterHomeScreen extends StatefulWidget {
   const NewBornRegisterHomeScreen({super.key});
 
   @override
-  State<NewBornRegisterHomeScreen> createState() => _NewBornRegisterHomeScreenState();
+  State<NewBornRegisterHomeScreen> createState() =>
+      _NewBornRegisterHomeScreenState();
 }
 
 class _NewBornRegisterHomeScreenState extends State<NewBornRegisterHomeScreen> {
-  final controller = Get.put<EncouterRegMatController>(EncouterRegMatController());
+  final controller =
+      Get.put<EncouterRegMatController>(EncouterRegMatController());
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +59,8 @@ class _NewBornRegisterHomeScreenState extends State<NewBornRegisterHomeScreen> {
               child: Align(
                 alignment: Alignment.center,
                 child: SvgPicture.asset("assets/images/back.svg",
-                    colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
+                    colorFilter: const ColorFilter.mode(
+                        AppPalette.black, BlendMode.srcIn)),
               ),
             ),
           )),
@@ -138,7 +142,7 @@ class _NewBornRegisterHomeScreenState extends State<NewBornRegisterHomeScreen> {
       height: 56,
       width: MediaQuery.of(context).size.width,
       radius: 8,
-      text: controller.currentScreen.value == 4 ? 'Submit' : 'Next',
+      text: controller.currentScreen.value == 5 ? 'Submit' : 'Next',
       onPressed: () async {
         if (controller.currentScreen.value == 1) {
           /* final isValid = controller.formKeyNewBornScreen1.currentState!.validate();
@@ -184,6 +188,29 @@ class _NewBornRegisterHomeScreenState extends State<NewBornRegisterHomeScreen> {
         if (controller.currentScreen.value == 6) {
           //controller.newMapData();
           controller.currentScreen.value--;
+          showModalBottomSheet(
+            backgroundColor: const Color(0xffFEFEFE),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(15),
+              ),
+            ),
+            isScrollControlled: true,
+            enableDrag: true,
+            context: context,
+            builder: (builder) {
+              return Container(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                ),
+                child: const Wrap(
+                  children: [
+                    SuccessModal(),
+                  ],
+                ),
+              );
+            },
+          );
           //submit data
 
           return;

@@ -34,6 +34,8 @@ class EncouterRegMatController extends GetxController {
   final houseNoController = TextEditingController();
   final houseHoldNoController = TextEditingController();
 
+  final muacMeasurmentController = TextEditingController();
+
   final formKeyNewBornScreen1 = GlobalKey<FormState>();
   final formKeyNewBornScreen2 = GlobalKey<FormState>();
   final formKeyNewBornScreen3 = GlobalKey<FormState>();
@@ -47,6 +49,25 @@ class EncouterRegMatController extends GetxController {
   ].obs;
 
   final selectedChildFullyImmunized = Rxn<String>();
+  final selectedPedalOedemaPresent = Rxn<String>();
+  final selectedDoesChildHaveSevereMalnutrition = Rxn<String>();
+  final selectedIsChildDueDeworming = Rxn<String>();
+  final selectedAlbendazoleGivenToChild = Rxn<String>();
+
+  final selectedDoesChildHaveFever = Rxn<String>();
+  final selectedConductRDTMalaria = Rxn<String>();
+  final selectedConfirmMalariaACT = Rxn<String>();
+
+  final selectedDoesChildHaveDiarrhea = Rxn<String>();
+  final selectedTreatDiarrheaORS = Rxn<String>();
+  final selectedTreatDiarrheaZinc = Rxn<String>();
+
+  final selectedDoesChildHaveCough = Rxn<String>();
+  final selectedBreathsPerMinute = Rxn<String>();
+  final selectedChildHaveFastBreathing = Rxn<String>();
+  final selectedTreatFastBreathingAmoxicillin = Rxn<String>();
+
+  final selectedIsPreReferralTreatmentGiven = Rxn<String>();
   final List<String> optionYesNo = [
     'Yes',
     'No',
@@ -57,6 +78,24 @@ class EncouterRegMatController extends GetxController {
     'Routine',
     'Follow-up',
     'Emergency',
+  ].obs;
+
+  final selectedFollowUp = Rxn<String>();
+  final List<String> followUp = [
+    'Recovered',
+    'Referred',
+    'Adhered to referral',
+    'Adverse Drug Reaction',
+    'Died',
+  ].obs;
+
+  final selectedPreReferralTreatmentGiven = Rxn<String>();
+  final List<String> preReferralTreatmentGiven = [
+    'Pre-referral treatment with Rectal Artesunate for severe malaria',
+    'Pre-referral treatment with ACT for severe malaria',
+    'Pre-referral treatment with amoxicillin for chest indrawing',
+    'Pre-referral treatment with LO-ORS + Zn for Diarrhea',
+    'Other',
   ].obs;
 
   final Rxn<DateTime> _dateOfBirth = Rxn<DateTime>();
@@ -95,6 +134,45 @@ class EncouterRegMatController extends GetxController {
     ),
   ];
   final currentScreen = 1.obs;
+
+  final selectedRecentGrowthMonitoringAttended = Rxn<String>();
+  final List<String> recentGrowthMonitoringAttended = [
+    '0 ≤ 3 Months',
+    '3 ≤ 6 Months',
+    '6 ≤ 9 Months',
+    '9 ≤ 12 Months',
+    '12 ≤ 15 Months',
+    '15 ≤ 18 Months',
+    '18 ≤ 21 Months',
+    '21 ≤ 24 Months',
+  ].obs;
+
+  final selectedMostRecentNutritionalReceived = Rxn<String>();
+  final List<String> mostRecentNutritionalReceived = [
+    '6 Months (Vitamin A)',
+    '12 Months (Vitamin A)',
+    '12 - 18 Months (Deworming)',
+    '18 Months (Vitamin A)',
+    '12 - 24 Months (Deworming)',
+    '24 Months (Vitamin A)',
+  ].obs;
+
+  final selectedReferralMade = [].obs;
+  final List<String> selectReferralMade =
+      ['Immunization', 'Danger signs', 'Severe Malnutrition', 'Other'].obs;
+
+  final selectedCareGiverCounselledOn = [].obs;
+  final List<String> selectCareGiverCounselledOn = [
+    'Recognizing danger signs in children',
+    'Exclusive breastfeeding for 1st 6 months',
+    'Appropriate complementary feeding',
+    'Importance of growth monitoring',
+    'Protecting your child with vaccinations',
+    'Preventing Malaria',
+    'Preventing illness through handwashing',
+    'Diarrhoea Prevention',
+    'Use of ORS + Zn',
+  ].obs;
 
   setSelectedDateOfBirth(String? value) {
     _selectDateOfBirth.value = value;
@@ -164,33 +242,33 @@ class EncouterRegMatController extends GetxController {
     "Measles 2nd Dose": false,
   }.obs;
 
-  void toggleSelection(String key, bool? value) {
-    atBirthVaccines[key] = value ?? false;
+  void toggleSelection(String key) {
+    atBirthVaccines[key] = !(atBirthVaccines[key] ?? false);
     debugPrint(selectedVaccines.join(", "));
   }
 
-  void toggleSelectionSixWeeks(String key, bool? value) {
-    sixWeeksVaccines[key] = value ?? false;
+  void toggleSelectionSixWeeks(String key) {
+    sixWeeksVaccines[key] = !(sixWeeksVaccines[key] ?? false);
     debugPrint(selected6WeekVaccines.join(", "));
   }
 
-  void toggleSelectionTenWeeks(String key, bool? value) {
-    tenWeeksVaccines[key] = value ?? false;
+  void toggleSelectionTenWeeks(String key) {
+    tenWeeksVaccines[key] = !(tenWeeksVaccines[key] ?? false);
     debugPrint(selected10WeekVaccines.join(", "));
   }
 
-  void toggleSelection14Weeks(String key, bool? value) {
-    fourteenWeeksVaccines[key] = value ?? false;
+  void toggleSelection14Weeks(String key) {
+    fourteenWeeksVaccines[key] = !(fourteenWeeksVaccines[key] ?? false);
     debugPrint(selected14WeekVaccines.join(", "));
   }
 
-  void toggleSelection9Months(String key, bool? value) {
-    nineMonthsVaccines[key] = value ?? false;
+  void toggleSelection9Months(String key) {
+    nineMonthsVaccines[key] = !(nineMonthsVaccines[key] ?? false);
     debugPrint(selected9MonthsVaccines.join(", "));
   }
 
-  void toggleSelection15Months(String key, bool? value) {
-    fifteenMonthsVaccines[key] = value ?? false;
+  void toggleSelection15Months(String key) {
+    fifteenMonthsVaccines[key] = !(fifteenMonthsVaccines[key] ?? false);
     debugPrint(selected15MonthsVaccines.join(", "));
   }
 
@@ -203,14 +281,20 @@ class EncouterRegMatController extends GetxController {
   List<String> get selected10WeekVaccines =>
       tenWeeksVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
 
-  List<String> get selected14WeekVaccines =>
-      fourteenWeeksVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
+  List<String> get selected14WeekVaccines => fourteenWeeksVaccines.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
 
-  List<String> get selected9MonthsVaccines =>
-      nineMonthsVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
+  List<String> get selected9MonthsVaccines => nineMonthsVaccines.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
 
-  List<String> get selected15MonthsVaccines =>
-      fifteenMonthsVaccines.entries.where((e) => e.value).map((e) => e.key).toList();
+  List<String> get selected15MonthsVaccines => fifteenMonthsVaccines.entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toList();
 
   @override
   void onInit() {
@@ -273,7 +357,9 @@ class EncouterRegMatController extends GetxController {
     String title,
   ) {
     snackBar(context,
-        title: title, backgroundColor: AppPalette.red.red350, textColor: AppPalette.white);
+        title: title,
+        backgroundColor: AppPalette.red.red350,
+        textColor: AppPalette.white);
   }
 
 /*   void sendOtpForPasswordReset(BuildContext context) async {
@@ -369,8 +455,11 @@ class EncouterRegMatController extends GetxController {
  */
   String getPhoneNumber(String value) {
     String phoneNumber = value;
-    phoneNumber = phoneNumber.contains('+') ? phoneNumber.substring(1) : phoneNumber;
-    phoneNumber = phoneNumber.contains('234') ? phoneNumber : '234${phoneNumber.substring(1)}';
+    phoneNumber =
+        phoneNumber.contains('+') ? phoneNumber.substring(1) : phoneNumber;
+    phoneNumber = phoneNumber.contains('234')
+        ? phoneNumber
+        : '234${phoneNumber.substring(1)}';
     //presentPhoneNumber = phoneNumber;
     return phoneNumber;
   }
