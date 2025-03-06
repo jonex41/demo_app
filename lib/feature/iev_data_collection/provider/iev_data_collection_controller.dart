@@ -210,7 +210,7 @@ class IEVDataCollectionController extends GetxController {
   final howManyVisitChildHadToHealthFacility = TextEditingController();
   final under5ChildrenMotherHave = TextEditingController();
 
-  final stateValue = "1".obs;
+  final stateValue = "Abia".obs;
   final lgaValue = Rxn<String>();
   final wardValue = Rxn<String>();
   final statesLga = Rxn<List<String>>([]);

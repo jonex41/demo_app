@@ -130,7 +130,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   5.height,
                                   AncDropDownButton(
                                     hint: 'Select a State',
-                                    // value: controller.stateValue.value,
+                                     value: controller.stateValue.value,
                                     items: NigerianStatesAndLGA.allStates,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
