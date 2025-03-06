@@ -40,8 +40,8 @@ class HomeScreen extends GetView<HomeController> {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               children: [
-                //page1(context),
-                page2(context),
+                page1(context),
+                // page2(context),
                 50.height,
               ],
             ),

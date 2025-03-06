@@ -130,7 +130,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   5.height,
                                   AncDropDownButton(
                                     hint: 'Select a State',
-                                    value: controller.stateValue.value,
+                                    // value: controller.stateValue.value,
                                     items: NigerianStatesAndLGA.allStates,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -140,7 +140,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                       }
                                     },
                                     onChanged: (value) {
-                                       controller.setNgState(value);
+                                      controller.setNgState(value);
                                       /*  controller.setNgState(value);
                                     
                                       controller
@@ -156,7 +156,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                       controller.lgaValue.value = listLga[0];
                                       controller.listLga
                                           .assignAll(listLga ?? []);
-                                            controller.lgaValue.value = listLga[0];
+                                      controller.lgaValue.value = listLga[0];
                                     },
                                   ),
                                 ],
