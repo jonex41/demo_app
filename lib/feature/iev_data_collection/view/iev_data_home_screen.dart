@@ -24,7 +24,8 @@ class IEVDataHomeScreen extends StatefulWidget {
 }
 
 class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
-  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller =
+      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,8 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
               child: Align(
                 alignment: Alignment.center,
                 child: SvgPicture.asset("assets/images/back.svg",
-                    colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
+                    colorFilter: const ColorFilter.mode(
+                        AppPalette.black, BlendMode.srcIn)),
               ),
             ),
           )),
@@ -135,7 +137,7 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
       height: 56,
       width: MediaQuery.of(context).size.width,
       radius: 8,
-      text: controller.currentScreen.value == 5 ? 'Submit' : 'Next',
+      text: controller.currentScreen.value == 4 ? 'Submit' : 'Next',
       onPressed: () async {
         if (controller.currentScreen.value == 1) {
           final isValid = controller.formKeyScreen1.currentState!.validate();

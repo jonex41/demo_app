@@ -1,9 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:demo_app/component/button.dart';
-import 'package:demo_app/component/input_text_with_text.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
-import 'package:demo_app/feature/profile/provider/profile_controller.dart';
 import 'package:demo_app/feature/util/utils.dart';
 import 'package:demo_app/feature/wallet/provider/wallet_controller.dart';
 import 'package:flutter/material.dart';

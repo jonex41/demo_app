@@ -17,7 +17,7 @@ class NetworkService extends GetxService {
   Future<NetworkService> init() async {
     final options = BaseOptions(
       connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 3),
+      receiveTimeout: const Duration(seconds: 6),
     );
     Dio dio = Dio(options);
     // dio.options.connectTimeout = const Duration(seconds: 8);
@@ -44,16 +44,17 @@ class NetworkService extends GetxService {
     return response.result;
   }
 
-  Future<IevSubmissionResponse?> submitIEVData(Map<String, dynamic> request) async {
+  Future<IevSubmissionResponse?> submitIEVData(
+      Map<String, dynamic> request) async {
     final response = await _restClient.submitIEVData(request);
     if (response.statusCode! != 201) throw Exception(response.message);
     return response.result;
   }
 
-  Future<BaseResponse> submitIEVDataNew(Map<String, dynamic> request) async {
+  Future<bool> submitIEVDataNew(Map<String, dynamic> request) async {
     final response = await _restClient.submitIEVDataNew(request);
     if (response.statusCode! != 201) throw Exception(response.message);
-    return response.result;
+    return true;
   }
 
   Future<BaseResponse<ForgotPasswordModel>> forgotPasswordSendOtp(
@@ -129,7 +130,8 @@ class NetworkService extends GetxService {
   Future<List<SettlementModel>?> getSettlement(
       String state, String lga, String ward, String teamCode) async {
     //final token = storageService.getToken();
-    final response = await _restClient.getSettlement(state, lga, ward, teamCode);
+    final response =
+        await _restClient.getSettlement(state, lga, ward, teamCode);
     if (response.statusCode != 200) {
       throw Exception(response.message);
     }
