@@ -1,4 +1,6 @@
-/* {
+{
+  "dart.flutterSdkPath": "~/Downloads/flutter_flavours/flutter3.27.3-stable"
+} /* {
   "java.configuration.updateBuildConfiguration": "interactive",
   ///"dart.flutterSdkPath": "~/Downloads/flutter_flavours/flutter3.27.3-stable"
 }

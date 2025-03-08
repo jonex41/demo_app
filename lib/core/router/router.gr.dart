@@ -75,6 +75,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChildHealth1Screen(),
       );
     },
+    ChildrenRegisteredDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChildrenRegisteredDetailScreen(),
+      );
+    },
+    ChildrenRegisteredRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChildrenRegisteredScreen(),
+      );
+    },
+    ChildrenRegisteredViewRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChildrenRegisteredViewScreen(),
+      );
+    },
     ChipReferral1Route.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -405,6 +423,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MoreScreen(),
       );
     },
+    NewBornRegisterHomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NewBornRegisterHomeScreen(),
+      );
+    },
     OfflineForm1Route.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -598,6 +622,48 @@ class ChildHealth1Route extends PageRouteInfo<void> {
         );
 
   static const String name = 'ChildHealth1Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChildrenRegisteredDetailScreen]
+class ChildrenRegisteredDetailRoute extends PageRouteInfo<void> {
+  const ChildrenRegisteredDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          ChildrenRegisteredDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChildrenRegisteredDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChildrenRegisteredScreen]
+class ChildrenRegisteredRoute extends PageRouteInfo<void> {
+  const ChildrenRegisteredRoute({List<PageRouteInfo>? children})
+      : super(
+          ChildrenRegisteredRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChildrenRegisteredRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChildrenRegisteredViewScreen]
+class ChildrenRegisteredViewRoute extends PageRouteInfo<void> {
+  const ChildrenRegisteredViewRoute({List<PageRouteInfo>? children})
+      : super(
+          ChildrenRegisteredViewRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChildrenRegisteredViewRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -1368,6 +1434,20 @@ class MoreRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MoreRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NewBornRegisterHomeScreen]
+class NewBornRegisterHomeRoute extends PageRouteInfo<void> {
+  const NewBornRegisterHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          NewBornRegisterHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NewBornRegisterHomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

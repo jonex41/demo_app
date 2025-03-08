@@ -1,69 +1,48 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:demo_app/component/button.dart';
 import 'package:demo_app/components/app_text_field_header.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
-import 'package:demo_app/feature/commodity_dispensing/provider/commodity_dispense_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 @RoutePage()
-class CommDispenseViewSavedFormScreen extends StatefulWidget {
-  const CommDispenseViewSavedFormScreen({super.key});
+class ChildrenRegisteredViewScreen extends StatefulWidget {
+  const ChildrenRegisteredViewScreen({super.key});
 
   @override
-  State<CommDispenseViewSavedFormScreen> createState() => _CommDispenseViewSavedFormScreenState();
+  State<ChildrenRegisteredViewScreen> createState() => _ChildrenRegisteredViewScreenState();
 }
 
-class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedFormScreen> {
-  final controller = Get.put<CommodityDispenseController>(CommodityDispenseController());
-
+class _ChildrenRegisteredViewScreenState extends State<ChildrenRegisteredViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          'Emily Peters',
-          style: context.theme.appTextTheme.bodyMedium16.copyWith(
-            color: AppPalette.black,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        //centerTitle: true,
-        backgroundColor: AppPalette.white,
-        leading: Padding(
-          padding: const EdgeInsets.only(bottom: 5),
-          child: InkWell(
-            onTap: () => appRoute.pop(),
-            child: Align(
-              alignment: Alignment.center,
-              child: SvgPicture.asset("assets/images/back.svg",
-                  colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
+          elevation: 0,
+          title: Text(
+            'Asma\'u Umar',
+            style: context.theme.appTextTheme.bodyMedium16.copyWith(
+              color: AppPalette.black,
+              fontWeight: FontWeight.w600,
             ),
           ),
-        ),
-        /*actions: [
-            InkWell(
-              onTap: () {
-                controller.gotoCommDispenseAddEditFormScreen();
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Text(
-                  'Edit Form',
-                  style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                    fontSize: 13,
-                    color: const Color(0xff07AD73),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+          centerTitle: true,
+          backgroundColor: AppPalette.white,
+          leading: Padding(
+            padding: const EdgeInsets.only(bottom: 5),
+            child: InkWell(
+              onTap: () => appRoute.pop(),
+              child: Align(
+                alignment: Alignment.center,
+                child: SvgPicture.asset("assets/images/back.svg",
+                    colorFilter: const ColorFilter.mode(AppPalette.black, BlendMode.srcIn)),
               ),
-            )
-          ]*/
-      ),
+            ),
+          )),
       body: Container(
         color: AppPalette.white,
         width: MediaQuery.of(context).size.width,
@@ -76,12 +55,13 @@ class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedF
               Expanded(
                 child: SingleChildScrollView(
                     child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(child: header(context, 'State', 'Niger')),
-                        Expanded(child: header(context, 'LGA', 'Bosso')),
+                        Expanded(child: header(context, 'Caregiver’s Name', 'Angwar Hausa')),
+                        Expanded(child: header(context, 'Caregiver’s Contact', '08037867439')),
                       ],
                     ),
                     12.height,
@@ -90,32 +70,10 @@ class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedF
                     ),
                     12.height,
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(child: header(context, 'Ward', 'Bosso 1')),
-                        Expanded(child: header(context, 'Community', 'Bosso 2')),
-                      ],
-                    ),
-                    12.height,
-                    const Divider(
-                      color: Color(0xffF5F5F5),
-                    ),
-                    12.height,
-                    header(context, 'Date Registered by CHIPS Agent', '12/02/2025'),
-                    12.height,
-                    const Divider(
-                      color: Color(0xffF5F5F5),
-                    ),
-                    12.height,
-                    header(context, 'Settlement', 'Angwar Hausa'),
-                    12.height,
-                    const Divider(
-                      color: Color(0xffF5F5F5),
-                    ),
-                    12.height,
-                    Row(
-                      children: [
-                        Expanded(child: header(context, 'House No', '50')),
-                        Expanded(child: header(context, 'Household No', '55')),
+                        Expanded(child: header(context, 'Child’s Name', 'Maryam Abdullahi')),
+                        Expanded(child: header(context, 'Sex', 'Female')),
                       ],
                     ),
                     12.height,
@@ -124,26 +82,63 @@ class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedF
                     ),
                     12.height,
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(child: header(context, 'Client First Name', 'James')),
-                        Expanded(child: header(context, 'Client Surname', 'Smith')),
+                        Expanded(child: header(context, 'Date of Birth', '14/02/2025')),
+                        Expanded(child: header(context, 'Age (in Months)', '18 months')),
                       ],
                     ),
                     12.height,
-                    header(context, 'Phone Number', '07065808595'),
+                    const Divider(
+                      color: Color(0xffF5F5F5),
+                    ),
+                    12.height,
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 12),
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFFEF6FF),
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        ),
+                        child: Text(
+                          'Visit Details',
+                          style: context.theme.appTextTheme.bodyMedium16.copyWith(
+                            fontSize: 14,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )),
+                    12.height,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(child: header(context, 'Date of Visit', '14/02/2025')),
+                        Expanded(child: header(context, 'Settlement', 'Angwar Hausa')),
+                      ],
+                    ),
                     12.height,
                     const Divider(
                       color: Color(0xffF5F5F5),
                     ),
                     12.height,
-                    header(context, 'Commodity Name',
-                        'Lorem ipsum dolor sit amet consectetur. Tortor.'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(child: header(context, 'House No', 'CHIPS/260102/01/01')),
+                        Expanded(child: header(context, 'Household No', 'CHIPS/260102/01/01002')),
+                      ],
+                    ),
                     12.height,
                     const Divider(
                       color: Color(0xffF5F5F5),
                     ),
                     12.height,
-                    header(context, 'Quantity Given', '2'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(child: header(context, 'Type of Visit', 'Follow-up')),
+                      ],
+                    ),
                     12.height,
                     const Divider(
                       color: Color(0xffF5F5F5),
@@ -176,7 +171,18 @@ class _CommDispenseViewSavedFormScreenState extends State<CommDispenseViewSavedF
                             )
                           ],
                         )),
-                    30.height,
+                    20.height,
+                    AppOutlinedButton(
+                        width: MediaQuery.of(context).size.width,
+                        onPressed: () async {},
+                        text: 'Delete Form',
+                        color: const Color(0xffE80101),
+                        textColor: const Color(0xffE80101),
+                        height: 50.0,
+                        radius: 8,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 13),
+                    40.height,
                   ],
                 )),
               )

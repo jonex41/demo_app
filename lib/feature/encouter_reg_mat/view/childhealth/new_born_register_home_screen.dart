@@ -3,11 +3,13 @@ import 'package:demo_app/component/button.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
-import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
-import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen1.dart';
-import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen2.dart';
-import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen3.dart';
-import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen4.dart';
+import 'package:demo_app/feature/encouter_reg_mat/modal/success_modal.dart';
+import 'package:demo_app/feature/encouter_reg_mat/provider/encouter_reg_mat_controller.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/widgets/new_born_register_screen1.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/widgets/new_born_register_screen2.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/widgets/new_born_register_screen3.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/widgets/new_born_register_screen4.dart';
+import 'package:demo_app/feature/encouter_reg_mat/view/childhealth/widgets/new_born_register_screen5.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -16,16 +18,17 @@ import 'package:progress_bar_steppers/stepper_style.dart';
 import 'package:progress_bar_steppers/steppers_widget.dart';
 
 @RoutePage()
-class IEVDataHomeScreen extends StatefulWidget {
-  const IEVDataHomeScreen({super.key});
+class NewBornRegisterHomeScreen extends StatefulWidget {
+  const NewBornRegisterHomeScreen({super.key});
 
   @override
-  State<IEVDataHomeScreen> createState() => _IEVDataHomeScreenState();
+  State<NewBornRegisterHomeScreen> createState() =>
+      _NewBornRegisterHomeScreenState();
 }
 
-class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
+class _NewBornRegisterHomeScreenState extends State<NewBornRegisterHomeScreen> {
   final controller =
-      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+      Get.put<EncouterRegMatController>(EncouterRegMatController());
 
   @override
   Widget build(BuildContext context) {
@@ -119,15 +122,17 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
 
   Widget getRightBody() {
     if (controller.currentScreen.value == 1) {
-      return const IEVDataScreen1();
+      return const NewBornRegisterScreen1();
     } else if (controller.currentScreen.value == 2) {
-      return const IEVDataScreen2();
+      return const NewBornRegisterScreen2();
     } else if (controller.currentScreen.value == 3) {
-      return const IEVDataScreen3();
+      return const NewBornRegisterScreen3();
     } else if (controller.currentScreen.value == 4) {
-      return const IEVDataScreen4();
+      return const NewBornRegisterScreen4();
+    } else if (controller.currentScreen.value == 5) {
+      return const NewBornRegisterScreen5();
     }
-    return const IEVDataScreen1();
+    return const NewBornRegisterScreen1();
   }
 
   Widget updateButtonNext(BuildContext context) {
@@ -137,29 +142,27 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
       height: 56,
       width: MediaQuery.of(context).size.width,
       radius: 8,
-      text: controller.currentScreen.value == 4 ? 'Submit' : 'Next',
+      text: controller.currentScreen.value == 5 ? 'Submit' : 'Next',
       onPressed: () async {
         if (controller.currentScreen.value == 1) {
-          final isValid = controller.formKeyScreen1.currentState!.validate();
+          /* final isValid = controller.formKeyNewBornScreen1.currentState!.validate();
           if (!isValid) {
             return;
-          }
+          }*/
         }
 
         if (controller.currentScreen.value == 2) {
-          //controller.newMapData();
-          final isValid = controller.formKeyScreen2.currentState!.validate();
+          /* final isValid = controller.formKeyNewBornScreen2.currentState!.validate();
           if (!isValid) {
             return;
-          }
+          }*/
         }
 
         if (controller.currentScreen.value == 3) {
-          //controller.newMapData();
-          final isValid = controller.formKeyScreen3.currentState!.validate();
+          /*final isValid = controller.formKeyNewBornScreen3.currentState!.validate();
           if (!isValid) {
             return;
-          }
+          }*/
 
           /*if (controller.selectDateOfBirth == null) {
             showAlertDialog('Date of Birth cannot be empty');
@@ -168,49 +171,51 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
         }
 
         if (controller.currentScreen.value == 4) {
-          final isValid = controller.formKeyScreen4.currentState!.validate();
+          /*final isValid = controller.formKeyNewBornScreen4.currentState!.validate();
           if (!isValid) {
             return;
-          }
+          }*/
+        }
+        if (controller.currentScreen.value == 5) {
+          /*final isValid = controller.formKeyNewBornScreen5.currentState!.validate();
+          if (!isValid) {
+            return;
+          }*/
         }
 
         controller.currentScreen.value++;
 
-        if (controller.currentScreen.value == 5) {
+        if (controller.currentScreen.value == 6) {
           //controller.newMapData();
           controller.currentScreen.value--;
-          if (await isNetworkAvailable()) {
-            print("i am online");
-            controller.submitData(context);
-          } else {
-            print("i am offline");
-            controller.submitDataLocally(context);
-          }
+          showModalBottomSheet(
+            backgroundColor: const Color(0xffFEFEFE),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(15),
+              ),
+            ),
+            isScrollControlled: true,
+            enableDrag: true,
+            context: context,
+            builder: (builder) {
+              return Container(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                ),
+                child: const Wrap(
+                  children: [
+                    SuccessModal(),
+                  ],
+                ),
+              );
+            },
+          );
+          //submit data
 
           return;
         }
       },
     );
-  }
-
-  Widget _offlineButton() {
-    return controller.currentScreen.value == 4
-        ? Column(
-            children: [
-              AppElevatedButton(
-                textColor: AppPalette.white,
-                color: AppPalette.primary.primary400,
-                height: 56,
-                width: MediaQuery.of(context).size.width,
-                radius: 8,
-                text: 'Save Locally',
-                onPressed: () {
-                  controller.submitDataLocally(context);
-                },
-              ),
-              15.height
-            ],
-          )
-        : Container();
   }
 }

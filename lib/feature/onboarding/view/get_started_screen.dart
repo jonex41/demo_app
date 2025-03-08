@@ -18,7 +18,6 @@ class GetStartedScreen extends StatefulWidget {
 class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
       body: Container(
@@ -54,14 +53,16 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                               foregroundColor: AppPalette.primary.primary400,
                               backgroundColor: AppPalette.white,
                               padding: const EdgeInsets.all(20.0),
-                              fixedSize: Size(MediaQuery.of(context).size.width, 55),
-                              textStyle: context.theme.appTextTheme.bodyMedium16.copyWith(
-                                  fontSize: 16,
-                                  fontFamily: 'Poppins',
-                                  color: AppPalette.primary.primary400,
-                                  fontWeight: FontWeight.w700),
-                              shape:
-                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                              fixedSize:
+                                  Size(MediaQuery.of(context).size.width, 55),
+                              textStyle: context.theme.appTextTheme.bodyMedium16
+                                  .copyWith(
+                                      fontSize: 16,
+                                      fontFamily: 'Poppins',
+                                      color: AppPalette.primary.primary400,
+                                      fontWeight: FontWeight.w700),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

@@ -214,6 +214,7 @@ class IEVDataCollectionController extends GetxController {
   final lgaValue = Rxn<String>();
   final wardValue = Rxn<String>();
   final statesLga = Rxn<List<String>>([]);
+
   //List<String> listOfSettlementValue = [];
 
   final formKeyScreen1 = GlobalKey<FormState>();
@@ -497,13 +498,13 @@ class IEVDataCollectionController extends GetxController {
             "name": mothersNameControllerLoop[i].text,
             "phoneNumber": mothersPhoneNumberControllerLoop[i].text,
             "isPregnant": selectedIsMotherPregnantLoop[i].value == "Yes",
-            "monthsPregnant": selectedMonthsPregnantMotherLoop[i].value,
+            "monthsPregnant": selectedMonthsPregnantMotherLoop[i].value ?? '',
             "ttTdDoses": selectedDosesTDVaccineTakenMotherLoop[i].value ?? '',
             "ancVisits": int.tryParse(
                     timesTheWomanVisitedHealthFacilityControllerLoop[i].text) ??
                 0,
             "numberOfChildrenUnder5":
-                textFieldCountNumberOfUnder5Children.value,
+                textFieldCountNumberOfUnder5Children.value ?? '',
             "children":
                 List.generate(textFieldCountNumberOfUnder5Children.value, (j) {
               return {
@@ -527,13 +528,13 @@ class IEVDataCollectionController extends GetxController {
       },
       "pregnantWomenDetails": {
         "numberOfPregnantWomenWhoAreNotMothers":
-            textFieldCountOtherPregnantWomenInHouseHold.value,
+            textFieldCountOtherPregnantWomenInHouseHold.value ?? '',
         "pregnantWomen": List.generate(
             textFieldCountOtherPregnantWomenInHouseHold.value, (i) {
           return {
             "firstName": firstNamePregnantWomanControllerLoop[i].text,
             "lastName": surNamePregnantWomanControllerLoop[i].text,
-            "monthsPregnant": selectedHowManyMonthsPregnantLoop[i].value,
+            "monthsPregnant": selectedHowManyMonthsPregnantLoop[i].value ?? '',
             "ttTdDoses": selectedDosesTDVaccineTakenPregnantLoop[i].value ?? '',
             "ancVisits": int.tryParse(
                     timesTheWomanVisitedHealthFacilityControllerPregnantLoop[i]
@@ -543,9 +544,10 @@ class IEVDataCollectionController extends GetxController {
         })
       },
       "wcbaDetails": {
-        "otherWomenAgedBetween15And55": selectedOtherWomenInTheHousehold.value,
+        "otherWomenAgedBetween15And55":
+            selectedOtherWomenInTheHousehold.value ?? '',
         "howManyOtherWomenAgedBetween15And55":
-            textFieldCountHowManyOtherWomenAreThereInHouseHold.value,
+            textFieldCountHowManyOtherWomenAreThereInHouseHold.value ?? '',
         "wcbAs": List.generate(
             textFieldCountHowManyOtherWomenAreThereInHouseHold.value, (i) {
           return {
@@ -710,8 +712,10 @@ class IEVDataCollectionController extends GetxController {
       //Map<String, dynamic> iEVData = await getMap();
 
       final response = await networkService.submitIEVDataNew(iEVData);
-      showLoaderDialog(context, false);
-      showSuccessModal(context);
+      if (response) {
+        showLoaderDialog(context, false);
+        showSuccessModal(context);
+      }
     } on DioException catch (e) {
       showLoaderDialog(context, false);
       snackBar(context,
