@@ -152,26 +152,26 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
       text: controller.currentScreen.value == 4 ? 'Submit' : 'Next',
       onPressed: () async {
         if (controller.currentScreen.value == 1) {
-          final isValid = controller.formKeyScreen1.currentState!.validate();
+          /* final isValid = controller.formKeyScreen1.currentState!.validate();
           if (!isValid) {
             return;
-          }
+          } */
         }
 
         if (controller.currentScreen.value == 2) {
           //controller.newMapData();
-          final isValid = controller.formKeyScreen2.currentState!.validate();
+          /* final isValid = controller.formKeyScreen2.currentState!.validate();
           if (!isValid) {
             return;
-          }
+          } */
         }
 
         if (controller.currentScreen.value == 3) {
           //controller.newMapData();
-          final isValid = controller.formKeyScreen3.currentState!.validate();
+          /* final isValid = controller.formKeyScreen3.currentState!.validate();
           if (!isValid) {
             return;
-          }
+          } */
 
           /*if (controller.selectDateOfBirth == null) {
             showAlertDialog('Date of Birth cannot be empty');
@@ -180,10 +180,10 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
         }
 
         if (controller.currentScreen.value == 4) {
-          final isValid = controller.formKeyScreen4.currentState!.validate();
+          /* final isValid = controller.formKeyScreen4.currentState!.validate();
           if (!isValid) {
             return;
-          }
+          } */
         }
 
         controller.currentScreen.value++;
