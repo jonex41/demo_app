@@ -92,7 +92,7 @@ class OfflineScreen extends GetView<OfflineController> {
                     // Create a grid with 2 columns. If you change the scrollDirection to
                     // horizontal, this would produce 2 rows.
                     crossAxisCount: 2,
-                    childAspectRatio: 1,
+                    childAspectRatio: 0.9,
                     // Generate 100 Widgets that display their index in the List
                     children: [
                       ...controller.listMap.value.reversed.map((e) {

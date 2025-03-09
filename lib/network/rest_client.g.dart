@@ -213,7 +213,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<BaseResponse<dynamic>> getAllDataIEV() async {
+  Future<BaseResponse<dynamic>> getAllDataIEV(int page) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -226,7 +226,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              'IEV/data',
+              'IEVSurvey/data?pageNumber=${page}',
               queryParameters: queryParameters,
               data: _data,
             )

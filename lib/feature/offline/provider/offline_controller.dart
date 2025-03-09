@@ -17,6 +17,10 @@ import '../../../core/router/router.dart';
 class OfflineController extends GetxController {
   final networkService = Get.find<NetworkService>();
   final formKeyEditProfile = GlobalKey<FormState>();
+  final ScrollController _scrollController = ScrollController();
+  final isLoading = false.obs;
+  final currentPage = 1.obs;
+  final perPage = 20;
 
   final selectedGender = Rxn<String>();
   final isOnline = false.obs;
@@ -40,8 +44,9 @@ class OfflineController extends GetxController {
 
   @override
   void onInit() {
+    _scrollController.addListener(_onScroll);
     if (isOnline.value) {
-      getDataOnline();
+      getDataOnline(1);
     } else {
       getLocal();
     }
@@ -49,16 +54,37 @@ class OfflineController extends GetxController {
     super.onInit();
   }
 
+  void _onScroll() {
+    if (_scrollController.position.pixels ==
+            _scrollController.position.maxScrollExtent &&
+        !isLoading.value) {
+      _fetchMoreData();
+    }
+  }
+
+  Future<void> _fetchMoreData() async {
+    isLoading.value = true;
+
+    // Simulate network delay
+
+    await getDataOnline(currentPage.value);
+    isLoading.value = false;
+    currentPage.value++;
+  }
+
   setDateOfBirth(DateTime? value) {
     _dateOfBirth.value = value;
   }
 
-  void getDataOnline() async {
-    var map = await networkService.getAllIEVData();
+  Future<void> getDataOnline(int page) async {
+    var map = await networkService.getAllIEVData(page);
     print("online data $map");
-    listMap.clear();
-    listMapCopy.clear();
-    listMap.value = convertList(map);
+    if (page == 1) {
+      listMap.clear();
+      listMapCopy.clear();
+    }
+
+    listMap.value.addAll(convertList(map));
     listMapCopy.addAll(listMap);
     /*
     listMapCopy.addAll(listMap); */
@@ -113,8 +139,26 @@ class OfflineController extends GetxController {
     return "not Found";
   }
 
-  List<Map<String, dynamic>> getValueAntigenMap(int index) {
-    return convertList(listMap[index]["antigenAnswers"]);
+  List<Map<String, dynamic>> getMotherDetails(
+    int index,
+  ) {
+    return convertList(listMap[index]["motherDetails"]["mothers"]);
+  }
+
+  List<Map<String, dynamic>> getMotherChidrenDetails(dynamic e) {
+    return convertList(e);
+  }
+
+  List<Map<String, dynamic>> getPregnantMotherDetails(
+    int index,
+  ) {
+    return convertList(listMap[index]["pregnantWomanDetails"]["pregnantWomen"]);
+  }
+
+  List<Map<String, dynamic>> getWcbaDetails(
+    int index,
+  ) {
+    return convertList(listMap[index]["wcbaDetails"]["wcbAs"]);
   }
 
   List<Map<String, dynamic>> convertList(List<dynamic> data) {

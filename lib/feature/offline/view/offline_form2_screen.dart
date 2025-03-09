@@ -53,7 +53,7 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               15.height,
               _stepperHorizontal(),
               15.height,
-              _buildSection("U5 Child Profile and Immunization Status"),
+              /*      _buildSection("U5 Child Profile and Immunization Status"),
               buildQuestion("'How many under 5 children does this mother have?",
                   controller.getValueMap(controller.selectedIndex, "IEV019")),
               buildQuestion("Name of Child",
@@ -79,38 +79,66 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               /*   buildQuestion("If Yes, select received antigens",
                   controller.getValueMap(controller.selectedIndex, "IEV025")), */
               buildQuestion("Site of last vaccination",
-                  controller.getValueMap(controller.selectedIndex, "IEV027")),
+                  controller.getValueMap(controller.selectedIndex, "IEV027")), */
+
+              /*   buildQuestion(
+                  "Are there pregnant women in the household?",
+                  int.parse(controller.listMap[controller.selectedIndex]
+                                  ["pregnantWomanDetails"]
+                              ["numberOfPregnantWomenWhoAreNotMothers"]) >
+                          0
+                      ? "Yes"
+                      : "No"), */
+              buildQuestion(
+                  "Number of pregnant women in the household",
+                  controller.listMap[controller.selectedIndex]
+                          ["pregnantWomanDetails"]
+                          ["numberOfPregnantWomenWhoAreNotMothers"]
+                      .toString()),
+              ...controller
+                  .getPregnantMotherDetails(controller.selectedIndex)
+                  .map((e) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    buildQuestion("Name", "${e["firstName"]} ${e["lastName"]}"),
+                    buildQuestion(
+                        "Months of Pregnant", "${e["monthsPregnant"]}"),
+                    buildQuestion("Has the woman taken TT/Td vaccine?",
+                        "${e["ttTdDoses"]}"),
+                    buildQuestion(
+                        "How many times has the woman visited the health facility for ANC?",
+                        "${e["ancVisits"]}"),
+                    buildQuestion("Name Of Health Care Facility For Anc",
+                        "${e["nameOfHealthcareFacilityForAnc"]}"),
+                  ],
+                );
+              }).toList(),
               _buildSection("Women of Childbearing Age (WCBA) Profile"),
               buildQuestion(
-                  "Are there pregnant women in the household?", "Yes"),
-              buildQuestion("Number of pregnant women in the household",
-                  controller.getValueMap(controller.selectedIndex, "IEV028")),
-              Row(
-                children: [
-                  buildQuestion(
-                      "Name of pregnant woman",
-                      controller.getValueMap(
-                          controller.selectedIndex, "IEV029")),
-                  /*   20.width,
-                  buildQuestion("Surname of pregnant woman",
-                      controller.getValueMap(controller.selectedIndex, "")), */
-                ],
-              ),
-              buildQuestion("How many months pregnant is the woman?",
-                  controller.getValueMap(controller.selectedIndex, "IEV030")),
-                   buildQuestion("Has the woman taken TT/Td vaccine?",
-                      controller.getValueMap(controller.selectedIndex, "IEV036")),
+                  "Other Women Aged Between 15 And 55",
+                  controller.listMap[controller.selectedIndex]["wcbaDetails"]
+                          ["otherWomenAgedBetween15And55"]
+                      .toString()),
               buildQuestion(
-                  "How many doses of TT/Td vaccine has the woman taken?",
-                  controller.getValueMap(controller.selectedIndex, "IEV031")),
-              buildQuestion(
-                  "How many times has the woman visited the health facility for ANC?",
-                  controller.getValueMap(controller.selectedIndex, "IEV032")),
-              buildQuestion(
-                  "Are there other women in the household aged between 15 and 55?",
-                  controller.getValueMap(controller.selectedIndex, "IEV033")),
-              buildQuestion("First Name of the woman",
-                  controller.getValueMap(controller.selectedIndex, "IEV034")),
+                  "How Many Other Women Aged Between 15 And 55",
+                  controller.listMap[controller.selectedIndex]["wcbaDetails"]
+                          ["howManyOtherWomenAgedBetween15And55"]
+                      .toString()),
+              ...controller
+                  .getMotherChidrenDetails(
+                      controller.listMap[controller.selectedIndex]
+                          ["wcbaDetails"]["wcbAs"])
+                  .map((elememnt) {
+                return Column(
+                  children: [
+                    buildQuestion("Name",
+                        "${elememnt["firstName"]} ${elememnt["lastName"]}"),
+                    // buildQuestion("firstName", "Yes"),
+                  ],
+                );
+              }).toList(),
               buildQuestion("Location",
                   "longitude ${controller.listMap[controller.selectedIndex]["longitude"]} latitude ${controller.listMap[controller.selectedIndex]["latitude"]}"),
 

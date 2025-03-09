@@ -55,19 +55,24 @@ class OfflineForm1Screen extends GetView<OfflineController> {
             _stepperHorizontal(),
             15.height,
             _buildSection("Enumerator Information", [
-              _buildRow("Name of Enumerator",
-                  controller.getValueMap(controller.selectedIndex, "IEV001")),
+              _buildRow(
+                  "Name of Enumerator",
+                  controller.listMap[controller.selectedIndex]["enumerator"]
+                          ["name"]
+                      .toString()),
               Row(
                 children: [
                   _buildRow(
                       "Phone Number",
-                      controller.getValueMap(
-                          controller.selectedIndex, "IEV002")),
+                      controller.listMap[controller.selectedIndex]["enumerator"]
+                              ["phoneNumber"]
+                          .toString()),
                   20.width,
                   _buildRow(
                       "Team Code",
-                      controller.getValueMap(
-                          controller.selectedIndex, "IEV003")),
+                      controller.listMap[controller.selectedIndex]["enumerator"]
+                              ["teamCode"]
+                          .toString()),
                 ],
               ),
             ]),
@@ -76,30 +81,37 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                 children: [
                   _buildRow(
                       "State",
-                      controller.getValueMap(
-                          controller.selectedIndex, "IEV004")),
+                      controller.listMap[controller.selectedIndex]["settlement"]
+                              ["state"]
+                          .toString()),
                   20.width,
                   _buildRow(
                       "LGA",
-                      controller.getValueMap(
-                          controller.selectedIndex, "IEV005")),
+                      controller.listMap[controller.selectedIndex]["settlement"]
+                              ["lga"]
+                          .toString()),
                 ],
               ),
               Row(
                 children: [
                   _buildRow(
                       "Ward",
-                      controller.getValueMap(
-                          controller.selectedIndex, "IEV006")),
+                      controller.listMap[controller.selectedIndex]["settlement"]
+                              ["ward"]
+                          .toString()),
                   20.width,
                   _buildRow(
                       "House Number",
-                      controller.getValueMap(
-                          controller.selectedIndex, "IEV008")),
+                      controller.listMap[controller.selectedIndex]["household"]
+                              ["houseNumber"]
+                          .toString()),
                 ],
               ),
-              _buildRow("Settlement",
-                  controller.getValueMap(controller.selectedIndex, "IEV007")),
+              _buildRow(
+                  "Settlement",
+                  controller.listMap[controller.selectedIndex]["settlement"]
+                          ["settlement"]
+                      .toString()),
             ]),
             _buildSection("Enumerator Introduction", [
               const Padding(
@@ -113,23 +125,68 @@ class OfflineForm1Screen extends GetView<OfflineController> {
               _buildRow("At this time, do you want me to proceed?", "Yes"),
             ]),
             _buildSection("Caregiver’s Profile", [
-              _buildRow("Head of Household Name",
-                  controller.getValueMap(controller.selectedIndex, "IEV010")),
-              _buildRow("Head of Household Phone Number",
-                  controller.getValueMap(controller.selectedIndex, "IEV011")),
-              _buildRow("Mother’s Name",
-                  controller.getValueMap(controller.selectedIndex, "IEV013")),
-              _buildRow("Mother’s Phone Number",
-                  controller.getValueMap(controller.selectedIndex, "IEV014")),
-                   _buildRow("Is the mother pregnant?",
-                  controller.getValueMap(controller.selectedIndex, "IEV015")),
+              _buildRow(
+                  "Head of Household Name",
+                  controller.listMap[controller.selectedIndex]
+                          ["headOfHousehold"]["name"]
+                      .toString()),
+              _buildRow(
+                  "Head of Household Phone Number",
+                  controller.listMap[controller.selectedIndex]
+                          ["headOfHousehold"]["phoneNumber"]
+                      .toString()),
+              ...controller.getMotherDetails(controller.selectedIndex).map((e) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    _buildRow("Mother’s Name", e["name"].toString()),
+                    _buildRow(
+                        "Mother’s Phone Number", e["phoneNumber"].toString()),
+                    _buildRow(
+                        "Is the mother pregnant?", e["isPregnant"].toString()),
                     _buildRow("How many months pregnant is the woman?",
-                  controller.getValueMap(controller.selectedIndex, "IEV016")),
-                     _buildRow("How many doses of TT/Td vaccine has the woman taken?",
-                  controller.getValueMap(controller.selectedIndex, "IEV017")),
-                   _buildRow("How many times has the woman visited the health facility for ANC?",
-                  controller.getValueMap(controller.selectedIndex, "IEV018")),
-                  
+                        e["monthsPregnant"].toString()),
+                    _buildRow(
+                        "How many doses of TT/Td vaccine has the woman taken?",
+                        e["ttTdDoses"].toString()),
+                    _buildRow(
+                        "How many times has the woman visited the health facility for ANC?",
+                        e["ancVisits"].toString()),
+                    _buildRow(
+                        "How many under 5 children does this mother have?",
+                        e["numberOfChildrenUnder5"].toString()),
+                    ...controller
+                        .getMotherChidrenDetails(e["children"])
+                        .map((e) {
+                      return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            _buildRow("Name of Child", e["name"].toString()),
+                            _buildRow(
+                                "Date of Birth", e["dateOfBirth"].toString()),
+                            _buildRow("Age", e["age"].toString()),
+                            _buildRow(
+                                "Gender of Child", e["gender"].toString()),
+                            _buildRow("Child has taken vaccination",
+                                e["hasVaccinationCard"].toString()),
+                            _buildRow(
+                                "Name Of Health care Facility For Vaccination",
+                                e["nameOfHealthcareFacilityForVaccination"]
+                                    .toString()),
+                            // Text("Number of Antigens Recieved")
+                            _buildRow("Number of Antigens Recieved",
+                                e["antigensReceived"].toString()),
+                            _buildRow("Health Facility Visits",
+                                e["healthFacilityVisits"].toString()),
+                            _buildRow("Last Vaccination Site",
+                                e["lastVaccinationSite"].toString()),
+                          ]);
+                    }),
+                  ],
+                );
+              }),
             ]),
             30.height,
             AppElevatedButton(

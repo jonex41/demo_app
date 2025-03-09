@@ -82,10 +82,10 @@ class NetworkService extends GetxService {
     return true;
   }
 
-  Future<List<dynamic>> getAllIEVData() async {
+  Future<List<dynamic>> getAllIEVData(int page) async {
     //final token = storageService.getToken();
-    final response = await _restClient.getAllDataIEV();
-    if (response.statusCode != 201) {
+    final response = await _restClient.getAllDataIEV(page);
+    if (response.statusCode != 200) {
       throw Exception(response.message);
     }
     return response.result;

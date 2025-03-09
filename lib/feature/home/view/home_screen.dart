@@ -41,7 +41,7 @@ class HomeScreen extends GetView<HomeController> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               children: [
                 page1(context),
-                // page2(context),
+                //page2(context),
                 50.height,
               ],
             ),
@@ -1105,7 +1105,7 @@ class HomeScreen extends GetView<HomeController> {
           "View Records",
           onTap: () {
             Get.find<OfflineController>().isOnline.value = true;
-            Get.find<OfflineController>().getDataOnline();
+            Get.find<OfflineController>().getDataOnline(1);
             appRoute.push(const AllRecordIevRoute());
           },
         )),

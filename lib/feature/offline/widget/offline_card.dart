@@ -4,6 +4,7 @@ import 'package:demo_app/feature/offline/widget/image_container.dart';
 import 'package:demo_app/gen/assets.gen.dart';
 import 'package:demo_app/model/home/search_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
@@ -32,7 +33,7 @@ class OfflineCard extends StatelessWidget {
                 searchModel.title ?? "Name",
                 style: context.theme.appTextTheme.labelLarge12.copyWith(
                     color: const Color(0xff7A7C7F),
-                    fontSize: 10,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w800),
               ),
               5.height,
