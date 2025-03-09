@@ -41,7 +41,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                       children: [
                         const AppTextFieldHeader(
                             title:
-                                'How many other pregnant women are in the household (pregnant women who are not mothers)?'),
+                                'How many other pregnant women are in the household (pregnant women who are not married to the head of household)?'),
                         5.height,
                         AppTextField(
                           textFieldType: TextFieldType.NUMBER,
@@ -223,6 +223,35 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
+                                              'What is the name of the healthcare facility where the woman receives antenatal care? ${index + 1}'),
+                                      5.height,
+                                      AppTextField(
+                                        textFieldType: TextFieldType.NUMBER,
+                                        isValidationRequired: true,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Field is required';
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                        decoration: inputDecoration().copyWith(
+                                            hintText: 'Enter your answer',
+                                            hintStyle: const TextStyle(
+                                              color: Color(0xFF899197),
+                                            )),
+                                        suffixIconColor: AppPalette.white,
+                                        textStyle: const TextStyle(
+                                            fontSize: 16,
+                                            color: AppPalette.black,
+                                            fontWeight: FontWeight.w400),
+                                        controller: controller
+                                                .nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop[
+                                            index],
+                                      ),
+                                      18.height,
+                                      AppTextFieldHeader(
+                                          title:
                                               'How many times has the woman visited the health facility for ANC? ${index + 1}'),
                                       5.height,
                                       AppTextField(
@@ -258,8 +287,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                         })),
                         18.height,
                         const AppTextFieldHeader(
-                            title:
-                                'Are there other women in the household aged between 15 and 55?'),
+                            title: 'Are there other women aged 15 to 49 are in the household?'),
                         5.height,
                         Obx(() {
                           return AncDropDownButton(
@@ -281,8 +309,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                         if (controller.selectedOtherWomenInTheHousehold.value == 'Yes') ...[
                           18.height,
                           const AppTextFieldHeader(
-                              title:
-                                  'How many other women are there in the household aged between 15 and 55?: '),
+                              title: 'How many other women aged 15 to 49 are in the household?'),
                           5.height,
                           AppTextField(
                             textFieldType: TextFieldType.NUMBER,
@@ -392,12 +419,35 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                           ),
                                           18.height,
                                           const Divider(),
-                                          18.height,
                                         ]);
                                   });
                                 });
                           })),
                         ],
+                        18.height,
+                        const AppTextFieldHeader(
+                            title: 'How many girls aged 9 are in the household?'),
+                        5.height,
+                        AppTextField(
+                          textFieldType: TextFieldType.NUMBER,
+                          isValidationRequired: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Field is required';
+                            } else {
+                              return null;
+                            }
+                          },
+                          decoration: inputDecoration().copyWith(
+                              hintText: 'Enter your answer',
+                              hintStyle: const TextStyle(
+                                color: Color(0xFF899197),
+                              )),
+                          suffixIconColor: AppPalette.white,
+                          textStyle: const TextStyle(
+                              fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                          controller: controller.howManyGirlsAged9AreInHousehold,
+                        ),
                         18.height,
                         Container(
                           width: MediaQuery.of(context).size.width,

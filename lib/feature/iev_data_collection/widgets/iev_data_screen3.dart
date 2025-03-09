@@ -204,6 +204,34 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                         18.height,
                                         AppTextFieldHeader(
                                             title:
+                                                'What is the name of HF the child goes for vaccination? ${index + 1}'),
+                                        5.height,
+                                        AppTextField(
+                                          textFieldType: TextFieldType.OTHER,
+                                          isValidationRequired: true,
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return 'Field is required';
+                                            } else {
+                                              return null;
+                                            }
+                                          },
+                                          decoration: inputDecoration().copyWith(
+                                              hintText: 'Enter your answer',
+                                              hintStyle: const TextStyle(
+                                                color: Color(0xFF899197),
+                                              )),
+                                          suffixIconColor: AppPalette.white,
+                                          textStyle: const TextStyle(
+                                              fontSize: 16,
+                                              color: AppPalette.black,
+                                              fontWeight: FontWeight.w400),
+                                          controller:
+                                              controller.nameOfHFChildGoesForVaccinationLoop[index],
+                                        ),
+                                        18.height,
+                                        AppTextFieldHeader(
+                                            title:
                                                 'How many visits has the child had to the Health facility? ${index + 1}'),
                                         5.height,
                                         AppTextField(

@@ -27,9 +27,12 @@ class IEVDataCollectionController extends GetxController {
   var mothersPhoneNumberControllerLoop = <TextEditingController>[].obs;
   var timesTheWomanVisitedHealthFacilityControllerLoop =
       <TextEditingController>[].obs;
+  var nameHealthCareFacilityWomanReceivesAntenatalCareControllerMotherLoop =
+      <TextEditingController>[].obs;
   var selectedIsMotherPregnantLoop = <RxString>[].obs;
   var selectedMonthsPregnantMotherLoop = <RxString>[].obs;
   var selectedDosesTDVaccineTakenMotherLoop = <RxString>[].obs;
+  var selectedHasPregnantWomanStartedAncLoop = <RxString>[].obs;
 
   void updateFields(int count) {
     textFieldCountMothersInTheHouseHold.value = count;
@@ -39,6 +42,9 @@ class IEVDataCollectionController extends GetxController {
     selectedIsMotherPregnantLoop.clear();
     selectedMonthsPregnantMotherLoop.clear();
     selectedDosesTDVaccineTakenMotherLoop.clear();
+    selectedHasPregnantWomanStartedAncLoop.clear();
+    nameHealthCareFacilityWomanReceivesAntenatalCareControllerMotherLoop
+        .clear();
     for (int i = 0; i < count; i++) {
       mothersNameControllerLoop.add(TextEditingController());
       mothersPhoneNumberControllerLoop.add(TextEditingController());
@@ -47,6 +53,9 @@ class IEVDataCollectionController extends GetxController {
       selectedIsMotherPregnantLoop.add('No'.obs);
       selectedMonthsPregnantMotherLoop.add('None'.obs);
       selectedDosesTDVaccineTakenMotherLoop.add('None'.obs);
+      selectedHasPregnantWomanStartedAncLoop.add('No'.obs);
+      nameHealthCareFacilityWomanReceivesAntenatalCareControllerMotherLoop
+          .add(TextEditingController());
       //selectedIsMotherPregnant.add("".obs);
     }
   }
@@ -57,6 +66,7 @@ class IEVDataCollectionController extends GetxController {
   var selectedHaveRiVaccinationCardLoop = <RxString>[].obs;
   var howManyVisitChildHadToHealthFacilityLoop = <TextEditingController>[].obs;
   var siteOfLastVaccineLoop = <TextEditingController>[].obs;
+  var nameOfHFChildGoesForVaccinationLoop = <TextEditingController>[].obs;
 
   void updateFieldsCountNumberOfUnder5Children(int count) {
     textFieldCountNumberOfUnder5Children.value = count;
@@ -67,6 +77,7 @@ class IEVDataCollectionController extends GetxController {
     selectedAges.clear();
     howManyVisitChildHadToHealthFacilityLoop.clear();
     siteOfLastVaccineLoop.clear();
+    nameOfHFChildGoesForVaccinationLoop.clear();
     for (int i = 0; i < count; i++) {
       nameofChildControllerLoop.add(TextEditingController());
       selectedGenderLoop.add('Male'.obs);
@@ -75,6 +86,7 @@ class IEVDataCollectionController extends GetxController {
       selectedAges[i] = "";
       howManyVisitChildHadToHealthFacilityLoop.add(TextEditingController());
       siteOfLastVaccineLoop.add(TextEditingController());
+      nameOfHFChildGoesForVaccinationLoop.add(TextEditingController());
     }
   }
 
@@ -127,6 +139,8 @@ class IEVDataCollectionController extends GetxController {
   var selectedDosesTDVaccineTakenPregnantLoop = <RxString>[].obs;
   var timesTheWomanVisitedHealthFacilityControllerPregnantLoop =
       <TextEditingController>[].obs;
+  var nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop =
+      <TextEditingController>[].obs;
 
   void updateFieldCountOtherPregnantWomenInHouseHold(int count) {
     textFieldCountOtherPregnantWomenInHouseHold.value = count;
@@ -136,6 +150,8 @@ class IEVDataCollectionController extends GetxController {
     selectedHasWomanTakenTTIDVaccineLoop.clear();
     selectedDosesTDVaccineTakenPregnantLoop.clear();
     timesTheWomanVisitedHealthFacilityControllerPregnantLoop.clear();
+    nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop
+        .clear();
 
     for (int i = 0; i < count; i++) {
       firstNamePregnantWomanControllerLoop.add(TextEditingController());
@@ -144,6 +160,8 @@ class IEVDataCollectionController extends GetxController {
       selectedHasWomanTakenTTIDVaccineLoop.add('No'.obs);
       selectedDosesTDVaccineTakenPregnantLoop.add('None'.obs);
       timesTheWomanVisitedHealthFacilityControllerPregnantLoop
+          .add(TextEditingController());
+      nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop
           .add(TextEditingController());
     }
   }
@@ -182,6 +200,8 @@ class IEVDataCollectionController extends GetxController {
 
   final networkService = Get.find<NetworkService>();
   final Rxn<Position> currentPosition = Rxn<Position>();
+
+  final howManyGirlsAged9AreInHousehold = TextEditingController();
 
   final loadingCoordinate = false.obs;
   final nameOfEnumerator = TextEditingController();
@@ -253,6 +273,15 @@ class IEVDataCollectionController extends GetxController {
     'Yes',
     'No',
   ].obs;
+
+  final selectedProceedReason = Rxn<String>();
+  final List<String> proceedReason = [
+    'Head of house absent',
+    'Respondent is not comfortable',
+    'Respondent refused',
+    'Others specify'
+  ].obs;
+
   final selectedSettlement = Rxn<String>();
   final List<String> settlement = [
     'Settlement 1',
@@ -484,7 +513,10 @@ class IEVDataCollectionController extends GetxController {
       },
       "household": {
         "houseNumber": houseNumber.text,
-        "consent": selectedProceed.value ?? ''
+        "consent": selectedProceed.value ?? '',
+        "reasonForNonConsent": selectedProceedReason.value,
+        "girlsAged9InTheHousehold":
+            int.tryParse(howManyGirlsAged9AreInHousehold.text) ?? 0,
       },
       "headOfHousehold": {
         "name": headOfHouseHoldName.text,
@@ -503,6 +535,13 @@ class IEVDataCollectionController extends GetxController {
             "ancVisits": int.tryParse(
                     timesTheWomanVisitedHealthFacilityControllerLoop[i].text) ??
                 0,
+            "hasPregnantWomanStartedAnc":
+                selectedHasPregnantWomanStartedAncLoop[i].value ?? '',
+            "nameOfHealthcareFacilityForAnc":
+                nameHealthCareFacilityWomanReceivesAntenatalCareControllerMotherLoop[
+                            i]
+                        .text ??
+                    '',
             "numberOfChildrenUnder5":
                 textFieldCountNumberOfUnder5Children.value ?? '',
             "children":
@@ -513,6 +552,8 @@ class IEVDataCollectionController extends GetxController {
                 "gender": selectedGenderLoop[j].value,
                 "hasVaccinationCard":
                     selectedHaveRiVaccinationCardLoop[j].value == "Yes",
+                "nameOfHealthcareFacilityForVaccination":
+                    nameOfHFChildGoesForVaccinationLoop[j].value ?? '',
                 "antigensReceived": vaccineSelections[j]
                     ?.keys
                     .where((key) => vaccineSelections[j]?[key] == true)
@@ -540,6 +581,10 @@ class IEVDataCollectionController extends GetxController {
                     timesTheWomanVisitedHealthFacilityControllerPregnantLoop[i]
                         .text) ??
                 0,
+            "nameOfHealthcareFacilityForAnc":
+                nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop[
+                        i]
+                    .text,
           };
         })
       },
