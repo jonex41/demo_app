@@ -8,6 +8,7 @@ import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen1.da
 import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen2.dart';
 import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen3.dart';
 import 'package:demo_app/feature/iev_data_collection/widgets/iev_data_screen4.dart';
+import 'package:demo_app/feature/util/LocationHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -26,6 +27,17 @@ class IEVDataHomeScreen extends StatefulWidget {
 class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
   final controller =
       Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  
+ @override
+  void initState() {
+    super.initState();
+    setLocation();
+  }
+
+  void setLocation()async{
+     controller.currentPosition.value =await LocationHandler.getCurrentPosition();
+  }
+
 
   @override
   Widget build(BuildContext context) {

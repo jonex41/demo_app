@@ -64,7 +64,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                               )),
                           suffixIconColor: AppPalette.white,
                           textStyle: const TextStyle(
-                              fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                              fontSize: 16, color: AppPalette.black, fontWeight: FontWeight.w400),
                           controller: controller.numberOfPregnantWomen,
                         ),
                         Flexible(child: Obx(() {
@@ -106,7 +106,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                                     )),
                                                 suffixIconColor: AppPalette.white,
                                                 textStyle: const TextStyle(
-                                                    fontSize: 14,
+                                                    fontSize: 16,
                                                     color: AppPalette.black,
                                                     fontWeight: FontWeight.w400),
                                                 controller: controller
@@ -138,7 +138,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                                     )),
                                                 suffixIconColor: AppPalette.white,
                                                 textStyle: const TextStyle(
-                                                    fontSize: 14,
+                                                    fontSize: 16,
                                                     color: AppPalette.black,
                                                     fontWeight: FontWeight.w400),
                                                 controller: controller
@@ -242,7 +242,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                             )),
                                         suffixIconColor: AppPalette.white,
                                         textStyle: const TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 16,
                                             color: AppPalette.black,
                                             fontWeight: FontWeight.w400),
                                         controller: controller
@@ -306,7 +306,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                 )),
                             suffixIconColor: AppPalette.white,
                             textStyle: const TextStyle(
-                                fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                                fontSize: 16, color: AppPalette.black, fontWeight: FontWeight.w400),
                             controller: controller.womenAreThereInHouseHoldAge15And55,
                           ),
                           18.height,
@@ -348,7 +348,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                                         )),
                                                     suffixIconColor: AppPalette.white,
                                                     textStyle: const TextStyle(
-                                                        fontSize: 14,
+                                                        fontSize: 16,
                                                         color: AppPalette.black,
                                                         fontWeight: FontWeight.w400),
                                                     controller: controller
@@ -380,7 +380,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                                         )),
                                                     suffixIconColor: AppPalette.white,
                                                     textStyle: const TextStyle(
-                                                        fontSize: 14,
+                                                        fontSize: 16,
                                                         color: AppPalette.black,
                                                         fontWeight: FontWeight.w400),
                                                     controller: controller
@@ -426,7 +426,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       Text(
                                         'Longitude:',
                                         style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                                          fontSize: 13,
+                                          fontSize: 16,
                                           color: AppPalette.grey.gray350,
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -434,7 +434,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       Text(
                                         '${controller.currentPosition.value?.longitude ?? '0'}',
                                         style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                                          fontSize: 13,
+                                          fontSize: 16,
                                           color: AppPalette.grey.gray350,
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -448,7 +448,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       Text(
                                         'Latitude:',
                                         style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                                          fontSize: 13,
+                                          fontSize: 16,
                                           color: AppPalette.grey.gray350,
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -456,7 +456,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       Text(
                                         '${controller.currentPosition.value?.latitude ?? '0'}',
                                         style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                                          fontSize: 13,
+                                          fontSize: 16,
                                           color: AppPalette.grey.gray350,
                                           fontWeight: FontWeight.w400,
                                         ),

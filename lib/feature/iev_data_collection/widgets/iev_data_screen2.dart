@@ -16,7 +16,8 @@ class IEVDataScreen2 extends StatefulWidget {
 }
 
 class _IEVDataScreen2State extends State<IEVDataScreen2> {
-  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller =
+      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +43,14 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                       Text(
                         'Good day, my name is ......................... I am here on behalf of the National Primary Health Care Development Agency (NPHCDA) and State Primary Health Care to ask you questions about the immunization status of children and pregnant women in your household. The information gathered will be used to improve the immunization program. All information you provide will remain confidential.',
                         style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                          fontSize: 13,
+                          fontSize: 14,
                           color: const Color(0xFF7E7E7E),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       18.height,
-                      const AppTextFieldHeader(title: 'At this time, do you want me to proceed?'),
+                      const AppTextFieldHeader(
+                          title: 'At this time, do you want me to proceed?'),
                       5.height,
                       Obx(() {
                         return AncDropDownButton(
@@ -71,7 +73,8 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                       18.height,
                       header(context, 'Caregiver\'s Profile'),
                       18.height,
-                      const AppTextFieldHeader(title: 'Head of Household Name:'),
+                      const AppTextFieldHeader(
+                          title: 'Head of Household Name:'),
                       5.height,
                       AppTextField(
                         textFieldType: TextFieldType.OTHER,
@@ -90,11 +93,14 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 16,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: controller.headOfHouseHoldName,
                       ),
                       18.height,
-                      const AppTextFieldHeader(title: 'Head of Household Phone Number:'),
+                      const AppTextFieldHeader(
+                          title: 'Head of Household Phone Number:'),
                       5.height,
                       AppTextField(
                         textFieldType: TextFieldType.PHONE,
@@ -113,7 +119,9 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 16,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: controller.headOfHousePhoneNumber,
                       ),
                       18.height,
@@ -121,7 +129,8 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           const AppTextFieldHeader(
-                              title: 'How many mothers are there in the house?'),
+                              title:
+                                  'How many mothers are there in the house?'),
                           5.height,
                           AppTextField(
                             textFieldType: TextFieldType.NUMBER,
@@ -144,98 +153,122 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                 )),
                             suffixIconColor: AppPalette.white,
                             textStyle: const TextStyle(
-                                fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                                fontSize: 16,
+                                color: AppPalette.black,
+                                fontWeight: FontWeight.w400),
                             controller: controller.numberOfMothersInTheHouse,
                           ),
                           18.height,
                           Flexible(
                             child: Obx(() {
                               return ListView.builder(
-                                itemCount: controller.textFieldCountMothersInTheHouseHold.value,
+                                itemCount: controller
+                                    .textFieldCountMothersInTheHouseHold.value,
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
                                   return Obx(() {
                                     return Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        AppTextFieldHeader(title: 'Mothers Name: ${index + 1}'),
+                                        AppTextFieldHeader(
+                                            title:
+                                                'Mothers Name: ${index + 1}'),
                                         5.height,
                                         AppTextField(
                                           textFieldType: TextFieldType.NAME,
                                           isValidationRequired: true,
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               return 'Field is required';
                                             } else {
                                               return null;
                                             }
                                           },
-                                          decoration: inputDecoration().copyWith(
-                                              hintText: 'Enter your answer',
-                                              hintStyle: const TextStyle(
-                                                color: Color(0xFF899197),
-                                              )),
+                                          decoration:
+                                              inputDecoration().copyWith(
+                                                  hintText: 'Enter your answer',
+                                                  hintStyle: const TextStyle(
+                                                    color: Color(0xFF899197),
+                                                  )),
                                           suffixIconColor: AppPalette.white,
                                           textStyle: const TextStyle(
-                                              fontSize: 14,
+                                              fontSize: 16,
                                               color: AppPalette.black,
                                               fontWeight: FontWeight.w400),
-                                          controller: controller.mothersNameControllerLoop[index],
+                                          controller: controller
+                                              .mothersNameControllerLoop[index],
                                         ),
                                         18.height,
                                         AppTextFieldHeader(
-                                            title: 'Mother’s Phone Number: ${index + 1}'),
+                                            title:
+                                                'Mother’s Phone Number: ${index + 1}'),
                                         5.height,
                                         AppTextField(
                                           textFieldType: TextFieldType.NUMBER,
                                           isValidationRequired: true,
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               return 'Field is required';
                                             } else {
                                               return null;
                                             }
                                           },
-                                          decoration: inputDecoration().copyWith(
-                                              hintText: 'Enter your answer',
-                                              hintStyle: const TextStyle(
-                                                color: Color(0xFF899197),
-                                              )),
+                                          decoration:
+                                              inputDecoration().copyWith(
+                                                  hintText: 'Enter your answer',
+                                                  hintStyle: const TextStyle(
+                                                    color: Color(0xFF899197),
+                                                  )),
                                           suffixIconColor: AppPalette.white,
                                           textStyle: const TextStyle(
-                                              fontSize: 14,
+                                              fontSize: 16,
                                               color: AppPalette.black,
                                               fontWeight: FontWeight.w400),
-                                          controller:
-                                              controller.mothersPhoneNumberControllerLoop[index],
+                                          controller: controller
+                                                  .mothersPhoneNumberControllerLoop[
+                                              index],
                                         ),
                                         18.height,
                                         AppTextFieldHeader(
-                                            title: 'Is the mother pregnant?: ${index + 1}'),
+                                            title:
+                                                'Is the mother pregnant?: ${index + 1}'),
                                         const SizedBox(height: 5),
                                         Obx(() {
                                           return AncDropDownButton(
                                             hint: 'Select an Option',
                                             value: controller
-                                                .selectedIsMotherPregnantLoop[index].value,
+                                                .selectedIsMotherPregnantLoop[
+                                                    index]
+                                                .value,
                                             items: controller.proceed,
                                             validator: (value) {
-                                              if (value == null || value.isEmpty) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
                                                 return 'Please Select Option';
                                               } else {
                                                 return null;
                                               }
                                             },
                                             onChanged: (value) {
-                                              controller.selectedIsMotherPregnantLoop[index].value =
-                                                  value;
+                                              controller
+                                                  .selectedIsMotherPregnantLoop[
+                                                      index]
+                                                  .value = value;
                                               debugPrint(controller
-                                                  .selectedIsMotherPregnantLoop[index].value);
+                                                  .selectedIsMotherPregnantLoop[
+                                                      index]
+                                                  .value);
                                             },
                                           );
                                         }),
-                                        if (controller.selectedIsMotherPregnantLoop[index].value ==
+                                        if (controller
+                                                .selectedIsMotherPregnantLoop[
+                                                    index]
+                                                .value ==
                                             'Yes') ...[
                                           18.height,
                                           AppTextFieldHeader(
@@ -246,20 +279,28 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                             return AncDropDownButton(
                                               hint: 'Select an Option',
                                               value: controller
-                                                  .selectedMonthsPregnantMotherLoop[index].value,
-                                              items: controller.monthsPregnantMother,
+                                                  .selectedMonthsPregnantMotherLoop[
+                                                      index]
+                                                  .value,
+                                              items: controller
+                                                  .monthsPregnantMother,
                                               validator: (value) {
-                                                if (value == null || value.isEmpty) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
                                                   return 'Please Select Option';
                                                 } else {
                                                   return null;
                                                 }
                                               },
                                               onChanged: (value) {
-                                                controller.selectedMonthsPregnantMotherLoop[index]
+                                                controller
+                                                    .selectedMonthsPregnantMotherLoop[
+                                                        index]
                                                     .value = value;
                                                 debugPrint(controller
-                                                    .selectedMonthsPregnantMotherLoop[index].value);
+                                                    .selectedMonthsPregnantMotherLoop[
+                                                        index]
+                                                    .value);
                                               },
                                             );
                                           }),
@@ -272,11 +313,14 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                             return AncDropDownButton(
                                               hint: 'Select an Option',
                                               value: controller
-                                                  .selectedDosesTDVaccineTakenMotherLoop[index]
+                                                  .selectedDosesTDVaccineTakenMotherLoop[
+                                                      index]
                                                   .value,
-                                              items: controller.dosesTDVaccineTakenMother,
+                                              items: controller
+                                                  .dosesTDVaccineTakenMother,
                                               validator: (value) {
-                                                if (value == null || value.isEmpty) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
                                                   return 'Please Select Option';
                                                 } else {
                                                   return null;
@@ -284,10 +328,12 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                               },
                                               onChanged: (value) {
                                                 controller
-                                                    .selectedDosesTDVaccineTakenMotherLoop[index]
+                                                    .selectedDosesTDVaccineTakenMotherLoop[
+                                                        index]
                                                     .value = value;
                                                 debugPrint(controller
-                                                    .selectedDosesTDVaccineTakenMotherLoop[index]
+                                                    .selectedDosesTDVaccineTakenMotherLoop[
+                                                        index]
                                                     .value);
                                               },
                                             );
@@ -301,20 +347,23 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                             textFieldType: TextFieldType.NUMBER,
                                             isValidationRequired: true,
                                             validator: (value) {
-                                              if (value == null || value.isEmpty) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
                                                 return 'Field is required';
                                               } else {
                                                 return null;
                                               }
                                             },
-                                            decoration: inputDecoration().copyWith(
-                                                hintText: 'Enter your answer',
-                                                hintStyle: const TextStyle(
-                                                  color: Color(0xFF899197),
-                                                )),
+                                            decoration: inputDecoration()
+                                                .copyWith(
+                                                    hintText:
+                                                        'Enter your answer',
+                                                    hintStyle: const TextStyle(
+                                                      color: Color(0xFF899197),
+                                                    )),
                                             suffixIconColor: AppPalette.white,
                                             textStyle: const TextStyle(
-                                                fontSize: 14,
+                                                fontSize: 16,
                                                 color: AppPalette.black,
                                                 fontWeight: FontWeight.w400),
                                             controller: controller
@@ -520,7 +569,7 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
       child: Text(
         title,
         style: context.theme.appTextTheme.bodyMedium16.copyWith(
-          fontSize: 15,
+          fontSize: 18,
           color: AppPalette.black,
           fontWeight: FontWeight.w600,
         ),

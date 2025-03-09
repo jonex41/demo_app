@@ -18,7 +18,7 @@ class AppTextFieldHeader extends StatelessWidget {
                 TextSpan(
                   text: title,
                   style: const TextStyle(
-                      fontSize: 13,
+                      fontSize: 18,
                       color: AppPalette.black,
                       fontWeight: FontWeight.w500),
                 ),
@@ -29,7 +29,7 @@ class AppTextFieldHeader extends StatelessWidget {
                     ? TextSpan(
                         text: '*',
                         style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 18,
                             color: AppPalette.red.red300,
                             fontWeight: FontWeight.w500),
                       )

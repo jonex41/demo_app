@@ -169,13 +169,17 @@ class HomeScreen extends GetView<HomeController> {
             Text(
               s,
               style: context.theme.appTextTheme.bodySmall14.copyWith(
-                  color: AppPalette.black2, fontWeight: FontWeight.w600),
+                  fontSize: 16,
+                  color: AppPalette.black2,
+                  fontWeight: FontWeight.w600),
             ),
             5.height,
             Text(
               buttonName,
               style: context.theme.appTextTheme.labelLarge12.copyWith(
-                  color: AppPalette.black, fontWeight: FontWeight.w400),
+                  fontSize: 16,
+                  color: AppPalette.black,
+                  fontWeight: FontWeight.w400),
             ),
             if (showButton)
               Align(
@@ -257,13 +261,13 @@ class HomeScreen extends GetView<HomeController> {
             5.height,
             Text(
               s,
-              style: context.theme.appTextTheme.bodySmall14.copyWith(
+              style: context.theme.appTextTheme.bodyMedium16.copyWith(
                   color: AppPalette.white, fontWeight: FontWeight.w600),
             ),
             5.height,
             Text(
               buttonName,
-              style: context.theme.appTextTheme.labelLarge12.copyWith(
+              style: context.theme.appTextTheme.bodyMedium16.copyWith(
                   color: AppPalette.white, fontWeight: FontWeight.w400),
             ),
             5.height,
@@ -298,7 +302,7 @@ class HomeScreen extends GetView<HomeController> {
                               buttonText,
                               AppPalette.primary.primary400,
                               AppPalette.white,
-                              14),
+                              16),
                         ),
                         14.width,
                       ],
@@ -329,7 +333,7 @@ class HomeScreen extends GetView<HomeController> {
             5.width,
             Icon(
               Icons.arrow_forward_ios_rounded,
-              size: 14,
+              size: 16,
               color: textColor,
             )
             //Assets.images.icons.wave.image(),

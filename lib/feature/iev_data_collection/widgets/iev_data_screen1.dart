@@ -17,7 +17,8 @@ class IEVDataScreen1 extends StatefulWidget {
 }
 
 class _IEVDataScreen1State extends State<IEVDataScreen1> {
-  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller =
+      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 16,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: controller.nameOfEnumerator,
                       ),
                       18.height,
@@ -83,7 +86,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 16,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: controller.phoneNumber,
                       ),
                       18.height,
@@ -106,7 +111,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                             )),
                         suffixIconColor: AppPalette.white,
                         textStyle: const TextStyle(
-                            fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                            fontSize: 16,
+                            color: AppPalette.black,
+                            fontWeight: FontWeight.w400),
                         controller: controller.teamCode,
                       ),
                       18.height,
@@ -123,7 +130,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   5.height,
                                   AncDropDownButton(
                                     hint: 'Select a State',
-                                     value: controller.stateValue.value,
+                                    value: controller.stateValue.value,
                                     items: NigerianStatesAndLGA.allStates,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -280,11 +287,12 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   decoration: inputDecoration().copyWith(
                                       hintText: 'Enter your answer',
                                       hintStyle: const TextStyle(
+                                        fontSize: 16,
                                         color: Color(0xFF899197),
                                       )),
                                   suffixIconColor: AppPalette.white,
                                   textStyle: const TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       color: AppPalette.black,
                                       fontWeight: FontWeight.w400),
                                   controller: controller.houseNumber,

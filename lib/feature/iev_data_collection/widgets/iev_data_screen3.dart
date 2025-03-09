@@ -60,7 +60,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                               )),
                           suffixIconColor: AppPalette.white,
                           textStyle: const TextStyle(
-                              fontSize: 14, color: AppPalette.black, fontWeight: FontWeight.w400),
+                              fontSize: 16, color: AppPalette.black, fontWeight: FontWeight.w400),
                           controller: controller.under5ChildrenMotherHave,
                         ),
                         18.height,
@@ -94,7 +94,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                             )),
                                         suffixIconColor: AppPalette.white,
                                         textStyle: const TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 16,
                                             color: AppPalette.black,
                                             fontWeight: FontWeight.w400),
                                         controller: controller.nameofChildControllerLoop[index],
@@ -223,7 +223,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                               )),
                                           suffixIconColor: AppPalette.white,
                                           textStyle: const TextStyle(
-                                              fontSize: 14,
+                                              fontSize: 16,
                                               color: AppPalette.black,
                                               fontWeight: FontWeight.w400),
                                           controller: controller
@@ -252,7 +252,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                             )),
                                         suffixIconColor: AppPalette.white,
                                         textStyle: const TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 16,
                                             color: AppPalette.black,
                                             fontWeight: FontWeight.w400),
                                         controller: controller.siteOfLastVaccineLoop[index],

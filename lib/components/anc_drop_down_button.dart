@@ -29,6 +29,8 @@ class AncDropDownButton extends StatelessWidget {
           decoration: InputDecoration(
             fillColor: Colors.white,
             filled: true,
+            hintStyle: const TextStyle(fontSize: 16),
+            //te: const TextStyle(fontSize: 16),
             contentPadding: const EdgeInsets.only(
               right: 10,
               left: 10,
@@ -78,7 +80,7 @@ class AncDropDownButton extends StatelessWidget {
               child: Text(
                 item,
                 style: context.theme.appTextTheme.bodyMedium16.copyWith(
-                  fontSize: 13,
+                  fontSize: 16,
                   color: AppPalette.black,
                   fontWeight: FontWeight.w500,
                 ),
@@ -89,7 +91,7 @@ class AncDropDownButton extends StatelessWidget {
           hint: Text(
             hint ?? '',
             style: context.theme.appTextTheme.bodyMedium16.copyWith(
-              fontSize: 13,
+              fontSize: 16,
               color: AppPalette.grey.gray600,
               fontWeight: FontWeight.w400,
             ),
