@@ -21,6 +21,51 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
       Get.put<IEVDataCollectionController>(IEVDataCollectionController());
 
   @override
+  void initState() {
+    super.initState();
+    if (controller.isEditing.value) {
+      controller.isFirstTime.value = true;
+      controller.teamCode.text =
+          controller.selectedMap["enumerator"]["teamCode"].toString();
+
+      controller.stateValue.value =
+          controller.selectedMap["settlement"]["state"].toString();
+
+      //  listLga.insert(0, "Select Lga");
+      // controller.lgaValue.value = listLga[0];
+
+      // controller.lgaValue.value = listLga[0];
+
+      Future.delayed(const Duration(seconds: 2), () {
+        List<String> listLga = [];
+        listLga =
+            NigerianStatesAndLGA.getStateLGAs(controller.stateValue.value);
+        controller.listLga.assignAll(listLga ?? []);
+        controller.lgaValue.value =
+            controller.selectedMap["settlement"]["lga"].toString();
+      });
+
+      Future.delayed(const Duration(seconds: 3), () {
+        controller.getWardLocally(
+            controller.stateValue.value, controller.lgaValue.value ?? "");
+        controller.wardValue.value =
+            controller.selectedMap["settlement"]["ward"].toString();
+      });
+
+      Future.delayed(const Duration(seconds: 4), () {
+        controller.getSettlementLocally(controller.stateValue.value,
+            controller.lgaValue.value!, controller.wardValue.value ?? "");
+        controller.selectedSettlement.value =
+            controller.selectedMap["settlement"]["settlement"].toString();
+      });
+
+      controller.houseNumber.text =
+          controller.selectedMap["household"]["houseNumber"].toString();
+           controller.isFirstTime.value = false;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(

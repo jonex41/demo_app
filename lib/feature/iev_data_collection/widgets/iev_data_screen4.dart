@@ -6,6 +6,7 @@ import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
 import 'package:demo_app/feature/util/LocationHandler.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
@@ -19,6 +20,45 @@ class IEVDataScreen4 extends StatefulWidget {
 class _IEVDataScreen4State extends State<IEVDataScreen4> {
   final controller =
       Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+
+  @override
+  void initState() {
+    super.initState();
+    if (controller.isEditing.value) {
+      controller.isFirstTime.value = true;
+      Future.delayed(const Duration(seconds: 1), () {
+        controller.selectedProceed.value = "Yes";
+      });
+
+      var listMap = controller.getDetails(
+          controller.selectedMap["pregnantWomanDetails"]["pregnantWomen"]);
+      controller.numberOfPregnantWomen.text = listMap.length.toString() ?? "0";
+      controller.updateEditFieldCountOtherPregnantWomenInHouseHold(
+          listMap.length, listMap);
+
+      controller.selectedOtherWomenInTheHousehold.value = controller
+          .selectedMap["wcbaDetails"]["otherWomenAgedBetween15And55"]
+          .toString();
+
+      controller.womenAreThereInHouseHoldAge15And55.text = controller
+          .selectedMap["wcbaDetails"]["howManyOtherWomenAgedBetween15And55"]
+          .toString();
+
+      controller.currentPosition.value = Position(
+          longitude: controller.selectedMap["longitude"],
+          latitude: controller.selectedMap["latitude"],
+          timestamp: DateTime.now(),
+          accuracy: 2.0,
+          altitude: 3,
+          altitudeAccuracy: 3,
+          heading: 3,
+          headingAccuracy: 3,
+          speed: 3,
+          speedAccuracy: 3);
+
+      controller.isFirstTime.value = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +96,11 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                           },
                           onChanged: (value) {
                             int count = int.tryParse(value) ?? 0;
-                            controller
-                                .updateFieldCountOtherPregnantWomenInHouseHold(
-                                    count);
+                            if (controller.isFirstTime.value == false) {
+                              controller
+                                  .updateFieldCountOtherPregnantWomenInHouseHold(
+                                      count);
+                            }
                           },
                           decoration: inputDecoration().copyWith(
                               hintText: 'Enter your answer',

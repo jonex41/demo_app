@@ -18,6 +18,27 @@ class IEVDataScreen2 extends StatefulWidget {
 class _IEVDataScreen2State extends State<IEVDataScreen2> {
   final controller =
       Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  @override
+  void initState() {
+    super.initState();
+    if (controller.isEditing.value) {
+      controller.isFirstTime.value = true;
+      Future.delayed(const Duration(seconds: 1), () {
+        controller.selectedProceed.value = "Yes";
+      });
+
+      controller.headOfHouseHoldName.text =
+          controller.selectedMap["headOfHousehold"]["name"].toString();
+      controller.headOfHousePhoneNumber.text =
+          controller.selectedMap["headOfHousehold"]["phoneNumber"].toString();
+      var listMap = controller
+          .getDetails(controller.selectedMap["motherDetails"]["mothers"]);
+      controller.numberOfMothersInTheHouse.text =
+          listMap.length.toString() ?? "0";
+      controller.updateEditFields(listMap.length, listMap);
+      controller.isFirstTime.value = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -200,7 +221,9 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                 },
                                 onChanged: (value) {
                                   int count = int.tryParse(value) ?? 0;
-                                  controller.updateFields(count);
+                                  if (controller.isFirstTime.value == false) {
+                                    controller.updateFields(count);
+                                  }
                                 },
                                 decoration: inputDecoration().copyWith(
                                     hintText: 'Enter your answer',

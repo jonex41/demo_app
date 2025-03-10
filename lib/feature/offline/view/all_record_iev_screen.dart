@@ -98,7 +98,7 @@ class AllRecordIevScreen extends GetView<OfflineController> {
                       ...controller.listMap.value.reversed.map((e) {
                         int index = controller.listMap.indexOf(e);
                         DateTime dateTime = DateTime.parse(
-                            controller.listMap[index]["submittedAt"] ??
+                            controller.listMap[index]["createdAt"] ??
                                 "2025-02-22T21:56:35.826912");
                         String formattedDate =
                             DateFormat("dd/MM/yyyy").format(dateTime);

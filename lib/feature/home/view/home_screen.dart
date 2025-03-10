@@ -132,7 +132,7 @@ class HomeScreen extends GetView<HomeController> {
   ) {
     return Container(
         width: double.infinity,
-        height: context.height / 4.5,
+        // height: 400,
         decoration: BoxDecoration(
           color: container,
           border: Border.all(
@@ -225,7 +225,7 @@ class HomeScreen extends GetView<HomeController> {
       {required Function() onTap}) {
     return Container(
         width: double.infinity,
-        height: context.height / 4.0,
+        // height: context.height / 4.0,
         decoration: BoxDecoration(
           color: container,
           border: Border.all(

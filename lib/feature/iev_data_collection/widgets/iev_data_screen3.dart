@@ -15,7 +15,30 @@ class IEVDataScreen3 extends StatefulWidget {
 }
 
 class _IEVDataScreen3State extends State<IEVDataScreen3> {
-  final controller = Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  final controller =
+      Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+
+  @override
+  void initState() {
+    super.initState();
+    if (controller.isEditing.value) {
+      controller.isFirstTime.value = true;
+      var listMap1 = controller
+          .getDetails(controller.selectedMap["motherDetails"]["mothers"]);
+
+      List<Map<String, dynamic>> listChildren = [];
+
+      for (var model in listMap1) {
+        listChildren.addAll(controller.getDetails(model["children"]));
+      }
+
+      controller.under5ChildrenMotherHave.text =
+          listChildren.length.toString() ?? "0";
+      controller.updateEditFieldsCountNumberOfUnder5Children(
+          listChildren.length, listChildren);
+      controller.isFirstTime.value = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +60,8 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const AppTextFieldHeader(
-                            title: 'How many under 5 children does this mother have?'),
+                            title:
+                                'How many under 5 children does this mother have?'),
                         5.height,
                         AppTextField(
                           textFieldType: TextFieldType.NUMBER,
@@ -51,7 +75,11 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                           },
                           onChanged: (value) {
                             int count = int.tryParse(value) ?? 0;
-                            controller.updateFieldsCountNumberOfUnder5Children(count);
+                            if (controller.isFirstTime.value == false) {
+                              controller
+                                  .updateFieldsCountNumberOfUnder5Children(
+                                      count);
+                            }
                           },
                           decoration: inputDecoration().copyWith(
                               hintText: 'Enter your answer',
@@ -60,22 +88,27 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                               )),
                           suffixIconColor: AppPalette.white,
                           textStyle: const TextStyle(
-                              fontSize: 16, color: AppPalette.black, fontWeight: FontWeight.w400),
+                              fontSize: 16,
+                              color: AppPalette.black,
+                              fontWeight: FontWeight.w400),
                           controller: controller.under5ChildrenMotherHave,
                         ),
                         18.height,
                         Flexible(child: Obx(() {
                           return ListView.builder(
-                              itemCount: controller.textFieldCountNumberOfUnder5Children.value,
+                              itemCount: controller
+                                  .textFieldCountNumberOfUnder5Children.value,
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 return Obx(() {
                                   return Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       18.height,
-                                      AppTextFieldHeader(title: 'Name of Child: ${index + 1}'),
+                                      AppTextFieldHeader(
+                                          title: 'Name of Child: ${index + 1}'),
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.NAME,
@@ -97,26 +130,33 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                             fontSize: 16,
                                             color: AppPalette.black,
                                             fontWeight: FontWeight.w400),
-                                        controller: controller.nameofChildControllerLoop[index],
+                                        controller: controller
+                                            .nameofChildControllerLoop[index],
                                       ),
                                       18.height,
-                                      AppTextFieldHeader(title: 'Gender: ${index + 1}'),
+                                      AppTextFieldHeader(
+                                          title: 'Gender: ${index + 1}'),
                                       5.height,
                                       Obx(() {
                                         return AncDropDownButton(
                                           hint: 'Select an Option',
-                                          value: controller.selectedGenderLoop[index].value,
+                                          value: controller
+                                              .selectedGenderLoop[index].value,
                                           items: controller.gender,
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               return 'Please Select an answer';
                                             } else {
                                               return null;
                                             }
                                           },
                                           onChanged: (value) {
-                                            controller.selectedGenderLoop[index].value = value;
-                                            debugPrint(controller.selectedGenderLoop[index].value);
+                                            controller.selectedGenderLoop[index]
+                                                .value = value;
+                                            debugPrint(controller
+                                                .selectedGenderLoop[index]
+                                                .value);
                                           },
                                         );
                                       }),
@@ -129,23 +169,30 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                         return AncDropDownButton(
                                           hint: 'Select an answer',
                                           value: controller
-                                              .selectedHaveRiVaccinationCardLoop[index].value,
+                                              .selectedHaveRiVaccinationCardLoop[
+                                                  index]
+                                              .value,
                                           items: controller.riVaccinationCard,
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               return 'Please Select an answer';
                                             } else {
                                               return null;
                                             }
                                           },
                                           onChanged: (value) {
-                                            controller.selectedHaveRiVaccinationCardLoop[index]
+                                            controller
+                                                .selectedHaveRiVaccinationCardLoop[
+                                                    index]
                                                 .value = value;
                                           },
                                         );
                                       }),
                                       if (controller
-                                              .selectedHaveRiVaccinationCardLoop[index].value ==
+                                              .selectedHaveRiVaccinationCardLoop[
+                                                  index]
+                                              .value ==
                                           'Yes') ...[
                                         18.height,
                                         AppTextFieldHeader(
@@ -155,12 +202,17 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                         Obx(() {
                                           return AncDropDownButton(
                                             hint: 'Select an answer',
-                                            value: controller.selectedAges[index]!.isEmpty
+                                            value: controller
+                                                    .selectedAges[index]!
+                                                    .isEmpty
                                                 ? null
-                                                : controller.selectedAges[index],
-                                            items: controller.vaccineData.keys.toList(),
+                                                : controller
+                                                    .selectedAges[index],
+                                            items: controller.vaccineData.keys
+                                                .toList(),
                                             validator: (value) {
-                                              if (value == null || value.isEmpty) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
                                                 return 'Please Select an answer';
                                               } else {
                                                 return null;
@@ -168,33 +220,48 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                             },
                                             onChanged: (newValue) {
                                               if (newValue != null) {
-                                                controller.updateVaccineList(index, newValue);
+                                                controller.updateVaccineList(
+                                                    index, newValue);
                                               }
                                             },
                                           );
                                         }),
                                         18.height,
                                         AppTextFieldHeader(
-                                            title: 'Select received antigens:  ${index + 1}'),
+                                            title:
+                                                'Select received antigens:  ${index + 1}'),
                                         5.height,
                                         Obx(() => Column(
-                                              children: controller.vaccineSelections[index]?.keys
+                                              children: controller
+                                                      .vaccineSelections[index]
+                                                      ?.keys
                                                       .map((vaccine) {
                                                     return Card(
-                                                      shape: RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.circular(15.0),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
                                                       ),
                                                       child: CheckboxListTile(
                                                         title: Text(
                                                           vaccine,
-                                                          style: const TextStyle(fontSize: 13),
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 13),
                                                         ),
-                                                        value: controller.vaccineSelections[index]
-                                                            ?[vaccine],
-                                                        onChanged: (bool? value) {
-                                                          controller.vaccineSelections[index]
-                                                              ?[vaccine] = value ?? false;
-                                                          controller.vaccineSelections.refresh();
+                                                        value: controller
+                                                                .vaccineSelections[
+                                                            index]?[vaccine],
+                                                        onChanged:
+                                                            (bool? value) {
+                                                          controller.vaccineSelections[
+                                                                      index]
+                                                                  ?[vaccine] =
+                                                              value ?? false;
+                                                          controller
+                                                              .vaccineSelections
+                                                              .refresh();
                                                         },
                                                       ),
                                                     );
@@ -210,24 +277,27 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                           textFieldType: TextFieldType.OTHER,
                                           isValidationRequired: true,
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               return 'Field is required';
                                             } else {
                                               return null;
                                             }
                                           },
-                                          decoration: inputDecoration().copyWith(
-                                              hintText: 'Enter your answer',
-                                              hintStyle: const TextStyle(
-                                                color: Color(0xFF899197),
-                                              )),
+                                          decoration:
+                                              inputDecoration().copyWith(
+                                                  hintText: 'Enter your answer',
+                                                  hintStyle: const TextStyle(
+                                                    color: Color(0xFF899197),
+                                                  )),
                                           suffixIconColor: AppPalette.white,
                                           textStyle: const TextStyle(
                                               fontSize: 16,
                                               color: AppPalette.black,
                                               fontWeight: FontWeight.w400),
-                                          controller:
-                                              controller.nameOfHFChildGoesForVaccinationLoop[index],
+                                          controller: controller
+                                                  .nameOfHFChildGoesForVaccinationLoop[
+                                              index],
                                         ),
                                         18.height,
                                         AppTextFieldHeader(
@@ -238,24 +308,27 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                           textFieldType: TextFieldType.NUMBER,
                                           isValidationRequired: true,
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               return 'Field is required';
                                             } else {
                                               return null;
                                             }
                                           },
-                                          decoration: inputDecoration().copyWith(
-                                              hintText: 'Enter your answer',
-                                              hintStyle: const TextStyle(
-                                                color: Color(0xFF899197),
-                                              )),
+                                          decoration:
+                                              inputDecoration().copyWith(
+                                                  hintText: 'Enter your answer',
+                                                  hintStyle: const TextStyle(
+                                                    color: Color(0xFF899197),
+                                                  )),
                                           suffixIconColor: AppPalette.white,
                                           textStyle: const TextStyle(
                                               fontSize: 16,
                                               color: AppPalette.black,
                                               fontWeight: FontWeight.w400),
                                           controller: controller
-                                              .howManyVisitChildHadToHealthFacilityLoop[index],
+                                                  .howManyVisitChildHadToHealthFacilityLoop[
+                                              index],
                                         ),
                                       ],
                                       18.height,
@@ -283,7 +356,8 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                             fontSize: 16,
                                             color: AppPalette.black,
                                             fontWeight: FontWeight.w400),
-                                        controller: controller.siteOfLastVaccineLoop[index],
+                                        controller: controller
+                                            .siteOfLastVaccineLoop[index],
                                       ),
                                       18.height,
                                       const Divider(),

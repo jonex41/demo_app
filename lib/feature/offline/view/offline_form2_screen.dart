@@ -1,13 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/component/button.dart';
 import 'package:demo_app/core/router/locator.dart';
+import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
+import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_bindings.dart';
+import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
 import 'package:demo_app/feature/offline/provider/offline_controller.dart';
 import 'package:demo_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:nb_utils/nb_utils.dart';
+import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 import 'package:progress_bar_steppers/stepper_data.dart';
 import 'package:progress_bar_steppers/stepper_style.dart';
 import 'package:progress_bar_steppers/steppers_widget.dart';
@@ -159,10 +163,25 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               if (!controller.isOnline.value)
                 AppElevatedButton(
                   text: "Submit Record",
-                  width: context.width(),
+                  width: context.width,
                   onPressed: () {
                     controller.submitDataOnline(context);
                     //  appRoute.push(const OfflineForm2Route());
+                  },
+                ),
+              if (controller.isOnline.value)
+                AppElevatedButton(
+                  text: "Edit Record",
+                  width: context.width,
+                  onPressed: () {
+                    IEVDataCollectionBindings().dependencies();
+                    Get.find<IEVDataCollectionController>().isEditing.value =
+                        true;
+
+                         Get.find<IEVDataCollectionController>().selectedMap =
+                       controller.listMap[controller.selectedIndex]  ;
+
+                    appRoute.push(const IEVDataHomeRoute());
                   },
                 )
             ],

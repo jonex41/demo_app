@@ -22,6 +22,10 @@ import 'package:progress_bar_steppers/stepper_data.dart';
 import 'package:uuid/uuid.dart';
 
 class IEVDataCollectionController extends GetxController {
+  var isEditing = false.obs;
+  var isFirstTime = false.obs;
+  Map<String, dynamic> selectedMap = {};
+
   var textFieldCountMothersInTheHouseHold = 0.obs;
   var mothersNameControllerLoop = <TextEditingController>[].obs;
   var mothersPhoneNumberControllerLoop = <TextEditingController>[].obs;
@@ -60,6 +64,61 @@ class IEVDataCollectionController extends GetxController {
     }
   }
 
+  /* 
+   {
+I/flutter (22968): ║                             "name": null,
+I/flutter (22968): ║                             "phoneNumber": "0",
+I/flutter (22968): ║                             "isPregnant": true,
+I/flutter (22968): ║                             "monthsPregnant": "1 month",
+I/flutter (22968): ║                             "ttTdDoses": "0",
+I/flutter (22968): ║                             "ancVisits": 0,
+I/flutter (22968): ║                             "hasPregnantWomanStartedAnc": null,
+I/flutter (22968): ║                             "nameOfHealthcareFacilityForAnc": null,
+I/flutter (22968): ║                             "numberOfChildrenUnder5": 0,
+I/flutter (22968): ║                             "children": [
+I/flutter (22968): ║                                {
+I/flutter (22968): ║                                     "name": null,
+I/flutter (22968): ║                                     "dateOfBirth": "2025-02-28",
+I/flutter (22968): ║                                     "age": "0 - 5 Weeks",
+I/flutter (22968): ║                                     "gender": "string",
+I/flutter (22968): ║                                     "hasVaccinationCard": true,
+I/flutter (22968): ║                                     "nameOfHealthcareFacilityForVaccination": null,
+I/flutter (22968): ║                                     "antigensReceived": [Penta 3]
+I/flutter (22968): ║                                     "healthFacilityVisits": 0,
+I/flutter (22968): ║                                     "lastVaccinationSite": "string"
+I/flutter (22968): ║                                }
+I/flutter (22968): ║                             ]
+  
+   */
+
+  void updateEditFields(int count, List<Map<String, dynamic>> myList) {
+    textFieldCountMothersInTheHouseHold.value = count;
+    print("leitoop $myList");
+    for (var model in myList) {
+      mothersNameControllerLoop
+          .add(TextEditingController(text: model["name"].toString()));
+      mothersPhoneNumberControllerLoop
+          .add(TextEditingController(text: model["phoneNumber"].toString()));
+      timesTheWomanVisitedHealthFacilityControllerLoop
+          .add(TextEditingController(text: model["ancVisits"].toString()));
+      selectedIsMotherPregnantLoop
+          .add(model["isPregnant"].toString() == "true" ? "Yes".obs : "No".obs);
+      selectedMonthsPregnantMotherLoop
+          .add(model["monthsPregnant"].toString().obs);
+      selectedDosesTDVaccineTakenMotherLoop
+          .add(model["ttTdDoses"].toString().obs);
+
+      String myValue = model["hasPregnantWomanStartedAnc"].toString() == "null"
+          ? "No"
+          : model["hasPregnantWomanStartedAnc"].toString();
+      selectedHasPregnantWomanStartedAncLoop.add(myValue.obs);
+      nameHealthCareFacilityWomanReceivesAntenatalCareControllerMotherLoop.add(
+          TextEditingController(
+              text: model["nameOfHealthcareFacilityForAnc"].toString()));
+      //selectedIsMotherPregnant.add("".obs);
+    }
+  }
+
   var textFieldCountNumberOfUnder5Children = 0.obs;
   var nameofChildControllerLoop = <TextEditingController>[].obs;
   var selectedGenderLoop = <RxString>[].obs;
@@ -89,6 +148,41 @@ class IEVDataCollectionController extends GetxController {
       nameOfHFChildGoesForVaccinationLoop.add(TextEditingController());
     }
   }
+
+  void updateEditFieldsCountNumberOfUnder5Children(
+      int count, List<Map<String, dynamic>> myList) {
+    textFieldCountNumberOfUnder5Children.value = count;
+    int i = 0;
+    for (var model in myList) {
+      nameofChildControllerLoop.add(TextEditingController(text: model["name"]));
+      selectedGenderLoop.add(model["gender"].toString().obs);
+      String hasCard =
+          model["hasVaccinationCard"].toString() == "true" ? "Yes" : "No";
+      selectedHaveRiVaccinationCardLoop.add(hasCard.obs);
+      vaccineSelections[i] = RxMap<String, bool>();
+      selectedAges[i] = model["age"];
+      howManyVisitChildHadToHealthFacilityLoop.add(TextEditingController());
+      siteOfLastVaccineLoop
+          .add(TextEditingController(text: model["lastVaccinationSite"]));
+      nameOfHFChildGoesForVaccinationLoop.add(TextEditingController(
+          text: model["nameOfHealthcareFacilityForVaccination"]));
+      i++;
+    }
+  }
+
+  /* 
+    {
+I/flutter (22968): ║                                     "name": null,
+I/flutter (22968): ║                                     "dateOfBirth": "2025-02-28",
+I/flutter (22968): ║                                     "age": "0 - 5 Weeks",
+I/flutter (22968): ║                                     "gender": "string",
+I/flutter (22968): ║                                     "hasVaccinationCard": true,
+I/flutter (22968): ║                                     "nameOfHealthcareFacilityForVaccination": null,
+I/flutter (22968): ║                                     "antigensReceived": [Penta 3]
+I/flutter (22968): ║                                     "healthFacilityVisits": 0,
+I/flutter (22968): ║                                     "lastVaccinationSite": "string"
+I/flutter (22968): ║                                }
+   */
 
   //var selectedAge = "".obs;
   var vaccineSelections = <int, RxMap<String, bool>>{}.obs;
@@ -166,6 +260,29 @@ class IEVDataCollectionController extends GetxController {
     }
   }
 
+  void updateEditFieldCountOtherPregnantWomenInHouseHold(
+      int count, List<Map<String, dynamic>> myList) {
+    textFieldCountOtherPregnantWomenInHouseHold.value = count;
+
+    for (var model in myList) {
+      firstNamePregnantWomanControllerLoop
+          .add(TextEditingController(text: model["firstName"].toString()));
+      surNamePregnantWomanControllerLoop
+          .add(TextEditingController(text: model["lastName"].toString()));
+      selectedHowManyMonthsPregnantLoop
+          .add(model["monthsPregnant"].toString().obs);
+      selectedHasWomanTakenTTIDVaccineLoop
+          .add(model["ttTdDoses"].toString() == "null" ? "No".obs : 'Yes'.obs);
+      selectedDosesTDVaccineTakenPregnantLoop
+          .add(model["ttTdDoses"].toString().obs);
+      timesTheWomanVisitedHealthFacilityControllerPregnantLoop
+          .add(TextEditingController(text: model["ancVisits"].toString()));
+      nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop
+          .add(TextEditingController(
+              text: model["nameOfHealthcareFacilityForAnc"].toString()));
+    }
+  }
+
   var textFieldCountHowManyOtherWomenAreThereInHouseHold = 0.obs;
   final womenAreThereInHouseHoldAge15And55 = TextEditingController();
   var firstNameOtherWomenControllerLoop = <TextEditingController>[].obs;
@@ -196,6 +313,15 @@ class IEVDataCollectionController extends GetxController {
           .map((entry) => entry.key));
     });
     return vaccines;
+  }
+
+  List<Map<String, dynamic>> getDetails(dynamic e) {
+    return convertList(e);
+  }
+
+  List<Map<String, dynamic>> convertList(List<dynamic> data) {
+    return List<Map<String, dynamic>>.from(
+        data.map((item) => Map<String, dynamic>.from(item)));
   }
 
   final networkService = Get.find<NetworkService>();

@@ -7,6 +7,7 @@ import 'package:demo_app/feature/checklist/provider/checklist_bindings.dart';
 import 'package:demo_app/feature/commodity_dispensing/provider/commodity_dispense_bindings.dart';
 import 'package:demo_app/feature/commodity_requisition/provider/commodity_requisition_bindings.dart';
 import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_bindings.dart';
+import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
 import 'package:demo_app/feature/login/provider/login_controller.dart';
 import 'package:demo_app/feature/settlement_registry.dart/provider/settlement_registry_binding.dart';
 import 'package:demo_app/model/home/user_transaction_model.dart';
@@ -128,6 +129,7 @@ class HomeController extends GetxController {
 
   Future<void> gotoIEVDataHomeScreen() async {
     IEVDataCollectionBindings().dependencies();
+    Get.find<IEVDataCollectionController>().isEditing.value = false;
     appRoute.push(const IEVDataHomeRoute());
   }
 }
