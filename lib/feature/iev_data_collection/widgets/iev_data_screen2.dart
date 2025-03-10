@@ -97,71 +97,13 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                               },
                             );
                           }),
-                        ],
-                        18.height,
-                        header(context, 'Caregiver\'s Profile'),
-                        18.height,
-                        const AppTextFieldHeader(
-                            title: 'Head of Household Name:'),
-                        5.height,
-                        AppTextField(
-                          textFieldType: TextFieldType.OTHER,
-                          isValidationRequired: true,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Field is required';
-                            } else {
-                              return null;
-                            }
-                          },
-                          decoration: inputDecoration().copyWith(
-                              hintText: 'Enter your answer',
-                              hintStyle: const TextStyle(
-                                color: Color(0xFF899197),
-                              )),
-                          suffixIconColor: AppPalette.white,
-                          textStyle: const TextStyle(
-                              fontSize: 16,
-                              color: AppPalette.black,
-                              fontWeight: FontWeight.w400),
-                          controller: controller.headOfHouseHoldName,
-                        ),
-                        18.height,
-                        const AppTextFieldHeader(
-                            title: 'Head of Household Phone Number:'),
-                        5.height,
-                        AppTextField(
-                          textFieldType: TextFieldType.PHONE,
-                          isValidationRequired: true,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Field is required';
-                            } else {
-                              return null;
-                            }
-                          },
-                          decoration: inputDecoration().copyWith(
-                              hintText: 'Enter your answer',
-                              hintStyle: const TextStyle(
-                                color: Color(0xFF899197),
-                              )),
-                          suffixIconColor: AppPalette.white,
-                          textStyle: const TextStyle(
-                              fontSize: 16,
-                              color: AppPalette.black,
-                              fontWeight: FontWeight.w400),
-                          controller: controller.headOfHousePhoneNumber,
-                        ),
-                        18.height,
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const AppTextFieldHeader(
-                                title:
-                                    'How many mother/wives are there in the house?'),
+                          18.height,
+                          if (controller.selectedProceedReason.value ==
+                              'Others specify') ...[
+                            const AppTextFieldHeader(title: 'Others specify'),
                             5.height,
                             AppTextField(
-                              textFieldType: TextFieldType.NUMBER,
+                              textFieldType: TextFieldType.OTHER,
                               isValidationRequired: true,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -169,10 +111,6 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                 } else {
                                   return null;
                                 }
-                              },
-                              onChanged: (value) {
-                                int count = int.tryParse(value) ?? 0;
-                                controller.updateFields(count);
                               },
                               decoration: inputDecoration().copyWith(
                                   hintText: 'Enter your answer',
@@ -184,199 +122,121 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                   fontSize: 16,
                                   color: AppPalette.black,
                                   fontWeight: FontWeight.w400),
-                              controller: controller.numberOfMothersInTheHouse,
+                              controller: controller.othersProceedSpecify,
                             ),
-                            18.height,
-                            Flexible(
-                              child: Obx(() {
-                                return ListView.builder(
-                                  itemCount: controller
-                                      .textFieldCountMothersInTheHouseHold
-                                      .value,
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemBuilder: (context, index) {
-                                    return Obx(() {
-                                      return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          AppTextFieldHeader(
-                                              title:
-                                                  'Mother/wives Name: ${index + 1}'),
-                                          5.height,
-                                          AppTextField(
-                                            textFieldType: TextFieldType.NAME,
-                                            isValidationRequired: true,
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty) {
-                                                return 'Field is required';
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                            decoration: inputDecoration()
-                                                .copyWith(
-                                                    hintText:
-                                                        'Enter your answer',
-                                                    hintStyle: const TextStyle(
-                                                      color: Color(0xFF899197),
-                                                    )),
-                                            suffixIconColor: AppPalette.white,
-                                            textStyle: const TextStyle(
-                                                fontSize: 16,
-                                                color: AppPalette.black,
-                                                fontWeight: FontWeight.w400),
-                                            controller: controller
-                                                    .mothersNameControllerLoop[
-                                                index],
-                                          ),
-                                          18.height,
-                                          AppTextFieldHeader(
-                                              title:
-                                                  'Mother/wives Phone Number: ${index + 1}'),
-                                          5.height,
-                                          AppTextField(
-                                            textFieldType: TextFieldType.NUMBER,
-                                            isValidationRequired: true,
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty) {
-                                                return 'Field is required';
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                            decoration: inputDecoration()
-                                                .copyWith(
-                                                    hintText:
-                                                        'Enter your answer',
-                                                    hintStyle: const TextStyle(
-                                                      color: Color(0xFF899197),
-                                                    )),
-                                            suffixIconColor: AppPalette.white,
-                                            textStyle: const TextStyle(
-                                                fontSize: 16,
-                                                color: AppPalette.black,
-                                                fontWeight: FontWeight.w400),
-                                            controller: controller
-                                                    .mothersPhoneNumberControllerLoop[
-                                                index],
-                                          ),
-                                          18.height,
-                                          AppTextFieldHeader(
-                                              title:
-                                                  'Is the mother/wife pregnant?: ${index + 1}'),
-                                          const SizedBox(height: 5),
-                                          Obx(() {
-                                            return AncDropDownButton(
-                                              hint: 'Select an Option',
-                                              value: controller
-                                                  .selectedIsMotherPregnantLoop[
-                                                      index]
-                                                  .value,
-                                              items: controller.proceed,
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Please Select Option';
-                                                } else {
-                                                  return null;
-                                                }
-                                              },
-                                              onChanged: (value) {
-                                                controller
-                                                    .selectedIsMotherPregnantLoop[
-                                                        index]
-                                                    .value = value;
-                                                debugPrint(controller
-                                                    .selectedIsMotherPregnantLoop[
-                                                        index]
-                                                    .value);
-                                              },
-                                            );
-                                          }),
-                                          if (controller
-                                                  .selectedIsMotherPregnantLoop[
-                                                      index]
-                                                  .value ==
-                                              'Yes') ...[
-                                            18.height,
+                          ]
+                        ] else ...[
+                          18.height,
+                          header(context, 'Caregiver\'s Profile'),
+                          18.height,
+                          const AppTextFieldHeader(
+                              title: 'Head of Household Name:'),
+                          5.height,
+                          AppTextField(
+                            textFieldType: TextFieldType.OTHER,
+                            isValidationRequired: true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Field is required';
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: inputDecoration().copyWith(
+                                hintText: 'Enter your answer',
+                                hintStyle: const TextStyle(
+                                  color: Color(0xFF899197),
+                                )),
+                            suffixIconColor: AppPalette.white,
+                            textStyle: const TextStyle(
+                                fontSize: 16,
+                                color: AppPalette.black,
+                                fontWeight: FontWeight.w400),
+                            controller: controller.headOfHouseHoldName,
+                          ),
+                          18.height,
+                          const AppTextFieldHeader(
+                              title: 'Head of Household Phone Number:'),
+                          5.height,
+                          AppTextField(
+                            textFieldType: TextFieldType.PHONE,
+                            isValidationRequired: true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Field is required';
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: inputDecoration().copyWith(
+                                hintText: 'Enter your answer',
+                                hintStyle: const TextStyle(
+                                  color: Color(0xFF899197),
+                                )),
+                            suffixIconColor: AppPalette.white,
+                            textStyle: const TextStyle(
+                                fontSize: 16,
+                                color: AppPalette.black,
+                                fontWeight: FontWeight.w400),
+                            controller: controller.headOfHousePhoneNumber,
+                          ),
+                          18.height,
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const AppTextFieldHeader(
+                                  title:
+                                      'How many mother/wives are there in the house?'),
+                              5.height,
+                              AppTextField(
+                                textFieldType: TextFieldType.NUMBER,
+                                isValidationRequired: true,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Field is required';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onChanged: (value) {
+                                  int count = int.tryParse(value) ?? 0;
+                                  controller.updateFields(count);
+                                },
+                                decoration: inputDecoration().copyWith(
+                                    hintText: 'Enter your answer',
+                                    hintStyle: const TextStyle(
+                                      color: Color(0xFF899197),
+                                    )),
+                                suffixIconColor: AppPalette.white,
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    color: AppPalette.black,
+                                    fontWeight: FontWeight.w400),
+                                controller:
+                                    controller.numberOfMothersInTheHouse,
+                              ),
+                              18.height,
+                              Flexible(
+                                child: Obx(() {
+                                  return ListView.builder(
+                                    itemCount: controller
+                                        .textFieldCountMothersInTheHouseHold
+                                        .value,
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      return Obx(() {
+                                        return Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
                                             AppTextFieldHeader(
                                                 title:
-                                                    'How many months pregnant is the woman? ${index + 1}'),
-                                            5.height,
-                                            Obx(() {
-                                              return AncDropDownButton(
-                                                hint: 'Select an Option',
-                                                value: controller
-                                                    .selectedMonthsPregnantMotherLoop[
-                                                        index]
-                                                    .value,
-                                                items: controller
-                                                    .monthsPregnantMother,
-                                                validator: (value) {
-                                                  if (value == null ||
-                                                      value.isEmpty) {
-                                                    return 'Please Select Option';
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                },
-                                                onChanged: (value) {
-                                                  controller
-                                                      .selectedMonthsPregnantMotherLoop[
-                                                          index]
-                                                      .value = value;
-                                                  debugPrint(controller
-                                                      .selectedMonthsPregnantMotherLoop[
-                                                          index]
-                                                      .value);
-                                                },
-                                              );
-                                            }),
-                                            18.height,
-                                            AppTextFieldHeader(
-                                                title:
-                                                    'Has the pregnant woman started ANC? ${index + 1}'),
-                                            5.height,
-                                            Obx(() {
-                                              return AncDropDownButton(
-                                                hint: 'Select an Option',
-                                                value: controller
-                                                    .selectedHasPregnantWomanStartedAncLoop[
-                                                        index]
-                                                    .value,
-                                                items: controller.proceed,
-                                                validator: (value) {
-                                                  if (value == null ||
-                                                      value.isEmpty) {
-                                                    return 'Please Select Option';
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                },
-                                                onChanged: (value) {
-                                                  controller
-                                                      .selectedHasPregnantWomanStartedAncLoop[
-                                                          index]
-                                                      .value = value;
-                                                  debugPrint(controller
-                                                      .selectedHasPregnantWomanStartedAncLoop[
-                                                          index]
-                                                      .value);
-                                                },
-                                              );
-                                            }),
-                                            18.height,
-                                            AppTextFieldHeader(
-                                                title:
-                                                    'What is the name of the healthcare facility where the woman receives antenatal care? ${index + 1}'),
+                                                    'Mother/wives Name: ${index + 1}'),
                                             5.height,
                                             AppTextField(
-                                              textFieldType:
-                                                  TextFieldType.OTHER,
+                                              textFieldType: TextFieldType.NAME,
                                               isValidationRequired: true,
                                               validator: (value) {
                                                 if (value == null ||
@@ -401,47 +261,13 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                                   color: AppPalette.black,
                                                   fontWeight: FontWeight.w400),
                                               controller: controller
-                                                      .nameHealthCareFacilityWomanReceivesAntenatalCareControllerMotherLoop[
+                                                      .mothersNameControllerLoop[
                                                   index],
                                             ),
                                             18.height,
                                             AppTextFieldHeader(
                                                 title:
-                                                    'How many doses of TT/Td vaccine has the woman taken? ${index + 1}'),
-                                            5.height,
-                                            Obx(() {
-                                              return AncDropDownButton(
-                                                hint: 'Select an Option',
-                                                value: controller
-                                                    .selectedDosesTDVaccineTakenMotherLoop[
-                                                        index]
-                                                    .value,
-                                                items: controller
-                                                    .dosesTDVaccineTakenMother,
-                                                validator: (value) {
-                                                  if (value == null ||
-                                                      value.isEmpty) {
-                                                    return 'Please Select Option';
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                },
-                                                onChanged: (value) {
-                                                  controller
-                                                      .selectedDosesTDVaccineTakenMotherLoop[
-                                                          index]
-                                                      .value = value;
-                                                  debugPrint(controller
-                                                      .selectedDosesTDVaccineTakenMotherLoop[
-                                                          index]
-                                                      .value);
-                                                },
-                                              );
-                                            }),
-                                            18.height,
-                                            AppTextFieldHeader(
-                                                title:
-                                                    'How many times has the woman visited the health facility for ANC? ${index + 1}'),
+                                                    'Mother/wives Phone Number: ${index + 1}'),
                                             5.height,
                                             AppTextField(
                                               textFieldType:
@@ -470,22 +296,236 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                                                   color: AppPalette.black,
                                                   fontWeight: FontWeight.w400),
                                               controller: controller
-                                                      .timesTheWomanVisitedHealthFacilityControllerLoop[
+                                                      .mothersPhoneNumberControllerLoop[
                                                   index],
                                             ),
+                                            18.height,
+                                            AppTextFieldHeader(
+                                                title:
+                                                    'Is the mother/wife pregnant?: ${index + 1}'),
+                                            const SizedBox(height: 5),
+                                            Obx(() {
+                                              return AncDropDownButton(
+                                                hint: 'Select an Option',
+                                                value: controller
+                                                    .selectedIsMotherPregnantLoop[
+                                                        index]
+                                                    .value,
+                                                items: controller.proceed,
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Please Select Option';
+                                                  } else {
+                                                    return null;
+                                                  }
+                                                },
+                                                onChanged: (value) {
+                                                  controller
+                                                      .selectedIsMotherPregnantLoop[
+                                                          index]
+                                                      .value = value;
+                                                  debugPrint(controller
+                                                      .selectedIsMotherPregnantLoop[
+                                                          index]
+                                                      .value);
+                                                },
+                                              );
+                                            }),
+                                            if (controller
+                                                    .selectedIsMotherPregnantLoop[
+                                                        index]
+                                                    .value ==
+                                                'Yes') ...[
+                                              18.height,
+                                              AppTextFieldHeader(
+                                                  title:
+                                                      'How many months pregnant is the woman? ${index + 1}'),
+                                              5.height,
+                                              Obx(() {
+                                                return AncDropDownButton(
+                                                  hint: 'Select an Option',
+                                                  value: controller
+                                                      .selectedMonthsPregnantMotherLoop[
+                                                          index]
+                                                      .value,
+                                                  items: controller
+                                                      .monthsPregnantMother,
+                                                  validator: (value) {
+                                                    if (value == null ||
+                                                        value.isEmpty) {
+                                                      return 'Please Select Option';
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  },
+                                                  onChanged: (value) {
+                                                    controller
+                                                        .selectedMonthsPregnantMotherLoop[
+                                                            index]
+                                                        .value = value;
+                                                    debugPrint(controller
+                                                        .selectedMonthsPregnantMotherLoop[
+                                                            index]
+                                                        .value);
+                                                  },
+                                                );
+                                              }),
+                                              18.height,
+                                              AppTextFieldHeader(
+                                                  title:
+                                                      'Has the pregnant woman started ANC? ${index + 1}'),
+                                              5.height,
+                                              Obx(() {
+                                                return AncDropDownButton(
+                                                  hint: 'Select an Option',
+                                                  value: controller
+                                                      .selectedHasPregnantWomanStartedAncLoop[
+                                                          index]
+                                                      .value,
+                                                  items: controller.proceed,
+                                                  validator: (value) {
+                                                    if (value == null ||
+                                                        value.isEmpty) {
+                                                      return 'Please Select Option';
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  },
+                                                  onChanged: (value) {
+                                                    controller
+                                                        .selectedHasPregnantWomanStartedAncLoop[
+                                                            index]
+                                                        .value = value;
+                                                    debugPrint(controller
+                                                        .selectedHasPregnantWomanStartedAncLoop[
+                                                            index]
+                                                        .value);
+                                                  },
+                                                );
+                                              }),
+                                              18.height,
+                                              AppTextFieldHeader(
+                                                  title:
+                                                      'What is the name of the healthcare facility where the woman receives antenatal care? ${index + 1}'),
+                                              5.height,
+                                              AppTextField(
+                                                textFieldType:
+                                                    TextFieldType.OTHER,
+                                                isValidationRequired: true,
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Field is required';
+                                                  } else {
+                                                    return null;
+                                                  }
+                                                },
+                                                decoration: inputDecoration()
+                                                    .copyWith(
+                                                        hintText:
+                                                            'Enter your answer',
+                                                        hintStyle:
+                                                            const TextStyle(
+                                                          color:
+                                                              Color(0xFF899197),
+                                                        )),
+                                                suffixIconColor:
+                                                    AppPalette.white,
+                                                textStyle: const TextStyle(
+                                                    fontSize: 16,
+                                                    color: AppPalette.black,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                                controller: controller
+                                                        .nameHealthCareFacilityWomanReceivesAntenatalCareControllerMotherLoop[
+                                                    index],
+                                              ),
+                                              18.height,
+                                              AppTextFieldHeader(
+                                                  title:
+                                                      'How many doses of TT/Td vaccine has the woman taken? ${index + 1}'),
+                                              5.height,
+                                              Obx(() {
+                                                return AncDropDownButton(
+                                                  hint: 'Select an Option',
+                                                  value: controller
+                                                      .selectedDosesTDVaccineTakenMotherLoop[
+                                                          index]
+                                                      .value,
+                                                  items: controller
+                                                      .dosesTDVaccineTakenMother,
+                                                  validator: (value) {
+                                                    if (value == null ||
+                                                        value.isEmpty) {
+                                                      return 'Please Select Option';
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  },
+                                                  onChanged: (value) {
+                                                    controller
+                                                        .selectedDosesTDVaccineTakenMotherLoop[
+                                                            index]
+                                                        .value = value;
+                                                    debugPrint(controller
+                                                        .selectedDosesTDVaccineTakenMotherLoop[
+                                                            index]
+                                                        .value);
+                                                  },
+                                                );
+                                              }),
+                                              18.height,
+                                              AppTextFieldHeader(
+                                                  title:
+                                                      'How many times has the woman visited the health facility for ANC? ${index + 1}'),
+                                              5.height,
+                                              AppTextField(
+                                                textFieldType:
+                                                    TextFieldType.NUMBER,
+                                                isValidationRequired: true,
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Field is required';
+                                                  } else {
+                                                    return null;
+                                                  }
+                                                },
+                                                decoration: inputDecoration()
+                                                    .copyWith(
+                                                        hintText:
+                                                            'Enter your answer',
+                                                        hintStyle:
+                                                            const TextStyle(
+                                                          color:
+                                                              Color(0xFF899197),
+                                                        )),
+                                                suffixIconColor:
+                                                    AppPalette.white,
+                                                textStyle: const TextStyle(
+                                                    fontSize: 16,
+                                                    color: AppPalette.black,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                                controller: controller
+                                                        .timesTheWomanVisitedHealthFacilityControllerLoop[
+                                                    index],
+                                              ),
+                                            ],
+                                            18.height,
+                                            const Divider(),
+                                            18.height,
                                           ],
-                                          18.height,
-                                          const Divider(),
-                                          18.height,
-                                        ],
-                                      );
-                                    });
-                                  },
-                                );
-                              }),
-                            ),
-                          ],
-                        ),
+                                        );
+                                      });
+                                    },
+                                  );
+                                }),
+                              ),
+                            ],
+                          ),
+                        ],
                         /*18.height,
                               const AppTextFieldHeader(title: 'How many mothers are there in the house?'),
                               5.height,
