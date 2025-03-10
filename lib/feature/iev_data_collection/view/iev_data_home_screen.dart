@@ -27,17 +27,17 @@ class IEVDataHomeScreen extends StatefulWidget {
 class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
   final controller =
       Get.put<IEVDataCollectionController>(IEVDataCollectionController());
-  
- @override
+
+  @override
   void initState() {
     super.initState();
     setLocation();
   }
 
-  void setLocation()async{
-     controller.currentPosition.value =await LocationHandler.getCurrentPosition();
+  void setLocation() async {
+    controller.currentPosition.value =
+        await LocationHandler.getCurrentPosition();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -143,54 +143,22 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
   }
 
   Widget updateButtonNext(BuildContext context) {
-    return AppElevatedButton(
-      textColor: AppPalette.white,
-      color: AppPalette.primary.primary400,
-      height: 56,
-      width: MediaQuery.of(context).size.width,
-      radius: 8,
-      text: controller.currentScreen.value == 4 ? 'Submit' : 'Next',
-      onPressed: () async {
-        if (controller.currentScreen.value == 1) {
-          /* final isValid = controller.formKeyScreen1.currentState!.validate();
-          if (!isValid) {
-            return;
-          } */
-        }
+    if (controller.selectedProceed.value == 'No') {
+      return AppElevatedButton(
+        textColor: AppPalette.white,
+        color: AppPalette.primary.primary400,
+        height: 56,
+        width: MediaQuery.of(context).size.width,
+        radius: 8,
+        text: 'Submit',
+        onPressed: () async {
+          if (controller.currentScreen.value == 2) {
+            final isValid = controller.formKeyScreen2.currentState!.validate();
+            if (!isValid) {
+              return;
+            }
+          }
 
-        if (controller.currentScreen.value == 2) {
-          //controller.newMapData();
-          /* final isValid = controller.formKeyScreen2.currentState!.validate();
-          if (!isValid) {
-            return;
-          } */
-        }
-
-        if (controller.currentScreen.value == 3) {
-          //controller.newMapData();
-          /* final isValid = controller.formKeyScreen3.currentState!.validate();
-          if (!isValid) {
-            return;
-          } */
-
-          /*if (controller.selectDateOfBirth == null) {
-            showAlertDialog('Date of Birth cannot be empty');
-            return;
-          }*/
-        }
-
-        if (controller.currentScreen.value == 4) {
-          /* final isValid = controller.formKeyScreen4.currentState!.validate();
-          if (!isValid) {
-            return;
-          } */
-        }
-
-        controller.currentScreen.value++;
-
-        if (controller.currentScreen.value == 5) {
-          //controller.newMapData();
-          controller.currentScreen.value--;
           if (await isNetworkAvailable()) {
             print("i am online");
             controller.submitData(context);
@@ -200,9 +168,70 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
           }
 
           return;
-        }
-      },
-    );
+        },
+      );
+    } else {
+      return AppElevatedButton(
+        textColor: AppPalette.white,
+        color: AppPalette.primary.primary400,
+        height: 56,
+        width: MediaQuery.of(context).size.width,
+        radius: 8,
+        text: controller.currentScreen.value == 4 ? 'Submit' : 'Next',
+        onPressed: () async {
+          if (controller.currentScreen.value == 1) {
+            final isValid = controller.formKeyScreen1.currentState!.validate();
+            if (!isValid) {
+              return;
+            }
+          }
+
+          if (controller.currentScreen.value == 2) {
+            //controller.newMapData();
+            final isValid = controller.formKeyScreen2.currentState!.validate();
+            if (!isValid) {
+              return;
+            }
+          }
+
+          if (controller.currentScreen.value == 3) {
+            //controller.newMapData();
+            final isValid = controller.formKeyScreen3.currentState!.validate();
+            if (!isValid) {
+              return;
+            }
+
+            /*if (controller.selectDateOfBirth == null) {
+            showAlertDialog('Date of Birth cannot be empty');
+            return;
+          }*/
+          }
+
+          if (controller.currentScreen.value == 4) {
+            final isValid = controller.formKeyScreen4.currentState!.validate();
+            if (!isValid) {
+              return;
+            }
+          }
+
+          controller.currentScreen.value++;
+
+          if (controller.currentScreen.value == 5) {
+            //controller.newMapData();
+            controller.currentScreen.value--;
+            if (await isNetworkAvailable()) {
+              print("i am online");
+              controller.submitData(context);
+            } else {
+              print("i am offline");
+              controller.submitDataLocally(context);
+            }
+
+            return;
+          }
+        },
+      );
+    }
   }
 
   Widget _offlineButton() {

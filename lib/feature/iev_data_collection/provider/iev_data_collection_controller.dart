@@ -202,6 +202,7 @@ class IEVDataCollectionController extends GetxController {
   final Rxn<Position> currentPosition = Rxn<Position>();
 
   final howManyGirlsAged9AreInHousehold = TextEditingController();
+  final othersProceedSpecify = TextEditingController();
 
   final loadingCoordinate = false.obs;
   final nameOfEnumerator = TextEditingController();
