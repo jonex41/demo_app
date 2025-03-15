@@ -113,7 +113,8 @@ class AllRecordIevScreen extends GetView<OfflineController> {
                           child: OfflineCard(
                             searchModel: SearchModel(
                                 title: controller.listMap[index]["household"]
-                                    ["houseNumber"],
+                                        ?["houseNumber"] ??
+                                    "",
                                 time: formattedTime,
                                 date: formattedDate),
                           ),

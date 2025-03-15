@@ -68,6 +68,7 @@ import 'package:demo_app/feature/login/view/login_screen.dart';
 import 'package:demo_app/feature/more/view/more_screen.dart';
 import 'package:demo_app/feature/offline/view/all_record_iev_screen.dart';
 import 'package:demo_app/feature/offline/view/offline_form2_screen.dart';
+import 'package:demo_app/feature/offline/view/offline_form3.dart';
 import 'package:demo_app/feature/offline/view/offline_screen.dart';
 import 'package:demo_app/feature/offline/view/oflline_form1_screen.dart';
 import 'package:demo_app/feature/onboarding/view/get_started_screen.dart';
