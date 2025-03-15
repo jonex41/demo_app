@@ -137,7 +137,7 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                   controller.listMap[controller.selectedIndex]["household"]
                           ["phoneNumber"]
                       .toString()),
-              _buildRow(
+           /*    _buildRow(
                   "Mother’s Name",
                   controller.listMap[controller.selectedIndex]["household"]
                           ["phoneNumber"]
@@ -146,7 +146,7 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                   "Mother’s Phone Number: ",
                   controller.listMap[controller.selectedIndex]["household"]
                           ["phoneNumber"]
-                      .toString()),
+                      .toString()), */
               _buildRow(
                   "House number",
                   controller.listMap[controller.selectedIndex]["household"]
