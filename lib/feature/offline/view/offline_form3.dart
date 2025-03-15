@@ -57,89 +57,27 @@ class OfflineForm3Screen extends GetView<OfflineController> {
               15.height,
               _stepperHorizontal(),
               15.height,
-              /*      _buildSection("U5 Child Profile and Immunization Status"),
-              buildQuestion("'How many under 5 children does this mother have?",
-                  controller.getValueMap(controller.selectedIndex, "IEV019")),
-              buildQuestion("Name of Child",
-                  controller.getValueMap(controller.selectedIndex, "IEV020")),
-              buildQuestion("Date of Birth",
-                  controller.getValueMap(controller.selectedIndex, "IEV021")),
-              buildQuestion("Age Category",
-                  controller.getValueMap(controller.selectedIndex, "IEV022")),
-              buildQuestion("Gender",
-                  controller.getValueMap(controller.selectedIndex, "IEV023")),
-              buildQuestion("Does the child have a RI vaccination card?",
-                  controller.getValueMap(controller.selectedIndex, "IEV024")),
-              if (controller.getValueMap(controller.selectedIndex, "IEV024") ==
-                  "Yes")
-                ...controller
-                    .getValueAntigenMap(controller.selectedIndex)
-                    .map((e) => buildQuestion(e["name"], e["response"])),
-              buildQuestion("Number of ANC visits made to the health facility",
-                  controller.getValueMap(controller.selectedIndex, "IEV026")),
-              buildQuestion(
-                  "On which part of the body did the child take the last vaccine?:",
-                  controller.getValueMap(controller.selectedIndex, "IEV025")),
-              /*   buildQuestion("If Yes, select received antigens",
-                  controller.getValueMap(controller.selectedIndex, "IEV025")), */
-              buildQuestion("Site of last vaccination",
-                  controller.getValueMap(controller.selectedIndex, "IEV027")), */
-
-              /*   buildQuestion(
-                  "Are there pregnant women in the household?",
-                  int.parse(controller.listMap[controller.selectedIndex]
-                                  ["pregnantWomanDetails"]
-                              ["numberOfPregnantWomenWhoAreNotMothers"]) >
-                          0
-                      ? "Yes"
-                      : "No"), */
-              buildQuestion(
-                  "Number of pregnant women in the household",
-                  controller.listMap[controller.selectedIndex]
-                          ["pregnantWomanDetails"]
-                          ["numberOfPregnantWomenWhoAreNotMothers"]
-                      .toString()),
+              _header("Pregnant women biodata and ANC status"),
+              15.height,
               ...controller
-                  .getPregnantMotherDetails(controller.selectedIndex)
+                  .getMotherChidrenDetails(controller
+                      .listMap[controller.selectedIndex]["pregnantWomen"])
                   .map((e) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    buildQuestion("Name", "${e["firstName"]} ${e["lastName"]}"),
+                    buildQuestion("First name and surname of pregnant woman",
+                        e["name"].toString()),
                     buildQuestion(
-                        "Months of Pregnant", "${e["monthsPregnant"]}"),
-                    buildQuestion("Has the woman taken TT/Td vaccine?",
-                        "${e["ttTdDoses"]}"),
+                        "Has the woman visited the health facility for ANC?",
+                        e["name"].toString()),
                     buildQuestion(
                         "How many times has the woman visited the health facility for ANC?",
-                        "${e["ancVisits"]}"),
-                    buildQuestion("Name Of Health Care Facility For Anc",
-                        "${e["nameOfHealthcareFacilityForAnc"]}"),
-                  ],
-                );
-              }).toList(),
-              _buildSection("Women of Childbearing Age (WCBA) Profile"),
-              buildQuestion(
-                  "Other Women Aged Between 15 And 55",
-                  controller.listMap[controller.selectedIndex]["wcbaDetails"]
-                          ["otherWomenAgedBetween15And55"]
-                      .toString()),
-              buildQuestion(
-                  "How Many Other Women Aged Between 15 And 55",
-                  controller.listMap[controller.selectedIndex]["wcbaDetails"]
-                          ["howManyOtherWomenAgedBetween15And55"]
-                      .toString()),
-              ...controller
-                  .getMotherChidrenDetails(
-                      controller.listMap[controller.selectedIndex]
-                          ["wcbaDetails"]["wcbAs"])
-                  .map((elememnt) {
-                return Column(
-                  children: [
-                    buildQuestion("Name",
-                        "${elememnt["firstName"]} ${elememnt["lastName"]}"),
-                    // buildQuestion("firstName", "Yes"),
+                        e["name"].toString()),
+                    buildQuestion(
+                        "Whats the phone number of the pregnant woman (if available)",
+                        e["name"].toString()),
                   ],
                 );
               }).toList(),
@@ -160,16 +98,17 @@ class OfflineForm3Screen extends GetView<OfflineController> {
                   "Number of ANC visits made to the health facility", controller.getValueMap(controller.selectedIndex, "")),
               buildQuestion("Expected Date of Delivery (EDD)", "July 2025"), */
               30.height,
-              if (!controller.isOnline.value)
-                AppElevatedButton(
-                  text: "Submit Record",
-                  width: context.width,
-                  onPressed: () {
-                    controller.submitDataOnline(context);
-                    //  appRoute.push(const OfflineForm2Route());
-                  },
-                ),
-             /*  if (controller.isOnline.value)
+              // if (!controller.isOnline.value)
+              AppElevatedButton(
+                text: "Done",
+                width: context.width,
+                onPressed: () {
+                  appRoute.popUntilRoot();
+                  // controller.submitDataOnline(context);
+                  //  appRoute.push(const OfflineForm2Route());
+                },
+              ),
+              /*  if (controller.isOnline.value)
                 AppElevatedButton(
                   text: "Edit Record",
                   width: context.width,
@@ -201,7 +140,7 @@ class OfflineForm3Screen extends GetView<OfflineController> {
       StepperData(
         label: '',
       ),
-       StepperData(
+      StepperData(
         label: '',
       ),
     ];
@@ -210,9 +149,27 @@ class OfflineForm3Screen extends GetView<OfflineController> {
       labels: stepsData,
       currentStep: currentStep,
       stepBarStyle: StepperStyle(
+        activeColor: const Color(0xff14A673),
         // activeColor: StepperColors.red500,
         maxLineLabel: 2,
         // inactiveColor: StepperColors.ink200s
+      ),
+    );
+  }
+
+  Widget _header(String text) {
+    return Container(
+      color: const Color(0xffEEFFF9),
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Text(
+          text,
+          style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Color(0xff14A673)),
+        ),
       ),
     );
   }

@@ -237,6 +237,7 @@ class AppRouter extends _$AppRouter {
         //   AutoRoute( path: '/activity_screen', page: ActivityRoute.page),
         AutoRoute(path: '/offline_form1_screen', page: OfflineForm1Route.page),
         AutoRoute(path: '/offline_form2_screen', page: OfflineForm2Route.page),
+        AutoRoute(path: '/offline_form3_screen', page: OfflineForm3Route.page),
         AutoRoute(
             path: '/settlementRegistryScreen',
             page: SettlementRegistryRoute.page),

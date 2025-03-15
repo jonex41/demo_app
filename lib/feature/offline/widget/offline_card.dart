@@ -13,6 +13,8 @@ class OfflineCard extends StatelessWidget {
   final SearchModel searchModel;
   @override
   Widget build(BuildContext context) {
+    String nameOne = searchModel.title ?? "IEV";
+    String name = nameOne.trim().isEmpty ? "IEV" : searchModel.title ?? "IEV";
     return Card(
         color: Colors.white,
         elevation: 0.5,
@@ -26,7 +28,7 @@ class OfflineCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ImageContainer(
-                name: searchModel.title ?? "",
+                name: name,
               ),
               10.height,
               Text(

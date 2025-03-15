@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
 
 import '../../../component/search_field.dart';
@@ -96,7 +97,10 @@ class OfflineScreen extends GetView<OfflineController> {
                     // Generate 100 Widgets that display their index in the List
                     children: [
                       ...controller.listMap.value.reversed.map((e) {
+                        //  int index = controller.listMap.indexOf(e);
                         int index = controller.listMap.indexOf(e);
+                        String date = controller.listMap[index]["date"];
+                        String time = controller.listMap[index]["time"];
                         return InkWell(
                           onTap: () {
                             controller.selectedIndex = index;
@@ -105,9 +109,11 @@ class OfflineScreen extends GetView<OfflineController> {
                           },
                           child: OfflineCard(
                             searchModel: SearchModel(
-                                title: controller.getValueMap(index, "IEV008"),
-                                time: controller.listMap[index]["time"],
-                                date: controller.listMap[index]["date"]),
+                                title: controller.listMap[index]["household"]
+                                        ?["houseNumber"] ??
+                                    "",
+                                time: date,
+                                date: time),
                           ),
                         );
                       })
