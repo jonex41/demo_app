@@ -6,7 +6,6 @@ import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
