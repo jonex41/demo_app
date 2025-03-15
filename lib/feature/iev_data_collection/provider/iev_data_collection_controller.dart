@@ -64,33 +64,6 @@ class IEVDataCollectionController extends GetxController {
     }
   }
 
-  /* 
-   {
-I/flutter (22968): ║                             "name": null,
-I/flutter (22968): ║                             "phoneNumber": "0",
-I/flutter (22968): ║                             "isPregnant": true,
-I/flutter (22968): ║                             "monthsPregnant": "1 month",
-I/flutter (22968): ║                             "ttTdDoses": "0",
-I/flutter (22968): ║                             "ancVisits": 0,
-I/flutter (22968): ║                             "hasPregnantWomanStartedAnc": null,
-I/flutter (22968): ║                             "nameOfHealthcareFacilityForAnc": null,
-I/flutter (22968): ║                             "numberOfChildrenUnder5": 0,
-I/flutter (22968): ║                             "children": [
-I/flutter (22968): ║                                {
-I/flutter (22968): ║                                     "name": null,
-I/flutter (22968): ║                                     "dateOfBirth": "2025-02-28",
-I/flutter (22968): ║                                     "age": "0 - 5 Weeks",
-I/flutter (22968): ║                                     "gender": "string",
-I/flutter (22968): ║                                     "hasVaccinationCard": true,
-I/flutter (22968): ║                                     "nameOfHealthcareFacilityForVaccination": null,
-I/flutter (22968): ║                                     "antigensReceived": [Penta 3]
-I/flutter (22968): ║                                     "healthFacilityVisits": 0,
-I/flutter (22968): ║                                     "lastVaccinationSite": "string"
-I/flutter (22968): ║                                }
-I/flutter (22968): ║                             ]
-  
-   */
-
   void updateEditFields(int count, List<Map<String, dynamic>> myList) {
     textFieldCountMothersInTheHouseHold.value = count;
     print("leitoop $myList");
@@ -121,11 +94,25 @@ I/flutter (22968): ║                             ]
 
   var textFieldCountNumberOfUnder5Children = 0.obs;
   var nameofChildControllerLoop = <TextEditingController>[].obs;
-  var selectedGenderLoop = <RxString>[].obs;
-  var selectedHaveRiVaccinationCardLoop = <RxString>[].obs;
+  final List<Rxn<String>> selectedGenderLoop = [];
+  final List<Rxn<String>> selectedHaveRiVaccinationCardLoop = [];
   var howManyVisitChildHadToHealthFacilityLoop = <TextEditingController>[].obs;
   var siteOfLastVaccineLoop = <TextEditingController>[].obs;
   var nameOfHFChildGoesForVaccinationLoop = <TextEditingController>[].obs;
+  final List<Rxn<String>> selectedKnowDateOfBirthLoop = [];
+  var selectedDatesLoop = <Rx<DateTime?>>[].obs; // List to store selected dates
+  final List<Rxn<String>> selectedChildAgeDaysLoop = [];
+  final List<Rxn<String>> selectedChildAgeMonthsLoop = [];
+  final List<Rxn<String>> selectedChildAgeYearsLoop = [];
+  final List<Rxn<String>> selectedChildEverReceivedPolioVaccineInPastLoop = [];
+  final List<Rxn<String>> selectedChildEverReceivedRoutineVaccinesInPastLoop =
+      [];
+  var selectedAntigensLoop =
+      <RxList<String>>[].obs; // List to store multiple selections
+  var nameOfPrimaryCareGiverOfChildLoop = <TextEditingController>[].obs;
+  final List<Rxn<String>> selectedRelationShipOfPrimaryCareGiverOfChildLoop =
+      [];
+  var phoneNumberOfPrimaryCareGiverOfChildLoop = <TextEditingController>[].obs;
 
   void updateFieldsCountNumberOfUnder5Children(int count) {
     textFieldCountNumberOfUnder5Children.value = count;
@@ -137,17 +124,149 @@ I/flutter (22968): ║                             ]
     howManyVisitChildHadToHealthFacilityLoop.clear();
     siteOfLastVaccineLoop.clear();
     nameOfHFChildGoesForVaccinationLoop.clear();
+    selectedKnowDateOfBirthLoop.clear();
+    selectedDatesLoop.clear();
+    selectedChildAgeDaysLoop.clear();
+    selectedChildAgeMonthsLoop.clear();
+    selectedChildAgeYearsLoop.clear();
+    selectedChildEverReceivedPolioVaccineInPastLoop.clear();
+    selectedChildEverReceivedRoutineVaccinesInPastLoop.clear();
+    selectedAntigensLoop.clear();
+    nameOfPrimaryCareGiverOfChildLoop.clear();
+    selectedRelationShipOfPrimaryCareGiverOfChildLoop.clear();
+    phoneNumberOfPrimaryCareGiverOfChildLoop.clear();
+
     for (int i = 0; i < count; i++) {
       nameofChildControllerLoop.add(TextEditingController());
-      selectedGenderLoop.add('Male'.obs);
-      selectedHaveRiVaccinationCardLoop.add('No'.obs);
+      selectedGenderLoop.add(Rxn<String>());
+      selectedHaveRiVaccinationCardLoop.add(Rxn<String>());
+      selectedKnowDateOfBirthLoop.add(Rxn<String>());
       vaccineSelections[i] = RxMap<String, bool>();
       selectedAges[i] = "";
       howManyVisitChildHadToHealthFacilityLoop.add(TextEditingController());
       siteOfLastVaccineLoop.add(TextEditingController());
       nameOfHFChildGoesForVaccinationLoop.add(TextEditingController());
+      selectedDatesLoop.add(Rx<DateTime?>(null)); // Initialize with null
+      selectedChildAgeDaysLoop.add(Rxn<String>());
+      selectedChildAgeMonthsLoop.add(Rxn<String>());
+      selectedChildAgeYearsLoop.add(Rxn<String>());
+      selectedChildEverReceivedPolioVaccineInPastLoop.add(Rxn<String>());
+      selectedChildEverReceivedRoutineVaccinesInPastLoop.add(Rxn<String>());
+      selectedAntigensLoop.add(<String>[].obs); // Initialize multi-select list
+      nameOfPrimaryCareGiverOfChildLoop.add(TextEditingController());
+      selectedRelationShipOfPrimaryCareGiverOfChildLoop.add(Rxn<String>());
+      phoneNumberOfPrimaryCareGiverOfChildLoop.add(TextEditingController());
     }
   }
+
+  // Opens a Date Picker and updates the selected date
+  Future<void> pickDate(BuildContext context, int index) async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+    if (pickedDate != null) {
+      selectedDatesLoop[index].value = pickedDate;
+    }
+  }
+
+  final List<String> careGiverRelationship = [
+    "Relationship 1",
+    "Relationship 2",
+    "Relationship 3",
+    "Relationship 4",
+    "Relationship 5"
+  ].obs;
+
+  final List<String> selectAntigens = [
+    "BCG",
+    "OPV0",
+    "HepB0 birth",
+    "Pentavalent (DPT, Hep B and Hib)1",
+    "PCV 1",
+    "OPV1",
+    "IPV1",
+    "Rota virus vaccine 1",
+    "Pentavalent (DPT, Hep B and Hib)2",
+    "PCV 2",
+    "OPV2",
+    "Rota virus vaccine 2",
+    "Pentavalent (DPT, Hep B and Hib)3",
+    "PCV 3",
+    "OPV3",
+    "IPV2",
+    "Rota virus vaccine 1",
+    "Vitamin A 1st dose",
+    "Measles 1st dose",
+    "Yellow Fever",
+    "Vitamin A 2nd dose",
+    "Measles 2nd dose",
+  ].obs;
+
+  var childAgeDays = [
+    "1-day",
+    "2-days",
+    "3-days",
+    "4-days",
+    "5-days",
+    "6-days",
+    "1-week",
+    "2-weeks",
+    "3-weeks",
+  ].obs;
+  var childAgeMonths = [
+    "1-month",
+    "2-months",
+    "3-months",
+    "4-months",
+    "5-months",
+    "6-months",
+    "7-months",
+    "8-months",
+    "9-months",
+    "10-months",
+    "11-months",
+  ].obs;
+  var childAgeYears = [
+    "1-year",
+    "1-year-1-month",
+    "1-year-2-months",
+    "1-year-3-months",
+    "1-year-4-months",
+    "1-year-5-months",
+    "1-year-6-months",
+    "1-year-7-months",
+    "1-year-8-months",
+    "1-year-9-months",
+    "1-year-10-months",
+    "1-year-11-months",
+    "2-years",
+    "2-years-3-months",
+    "2-years-6-months",
+    "2-years-9-months",
+    "3-years",
+    "3-years-3-months",
+    "3-years-6-months",
+    "3-years-9-months",
+    "4-years",
+    "4-years-3-months",
+    "4-years-6-months",
+    "4-years-9-months",
+    "5-years"
+  ].obs;
+
+  final selectedKnowDateOfBirth = Rxn<String>();
+  final List<String> knowDateOfBirth = [
+    'Yes',
+    'No',
+  ].obs;
+
+  final List<String> optionYesNo = [
+    'Yes',
+    'No',
+  ].obs;
 
   void updateEditFieldsCountNumberOfUnder5Children(
       int count, List<Map<String, dynamic>> myList) {
@@ -155,10 +274,10 @@ I/flutter (22968): ║                             ]
     int i = 0;
     for (var model in myList) {
       nameofChildControllerLoop.add(TextEditingController(text: model["name"]));
-      selectedGenderLoop.add(model["gender"].toString().obs);
+      //selectedGenderLoop.add(model["gender"].toString().obs);
       String hasCard =
           model["hasVaccinationCard"].toString() == "true" ? "Yes" : "No";
-      selectedHaveRiVaccinationCardLoop.add(hasCard.obs);
+      //selectedHaveRiVaccinationCardLoop.add(hasCard.obs);
       vaccineSelections[i] = RxMap<String, bool>();
       selectedAges[i] = model["age"];
       howManyVisitChildHadToHealthFacilityLoop.add(TextEditingController());
@@ -170,21 +289,6 @@ I/flutter (22968): ║                             ]
     }
   }
 
-  /* 
-    {
-I/flutter (22968): ║                                     "name": null,
-I/flutter (22968): ║                                     "dateOfBirth": "2025-02-28",
-I/flutter (22968): ║                                     "age": "0 - 5 Weeks",
-I/flutter (22968): ║                                     "gender": "string",
-I/flutter (22968): ║                                     "hasVaccinationCard": true,
-I/flutter (22968): ║                                     "nameOfHealthcareFacilityForVaccination": null,
-I/flutter (22968): ║                                     "antigensReceived": [Penta 3]
-I/flutter (22968): ║                                     "healthFacilityVisits": 0,
-I/flutter (22968): ║                                     "lastVaccinationSite": "string"
-I/flutter (22968): ║                                }
-   */
-
-  //var selectedAge = "".obs;
   var vaccineSelections = <int, RxMap<String, bool>>{}.obs;
   var selectedAges = <int, String>{}.obs;
 
@@ -226,37 +330,40 @@ I/flutter (22968): ║                                }
   }
 
   var textFieldCountOtherPregnantWomenInHouseHold = 0.obs;
-  var firstNamePregnantWomanControllerLoop = <TextEditingController>[].obs;
-  var surNamePregnantWomanControllerLoop = <TextEditingController>[].obs;
+  var fullNamePregnantWomanControllerLoop = <TextEditingController>[].obs;
   var selectedHowManyMonthsPregnantLoop = <RxString>[].obs;
   var selectedHasWomanTakenTTIDVaccineLoop = <RxString>[].obs;
   var selectedDosesTDVaccineTakenPregnantLoop = <RxString>[].obs;
-  var timesTheWomanVisitedHealthFacilityControllerPregnantLoop =
+  var howManyTimesTheWomanVisitedHealthFacilityControllerPregnantLoop =
       <TextEditingController>[].obs;
   var nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop =
       <TextEditingController>[].obs;
+  final List<Rxn<String>> selectedHasWomanVisitedHealthFacilityForAncLoop = [];
+  var phoneNumberOfPregnantWomanControllerLoop = <TextEditingController>[].obs;
 
   void updateFieldCountOtherPregnantWomenInHouseHold(int count) {
     textFieldCountOtherPregnantWomenInHouseHold.value = count;
-    firstNamePregnantWomanControllerLoop.clear();
-    surNamePregnantWomanControllerLoop.clear();
+    fullNamePregnantWomanControllerLoop.clear();
     selectedHowManyMonthsPregnantLoop.clear();
     selectedHasWomanTakenTTIDVaccineLoop.clear();
     selectedDosesTDVaccineTakenPregnantLoop.clear();
-    timesTheWomanVisitedHealthFacilityControllerPregnantLoop.clear();
+    howManyTimesTheWomanVisitedHealthFacilityControllerPregnantLoop.clear();
     nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop
         .clear();
+    selectedHasWomanVisitedHealthFacilityForAncLoop.clear();
+    phoneNumberOfPregnantWomanControllerLoop.clear();
 
     for (int i = 0; i < count; i++) {
-      firstNamePregnantWomanControllerLoop.add(TextEditingController());
-      surNamePregnantWomanControllerLoop.add(TextEditingController());
+      fullNamePregnantWomanControllerLoop.add(TextEditingController());
       selectedHowManyMonthsPregnantLoop.add('None'.obs);
       selectedHasWomanTakenTTIDVaccineLoop.add('No'.obs);
       selectedDosesTDVaccineTakenPregnantLoop.add('None'.obs);
-      timesTheWomanVisitedHealthFacilityControllerPregnantLoop
+      howManyTimesTheWomanVisitedHealthFacilityControllerPregnantLoop
           .add(TextEditingController());
       nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop
           .add(TextEditingController());
+      selectedHasWomanVisitedHealthFacilityForAncLoop.add(Rxn<String>());
+      phoneNumberOfPregnantWomanControllerLoop.add(TextEditingController());
     }
   }
 
@@ -265,17 +372,15 @@ I/flutter (22968): ║                                }
     textFieldCountOtherPregnantWomenInHouseHold.value = count;
 
     for (var model in myList) {
-      firstNamePregnantWomanControllerLoop
-          .add(TextEditingController(text: model["firstName"].toString()));
-      surNamePregnantWomanControllerLoop
-          .add(TextEditingController(text: model["lastName"].toString()));
+      fullNamePregnantWomanControllerLoop
+          .add(TextEditingController(text: model["fullName"].toString()));
       selectedHowManyMonthsPregnantLoop
           .add(model["monthsPregnant"].toString().obs);
       selectedHasWomanTakenTTIDVaccineLoop
           .add(model["ttTdDoses"].toString() == "null" ? "No".obs : 'Yes'.obs);
       selectedDosesTDVaccineTakenPregnantLoop
           .add(model["ttTdDoses"].toString().obs);
-      timesTheWomanVisitedHealthFacilityControllerPregnantLoop
+      howManyTimesTheWomanVisitedHealthFacilityControllerPregnantLoop
           .add(TextEditingController(text: model["ancVisits"].toString()));
       nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop
           .add(TextEditingController(
@@ -284,7 +389,7 @@ I/flutter (22968): ║                                }
   }
 
   var textFieldCountHowManyOtherWomenAreThereInHouseHold = 0.obs;
-  final womenAreThereInHouseHoldAge15And55 = TextEditingController();
+  final womenAreThereInHouseHoldAge15And49 = TextEditingController();
   var firstNameOtherWomenControllerLoop = <TextEditingController>[].obs;
   var surNameOtherWomenControllerLoop = <TextEditingController>[].obs;
 
@@ -336,6 +441,7 @@ I/flutter (22968): ║                                }
   final teamCode = TextEditingController();
   final ward = TextEditingController();
   final houseNumber = TextEditingController();
+  final houseHoldNumber = TextEditingController();
 
   final headOfHouseHoldName = TextEditingController();
   final headOfHousePhoneNumber = TextEditingController();
@@ -533,12 +639,6 @@ I/flutter (22968): ║                                }
     'No',
   ].obs;
 
-  final selectedKnowDateOfBirth = Rxn<String>();
-  final List<String> knowDateOfBirth = [
-    'Yes',
-    'No',
-  ].obs;
-
   @override
   void onInit() {
     //getState();
@@ -640,16 +740,73 @@ I/flutter (22968): ║                                }
       },
       "household": {
         "houseNumber": houseNumber.text,
+        "houseHoldNumber": houseHoldNumber.text,
         "consent": selectedProceed.value ?? '',
         "reasonForNonConsent": selectedProceedReason.value,
-        "girlsAged9InTheHousehold":
+        "nameofHouseHoldHead": headOfHouseHoldName.text,
+        "houseHoldHeadPhoneNumber": headOfHousePhoneNumber.text,
+        "numberOfWomenAged15to49InHousehold":
+            int.tryParse(womenAreThereInHouseHoldAge15And49.text) ?? 0,
+        "numberOfPregnantWomenInHousehold":
+            int.tryParse(numberOfPregnantWomen.text) ?? 0,
+        "numberOfGirlsAged9to14InTheHousehold":
             int.tryParse(howManyGirlsAged9AreInHousehold.text) ?? 0,
+        "numberOfU5ChildrenInTheHousehold":
+            int.tryParse(under5ChildrenMotherHave.text) ?? 0,
       },
-      "headOfHousehold": {
-        "name": headOfHouseHoldName.text,
-        "phoneNumber": headOfHousePhoneNumber.text
-      },
-      "motherDetails": {
+      "children":
+          List.generate(textFieldCountNumberOfUnder5Children.value, (j) {
+        return {
+          //"age": selectedAges[j],
+          "name": nameofChildControllerLoop[j].text,
+          "dateOfBirth":
+              selectedDatesLoop[j].value?.toLocal().toString().split(' ')[0],
+          "age":
+              '${selectedChildAgeDaysLoop[j].value}, ${selectedChildAgeMonthsLoop[j].value}, ${selectedChildAgeYearsLoop[j].value}',
+          "sex": selectedGenderLoop[j].value,
+          "receivedPolioVaccineBefore":
+              selectedChildEverReceivedPolioVaccineInPastLoop[j].value,
+          "receivedRoutineVaccineBefore":
+              selectedChildEverReceivedRoutineVaccinesInPastLoop[j].value,
+          "hasRIVaccinationCard": selectedHaveRiVaccinationCardLoop[j].value,
+          "antigensReceived": selectedAntigensLoop[j].toList(),
+          "howManyVisitsHasChildHad":
+              int.tryParse(howManyVisitChildHadToHealthFacilityLoop[j].text) ??
+                  0,
+          "lastVaccinationSite": siteOfLastVaccineLoop[j].text,
+          "primaryCareGiverName": nameOfPrimaryCareGiverOfChildLoop[j].text,
+          "relationshipOfCaregiverToChild":
+              selectedRelationShipOfPrimaryCareGiverOfChildLoop[j].value,
+          "careGiverPhoneNumber":
+              phoneNumberOfPrimaryCareGiverOfChildLoop[j].text,
+          /*  "hasVaccinationCard":
+              selectedHaveRiVaccinationCardLoop[j].value == "Yes", */
+          /*  "antigensReceived": vaccineSelections[j]
+                    ?.keys
+                    .where((key) => vaccineSelections[j]?[key] == true)
+                    .toList(), */
+        };
+      }),
+      "pregnantWomen":
+          List.generate(textFieldCountOtherPregnantWomenInHouseHold.value, (i) {
+        return {
+          "name": fullNamePregnantWomanControllerLoop[i].text,
+          "hasTheWomanVisitedHealthFacilityForANC":
+              selectedHasWomanVisitedHealthFacilityForAncLoop[i].value,
+          "numberOFAncVisits": int.tryParse(
+                  howManyTimesTheWomanVisitedHealthFacilityControllerPregnantLoop[
+                          i]
+                      .text) ??
+              0,
+          "phoneNumberOfPregnantWoman":
+              phoneNumberOfPregnantWomanControllerLoop[i].text,
+        };
+      }),
+      "latitude": currentPosition.value?.latitude,
+      "longitude": currentPosition.value?.longitude,
+      "submittedBy": Get.find<LoginController>().loginModel.value?.id ??
+          '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+      /* "motherDetails": {
         "numberOfMothers": textFieldCountMothersInTheHouseHold.value,
         "mothers":
             List.generate(textFieldCountMothersInTheHouseHold.value, (i) {
@@ -675,19 +832,20 @@ I/flutter (22968): ║                                }
                 List.generate(textFieldCountNumberOfUnder5Children.value, (j) {
               return {
                 "name": nameofChildControllerLoop[j].text,
-                "age": selectedAges[j],
+                "dateOfBirth": selectedDatesLoop[j].value?.toIso8601String(),
+                //"age": selectedAges[j],
+                "age":
+                    '${selectedChildAgeDaysLoop[j].value}, ${selectedChildAgeMonthsLoop[j].value}, ${selectedChildAgeYearsLoop[j].value}',
                 "gender": selectedGenderLoop[j].value,
                 "hasVaccinationCard":
                     selectedHaveRiVaccinationCardLoop[j].value == "Yes",
-               /*  "nameOfHealthcareFacilityForVaccination":
-              
-                    nameOfHFChildGoesForVaccinationLoop[j].value ?? '', */
-                    "nameOfHealthcareFacilityForVaccination":
-                    nameOfHFChildGoesForVaccinationLoop[j].text??"",
-                "antigensReceived": vaccineSelections[j]
+                "nameOfHealthcareFacilityForVaccination":
+                    nameOfHFChildGoesForVaccinationLoop[j].value ?? '',
+                /*  "antigensReceived": vaccineSelections[j]
                     ?.keys
                     .where((key) => vaccineSelections[j]?[key] == true)
-                    .toList(),
+                    .toList(), */
+                "antigensReceived": selectedAntigensLoop[j].toList(),
                 "healthFacilityVisits": int.tryParse(
                         howManyVisitChildHadToHealthFacilityLoop[j].text) ??
                     0,
@@ -696,19 +854,19 @@ I/flutter (22968): ║                                }
             })
           };
         })
-      },
-      "pregnantWomenDetails": {
+      } */
+      /* "pregnantWomenDetails": {
         "numberOfPregnantWomenWhoAreNotMothers":
             textFieldCountOtherPregnantWomenInHouseHold.value ?? '',
         "pregnantWomen": List.generate(
             textFieldCountOtherPregnantWomenInHouseHold.value, (i) {
           return {
-            "firstName": firstNamePregnantWomanControllerLoop[i].text,
-            "lastName": surNamePregnantWomanControllerLoop[i].text,
+            "fullName": fullNamePregnantWomanControllerLoop[i].text,
             "monthsPregnant": selectedHowManyMonthsPregnantLoop[i].value ?? '',
             "ttTdDoses": selectedDosesTDVaccineTakenPregnantLoop[i].value ?? '',
             "ancVisits": int.tryParse(
-                    timesTheWomanVisitedHealthFacilityControllerPregnantLoop[i]
+                    howManyTimesTheWomanVisitedHealthFacilityControllerPregnantLoop[
+                            i]
                         .text) ??
                 0,
             "nameOfHealthcareFacilityForAnc":
@@ -717,8 +875,8 @@ I/flutter (22968): ║                                }
                     .text,
           };
         })
-      },
-      "wcbaDetails": {
+      }, */
+      /* "wcbaDetails": {
         "otherWomenAgedBetween15And55":
             selectedOtherWomenInTheHousehold.value ?? '',
         "howManyOtherWomenAgedBetween15And55":
@@ -730,11 +888,7 @@ I/flutter (22968): ║                                }
             "lastName": surNameOtherWomenControllerLoop[i].text
           };
         })
-      },
-      "latitude": currentPosition.value?.latitude,
-      "longitude": currentPosition.value?.longitude,
-      "submittedBy": Get.find<LoginController>().loginModel.value?.id ??
-          '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+      }, */
     };
 
     //debugPrint(data.toString());

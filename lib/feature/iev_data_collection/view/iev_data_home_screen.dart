@@ -185,8 +185,8 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
         radius: 8,
         text: 'Submit',
         onPressed: () async {
-          if (controller.currentScreen.value == 2) {
-            final isValid = controller.formKeyScreen2.currentState!.validate();
+          if (controller.currentScreen.value == 1) {
+            final isValid = controller.formKeyScreen1.currentState!.validate();
             if (!isValid) {
               return;
             }
@@ -220,7 +220,6 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
           }
 
           if (controller.currentScreen.value == 2) {
-            //controller.newMapData();
             final isValid = controller.formKeyScreen2.currentState!.validate();
             if (!isValid) {
               return;
@@ -228,7 +227,6 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
           }
 
           if (controller.currentScreen.value == 3) {
-            //controller.newMapData();
             final isValid = controller.formKeyScreen3.currentState!.validate();
             if (!isValid) {
               return;
@@ -247,10 +245,16 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
             }
           }
 
+          if (controller.currentScreen.value == 2 &&
+              (controller.under5ChildrenMotherHave.text == '0' ||
+                  controller.under5ChildrenMotherHave.text.isEmpty)) {
+            controller.currentScreen.value = 4;
+            return;
+          }
+
           controller.currentScreen.value++;
 
           if (controller.currentScreen.value == 5) {
-            //controller.newMapData();
             controller.currentScreen.value--;
             if (await isNetworkAvailable()) {
               print("i am online");
