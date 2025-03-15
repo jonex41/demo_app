@@ -71,13 +71,13 @@ class OfflineForm3Screen extends GetView<OfflineController> {
                         e["name"].toString()),
                     buildQuestion(
                         "Has the woman visited the health facility for ANC?",
-                        e["name"].toString()),
+                        e["hasTheWomanVisitedHealthFacilityForANC"].toString()),
                     buildQuestion(
                         "How many times has the woman visited the health facility for ANC?",
-                        e["name"].toString()),
+                        e["numberOFAncVisits"].toString()),
                     buildQuestion(
                         "Whats the phone number of the pregnant woman (if available)",
-                        e["name"].toString()),
+                        e["phoneNumberOfPregnantWoman"].toString()),
                   ],
                 );
               }).toList(),
