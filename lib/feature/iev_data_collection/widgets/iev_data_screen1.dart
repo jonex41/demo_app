@@ -4,6 +4,7 @@ import 'package:demo_app/components/input_decoration.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/iev_data_collection/provider/iev_data_collection_controller.dart';
+import 'package:demo_app/feature/util/LocationHandler.dart';
 import 'package:demo_app/feature/util/nigerian_states_and_lga.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -435,6 +436,149 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           ]
                         ],
                         18.height,
+                        if (controller.selectedProceed.value == 'No') ...[
+                          header(context,
+                              'Geocordinate - Ensure your location is on'),
+                          18.height,
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            padding: const EdgeInsets.all(18),
+                            decoration: BoxDecoration(
+                              color: const Color(0xffEEFFF9),
+                              border: Border.all(
+                                  width: 1.5,
+                                  color: AppPalette.primary.primary80),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(15.0)),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Geocoordinates',
+                                  style: context.theme.appTextTheme.bodyMedium16
+                                      .copyWith(
+                                    color: AppPalette.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                5.height,
+                                Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Longitude:',
+                                          style: context
+                                              .theme.appTextTheme.bodyMedium16
+                                              .copyWith(
+                                            fontSize: 16,
+                                            color: AppPalette.grey.gray350,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                        Text(
+                                          '${controller.currentPosition.value?.longitude ?? '0'}',
+                                          style: context
+                                              .theme.appTextTheme.bodyMedium16
+                                              .copyWith(
+                                            fontSize: 16,
+                                            color: AppPalette.grey.gray350,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    5.height,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Latitude:',
+                                          style: context
+                                              .theme.appTextTheme.bodyMedium16
+                                              .copyWith(
+                                            fontSize: 16,
+                                            color: AppPalette.grey.gray350,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                        Text(
+                                          '${controller.currentPosition.value?.latitude ?? '0'}',
+                                          style: context
+                                              .theme.appTextTheme.bodyMedium16
+                                              .copyWith(
+                                            fontSize: 16,
+                                            color: AppPalette.grey.gray350,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                10.height,
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () async {
+                                          controller.loadingCoordinate.value =
+                                              true;
+                                          controller.currentPosition.value =
+                                              await LocationHandler
+                                                  .getCurrentPosition();
+                                          controller.loadingCoordinate.value =
+                                              false;
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            foregroundColor: AppPalette.white,
+                                            backgroundColor:
+                                                AppPalette.primary.primary400,
+                                            padding: const EdgeInsets.all(3.0),
+                                            fixedSize: const Size(190, 40),
+                                            textStyle: context
+                                                .theme.appTextTheme.bodyMedium16
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: AppPalette.white,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4))),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              controller.loadingCoordinate.value
+                                                  ? 'Loading...'
+                                                  : 'Take Geo-Coordinate',
+                                              style: const TextStyle(
+                                                  color: AppPalette.white,
+                                                  fontSize: 12),
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            const Icon(
+                                              Icons.location_on_outlined,
+                                              color: AppPalette.white,
+                                              size: 18,
+                                            )
+                                          ],
+                                        ))
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          18.height,
+                        ]
                       ],
                     )),
                   )
