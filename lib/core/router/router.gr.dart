@@ -441,6 +441,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: OfflineForm2Screen(),
       );
     },
+    OfflineForm3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OfflineForm3Screen(),
+      );
+    },
     OfflineRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -1476,6 +1482,20 @@ class OfflineForm2Route extends PageRouteInfo<void> {
         );
 
   static const String name = 'OfflineForm2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OfflineForm3Screen]
+class OfflineForm3Route extends PageRouteInfo<void> {
+  const OfflineForm3Route({List<PageRouteInfo>? children})
+      : super(
+          OfflineForm3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OfflineForm3Route';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

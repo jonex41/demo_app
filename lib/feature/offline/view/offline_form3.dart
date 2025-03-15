@@ -17,7 +17,7 @@ import 'package:progress_bar_steppers/stepper_style.dart';
 import 'package:progress_bar_steppers/steppers_widget.dart';
 
 @RoutePage()
-class OfflineForm2Screen extends GetView<OfflineController> {
+class OfflineForm3Screen extends GetView<OfflineController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -162,14 +162,14 @@ class OfflineForm2Screen extends GetView<OfflineController> {
               30.height,
               if (!controller.isOnline.value)
                 AppElevatedButton(
-                  text: "Next",
+                  text: "Submit Record",
                   width: context.width,
                   onPressed: () {
-                    //controller.submitDataOnline(context);
-                    appRoute.push(const OfflineForm3Route());
+                    controller.submitDataOnline(context);
+                    //  appRoute.push(const OfflineForm2Route());
                   },
                 ),
-              /*  if (controller.isOnline.value)
+             /*  if (controller.isOnline.value)
                 AppElevatedButton(
                   text: "Edit Record",
                   width: context.width,
@@ -192,7 +192,7 @@ class OfflineForm2Screen extends GetView<OfflineController> {
   }
 
   Widget _stepperHorizontal() {
-    var currentStep = 2;
+    var currentStep = 3;
     //var totalSteps = 0;
     final stepsData = [
       StepperData(
@@ -201,7 +201,7 @@ class OfflineForm2Screen extends GetView<OfflineController> {
       StepperData(
         label: '',
       ),
-      StepperData(
+       StepperData(
         label: '',
       ),
     ];

@@ -254,6 +254,9 @@ class OfflineForm1Screen extends GetView<OfflineController> {
       StepperData(
         label: '',
       ),
+       StepperData(
+        label: '',
+      ),
     ];
     return Steppers(
       direction: StepperDirection.horizontal,

@@ -679,8 +679,11 @@ I/flutter (22968): ║                                }
                 "gender": selectedGenderLoop[j].value,
                 "hasVaccinationCard":
                     selectedHaveRiVaccinationCardLoop[j].value == "Yes",
-                "nameOfHealthcareFacilityForVaccination":
-                    nameOfHFChildGoesForVaccinationLoop[j].value ?? '',
+               /*  "nameOfHealthcareFacilityForVaccination":
+              
+                    nameOfHFChildGoesForVaccinationLoop[j].value ?? '', */
+                    "nameOfHealthcareFacilityForVaccination":
+                    nameOfHFChildGoesForVaccinationLoop[j].text??"",
                 "antigensReceived": vaccineSelections[j]
                     ?.keys
                     .where((key) => vaccineSelections[j]?[key] == true)
