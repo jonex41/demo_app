@@ -124,20 +124,24 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                 ),
               ),
               5.height,
-              _buildRow("At this time, do you want me to proceed?", "Yes"),
+              _buildRow(
+                  "At this time, do you want me to proceed?",
+                  controller.listMap[controller.selectedIndex]["household"]
+                          ["consent"]
+                      .toString()),
             ]),
             _buildSection("Caregiver’s Profile", [
               _buildRow(
                   "Head of Household Name",
                   controller.listMap[controller.selectedIndex]["household"]
-                          ["consent"]
+                          ["nameofHouseHoldHead"]
                       .toString()),
               _buildRow(
                   "Head of Household Phone Number",
                   controller.listMap[controller.selectedIndex]["household"]
                           ["phoneNumber"]
                       .toString()),
-           /*    _buildRow(
+              /*    _buildRow(
                   "Mother’s Name",
                   controller.listMap[controller.selectedIndex]["household"]
                           ["phoneNumber"]
