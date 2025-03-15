@@ -173,11 +173,23 @@ class IEVDataCollectionController extends GetxController {
   }
 
   final List<String> careGiverRelationship = [
-    "Relationship 1",
-    "Relationship 2",
-    "Relationship 3",
-    "Relationship 4",
-    "Relationship 5"
+    "Mother",
+    "Father",
+    "Brother",
+    "Sister",
+    "Grandmother",
+    "Grandfather",
+    "Aunt",
+    "Uncle",
+    "Cousin",
+    "Niece",
+    "Nephew",
+    "Foster Parent",
+    "Adoptive Parent",
+    "Legal Guardian",
+    "Nanny/Babysitter",
+    "Teacher",
+    "Social Worker",
   ].obs;
 
   final List<String> selectAntigens = [
