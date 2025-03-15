@@ -653,7 +653,7 @@ class IEVDataCollectionController extends GetxController {
 
   @override
   void onInit() {
-    //getState();
+    getState();
     //getFileData();
 
     var model = Get.find<HomeController>().loginModel.value;
