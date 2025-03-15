@@ -61,36 +61,10 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                     children: [
                       header(context, 'Household details'),
                       18.height,
-                      const AppTextFieldHeader(title: 'House Number:'),
-                      5.height,
-                      AppTextField(
-                        textFieldType: TextFieldType.NUMBER,
-                        isValidationRequired: true,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Field is required';
-                          } else {
-                            return null;
-                          }
-                        },
-                        decoration: inputDecoration().copyWith(
-                            hintText: 'Enter your answer',
-                            hintStyle: const TextStyle(
-                              fontSize: 16,
-                              color: Color(0xFF899197),
-                            )),
-                        suffixIconColor: AppPalette.white,
-                        textStyle: const TextStyle(
-                            fontSize: 16,
-                            color: AppPalette.black,
-                            fontWeight: FontWeight.w400),
-                        controller: controller.houseNumber,
-                      ),
-                      18.height,
                       const AppTextFieldHeader(title: 'Household Number:'),
                       5.height,
                       AppTextField(
-                        textFieldType: TextFieldType.NUMBER,
+                        textFieldType: TextFieldType.OTHER,
                         isValidationRequired: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {

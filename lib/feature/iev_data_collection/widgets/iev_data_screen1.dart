@@ -282,6 +282,32 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           ),
                         ),
                         18.height,
+                        const AppTextFieldHeader(title: 'House Number:'),
+                        5.height,
+                        AppTextField(
+                          textFieldType: TextFieldType.OTHER,
+                          isValidationRequired: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Field is required';
+                            } else {
+                              return null;
+                            }
+                          },
+                          decoration: inputDecoration().copyWith(
+                              hintText: 'Enter your answer',
+                              hintStyle: const TextStyle(
+                                fontSize: 16,
+                                color: Color(0xFF899197),
+                              )),
+                          suffixIconColor: AppPalette.white,
+                          textStyle: const TextStyle(
+                              fontSize: 16,
+                              color: AppPalette.black,
+                              fontWeight: FontWeight.w400),
+                          controller: controller.houseNumber,
+                        ),
+                        18.height,
                         const AppTextFieldHeader(title: 'Settlement'),
                         5.height,
                         Obx(() {
