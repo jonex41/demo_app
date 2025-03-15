@@ -93,12 +93,12 @@ class OfflineForm2Screen extends GetView<OfflineController> {
                         "On which part of the body did the child take the last vaccine?",
                         e["lastVaccinationSite"].toString()),
                     buildQuestion(
-                        "What is the name of the primary caregiver of this child? -1",
+                        "What is the name of the primary caregiver of this child?",
                         e["primaryCareGiverName"].toString()),
                     buildQuestion(
-                        "Relationship of the primary caregiver to the child -1",
+                        "Relationship of the primary caregiver to the child",
                         e["relationshipOfCaregiverToChild"].toString()),
-                    buildQuestion("Phone number of primary caregiver -1",
+                    buildQuestion("Phone number of primary caregiver",
                         e["careGiverPhoneNumber"].toString()),
                     // buildQuestion("firstName", "Yes"),
                   ],
