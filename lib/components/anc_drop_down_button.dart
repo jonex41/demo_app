@@ -60,14 +60,15 @@ class AncDropDownButton extends StatelessWidget {
                 borderSide: const BorderSide(width: 1, color: Colors.red),
                 borderRadius: BorderRadius.circular(5)),
           ),
-          validator: validator ??
+          validator: validator,
+          /* ??
               (value) {
                 if (value == null || value.isEmpty) {
                   return 'Select an Option';
                 } else {
                   return null;
                 }
-              },
+              }, */
           icon: const Icon(
             Icons.keyboard_arrow_down_rounded,
           ),

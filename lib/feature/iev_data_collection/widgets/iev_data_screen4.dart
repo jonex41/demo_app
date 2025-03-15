@@ -40,7 +40,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
           .selectedMap["wcbaDetails"]["otherWomenAgedBetween15And55"]
           .toString();
 
-      controller.womenAreThereInHouseHoldAge15And55.text = controller
+      controller.womenAreThereInHouseHoldAge15And49.text = controller
           .selectedMap["wcbaDetails"]["howManyOtherWomenAgedBetween15And55"]
           .toString();
 
@@ -80,7 +80,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const AppTextFieldHeader(
+                        /* const AppTextFieldHeader(
                             title:
                                 'How many other pregnant women are in the household (pregnant women who are not married to the head of household)?'),
                         5.height,
@@ -113,7 +113,9 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                               color: AppPalette.black,
                               fontWeight: FontWeight.w400),
                           controller: controller.numberOfPregnantWomen,
-                        ),
+                        ), */
+                        header(
+                            context, 'Pregnant women biodata and ANC status'),
                         Flexible(child: Obx(() {
                           return ListView.builder(
                               itemCount: controller
@@ -128,96 +130,132 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       18.height,
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                              child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              AppTextFieldHeader(
-                                                  title:
-                                                      'First Name of pregnant woman: ${index + 1}'),
-                                              5.height,
-                                              AppTextField(
-                                                textFieldType:
-                                                    TextFieldType.NAME,
-                                                isValidationRequired: true,
-                                                validator: (value) {
-                                                  if (value == null ||
-                                                      value.isEmpty) {
-                                                    return 'Field is required';
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                },
-                                                decoration: inputDecoration()
-                                                    .copyWith(
-                                                        hintText:
-                                                            'Enter your answer',
-                                                        hintStyle:
-                                                            const TextStyle(
-                                                          color:
-                                                              Color(0xFF899197),
-                                                        )),
-                                                suffixIconColor:
-                                                    AppPalette.white,
-                                                textStyle: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: AppPalette.black,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                                controller: controller
-                                                        .firstNamePregnantWomanControllerLoop[
-                                                    index],
-                                              ),
-                                            ],
-                                          )),
-                                          18.width,
-                                          Expanded(
-                                              child: Column(
-                                            children: [
-                                              AppTextFieldHeader(
-                                                  title:
-                                                      'Surname of pregnant woman: ${index + 1}'),
-                                              5.height,
-                                              AppTextField(
-                                                textFieldType:
-                                                    TextFieldType.NAME,
-                                                isValidationRequired: true,
-                                                validator: (value) {
-                                                  if (value == null ||
-                                                      value.isEmpty) {
-                                                    return 'Field is required';
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                },
-                                                decoration: inputDecoration()
-                                                    .copyWith(
-                                                        hintText:
-                                                            'Enter your answer',
-                                                        hintStyle:
-                                                            const TextStyle(
-                                                          color:
-                                                              Color(0xFF899197),
-                                                        )),
-                                                suffixIconColor:
-                                                    AppPalette.white,
-                                                textStyle: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: AppPalette.black,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                                controller: controller
-                                                        .surNamePregnantWomanControllerLoop[
-                                                    index],
-                                              ),
-                                            ],
-                                          ))
-                                        ],
+                                      AppTextFieldHeader(
+                                          title:
+                                              'First name and surname of pregnant woman ${index + 1}'),
+                                      5.height,
+                                      AppTextField(
+                                        textFieldType: TextFieldType.NAME,
+                                        isValidationRequired: true,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Field is required';
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                        decoration: inputDecoration().copyWith(
+                                            hintText: 'Enter your answer',
+                                            hintStyle: const TextStyle(
+                                              color: Color(0xFF899197),
+                                            )),
+                                        suffixIconColor: AppPalette.white,
+                                        textStyle: const TextStyle(
+                                            fontSize: 16,
+                                            color: AppPalette.black,
+                                            fontWeight: FontWeight.w400),
+                                        controller: controller
+                                                .fullNamePregnantWomanControllerLoop[
+                                            index],
                                       ),
                                       18.height,
+                                      AppTextFieldHeader(
+                                          title:
+                                              'Has the woman visited the health facility for ANC? ${index + 1}'),
+                                      5.height,
+                                      Obx(() {
+                                        return AncDropDownButton(
+                                          hint: 'Select an answer',
+                                          value: controller
+                                              .selectedHasWomanVisitedHealthFacilityForAncLoop[
+                                                  index]
+                                              .value,
+                                          items: controller.optionYesNo,
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please Select an answer';
+                                            } else {
+                                              return null;
+                                            }
+                                          },
+                                          onChanged: (value) {
+                                            controller
+                                                .selectedHasWomanVisitedHealthFacilityForAncLoop[
+                                                    index]
+                                                .value = value;
+                                          },
+                                        );
+                                      }),
+                                      if (controller
+                                              .selectedHasWomanVisitedHealthFacilityForAncLoop[
+                                                  index]
+                                              .value ==
+                                          "Yes") ...[
+                                        18.height,
+                                        AppTextFieldHeader(
+                                            title:
+                                                'How many times has the woman visited the health facility for ANC? ${index + 1}'),
+                                        5.height,
+                                        AppTextField(
+                                          textFieldType: TextFieldType.NUMBER,
+                                          isValidationRequired: true,
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Field is required';
+                                            } else {
+                                              return null;
+                                            }
+                                          },
+                                          decoration:
+                                              inputDecoration().copyWith(
+                                                  hintText: 'Enter your answer',
+                                                  hintStyle: const TextStyle(
+                                                    color: Color(0xFF899197),
+                                                  )),
+                                          suffixIconColor: AppPalette.white,
+                                          textStyle: const TextStyle(
+                                              fontSize: 16,
+                                              color: AppPalette.black,
+                                              fontWeight: FontWeight.w400),
+                                          controller: controller
+                                                  .howManyTimesTheWomanVisitedHealthFacilityControllerPregnantLoop[
+                                              index],
+                                        ),
+                                      ],
+                                      18.height,
+                                      AppTextFieldHeader(
+                                          title:
+                                              'Whats the phone number of the pregnant woman (if available) ${index + 1}'),
+                                      5.height,
+                                      AppTextField(
+                                        textFieldType: TextFieldType.NUMBER,
+                                        isValidationRequired: true,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Field is required';
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                        decoration: inputDecoration().copyWith(
+                                            hintText: 'Enter your answer',
+                                            hintStyle: const TextStyle(
+                                              color: Color(0xFF899197),
+                                            )),
+                                        suffixIconColor: AppPalette.white,
+                                        textStyle: const TextStyle(
+                                            fontSize: 16,
+                                            color: AppPalette.black,
+                                            fontWeight: FontWeight.w400),
+                                        controller: controller
+                                                .phoneNumberOfPregnantWomanControllerLoop[
+                                            index],
+                                      ),
+                                      18.height,
+                                      const Divider(),
+                                      /* 18.height,
                                       AppTextFieldHeader(
                                           title:
                                               'How many months pregnant is the woman? ${index + 1}'),
@@ -245,8 +283,8 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                                 .value = value;
                                           },
                                         );
-                                      }),
-                                      18.height,
+                                      }), */
+                                      /* 18.height,
                                       AppTextFieldHeader(
                                           title:
                                               'Has the woman taken TT/Td vaccine? ${index + 1}'),
@@ -274,8 +312,8 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                                 .value = value;
                                           },
                                         );
-                                      }),
-                                      18.height,
+                                      }), */
+                                      /* 18.height,
                                       AppTextFieldHeader(
                                           title:
                                               'How many doses of TT/Td vaccine has the woman taken? ${index + 1}'),
@@ -303,8 +341,8 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                                 .value = value;
                                           },
                                         );
-                                      }),
-                                      18.height,
+                                      }), */
+                                      /* 18.height,
                                       AppTextFieldHeader(
                                           title:
                                               'What is the name of the healthcare facility where the woman receives antenatal care? ${index + 1}'),
@@ -332,44 +370,13 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                         controller: controller
                                                 .nameHealthCareFacilityWomanReceivesAntenatalCareControllerPregnantLoop[
                                             index],
-                                      ),
-                                      18.height,
-                                      AppTextFieldHeader(
-                                          title:
-                                              'How many times has the woman visited the health facility for ANC? ${index + 1}'),
-                                      5.height,
-                                      AppTextField(
-                                        textFieldType: TextFieldType.NUMBER,
-                                        isValidationRequired: true,
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Field is required';
-                                          } else {
-                                            return null;
-                                          }
-                                        },
-                                        decoration: inputDecoration().copyWith(
-                                            hintText: 'Enter your answer',
-                                            hintStyle: const TextStyle(
-                                              color: Color(0xFF899197),
-                                            )),
-                                        suffixIconColor: AppPalette.white,
-                                        textStyle: const TextStyle(
-                                            fontSize: 16,
-                                            color: AppPalette.black,
-                                            fontWeight: FontWeight.w400),
-                                        controller: controller
-                                                .timesTheWomanVisitedHealthFacilityControllerPregnantLoop[
-                                            index],
-                                      ),
-                                      18.height,
-                                      const Divider(),
+                                      ), */
                                     ],
                                   );
                                 });
                               });
                         })),
-                        18.height,
+                        /*  18.height,
                         const AppTextFieldHeader(
                             title:
                                 'Are there other women aged 15 to 49 are in the household?'),
@@ -427,7 +434,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                 color: AppPalette.black,
                                 fontWeight: FontWeight.w400),
                             controller:
-                                controller.womenAreThereInHouseHoldAge15And55,
+                                controller.womenAreThereInHouseHoldAge15And49,
                           ),
                           18.height,
                           Flexible(child: Obx(() {
@@ -538,8 +545,8 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                   });
                                 });
                           })),
-                        ],
-                        18.height,
+                        ], */
+                        /*    18.height,
                         const AppTextFieldHeader(
                             title:
                                 'How many girls aged 9 are in the household?'),
@@ -566,7 +573,10 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                               fontWeight: FontWeight.w400),
                           controller:
                               controller.howManyGirlsAged9AreInHousehold,
-                        ),
+                        ), */
+                        18.height,
+                        header(context,
+                            'Geocordinate - Ensure your location is on'),
                         18.height,
                         Container(
                           width: MediaQuery.of(context).size.width,
@@ -713,6 +723,25 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
             ),
           );
         }),
+      ),
+    );
+  }
+
+  Widget header(BuildContext context, String title) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: const Color(0xFFE6E6E6),
+      ),
+      child: Text(
+        title,
+        style: context.theme.appTextTheme.bodyMedium16.copyWith(
+          fontSize: 18,
+          color: AppPalette.black,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
