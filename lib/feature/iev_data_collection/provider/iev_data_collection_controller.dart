@@ -1023,7 +1023,7 @@ class IEVDataCollectionController extends GetxController {
     // listLga.clear();
     states!.insert(0, "Select Lga");
     lgaValue.value = states[0];
-    listLga.assignAll(states ?? []);
+    listLga.assignAll(states.toSet().toList() ?? []);
   }
 
   void getWard(String state, String lga) async {
@@ -1032,17 +1032,19 @@ class IEVDataCollectionController extends GetxController {
     // listWard.clear();
     states!.insert(0, "Select Ward");
     wardValue.value = states[0];
-    listWard.assignAll(states ?? []);
+    listWard.assignAll(states.toSet().toList() ?? []);
   }
 
   void getSettlement(
       String state, String lga, String ward, String teamCode) async {
-    var states = await networkService.getSettlement(state, lga, ward, teamCode);
+    var states =
+        await networkService.getSettlement(state, lga, ward, teamCode) ?? [];
 
     // listSettlement.clear();
     List<String> mylistSettle = [];
-    mylistSettle = states!.map((user) => user.name ?? "").toList() ?? [];
+    mylistSettle = states.map((user) => user.name ?? "").toSet().toList() ?? [];
     mylistSettle.insert(0, "Select Settlement");
+    selectedSettlement.value = mylistSettle[0];
     listSettlement.assignAll(mylistSettle);
   }
 
