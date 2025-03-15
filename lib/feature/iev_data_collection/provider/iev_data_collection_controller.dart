@@ -754,7 +754,7 @@ class IEVDataCollectionController extends GetxController {
         "houseNumber": houseNumber.text,
         "houseHoldNumber": houseHoldNumber.text,
         "consent": selectedProceed.value ?? '',
-        "reasonForNonConsent": selectedProceedReason.value,
+        "reasonForNonConsent": selectedProceedReason.value == "Others specify"?othersProceedSpecify.text: selectedProceedReason.value,
         "nameofHouseHoldHead": headOfHouseHoldName.text,
         "houseHoldHeadPhoneNumber": headOfHousePhoneNumber.text,
         "numberOfWomenAged15to49InHousehold":

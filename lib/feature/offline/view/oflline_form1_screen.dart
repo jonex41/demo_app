@@ -129,6 +129,16 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                   controller.listMap[controller.selectedIndex]["household"]
                           ["consent"]
                       .toString()),
+              if (controller.listMap[controller.selectedIndex]["household"]
+                          ["consent"]
+                      .toString()
+                      .toLowerCase() ==
+                  "no")
+                _buildRow(
+                    "Give Reason ",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["reasonForNonConsent"]
+                        .toString()),
             ]),
             _buildSection("Caregiver’s Profile", [
               _buildRow(
