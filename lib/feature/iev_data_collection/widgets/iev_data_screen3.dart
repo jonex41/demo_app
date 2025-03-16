@@ -664,7 +664,32 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                             title:
                                                 'On which part of the body did the child take the last vaccine? ${index + 1}:'),
                                         5.height,
-                                        AppTextField(
+                                        Obx(() {
+                                          return AncDropDownButton(
+                                            hint: 'Select an answer',
+                                            value: controller
+                                                .selectedSiteOfLastVaccineLoop[
+                                                    index]
+                                                .value,
+                                            items: controller
+                                                .partOfBodyLastVaccine,
+                                            validator: (value) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
+                                                return 'Please Select an answer';
+                                              } else {
+                                                return null;
+                                              }
+                                            },
+                                            onChanged: (value) {
+                                              controller
+                                                  .selectedSiteOfLastVaccineLoop[
+                                                      index]
+                                                  .value = value;
+                                            },
+                                          );
+                                        }),
+                                        /* AppTextField(
                                           textFieldType: TextFieldType.OTHER,
                                           isValidationRequired: true,
                                           validator: (value) {
@@ -688,7 +713,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                               fontWeight: FontWeight.w400),
                                           controller: controller
                                               .siteOfLastVaccineLoop[index],
-                                        ),
+                                        ), */
                                         18.height,
                                       ],
                                       AppTextFieldHeader(

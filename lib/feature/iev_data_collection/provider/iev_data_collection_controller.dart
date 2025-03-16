@@ -113,6 +113,7 @@ class IEVDataCollectionController extends GetxController {
   final List<Rxn<String>> selectedRelationShipOfPrimaryCareGiverOfChildLoop =
       [];
   var phoneNumberOfPrimaryCareGiverOfChildLoop = <TextEditingController>[].obs;
+  final List<Rxn<String>> selectedSiteOfLastVaccineLoop = [];
 
   void updateFieldsCountNumberOfUnder5Children(int count) {
     textFieldCountNumberOfUnder5Children.value = count;
@@ -135,6 +136,7 @@ class IEVDataCollectionController extends GetxController {
     nameOfPrimaryCareGiverOfChildLoop.clear();
     selectedRelationShipOfPrimaryCareGiverOfChildLoop.clear();
     phoneNumberOfPrimaryCareGiverOfChildLoop.clear();
+    selectedSiteOfLastVaccineLoop.clear();
 
     for (int i = 0; i < count; i++) {
       nameofChildControllerLoop.add(TextEditingController());
@@ -156,6 +158,7 @@ class IEVDataCollectionController extends GetxController {
       nameOfPrimaryCareGiverOfChildLoop.add(TextEditingController());
       selectedRelationShipOfPrimaryCareGiverOfChildLoop.add(Rxn<String>());
       phoneNumberOfPrimaryCareGiverOfChildLoop.add(TextEditingController());
+      selectedSiteOfLastVaccineLoop.add(Rxn<String>());
     }
   }
 
@@ -171,6 +174,16 @@ class IEVDataCollectionController extends GetxController {
       selectedDatesLoop[index].value = pickedDate;
     }
   }
+
+  var partOfBodyLastVaccine = [
+    "Left Upper Arm",
+    "Mouth",
+    "Anterolateral aspect of Right thigh",
+    "Anterolateral aspect of Left thigh",
+    "Anterolateral aspect of Right thigh (2.5cm apart from PCV)",
+    "Right Upper Arm",
+    "Deltoid muscle (Upper arm)",
+  ].obs;
 
   final List<String> careGiverRelationship = [
     "Mother",
@@ -785,12 +798,13 @@ class IEVDataCollectionController extends GetxController {
           "howManyVisitsHasChildHad":
               int.tryParse(howManyVisitChildHadToHealthFacilityLoop[j].text) ??
                   0,
-          "lastVaccinationSite": siteOfLastVaccineLoop[j].text,
+          "lastVaccinationSite": selectedSiteOfLastVaccineLoop[j].value,
           "primaryCareGiverName": nameOfPrimaryCareGiverOfChildLoop[j].text,
           "relationshipOfCaregiverToChild":
               selectedRelationShipOfPrimaryCareGiverOfChildLoop[j].value,
           "careGiverPhoneNumber":
               phoneNumberOfPrimaryCareGiverOfChildLoop[j].text,
+          //"lastVaccinationSite": siteOfLastVaccineLoop[j].text,
           /*  "hasVaccinationCard":
               selectedHaveRiVaccinationCardLoop[j].value == "Yes", */
           /*  "antigensReceived": vaccineSelections[j]
