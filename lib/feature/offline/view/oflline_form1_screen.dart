@@ -140,18 +140,23 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                             ["reasonForNonConsent"]
                         .toString()),
             ]),
-            _buildSection("Caregiver’s Profile", [
-              _buildRow(
-                  "Head of Household Name",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["nameofHouseHoldHead"]
-                      .toString()),
-              _buildRow(
-                  "Head of Household Phone Number",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["phoneNumber"]
-                      .toString()),
-              /*    _buildRow(
+            if (controller.listMap[controller.selectedIndex]["household"]
+                        ["consent"]
+                    .toString()
+                    .toLowerCase() ==
+                "yes")
+              _buildSection("Caregiver’s Profile", [
+                _buildRow(
+                    "Head of Household Name",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["nameofHouseHoldHead"]
+                        .toString()),
+                /*  _buildRow(
+                    "Head of Household Phone Number",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["phoneNumber"]
+                        .toString()), */
+                /*    _buildRow(
                   "Mother’s Name",
                   controller.listMap[controller.selectedIndex]["household"]
                           ["phoneNumber"]
@@ -161,49 +166,49 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                   controller.listMap[controller.selectedIndex]["household"]
                           ["phoneNumber"]
                       .toString()), */
-              _buildRow(
-                  "House number",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["houseNumber"]
-                      .toString()),
-              _buildRow(
-                  "Household number",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["houseHoldNumber"]
-                      .toString()),
-              _buildRow(
-                  "First name and surname of the head of the household",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["nameofHouseHoldHead"]
-                      .toString()),
-              _buildRow(
-                  "Phone number of the head of the household",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["houseHoldHeadPhoneNumber"]
-                      .toString()),
-              _buildRow(
-                  "Number of Women (aged 15 - 49 years) in the Household",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["numberOfWomenAged15to49InHousehold"]
-                      .toString()),
-              _buildRow(
-                  "Number of Pregnant women in the household",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["numberOfPregnantWomenInHousehold"]
-                      .toString()),
-              _buildRow(
-                  "Number of girls aged 9-14 years in the household",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["numberOfGirlsAged9to14InTheHousehold"]
-                      .toString()),
-              _buildRow(
-                  "Number of under 5 children in the household",
-                  controller.listMap[controller.selectedIndex]["household"]
-                          ["numberOfU5ChildrenInTheHousehold"]
-                      .toString()),
-              /*  _buildRow("", e["name"].toString()),
+                _buildRow(
+                    "House number",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["houseNumber"]
+                        .toString()),
+                _buildRow(
+                    "Household number",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["houseHoldNumber"]
+                        .toString()),
+                _buildRow(
+                    "First name and surname of the head of the household",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["nameofHouseHoldHead"]
+                        .toString()),
+                _buildRow(
+                    "Phone number of the head of the household",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["houseHoldHeadPhoneNumber"]
+                        .toString()),
+                _buildRow(
+                    "Number of Women (aged 15 - 49 years) in the Household",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["numberOfWomenAged15to49InHousehold"]
+                        .toString()),
+                _buildRow(
+                    "Number of Pregnant women in the household",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["numberOfPregnantWomenInHousehold"]
+                        .toString()),
+                _buildRow(
+                    "Number of girls aged 9-14 years in the household",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["numberOfGirlsAged9to14InTheHousehold"]
+                        .toString()),
+                _buildRow(
+                    "Number of under 5 children in the household",
+                    controller.listMap[controller.selectedIndex]["household"]
+                            ["numberOfU5ChildrenInTheHousehold"]
+                        .toString()),
+                /*  _buildRow("", e["name"].toString()),
                     _buildRow("", e["name"].toString()), */
-              /*   ...controller.getMotherDetails(controller.selectedIndex).map((e) {
+                /*   ...controller.getMotherDetails(controller.selectedIndex).map((e) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -265,13 +270,34 @@ class OfflineForm1Screen extends GetView<OfflineController> {
                 );
               }),
            */
-            ]),
+              ]),
+            if (controller.listMap[controller.selectedIndex]["household"]
+                        ["consent"]
+                    .toString()
+                    .toLowerCase() ==
+                "no")
+              buildQuestion("Location",
+                  "longitude ${controller.listMap[controller.selectedIndex]["longitude"]} latitude ${controller.listMap[controller.selectedIndex]["latitude"]}"),
             30.height,
             AppElevatedButton(
-              text: "Next",
+              text: controller.listMap[controller.selectedIndex]["household"]
+                              ["consent"]
+                          .toString()
+                          .toLowerCase() ==
+                      "yes"
+                  ? "Next"
+                  : "Done",
               width: context.width(),
               onPressed: () {
-                appRoute.push(const OfflineForm2Route());
+                if (controller.listMap[controller.selectedIndex]["household"]
+                            ["consent"]
+                        .toString()
+                        .toLowerCase() ==
+                    "yes") {
+                  appRoute.push(const OfflineForm2Route());
+                } else {
+                  appRoute.popUntilRoot();
+                }
               },
             )
           ],
@@ -289,6 +315,26 @@ class OfflineForm1Screen extends GetView<OfflineController> {
           _header(title),
           const SizedBox(height: 8.0),
           ...children,
+        ],
+      ),
+    );
+  }
+
+  Widget buildQuestion(String question, String answer) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(question,
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          const SizedBox(height: 10.0),
+          Text(answer,
+              style: const TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xff899197))),
         ],
       ),
     );

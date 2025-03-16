@@ -71,9 +71,10 @@ class OfflineForm2Screen extends GetView<OfflineController> {
                     buildQuestion("Do you know the date of birth of the child?",
                         e["dateOfBirth"].toString()),
 
-                    buildQuestion(
-                        "What is the age of child? (if DOB is uncertain)",
-                        e["age"].toString()),
+                    if (!e["age"].toString().contains("null"))
+                      buildQuestion(
+                          "What is the age of child? (if DOB is uncertain)",
+                          e["age"].toString()),
                     buildQuestion(
                         "What is the sex of the child?", e["sex"].toString()),
                     buildQuestion(
@@ -92,8 +93,8 @@ class OfflineForm2Screen extends GetView<OfflineController> {
                     buildQuestion(
                         "On which part of the body did the child take the last vaccine?",
                         e["lastVaccinationSite"].toString()),
-                    buildQuestion("The last vaccine site?",
-                        e["lastVaccinationSite"].toString()),
+                    /*   buildQuestion("The last vaccine site?",
+                        e["lastVaccinationSite"].toString()), */
                     buildQuestion(
                         "What is the name of the primary caregiver of this child?",
                         e["primaryCareGiverName"].toString()),
