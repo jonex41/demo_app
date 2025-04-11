@@ -71,6 +71,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                 MyInputTextWidget(
                                   title: "Phone Number",
                                   showRequired: true,
+                                  maxLength: 11,
                                   keyboardType: TextInputType.number,
                                   textColor: Colors.black,
                                   validator: (value) {
@@ -149,6 +150,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                 MyInputTextWidget(
                                   title: "Account Number",
                                   showRequired: true,
+                                  maxLength: 10,
                                   keyboardType: TextInputType.number,
                                   textColor: Colors.black,
                                   validator: (value) {

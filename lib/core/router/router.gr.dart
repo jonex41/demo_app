@@ -69,6 +69,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const BankDetailsScreen(),
       );
     },
+    BankDetailsViewRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BankDetailsViewScreen(),
+      );
+    },
     BankListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -626,6 +632,20 @@ class BankDetailsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BankDetailsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [BankDetailsViewScreen]
+class BankDetailsViewRoute extends PageRouteInfo<void> {
+  const BankDetailsViewRoute({List<PageRouteInfo>? children})
+      : super(
+          BankDetailsViewRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BankDetailsViewRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

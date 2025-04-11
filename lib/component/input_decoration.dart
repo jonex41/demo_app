@@ -19,6 +19,7 @@ InputDecoration inputDecoration(
     contentPadding: EdgeInsets.symmetric(
         horizontal: 16, vertical: addVPadding ? 12.0 : 0.0),
     filled: true,
+    helperText: "",
     fillColor: fillColor,
 
     prefixIcon: prefixIcon,

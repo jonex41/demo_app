@@ -140,7 +140,8 @@ class BankListScreen extends GetView<BankController> {
                               controller.isEditing.value = true;
                               controller.selectedBankDetails.value = e;
                               controller.fillData();
-                              appRoute.push(const BankDetailsRoute());
+                               appRoute.replace(BankDetailsViewRoute());
+                             
                             },
                             child: OfflineCard(
                               searchModel: SearchModel(

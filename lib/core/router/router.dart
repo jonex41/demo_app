@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:demo_app/feature/activity/view/activity_screen.dart';
 import 'package:demo_app/feature/bank/view/bank_details_page.dart';
+import 'package:demo_app/feature/bank/view/bank_details_view_screen.dart';
 import 'package:demo_app/feature/bank/view/bank_list_page.dart';
 import 'package:demo_app/feature/checklist/view/add_new_checklist_screen.dart';
 import 'package:demo_app/feature/checklist/view/add_new_schedule_screen.dart';
@@ -259,6 +260,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/maternalReg5Screen', page: MaternalReg5Route.page),
         AutoRoute(path: '/bankDetails', page: BankDetailsRoute.page),
         AutoRoute(path: '/bankList', page: BankListRoute.page),
+        AutoRoute(path: '/bank_view_details', page: BankDetailsViewRoute.page),
         AutoRoute(
           path: '/dashboard',
           page: DashboardRoute.page,
