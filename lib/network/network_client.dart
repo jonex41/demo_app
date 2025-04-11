@@ -1,5 +1,6 @@
 import 'package:demo_app/model/base_res/base_response.dart';
 import 'package:demo_app/model/home/activity_model.dart';
+import 'package:demo_app/model/home/bank_account_model.dart';
 import 'package:demo_app/model/iev_response/IevResponse.dart';
 import 'package:demo_app/model/login/forgot_password_model.dart';
 import 'package:demo_app/model/login/login_res.dart';
@@ -132,6 +133,65 @@ class NetworkService extends GetxService {
     //final token = storageService.getToken();
     final response =
         await _restClient.getSettlement(state, lga, ward, teamCode);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result;
+  }
+
+  Future<List<String>?> getDesignation() async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getDesignation();
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result;
+    //return response.result;
+  }
+
+  Future<List<String>?> getBanks() async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getBanks();
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result;
+    //return response.result;
+  }
+
+  Future<bool> postBankAccountDetails(Map<String, dynamic> request) async {
+    final token = storageService.getToken();
+    final response = await _restClient.postBankAccountDetails(token, request);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return true;
+    //return response.result;
+  }
+
+  Future<bool> deleteBankDetails(String id) async {
+    //final token = storageService.getToken();
+    final token = storageService.getToken();
+    final response = await _restClient.deleteBankDetails(token, id);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return true;
+  }
+
+    Future<bool> editBankDetails(String id,Map<String, dynamic> request ) async {
+    //final token = storageService.getToken();
+    final token = storageService.getToken();
+    final response = await _restClient.editBankDetails(token, id, request);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return true;
+  }
+
+  Future<List<BankAccountModel>?> getBankAccountDetails() async {
+    final token = storageService.getToken();
+    final response = await _restClient.getBankAccountDetails(token);
     if (response.statusCode != 200) {
       throw Exception(response.message);
     }

@@ -15,7 +15,7 @@ class LoginResponse with _$LoginResponse {
     required String? state,
     required String? lga,
     required String? ward,
-    required String? settlement,
+    required List<String?> settlement,
     required String? accessToken,
     required String? refreshToken,
   }) = _LoginResponse;

@@ -63,6 +63,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AllScheduleScreen(),
       );
     },
+    BankDetailsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BankDetailsScreen(),
+      );
+    },
+    BankListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BankListScreen(),
+      );
+    },
     ChecklistHomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -600,6 +612,34 @@ class AllScheduleRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AllScheduleRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [BankDetailsScreen]
+class BankDetailsRoute extends PageRouteInfo<void> {
+  const BankDetailsRoute({List<PageRouteInfo>? children})
+      : super(
+          BankDetailsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BankDetailsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [BankListScreen]
+class BankListRoute extends PageRouteInfo<void> {
+  const BankListRoute({List<PageRouteInfo>? children})
+      : super(
+          BankListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BankListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

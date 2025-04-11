@@ -29,7 +29,7 @@ mixin _$LoginResponse {
   String? get state => throw _privateConstructorUsedError;
   String? get lga => throw _privateConstructorUsedError;
   String? get ward => throw _privateConstructorUsedError;
-  String? get settlement => throw _privateConstructorUsedError;
+  List<String?> get settlement => throw _privateConstructorUsedError;
   String? get accessToken => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
 
@@ -55,7 +55,7 @@ abstract class $LoginResponseCopyWith<$Res> {
       String? state,
       String? lga,
       String? ward,
-      String? settlement,
+      List<String?> settlement,
       String? accessToken,
       String? refreshToken});
 }
@@ -82,7 +82,7 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
     Object? state = freezed,
     Object? lga = freezed,
     Object? ward = freezed,
-    Object? settlement = freezed,
+    Object? settlement = null,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
@@ -123,10 +123,10 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
           ? _value.ward
           : ward // ignore: cast_nullable_to_non_nullable
               as String?,
-      settlement: freezed == settlement
+      settlement: null == settlement
           ? _value.settlement
           : settlement // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String?>,
       accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -157,7 +157,7 @@ abstract class _$$LoginResponseImplCopyWith<$Res>
       String? state,
       String? lga,
       String? ward,
-      String? settlement,
+      List<String?> settlement,
       String? accessToken,
       String? refreshToken});
 }
@@ -182,7 +182,7 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
     Object? state = freezed,
     Object? lga = freezed,
     Object? ward = freezed,
-    Object? settlement = freezed,
+    Object? settlement = null,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
@@ -223,10 +223,10 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
           ? _value.ward
           : ward // ignore: cast_nullable_to_non_nullable
               as String?,
-      settlement: freezed == settlement
-          ? _value.settlement
+      settlement: null == settlement
+          ? _value._settlement
           : settlement // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String?>,
       accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -252,9 +252,10 @@ class _$LoginResponseImpl implements _LoginResponse {
       required this.state,
       required this.lga,
       required this.ward,
-      required this.settlement,
+      required final List<String?> settlement,
       required this.accessToken,
-      required this.refreshToken});
+      required this.refreshToken})
+      : _settlement = settlement;
 
   factory _$LoginResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginResponseImplFromJson(json);
@@ -277,8 +278,14 @@ class _$LoginResponseImpl implements _LoginResponse {
   final String? lga;
   @override
   final String? ward;
+  final List<String?> _settlement;
   @override
-  final String? settlement;
+  List<String?> get settlement {
+    if (_settlement is EqualUnmodifiableListView) return _settlement;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_settlement);
+  }
+
   @override
   final String? accessToken;
   @override
@@ -305,8 +312,8 @@ class _$LoginResponseImpl implements _LoginResponse {
             (identical(other.state, state) || other.state == state) &&
             (identical(other.lga, lga) || other.lga == lga) &&
             (identical(other.ward, ward) || other.ward == ward) &&
-            (identical(other.settlement, settlement) ||
-                other.settlement == settlement) &&
+            const DeepCollectionEquality()
+                .equals(other._settlement, _settlement) &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
@@ -315,8 +322,20 @@ class _$LoginResponseImpl implements _LoginResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, firstName, lastName,
-      phone, gender, state, lga, ward, settlement, accessToken, refreshToken);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      userId,
+      firstName,
+      lastName,
+      phone,
+      gender,
+      state,
+      lga,
+      ward,
+      const DeepCollectionEquality().hash(_settlement),
+      accessToken,
+      refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -343,7 +362,7 @@ abstract class _LoginResponse implements LoginResponse {
       required final String? state,
       required final String? lga,
       required final String? ward,
-      required final String? settlement,
+      required final List<String?> settlement,
       required final String? accessToken,
       required final String? refreshToken}) = _$LoginResponseImpl;
 
@@ -369,7 +388,7 @@ abstract class _LoginResponse implements LoginResponse {
   @override
   String? get ward;
   @override
-  String? get settlement;
+  List<String?> get settlement;
   @override
   String? get accessToken;
   @override

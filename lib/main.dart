@@ -3,6 +3,7 @@ import 'package:demo_app/core/router/router.dart';
 import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_theme.dart';
 import 'package:demo_app/feature/activity/provider/activity_binding.dart';
+import 'package:demo_app/feature/bank/provider/bank_binding.dart';
 import 'package:demo_app/feature/chip_referral/provider/chip_referral_binding.dart';
 import 'package:demo_app/feature/encounter_reg_house/provider/encouter_reg_house_binding.dart';
 import 'package:demo_app/feature/encouter_reg_mat/provider/encouter_reg_mat_binding.dart';
@@ -22,7 +23,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 void main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
   await initialize();
   await initServices();
@@ -41,6 +42,7 @@ void main() async {
   OfflineBindings().dependencies();
   MoreBindings().dependencies();
   ChipReferralBinding().dependencies();
+  BankBindings().dependencies();
   runApp(const ProviderScope(child: MyApp()));
 }
 

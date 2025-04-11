@@ -222,7 +222,7 @@ class HomeScreen extends GetView<HomeController> {
 
   _card2(BuildContext context, String s, String buttonName, Icon image,
       Color container, Color border, bool showButton, String buttonText,
-      {required Function() onTap}) {
+      {required Function() onTap, Color? textColor}) {
     return Container(
         width: double.infinity,
         // height: context.height / 4.0,
@@ -300,7 +300,7 @@ class HomeScreen extends GetView<HomeController> {
                           child: _buttonWithArrow(
                               context,
                               buttonText,
-                              AppPalette.primary.primary400,
+                              textColor ?? AppPalette.primary.primary400,
                               AppPalette.white,
                               16),
                         ),
@@ -1098,7 +1098,7 @@ class HomeScreen extends GetView<HomeController> {
           context,
           "View Records",
           "View form entry to collected and saved.",
-          Icon(Icons.add_box_outlined, color: AppPalette.primary.primary400),
+          Icon(Icons.feed, color: AppPalette.primary.primary400),
           const Color(0xff027D52),
           Colors.white,
           true,
@@ -1109,6 +1109,28 @@ class HomeScreen extends GetView<HomeController> {
             appRoute.push(const AllRecordIevRoute());
           },
         )),
+        20.height,
+        GestureDetector(
+            child: _card2(
+          context,
+          "Bank  Records",
+          "View  or add bank details of team members.",
+          const Icon(
+            Icons.work_outline_outlined,
+            color: Color(0xffFFB200),
+          ),
+          const Color(0xffFFB200),
+          Colors.white,
+          true,
+          "Bank  Records",
+          textColor: const Color(0xffFFB200),
+          onTap: () {
+            // Get.find<OfflineController>().isOnline.value = true;
+            // Get.find<OfflineController>().getDataOnline(1);
+            appRoute.push(const BankListRoute());
+          },
+        )),
+        20.height,
       ],
     );
   }

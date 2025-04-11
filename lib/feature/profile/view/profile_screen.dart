@@ -103,7 +103,7 @@ class ProfileScreen extends GetView<ProfileController> {
                   controller.loginModel.value?.lga ?? ""),
               20.height,
               _card(context, Assets.icons.location.svg(),
-                  controller.loginModel.value?.settlement ?? ""),
+                  controller.loginModel.value?.settlement[0]??"" ),
               20.height,
               _card(context, Assets.icons.ward.svg(),
                   controller.loginModel.value?.ward ?? ""),

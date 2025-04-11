@@ -1,5 +1,6 @@
 import 'package:demo_app/model/base_res/base_response.dart';
 import 'package:demo_app/model/home/activity_model.dart';
+import 'package:demo_app/model/home/bank_account_model.dart';
 import 'package:demo_app/model/iev_response/IevResponse.dart';
 import 'package:demo_app/model/login/forgot_password_model.dart';
 import 'package:demo_app/model/login/login_res.dart';
@@ -38,9 +39,7 @@ abstract class RestClient {
       @Body() Map<String, dynamic> reqBody);
 
   @GET("IEVSurvey/data?pageNumber={page}")
-  Future<BaseResponse> getAllDataIEV(
-    @Path() int page
-  );
+  Future<BaseResponse> getAllDataIEV(@Path() int page);
 
   @GET("Analytics/mobile/widget")
   Future<BaseResponse<ActivityModel>> getAnalytics();
@@ -62,4 +61,30 @@ abstract class RestClient {
     @Path("ward") ward,
     @Path("teamCode") teamCode,
   );
+
+  @GET("/Resources/account/designations")
+  Future<BaseResponse<List<String>>> getDesignation();
+  @GET("/Wallet/banks")
+  Future<BaseResponse<List<String>>> getBanks();
+
+  @POST("/Wallet/account/details")
+  Future<BaseResponse> postBankAccountDetails(
+      @Header('Authorization') token, @Body() Map<String, dynamic> reqBody);
+
+  @GET("/Wallet/account/details")
+  Future<BaseResponse<List<BankAccountModel>>> getBankAccountDetails(
+    @Header('Authorization') token,
+  );
+
+  @DELETE("/Wallet/account/details")
+  Future<BaseResponse> deleteBankDetails(
+    @Header('Authorization') token,
+    @Query("accountDetailId") String accountDetailsId,
+  );
+
+  @PATCH("/Wallet/account/details")
+  Future<BaseResponse> editBankDetails(
+      @Header('Authorization') token,
+      @Query("accountDetailId") String accountDetailsId,
+      @Body() Map<String, dynamic> reqBody);
 }

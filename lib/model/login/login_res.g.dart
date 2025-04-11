@@ -17,7 +17,9 @@ _$LoginResponseImpl _$$LoginResponseImplFromJson(Map<String, dynamic> json) =>
       state: json['state'] as String?,
       lga: json['lga'] as String?,
       ward: json['ward'] as String?,
-      settlement: json['settlement'] as String?,
+      settlement: (json['settlement'] as List<dynamic>)
+          .map((e) => e as String?)
+          .toList(),
       accessToken: json['accessToken'] as String?,
       refreshToken: json['refreshToken'] as String?,
     );
