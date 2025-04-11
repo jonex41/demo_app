@@ -1072,7 +1072,10 @@ class IEVDataCollectionController extends GetxController {
         showSuccessSnackbar(context, "House Number is valid");
       }
     } on DioException catch (e) {
+
       listHouseNumber.clear();
+       listHouseNumber.insert(
+          listHouseNumber.length, "Generate Household Number");
       hideLoaderNew();
       showErrorSnackbar(context,
           "${e.response!.data['message']}, This house number will be registered");
