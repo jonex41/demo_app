@@ -659,36 +659,43 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                   .howManyVisitChildHadToHealthFacilityLoop[
                                               index],
                                         ),
-                                        18.height,
-                                        AppTextFieldHeader(
-                                            title:
-                                                'On which part of the body did the child take the last vaccine? ${index + 1}:'),
-                                        5.height,
-                                        Obx(() {
-                                          return AncDropDownButton(
-                                            hint: 'Select an answer',
-                                            value: controller
-                                                .selectedSiteOfLastVaccineLoop[
+                                        if (controller
+                                                .selectedHaveRiVaccinationCardLoop[
                                                     index]
-                                                .value,
-                                            items: controller
-                                                .partOfBodyLastVaccine,
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty) {
-                                                return 'Please Select an answer';
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                            onChanged: (value) {
-                                              controller
+                                                .value !=
+                                            'Yes') ...[
+                                          18.height,
+                                          AppTextFieldHeader(
+                                              title:
+                                                  'On which part of the body did the child take the last vaccine? ${index + 1}:'),
+                                          5.height,
+                                          Obx(() {
+                                            return AncDropDownButton(
+                                              hint: 'Select an answer',
+                                              value: controller
                                                   .selectedSiteOfLastVaccineLoop[
                                                       index]
-                                                  .value = value;
-                                            },
-                                          );
-                                        }),
+                                                  .value,
+                                              items: controller
+                                                  .partOfBodyLastVaccine,
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Please Select an answer';
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
+                                              onChanged: (value) {
+                                                controller
+                                                    .selectedSiteOfLastVaccineLoop[
+                                                        index]
+                                                    .value = value;
+                                              },
+                                            );
+                                          }),
+                                        ],
+
                                         /* AppTextField(
                                           textFieldType: TextFieldType.OTHER,
                                           isValidationRequired: true,
@@ -781,14 +788,18 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.PHONE,
-                                        isValidationRequired: true,
-                                        validator: (value) {
+                                        isValidationRequired: false,
+                                        /*  validator: (value) {
                                           if (value == null || value.isEmpty) {
                                             return 'Field is required';
+                                          } else if (value.length < 11) {
+                                            return 'Phone number cannot be less than 11 digits';
+                                          } else if (value.length > 11) {
+                                            return 'Phone number cannot be more than 11 digits';
                                           } else {
                                             return null;
                                           }
-                                        },
+                                        }, */
                                         decoration: inputDecoration().copyWith(
                                             hintText: 'Enter your answer',
                                             hintStyle: const TextStyle(

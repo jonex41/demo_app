@@ -1,4 +1,3 @@
-import 'package:demo_app/components/anc_drop_down_button.dart';
 import 'package:demo_app/components/app_text_field_header.dart';
 import 'package:demo_app/components/input_decoration.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
@@ -148,6 +147,10 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Field is required';
+                          } else if (value.length < 11) {
+                            return 'Phone number cannot be less than 11 digits';
+                          } else if (value.length > 11) {
+                            return 'Phone number cannot be more than 11 digits';
                           } else {
                             return null;
                           }

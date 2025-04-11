@@ -96,9 +96,10 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        header(context, 'Enumerator Information'),
+                        header(context, 'Enumerator/Data Clerk Information'),
                         18.height,
-                        const AppTextFieldHeader(title: 'Name of Enumerator:'),
+                        const AppTextFieldHeader(
+                            title: 'Name of Enumerator/Data Clerk:'),
                         5.height,
                         AppTextField(
                           textFieldType: TextFieldType.NAME,
