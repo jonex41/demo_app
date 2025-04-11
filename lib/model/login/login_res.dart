@@ -12,6 +12,7 @@ class LoginResponse with _$LoginResponse {
     required String? lastName,
     required String? phone,
     required String? gender,
+    required String? teamCode,
     required String? state,
     required String? lga,
     required String? ward,

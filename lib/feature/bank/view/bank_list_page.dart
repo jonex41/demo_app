@@ -27,6 +27,7 @@ class BankListScreen extends GetView<BankController> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Align(
         alignment: Alignment.bottomCenter,
@@ -51,11 +52,11 @@ class BankListScreen extends GetView<BankController> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
         child: Column(
           children: [
             const AppAppBar(title: "Bank Records", showBackButton: true),
-            10.height,
+            // 10.height,
             MySearchWidget(
               controller: controller.searchTextController,
               callBack: (value) {
@@ -65,7 +66,7 @@ class BankListScreen extends GetView<BankController> {
             8.height,
             /*  Obx(() {
               if (!controller.isLoading.value) return Container();
-
+        
               return CircularProgressIndicator(
                 color: AppPalette.primary.primary400,
               );
@@ -84,7 +85,7 @@ class BankListScreen extends GetView<BankController> {
                   ],
                 );
               }
-
+        
               return Container();
             }), */
             Flexible(
@@ -104,11 +105,11 @@ class BankListScreen extends GetView<BankController> {
                   if (controller.listBankDetails.isEmpty) {
                     return Column(
                       children: [
-                        200.height,
+                        100.height,
                         Text(
                           'No bank details found',
                           style:
-                              context.theme.appTextTheme.bodyLarge18.copyWith(
+                              context.theme.appTextTheme.bodyMedium16.copyWith(
                             fontWeight: FontWeight.w500,
                           ),
                         ),

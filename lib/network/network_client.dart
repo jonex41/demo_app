@@ -197,4 +197,25 @@ class NetworkService extends GetxService {
     }
     return response.result;
   }
+
+    Future<List<String>> verifyHouseNumber(String houseNumber) async {
+    final token = storageService.getToken();
+    final response = await _restClient.verifyHouseNumber(token, houseNumber);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result??[];
+    //return response.result;
+  }
+
+  
+    Future<String> generateNumber() async {
+    final token = storageService.getToken();
+    final response = await _restClient.generateNumber(token);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result??'';
+    //return response.result;
+  }
 }

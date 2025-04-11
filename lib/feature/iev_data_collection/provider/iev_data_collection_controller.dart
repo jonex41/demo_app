@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:demo_app/component/loader.dart';
 import 'package:demo_app/core/offline_storage.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_controller.dart';
@@ -491,6 +492,7 @@ class IEVDataCollectionController extends GetxController {
 
   final stateValue = "Abia".obs;
   final lgaValue = Rxn<String>();
+  final householdNumberValue = Rxn<String>();
   final wardValue = Rxn<String>();
   final statesLga = Rxn<List<String>>([]);
 
@@ -680,7 +682,8 @@ class IEVDataCollectionController extends GetxController {
     nameOfEnumerator.text =
         "${loginModel.value?.firstName} ${loginModel.value?.lastName}";
     phoneNumber.text = loginModel.value?.phone ?? "";
-     stateValue.value = loginModel.value?.state ?? "Abia";
+    teamCode.text = loginModel.value?.teamCode ?? "";
+    stateValue.value = loginModel.value?.state ?? "Abia";
     dummyState.add(loginModel.value?.state ?? "Abia");
     dummyLGA.add(loginModel.value?.lga ?? "Select Lga");
     dummyWard.add(loginModel.value?.ward ?? "Select Ward");
@@ -738,6 +741,7 @@ class IEVDataCollectionController extends GetxController {
   final listSettlement = <String>[].obs;
   final listSettlementModel = <SettlementModel>[];
   final listLga = <String>[].obs;
+  final listHouseNumber = <String>[].obs;
 
   String title() {
     if (currentScreen.value == 1) {
@@ -1051,6 +1055,78 @@ class IEVDataCollectionController extends GetxController {
     stateValue.value = "Select State";
 
     listState.assignAll(states ?? []);
+  }
+
+  void verifyHouseNumber(BuildContext context) async {
+    try {
+      showLoaderNew(context);
+      final response = await networkService.verifyHouseNumber(houseNumber.text);
+      listHouseNumber.clear();
+      listHouseNumber.assignAll(response);
+      listHouseNumber.insert(
+          listHouseNumber.length, "Generate Household Number");
+      hideLoaderNew();
+      if (response.isEmpty) {
+        showErrorSnackbar(context, "An error occurred");
+      } else {
+        showSuccessSnackbar(context, "House Number is valid");
+      }
+    } on DioException catch (e) {
+      listHouseNumber.clear();
+      hideLoaderNew();
+      showErrorSnackbar(context,
+          "${e.response!.data['message']}, This house number will be registered");
+      print(e);
+    }
+  }
+
+  void generateHouseHoldNumber(BuildContext context) async {
+    try {
+      showLoaderNew(context);
+      final response = await networkService.generateNumber();
+      houseHoldNumber.text = response;
+      if (!listHouseNumber.contains(response)) {
+        listHouseNumber.insert(listHouseNumber.length - 1, response);
+      }
+
+      householdNumberValue.value = response;
+      houseHoldNumber.text = response;
+      hideLoaderNew();
+      //  verifyHouseNumber(context);
+      /*  if (response.isEmpty) {
+        showErrorSnackbar(context, "An error occurred");
+      } else {
+        showSuccessSnackbar(context, "House Number is valid");
+      } */
+    } on DioException catch (e) {
+      hideLoaderNew();
+      showErrorSnackbar(context, "${e.response!.data['message']}");
+      print(e);
+    }
+  }
+
+  showSuccessSnackbar(
+    BuildContext context,
+    String title,
+  ) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: AppPalette.green,
+      content: Text(
+        title,
+        style: const TextStyle(color: AppPalette.white),
+      ),
+      duration: const Duration(milliseconds: 300),
+    ));
+  }
+
+  showErrorSnackbar(
+    BuildContext context,
+    String title,
+  ) {
+    snackBar(context,
+        title: title,
+        backgroundColor: AppPalette.red.red350,
+        textColor: AppPalette.white);
   }
 
   void getLga(String state) async {

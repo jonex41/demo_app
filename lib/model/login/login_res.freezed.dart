@@ -26,6 +26,7 @@ mixin _$LoginResponse {
   String? get lastName => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
+  String? get teamCode => throw _privateConstructorUsedError;
   String? get state => throw _privateConstructorUsedError;
   String? get lga => throw _privateConstructorUsedError;
   String? get ward => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $LoginResponseCopyWith<$Res> {
       String? lastName,
       String? phone,
       String? gender,
+      String? teamCode,
       String? state,
       String? lga,
       String? ward,
@@ -79,6 +81,7 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
     Object? lastName = freezed,
     Object? phone = freezed,
     Object? gender = freezed,
+    Object? teamCode = freezed,
     Object? state = freezed,
     Object? lga = freezed,
     Object? ward = freezed,
@@ -110,6 +113,10 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      teamCode: freezed == teamCode
+          ? _value.teamCode
+          : teamCode // ignore: cast_nullable_to_non_nullable
               as String?,
       state: freezed == state
           ? _value.state
@@ -154,6 +161,7 @@ abstract class _$$LoginResponseImplCopyWith<$Res>
       String? lastName,
       String? phone,
       String? gender,
+      String? teamCode,
       String? state,
       String? lga,
       String? ward,
@@ -179,6 +187,7 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
     Object? lastName = freezed,
     Object? phone = freezed,
     Object? gender = freezed,
+    Object? teamCode = freezed,
     Object? state = freezed,
     Object? lga = freezed,
     Object? ward = freezed,
@@ -210,6 +219,10 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      teamCode: freezed == teamCode
+          ? _value.teamCode
+          : teamCode // ignore: cast_nullable_to_non_nullable
               as String?,
       state: freezed == state
           ? _value.state
@@ -249,6 +262,7 @@ class _$LoginResponseImpl implements _LoginResponse {
       required this.lastName,
       required this.phone,
       required this.gender,
+      required this.teamCode,
       required this.state,
       required this.lga,
       required this.ward,
@@ -273,6 +287,8 @@ class _$LoginResponseImpl implements _LoginResponse {
   @override
   final String? gender;
   @override
+  final String? teamCode;
+  @override
   final String? state;
   @override
   final String? lga;
@@ -293,7 +309,7 @@ class _$LoginResponseImpl implements _LoginResponse {
 
   @override
   String toString() {
-    return 'LoginResponse(id: $id, userId: $userId, firstName: $firstName, lastName: $lastName, phone: $phone, gender: $gender, state: $state, lga: $lga, ward: $ward, settlement: $settlement, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'LoginResponse(id: $id, userId: $userId, firstName: $firstName, lastName: $lastName, phone: $phone, gender: $gender, teamCode: $teamCode, state: $state, lga: $lga, ward: $ward, settlement: $settlement, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -309,6 +325,8 @@ class _$LoginResponseImpl implements _LoginResponse {
                 other.lastName == lastName) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.teamCode, teamCode) ||
+                other.teamCode == teamCode) &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.lga, lga) || other.lga == lga) &&
             (identical(other.ward, ward) || other.ward == ward) &&
@@ -330,6 +348,7 @@ class _$LoginResponseImpl implements _LoginResponse {
       lastName,
       phone,
       gender,
+      teamCode,
       state,
       lga,
       ward,
@@ -359,6 +378,7 @@ abstract class _LoginResponse implements LoginResponse {
       required final String? lastName,
       required final String? phone,
       required final String? gender,
+      required final String? teamCode,
       required final String? state,
       required final String? lga,
       required final String? ward,
@@ -381,6 +401,8 @@ abstract class _LoginResponse implements LoginResponse {
   String? get phone;
   @override
   String? get gender;
+  @override
+  String? get teamCode;
   @override
   String? get state;
   @override

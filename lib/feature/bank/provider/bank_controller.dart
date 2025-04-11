@@ -348,16 +348,17 @@ class BankController extends GetxController {
 
   void onTextChange(String value) {
     if (value.trim().isNotEmpty) {
-      List<Map<String, dynamic>> results = listMapCopy.where((item) {
-        return getValueMap2(convertList(item["answers"]), "IEV008")
-            .toString()
-            .contains(value.trim());
+      listBankDetails.value.clear();
+      listBankDetails.value = listBankDetailsCopy.where((item) {
+        return item.accountName!
+            .toLowerCase()
+            .contains(value.trim().toLowerCase());
       }).toList();
-      listMap.clear();
-      listMap.addAll(results);
+      /*   listBankDetails.value.clear();
+      listBankDetails.value.addAll(results); */
     } else {
-      listMap.clear();
-      listMap.addAll(listMapCopy);
+      listBankDetails.value.clear();
+      listBankDetails.value.addAll(listBankDetailsCopy);
     }
   }
 }

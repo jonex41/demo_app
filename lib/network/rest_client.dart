@@ -87,4 +87,15 @@ abstract class RestClient {
       @Header('Authorization') token,
       @Query("accountDetailId") String accountDetailsId,
       @Body() Map<String, dynamic> reqBody);
+
+  @POST("/IEVSurvey/housenumber/verify")
+  Future<BaseResponse<List<String>>> verifyHouseNumber(
+    @Header('Authorization') token,
+    @Query("houseNumber") String houseNumber,
+  );
+
+  @GET("/IEVSurvey/householdnumber/generate")
+  Future<BaseResponse<String>> generateNumber(
+    @Header('Authorization') token,
+  );
 }

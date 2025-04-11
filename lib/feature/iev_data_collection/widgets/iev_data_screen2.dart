@@ -63,7 +63,30 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                       18.height,
                       const AppTextFieldHeader(title: 'Household Number:'),
                       5.height,
-                      AppTextField(
+                      Obx(
+                        () => AncDropDownButton(
+                          hint: 'Select a Household Number',
+                          // value: controller.dummyWard[0],
+                          value: controller.householdNumberValue.value,
+                          items: controller.listHouseNumber.value,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Field is required';
+                            } else {
+                              return null;
+                            }
+                          },
+                          onChanged: (value) {
+                            if (value == "Generate Household Number") {
+                              controller.generateHouseHoldNumber(context);
+                            } else {
+                              controller.houseHoldNumber.text = value;
+                              controller.householdNumberValue.value = value;
+                            }
+                          },
+                        ),
+                      ),
+                      /*   AppTextField(
                         textFieldType: TextFieldType.OTHER,
                         isValidationRequired: true,
                         validator: (value) {
@@ -85,7 +108,7 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                             color: AppPalette.black,
                             fontWeight: FontWeight.w400),
                         controller: controller.houseHoldNumber,
-                      ),
+                      ), */
                       18.height,
                       const AppTextFieldHeader(
                           title:

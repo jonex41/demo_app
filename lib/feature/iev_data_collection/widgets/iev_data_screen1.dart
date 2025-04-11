@@ -9,6 +9,7 @@ import 'package:demo_app/feature/util/nigerian_states_and_lga.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart' hide ContextExtensions;
+import 'package:pinput/pinput.dart';
 
 class IEVDataScreen1 extends StatefulWidget {
   const IEVDataScreen1({super.key});
@@ -175,40 +176,42 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   const AppTextFieldHeader(title: 'State'),
                                   5.height,
                                   Obx(() {
-                                    return AncDropDownButton(
-                                      hint: 'Select a State',
-                                      value: controller.dummyState[0],
-                                      //  items: controller.listState,
+                                    return AbsorbPointer(
+                                      child: AncDropDownButton(
+                                        hint: 'Select a State',
+                                        value: controller.dummyState[0],
+                                        //  items: controller.listState,
 
-                                      items: controller.dummyState,
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please Select State';
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      onChanged: (value) {
-                                        controller.setNgState(value);
-                                        controller.getLga(
-                                            controller.stateValue.value);
-                                        /*  controller.setNgState(value);
-                                              
-                                                controller
-                                                    .getLga(controller.stateValue.value); */
-                                        //listOfSettlementValue
-                                        /*  print("selected state $value");
-                                          List<String> listLga = [];
-                                          listLga =
-                                              NigerianStatesAndLGA.getStateLGAs(
-                                                  value);
-                                      
-                                         
-                                          controller.lgaValue.value = listLga[0];
-                                          controller.listLga
-                                              .assignAll(listLga ?? []);
-                                          controller.lgaValue.value = listLga[0]; */
-                                      },
+                                        items: controller.dummyState,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Please Select State';
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                        onChanged: (value) {
+                                          controller.setNgState(value);
+                                          controller.getLga(
+                                              controller.stateValue.value);
+                                          /*  controller.setNgState(value);
+                                                
+                                                  controller
+                                                      .getLga(controller.stateValue.value); */
+                                          //listOfSettlementValue
+                                          /*  print("selected state $value");
+                                            List<String> listLga = [];
+                                            listLga =
+                                                NigerianStatesAndLGA.getStateLGAs(
+                                                    value);
+                                        
+                                           
+                                            controller.lgaValue.value = listLga[0];
+                                            controller.listLga
+                                                .assignAll(listLga ?? []);
+                                            controller.lgaValue.value = listLga[0]; */
+                                        },
+                                      ),
                                     );
                                   }),
                                 ],
@@ -221,33 +224,36 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   children: [
                                     const AppTextFieldHeader(title: 'LGA'),
                                     5.height,
-                                    AncDropDownButton(
-                                      hint: 'Select a Local Government Area',
-                                      value: controller.dummyLGA[0],
-                                      //   items: controller.listLga.value,
-                                      items: controller.dummyLGA,
-                                      validator: (value) {
-                                        if (value ==
-                                                'Select a Local Government Area' ||
-                                            value!.isEmpty) {
-                                          return 'Please Select Local Government Area';
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      onChanged: (value) {
-                                        controller.setNgLGA(value);
-                                        // controller.wardValue.value = "";
+                                    AbsorbPointer(
+                                      child: AncDropDownButton(
+                                        hint: 'Select a Local Government Area',
+                                        value: controller.dummyLGA[0],
+                                        //   items: controller.listLga.value,
+                                        items: controller.dummyLGA,
+                                        validator: (value) {
+                                          if (value ==
+                                                  'Select a Local Government Area' ||
+                                              value!.isEmpty) {
+                                            return 'Please Select Local Government Area';
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                        onChanged: (value) {
+                                          controller.setNgLGA(value);
+                                          // controller.wardValue.value = "";
 
-                                        controller.getWard(
-                                            controller.stateValue.value, value);
-                                        /*  controller.getWardLocally(
-                                            controller.stateValue.value, value); */
-                                        //  print("i am here $wards");
+                                          controller.getWard(
+                                              controller.stateValue.value,
+                                              value);
+                                          /*  controller.getWardLocally(
+                                              controller.stateValue.value, value); */
+                                          //  print("i am here $wards");
 
-                                        /*  controller.getWard(
-                                                  controller.stateValue.value, value); */
-                                      },
+                                          /*  controller.getWard(
+                                                    controller.stateValue.value, value); */
+                                        },
+                                      ),
                                     ),
                                   ],
                                 );
@@ -259,40 +265,43 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         const AppTextFieldHeader(title: 'Ward'),
                         5.height,
                         Obx(
-                          () => AncDropDownButton(
-                            hint: 'Select a Ward',
-                            value: controller.dummyWard[0],
-                            // items: controller.listWard.value,
-                            items: controller.dummyWard,
-                            validator: (value) {
-                              if (value == 'Select a Ward' || value!.isEmpty) {
-                                return 'Please Select Ward';
-                              } else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value) {
-                              // controller.listWard.value = value;
-                              controller.wardValue.value = value;
+                          () => AbsorbPointer(
+                            child: AncDropDownButton(
+                              hint: 'Select a Ward',
+                              value: controller.dummyWard[0],
+                              // items: controller.listWard.value,
+                              items: controller.dummyWard,
+                              validator: (value) {
+                                if (value == 'Select a Ward' ||
+                                    value!.isEmpty) {
+                                  return 'Please Select Ward';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              onChanged: (value) {
+                                // controller.listWard.value = value;
+                                controller.wardValue.value = value;
 
-                              /*  controller.getSettlementLocally(
-                                  controller.stateValue.value,
-                                  controller.lgaValue.value!,
-                                  value); */
-                              controller.getSettlement(
-                                  controller.stateValue.value,
-                                  controller.lgaValue.value!,
-                                  controller.wardValue.value!,
-                                  "");
-                              /*  controller.selectedSettlement.value =
-                                                  "Select Settlement";
-        
-                                              controller.getSettlement(
-                                                  controller.stateValue.value,
-                                                  controller.lgaValue.value!,
-                                                  controller.wardValue.value!,
-                                                  ""); */
-                            },
+                                /*  controller.getSettlementLocally(
+                                    controller.stateValue.value,
+                                    controller.lgaValue.value!,
+                                    value); */
+                                controller.getSettlement(
+                                    controller.stateValue.value,
+                                    controller.lgaValue.value!,
+                                    controller.wardValue.value!,
+                                    "");
+                                /*  controller.selectedSettlement.value =
+                                                    "Select Settlement";
+                                    
+                                                controller.getSettlement(
+                                                    controller.stateValue.value,
+                                                    controller.lgaValue.value!,
+                                                    controller.wardValue.value!,
+                                                    ""); */
+                              },
+                            ),
                           ),
                         ),
                         18.height,
@@ -301,10 +310,19 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         AppTextField(
                           textFieldType: TextFieldType.OTHER,
                           isValidationRequired: true,
+                          onChanged: (value) {
+                            if (controller.houseNumber.length == 15) {
+                              controller.verifyHouseNumber(context);
+                            }
+                          },
+                          maxLength: 15,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Field is required';
                             } else {
+                              if (value.length != 15) {
+                                return 'Please Enter a valid house number';
+                              }
                               return null;
                             }
                           },
@@ -327,7 +345,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         Obx(() {
                           return AncDropDownButton(
                             hint: 'Select a Settlement',
-                            // value: controller.selectedSettlement.value,
+                            value: controller.selectedSettlement.value,
                             //  items: controller.listSettlement.value ?? [],
                             items: controller.dummySettlement ?? [],
                             validator: (value) {
