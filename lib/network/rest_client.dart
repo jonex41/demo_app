@@ -18,6 +18,10 @@ abstract class RestClient {
   Future<BaseResponse<LoginResponse>> login(
       @Body() Map<String, dynamic> request);
 
+     @POST("/Enumerator/Refreshtoken")
+  Future<BaseResponse<LoginResponse>> refreshToken(
+      @Body() Map<String, dynamic> request);
+
   @POST("IEV/data/submit")
   Future<BaseResponse<IevSubmissionResponse>> submitIEVData(
       @Body() Map<String, dynamic> request);

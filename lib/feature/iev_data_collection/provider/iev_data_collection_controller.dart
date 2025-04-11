@@ -1069,17 +1069,40 @@ class IEVDataCollectionController extends GetxController {
       if (response.isEmpty) {
         showErrorSnackbar(context, "An error occurred");
       } else {
-        showSuccessSnackbar(context, "House Number is valid");
+        showAlertDialog(context, "House Number is valid");
+        // showSuccessSnackbar(context, "House Number is valid");
       }
     } on DioException catch (e) {
       listHouseNumber.clear();
       listHouseNumber.insert(
           listHouseNumber.length, "Generate Household Number");
       hideLoaderNew();
-      showErrorSnackbar(context,
+      showAlertDialog(context,
           "${e.response!.data['message']}, This house number will be registered");
+      /*  showErrorSnackbar(context,
+          "${e.response!.data['message']}, This house number will be registered"); */
       print(e);
     }
+  }
+
+  void showAlertDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Household Number"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void generateHouseHoldNumber(BuildContext context) async {

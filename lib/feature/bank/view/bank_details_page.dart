@@ -50,7 +50,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                 header(context,
                                     'Team member bank registration form'),
                                 18.height,
-                                5.height,
+                                // 5.height,
                                 MyInputTextWidget(
                                   title: "Name of individual",
                                   showRequired: true,
@@ -67,7 +67,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                   controller: controller.nameTextController,
                                   hint: 'Enter name',
                                 ),
-                                15.height,
+                                //   18.height,
                                 MyInputTextWidget(
                                   title: "Phone Number",
                                   showRequired: true,
@@ -91,7 +91,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                       controller.phoneNumberTextController,
                                   hint: 'Enter phone number',
                                 ),
-                                18.height,
+                                //  18.height,
                                 Obx(
                                   () => MyDropDownWidget(
                                     onChange: (value) {
@@ -115,7 +115,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                     },
                                   ),
                                 ),
-                                18.height,
+                                //25.height,
                                 Text(
                                   "Bank Name",
                                   style: context.theme.appTextTheme.bodyMedium16
@@ -146,7 +146,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                     },
                                   ), */
                                     ),
-                                18.height,
+                                //  18.height,
                                 MyInputTextWidget(
                                   title: "Account Number",
                                   showRequired: true,
@@ -176,7 +176,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                       controller.accountNumberTextController,
                                   hint: 'Enter account number',
                                 ),
-                                18.height,
+                                //  18.height,
                                 MyInputTextWidget(
                                   title: "Account Name",
                                   showRequired: true,
@@ -277,14 +277,20 @@ class BankDetailsScreen extends GetView<BankController> {
   Widget getDropDown(BuildContext context) {
     return DropdownSearch<String>(
       // key: dropDownKey,
+      
       selectedItem: controller.selectedBank.value,
       items: (filter, infiniteScrollProps) => controller.listBank.value,
+      
       onChanged: (value) {
+        
         controller.selectedBank.value = value!;
       },
       decoratorProps: DropDownDecoratorProps(
+        
           decoration: inputDecoration(
+            
               fillColor: AppPalette.white, hintText: "Select Bank")),
+              
       popupProps: const PopupProps.menu(
           showSearchBox: true,
           fit: FlexFit.loose,

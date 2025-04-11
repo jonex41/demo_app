@@ -21,7 +21,8 @@ InputDecoration inputDecoration(
     filled: true,
     helperText: "",
     fillColor: fillColor,
-
+    semanticCounterText: "",
+    counterText: "",
     prefixIcon: prefixIcon,
     suffixIcon: suffixIcon,
     //  isDense: isDense,

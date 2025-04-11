@@ -96,12 +96,13 @@ class MyInputTextWidget extends StatelessWidget {
             onChanged: callBack,
             maxLength:maxLength ,
             maxLines: maxLine,
+            
             keyboardType: keyboardType,
             validator: validator,
             
             decoration: inputDecoration(
               hintText: hint,
-              
+            
               hintStyle: context.theme.appTextTheme.bodyMedium16.copyWith(
                   color: AppPalette.grey.gray360, fontWeight: FontWeight.w400),
             )),

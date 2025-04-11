@@ -33,6 +33,7 @@ class StorageService extends GetxService {
   static const _keyContact = 'contact';
   static const _keyContactList = 'list_contact';
   static const _biometric = 'biometric';
+  static const _keyRefreshToken = 'refreshtoken';
 
   final GetStorage _box = GetStorage();
   final GetStorage mBox = GetStorage();
@@ -51,6 +52,16 @@ class StorageService extends GetxService {
     final token = _readString(_keyToken);
     if (token == null) return null;
     return 'Bearer $token';
+  }
+
+     void saveRefreshToken(String token) {
+    _saveString(_keyRefreshToken, token);
+  }
+
+  String? getRefreshToken() {
+    final token = _readString(_keyRefreshToken);
+    if (token == null) return null;
+    return token;
   }
 
   //   storageService.saveFirstName(response.data!.user.first_name);

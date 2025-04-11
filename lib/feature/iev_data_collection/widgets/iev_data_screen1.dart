@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:demo_app/components/anc_drop_down_button.dart';
 import 'package:demo_app/components/app_text_field_header.dart';
 import 'package:demo_app/components/input_decoration.dart';
@@ -21,6 +23,13 @@ class IEVDataScreen1 extends StatefulWidget {
 class _IEVDataScreen1State extends State<IEVDataScreen1> {
   final controller =
       Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  Timer? _debounce;
+  @override
+  void dispose() {
+    _debounce?.cancel();
+
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -311,18 +320,22 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           textFieldType: TextFieldType.OTHER,
                           isValidationRequired: true,
                           onChanged: (value) {
-                            if (controller.houseNumber.length == 15) {
+                            if (_debounce?.isActive ?? false)
+                              _debounce!.cancel();
+                            _debounce = Timer(const Duration(seconds: 3), () {
+                              // Call your function here (e.g., API call)
+                              print('Debounced search: $value');
                               controller.verifyHouseNumber(context);
-                            }
+                            });
                           },
-                          maxLength: 15,
+                          // maxLength: 15,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Field is required';
                             } else {
-                              if (value.length != 15) {
+                              /*  if (value.length != 15) {
                                 return 'Please Enter a valid house number';
-                              }
+                              } */
                               return null;
                             }
                           },

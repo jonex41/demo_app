@@ -190,6 +190,10 @@ class BankController extends GetxController {
       hideLoaderNew();
       showErrorSnackbar(context, e.response!.data['message']);
       print(e);
+    } catch (e) {
+      hideLoaderNew();
+      showErrorSnackbar(context, "An error occurred");
+      print(e);
     }
   }
 
@@ -222,6 +226,10 @@ class BankController extends GetxController {
       hideLoaderNew();
       showErrorSnackbar(context, e.response!.data['message']);
       print(e);
+    } catch (e) {
+      hideLoaderNew();
+      showErrorSnackbar(context, "An error occurred");
+      print(e);
     }
   }
 
@@ -240,6 +248,10 @@ class BankController extends GetxController {
     } on DioException catch (e) {
       hideLoaderNew();
       showErrorSnackbar(context, e.response!.data['message']);
+      print(e);
+    } catch (e) {
+      hideLoaderNew();
+      showErrorSnackbar(context, "An error occurred");
       print(e);
     }
   }

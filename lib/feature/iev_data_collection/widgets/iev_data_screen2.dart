@@ -61,7 +61,9 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                     children: [
                       header(context, 'Household details'),
                       18.height,
-                      const AppTextFieldHeader(title: 'Household Number:'),
+                      const AppTextFieldHeader(
+                          title:
+                              'Household Number(if number is not available, select Generate Household Number)'),
                       5.height,
                       Obx(
                         () => AncDropDownButton(

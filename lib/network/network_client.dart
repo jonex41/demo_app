@@ -21,9 +21,35 @@ class NetworkService extends GetxService {
       receiveTimeout: const Duration(seconds: 6),
     );
     Dio dio = Dio(options);
-    // dio.options.connectTimeout = const Duration(seconds: 8);
-    //dio.options.receiveTimeout = const Duration(seconds: 8);
 
+    dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        // Add the access token to the headers if it's available
+        String accessToken = storageService.getToken() ?? "";
+        options.headers["Authorization"] = accessToken;
+        return handler.next(options);
+      },
+      onError: (DioException error, handler) async {
+        // Check if the error status is 401 (Unauthorized)
+        print("check ddddddd ${error.requestOptions.path}");
+        if (error.response?.statusCode == 401 &&
+            error.requestOptions.path != "/Enumerator/Login" &&
+            error.requestOptions.path != "/Auth/RefreshToken") {
+          // Attempt to refresh the token
+          final success = await refreshToken();
+
+          if (success) {
+            // Update the failed request with the new access token
+            error.requestOptions.headers["Authorization"] =
+                storageService.getToken() ?? "";
+            // Retry the failed request
+            final response = await dio.fetch(error.requestOptions);
+            return handler.resolve(response);
+          }
+        }
+        return handler.next(error);
+      },
+    ));
 // customization
     dio.interceptors.add(PrettyDioLogger(
         requestHeader: true,
@@ -41,6 +67,7 @@ class NetworkService extends GetxService {
     // try {
     var response = await _restClient.login(request);
     storageService.saveToken(response.result?.accessToken ?? '');
+    storageService.saveRefreshToken(response.result?.refreshToken ?? '');
     if (response.statusCode != 200) throw Exception("Unable to Login");
     return response.result;
   }
@@ -179,7 +206,7 @@ class NetworkService extends GetxService {
     return true;
   }
 
-    Future<bool> editBankDetails(String id,Map<String, dynamic> request ) async {
+  Future<bool> editBankDetails(String id, Map<String, dynamic> request) async {
     //final token = storageService.getToken();
     final token = storageService.getToken();
     final response = await _restClient.editBankDetails(token, id, request);
@@ -198,24 +225,36 @@ class NetworkService extends GetxService {
     return response.result;
   }
 
-    Future<List<String>> verifyHouseNumber(String houseNumber) async {
+  Future<List<String>> verifyHouseNumber(String houseNumber) async {
     final token = storageService.getToken();
     final response = await _restClient.verifyHouseNumber(token, houseNumber);
     if (response.statusCode != 200) {
       throw Exception(response.message);
     }
-    return response.result??[];
+    return response.result ?? [];
     //return response.result;
   }
 
-  
-    Future<String> generateNumber() async {
+  Future<String> generateNumber() async {
     final token = storageService.getToken();
     final response = await _restClient.generateNumber(token);
     if (response.statusCode != 200) {
       throw Exception(response.message);
     }
-    return response.result??'';
+    return response.result ?? '';
     //return response.result;
+  }
+
+  Future<bool> refreshToken() async {
+    final token = storageService.getToken();
+    final refreshToken = storageService.getRefreshToken();
+    final response = await _restClient.refreshToken({
+      "accessToken": token?.split(" ").last,
+      "refreshToken": refreshToken,
+    });
+    storageService.saveRefreshToken(response.result?.refreshToken ?? "");
+    storageService.saveToken(response.result?.accessToken ?? "");
+    // if (response.statusCode! != 200) throw Exception(response.message);
+    return true;
   }
 }
