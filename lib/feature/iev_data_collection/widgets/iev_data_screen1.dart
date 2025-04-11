@@ -177,8 +177,10 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                   Obx(() {
                                     return AncDropDownButton(
                                       hint: 'Select a State',
-                                      value: controller.stateValue.value,
-                                      items: controller.listState,
+                                      value: controller.dummyState[0],
+                                      //  items: controller.listState,
+
+                                      items: controller.dummyState,
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
                                           return 'Please Select State';
@@ -221,8 +223,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                                     5.height,
                                     AncDropDownButton(
                                       hint: 'Select a Local Government Area',
-                                      value: controller.lgaValue.value,
-                                      items: controller.listLga.value,
+                                      value: controller.dummyLGA[0],
+                                      //   items: controller.listLga.value,
+                                      items: controller.dummyLGA,
                                       validator: (value) {
                                         if (value ==
                                                 'Select a Local Government Area' ||
@@ -258,8 +261,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         Obx(
                           () => AncDropDownButton(
                             hint: 'Select a Ward',
-                            value: controller.wardValue.value,
-                            items: controller.listWard.value,
+                            value: controller.dummyWard[0],
+                            // items: controller.listWard.value,
+                            items: controller.dummyWard,
                             validator: (value) {
                               if (value == 'Select a Ward' || value!.isEmpty) {
                                 return 'Please Select Ward';
@@ -323,8 +327,9 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         Obx(() {
                           return AncDropDownButton(
                             hint: 'Select a Settlement',
-                            value: controller.selectedSettlement.value,
-                            items: controller.listSettlement.value ?? [],
+                            // value: controller.selectedSettlement.value,
+                            //  items: controller.listSettlement.value ?? [],
+                            items: controller.dummySettlement ?? [],
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please Select Settlement';

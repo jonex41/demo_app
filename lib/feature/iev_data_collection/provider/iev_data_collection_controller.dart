@@ -10,6 +10,7 @@ import 'package:demo_app/feature/util/my_list_settlement.dart';
 import 'package:demo_app/feature/util/nigerian_states_and_lga.dart';
 import 'package:demo_app/feature/util/utils.dart';
 import 'package:demo_app/model/home/activity_model.dart';
+import 'package:demo_app/model/login/login_res.dart';
 import 'package:demo_app/network/network_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart'; // Import compute()
@@ -664,27 +665,46 @@ class IEVDataCollectionController extends GetxController {
     'No',
   ].obs;
 
+  final loginModel = Rxn<LoginResponse?>();
+  final dummyState = <String>[].obs;
+  final dummyLGA = <String>[].obs;
+  final dummyWard = <String>[].obs;
+  final dummySettlement = <String>[].obs;
+
   @override
   void onInit() {
     getState();
     //getFileData();
 
-    var model = Get.find<HomeController>().loginModel.value;
-    nameOfEnumerator.text = "${model?.firstName} ${model?.lastName}";
-    phoneNumber.text = model?.phone ?? "";
+    loginModel.value = Get.find<HomeController>().loginModel.value;
+    nameOfEnumerator.text =
+        "${loginModel.value?.firstName} ${loginModel.value?.lastName}";
+    phoneNumber.text = loginModel.value?.phone ?? "";
+     stateValue.value = loginModel.value?.state ?? "Abia";
+    dummyState.add(loginModel.value?.state ?? "Abia");
+    dummyLGA.add(loginModel.value?.lga ?? "Select Lga");
+    dummyWard.add(loginModel.value?.ward ?? "Select Ward");
+    for (String? model in loginModel.value?.settlement ?? []) {
+      dummySettlement.add(model ?? "Select Settlement");
+    }
+    // dummySettlement.value.addAll(loginModel.value?.settlement ??<String>[] );
+
+    lgaValue.value = loginModel.value?.lga ?? "Select Lga";
+    wardValue.value = loginModel.value?.ward ?? "Select Ward";
+    //teamCode.text = loginModel.value?.teamCode ?? "Select Team Code";
 
     Future.delayed(
         const Duration(
           seconds: 1,
         ), () {
-      List<String> kklist = [
+      /*  List<String> kklist = [
         "Select Lga",
         ...NigerianStatesAndLGA.getStateLGAs("Abia")
       ];
 
-      //  kklist.insert(0, "Select Lga");
+     
       lgaValue.value = kklist[0];
-      listLga.value.assignAll(kklist ?? []);
+      listLga.value.assignAll(kklist ?? []); */
     });
     super.onInit();
   }
@@ -767,7 +787,9 @@ class IEVDataCollectionController extends GetxController {
         "houseNumber": houseNumber.text,
         "houseHoldNumber": houseHoldNumber.text,
         "consent": selectedProceed.value ?? '',
-        "reasonForNonConsent": selectedProceedReason.value == "Others specify"?othersProceedSpecify.text: selectedProceedReason.value,
+        "reasonForNonConsent": selectedProceedReason.value == "Others specify"
+            ? othersProceedSpecify.text
+            : selectedProceedReason.value,
         "nameofHouseHoldHead": headOfHouseHoldName.text,
         "houseHoldHeadPhoneNumber": headOfHousePhoneNumber.text,
         "numberOfWomenAged15to49InHousehold":
