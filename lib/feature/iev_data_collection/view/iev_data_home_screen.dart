@@ -271,7 +271,7 @@ class _IEVDataHomeScreenState extends State<IEVDataHomeScreen> {
     }
   }
 
-  Widget _offlineButton() {
+  Widget offlineButton() {
     return controller.currentScreen.value == 4
         ? Column(
             children: [

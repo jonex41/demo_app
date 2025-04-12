@@ -5,6 +5,7 @@ import 'package:demo_app/core/offline_storage.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_controller.dart';
 import 'package:demo_app/feature/iev_data_collection/modal/success_modal.dart';
+import 'package:demo_app/feature/iev_data_collection/model/duration_range.dart';
 import 'package:demo_app/feature/login/provider/login_controller.dart';
 import 'package:demo_app/feature/offline/provider/offline_controller.dart';
 import 'package:demo_app/feature/util/my_list_settlement.dart';
@@ -116,6 +117,7 @@ class IEVDataCollectionController extends GetxController {
       [];
   var phoneNumberOfPrimaryCareGiverOfChildLoop = <TextEditingController>[].obs;
   final List<Rxn<String>> selectedSiteOfLastVaccineLoop = [];
+  final List<Rxn<int>> childAgeInWeeksLoop = [];
 
   void updateFieldsCountNumberOfUnder5Children(int count) {
     textFieldCountNumberOfUnder5Children.value = count;
@@ -139,6 +141,7 @@ class IEVDataCollectionController extends GetxController {
     selectedRelationShipOfPrimaryCareGiverOfChildLoop.clear();
     phoneNumberOfPrimaryCareGiverOfChildLoop.clear();
     selectedSiteOfLastVaccineLoop.clear();
+    childAgeInWeeksLoop.clear();
 
     for (int i = 0; i < count; i++) {
       nameofChildControllerLoop.add(TextEditingController());
@@ -161,6 +164,111 @@ class IEVDataCollectionController extends GetxController {
       selectedRelationShipOfPrimaryCareGiverOfChildLoop.add(Rxn<String>());
       phoneNumberOfPrimaryCareGiverOfChildLoop.add(TextEditingController());
       selectedSiteOfLastVaccineLoop.add(Rxn<String>());
+      childAgeInWeeksLoop.add(Rxn<int>());
+    }
+  }
+
+  Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
+
+  final antigenSchedule = {
+    const DurationRange(min: Duration(days: 0), max: Duration(days: 42)): [
+      "BCG",
+      "OPV0",
+      "HepB0 birth"
+    ],
+    const DurationRange(min: Duration(days: 42), max: Duration(days: 70)): [
+      "Pentavalent(DPT, Hep B and Hib) 1",
+      "Pneumococcal Conjugate Vaccine 1",
+      "OPV1",
+      "Rota 1",
+      "IPV1"
+    ],
+    const DurationRange(min: Duration(days: 70), max: Duration(days: 98)): [
+      "Pentavalent (DPT, Hep B and Hib) 2",
+      "Pneumococcal Conjugate Vaccine2",
+      "OPV 3",
+      "Rota 3"
+    ],
+    const DurationRange(min: Duration(days: 98), max: Duration(days: 180)): [
+      "Pentavalent 3 (DPT, Hep B and Hib)",
+      "Pneumococcal Conjugate Vaccine3",
+      "OPV 3",
+      "Rota 3",
+      "IPV 2"
+    ],
+    const DurationRange(min: Duration(days: 180), max: Duration(days: 270)): [
+      "Vitamin A 1st dose"
+    ],
+    const DurationRange(min: Duration(days: 270), max: Duration(days: 365)): [
+      "Measles 1st dose",
+      "Yellow Fever",
+      "Meningitis Vaccine"
+    ],
+    const DurationRange(min: Duration(days: 365), max: Duration(days: 395)): [
+      "Vitamin A 2nd dose"
+    ],
+    const DurationRange(min: Duration(days: 395), max: Duration(days: 4745)): [
+      "Measles 2nd dose (MCV2)"
+    ],
+    const DurationRange(min: Duration(days: 3285), max: Duration(days: 4745)): [
+      "HPV 6 months interval (2 doses)"
+    ],
+  };
+
+  // Function to filter antigens based on age in months
+  List<String> getAvailableAntigensFromAgeInWeeks(int weeks) {
+    final ageInDays = weeks * 7;
+
+    List<String> availableAntigens = [];
+
+    antigenSchedule.forEach((range, antigens) {
+      if (ageInDays >= range.min.inDays && ageInDays < range.max.inDays) {
+        availableAntigens.addAll(antigens);
+      }
+    });
+
+    return availableAntigens;
+  }
+
+  List<String> getAvailableAntigensFromAgeInMonths(int ageInMonths) {
+    final ageInDays =
+        ageInMonths * 30; // Approximate conversion (1 month = 30 days)
+
+    List<String> availableAntigens = [];
+
+    antigenSchedule.forEach((range, antigens) {
+      if (ageInDays >= range.min.inDays && ageInDays < range.max.inDays) {
+        availableAntigens.addAll(antigens);
+      }
+    });
+
+    return availableAntigens;
+  }
+
+  List<String> getEligibleAntigens(DateTime dob) {
+    final now = DateTime.now();
+    final age = now.difference(dob);
+
+    for (final range in antigenSchedule.keys) {
+      if (range.contains(age)) {
+        return antigenSchedule[range]!;
+      }
+    }
+
+    return [];
+  }
+
+  String calculateHumanReadableAge(DateTime dob) {
+    final now = DateTime.now();
+    final age = now.difference(dob);
+
+    if (age.inDays < 60) {
+      return '${(age.inDays / 7).floor()} weeks';
+    } else if (age.inDays < 365) {
+      return '${(age.inDays / 30).floor()} months';
+    } else {
+      final years = (age.inDays / 365).floor();
+      return '$years year${years > 1 ? 's' : ''}';
     }
   }
 
@@ -169,12 +277,43 @@ class IEVDataCollectionController extends GetxController {
     DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
     );
     if (pickedDate != null) {
       selectedDatesLoop[index].value = pickedDate;
+      // Never uncomment this
+      //selectedAntigensLoop[index].value = getEligibleAntigens(pickedDate);
     }
+  }
+
+  String getFormattedAge(DateTime date) {
+    final now = DateTime.now();
+    Duration diff = now.difference(date);
+
+    // Calculate years, months, weeks
+    int years = now.year - date.year;
+    int months = now.month - date.month;
+    int days = now.day - date.day;
+
+    if (days < 0) {
+      months -= 1;
+      days += DateTime(now.year, now.month, 0).day;
+    }
+
+    if (months < 0) {
+      years -= 1;
+      months += 12;
+    }
+
+    int weeks = days ~/ 7;
+
+    List<String> parts = [];
+    if (years > 0) parts.add('$years year${years > 1 ? 's' : ''}');
+    if (months > 0) parts.add('$months month${months > 1 ? 's' : ''}');
+    if (weeks > 0) parts.add('$weeks week${weeks > 1 ? 's' : ''}');
+
+    return parts.isEmpty ? 'Less than a week' : parts.join(', ');
   }
 
   var partOfBodyLastVaccine = [
@@ -810,10 +949,13 @@ class IEVDataCollectionController extends GetxController {
         return {
           //"age": selectedAges[j],
           "name": nameofChildControllerLoop[j].text,
-          "dateOfBirth":
-              selectedDatesLoop[j].value?.toLocal().toString().split(' ')[0],
-          "age":
-              '${selectedChildAgeDaysLoop[j].value}, ${selectedChildAgeMonthsLoop[j].value}, ${selectedChildAgeYearsLoop[j].value}',
+          "dateOfBirth": selectedDatesLoop[j].value != null
+              ? selectedDatesLoop[j].value?.toLocal().toString().split(' ')[0]
+              : null,
+          //"age":'${selectedChildAgeDaysLoop[j].value}, ${selectedChildAgeMonthsLoop[j].value}, ${selectedChildAgeYearsLoop[j].value}',
+          "age": childAgeInWeeksLoop[j].value != null
+              ? '${childAgeInWeeksLoop[j].value} ${childAgeInWeeksLoop[j].value == 1 ? 'week' : 'weeks'}'
+              : null,
           "sex": selectedGenderLoop[j].value,
           "receivedPolioVaccineBefore":
               selectedChildEverReceivedPolioVaccineInPastLoop[j].value,

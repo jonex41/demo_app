@@ -226,19 +226,20 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       ],
                                       18.height,
                                       AppTextFieldHeader(
+                                          showCompulsory: false,
                                           title:
                                               'Whats the phone number of the pregnant woman (if available) ${index + 1}'),
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.NUMBER,
-                                        isValidationRequired: true,
-                                        validator: (value) {
+                                        isValidationRequired: false,
+                                        /* validator: (value) {
                                           if (value == null || value.isEmpty) {
                                             return 'Field is required';
                                           } else {
                                             return null;
                                           }
-                                        },
+                                        }, */
                                         decoration: inputDecoration().copyWith(
                                             hintText: 'Enter your answer',
                                             hintStyle: const TextStyle(
