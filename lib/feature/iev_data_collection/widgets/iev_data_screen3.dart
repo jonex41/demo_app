@@ -169,6 +169,15 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                 .selectedKnowDateOfBirthLoop[
                                                     index]
                                                 .value);
+                                            controller
+                                                .selectedAntigensLoop[index]
+                                                .value = [];
+
+                                            controller.selectedDatesLoop[index]
+                                                .value = null;
+                                            controller
+                                                .childAgeInWeeksLoop[index]
+                                                .value = null;
                                           },
                                         );
                                       }),
@@ -183,6 +192,8 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                 'Date of birth of the child? ${index + 1}'),
                                         5.height,
                                         Obx(() {
+                                          final selectedDate = controller
+                                              .selectedDatesLoop[index].value;
                                           return GestureDetector(
                                             onTap: () => controller.pickDate(
                                                 context, index),
@@ -201,19 +212,22 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                     BorderRadius.circular(8),
                                               ),
                                               child: Text(
-                                                controller
-                                                            .selectedDatesLoop[
-                                                                index]
-                                                            .value ==
-                                                        null
+                                                selectedDate == null
                                                     ? "Tap to select date"
                                                     : controller
+                                                        .calculateHumanReadableAge(
+                                                            selectedDate) /* controller.getFormattedAge(
+                                                        controller
+                                                            .selectedDatesLoop[
+                                                                index]
+                                                            .value!) */ /* controller
                                                         .selectedDatesLoop[
                                                             index]
                                                         .value!
                                                         .toLocal()
                                                         .toString()
-                                                        .split(' ')[0],
+                                                        .split(' ')[0] */
+                                                ,
                                                 style: const TextStyle(
                                                     fontSize: 16),
                                               ),
@@ -226,6 +240,48 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                               .value ==
                                           'No') ...[
                                         AppTextFieldHeader(
+                                          title:
+                                              'What is the age of child? (if DOB is uncertain in weeks): ${index + 1}',
+                                          showCompulsory: false,
+                                        ),
+                                        5.height,
+                                        const Text(
+                                            "Hint: use the slider to determine the age in months",
+                                            style: TextStyle(fontSize: 16)),
+                                        5.height,
+                                        Obx(() {
+                                          final selectedWeeks = controller
+                                                  .childAgeInWeeksLoop[index]
+                                                  .value ??
+                                              0;
+                                          final selectedMonths =
+                                              (selectedWeeks / 4.345)
+                                                  .toStringAsFixed(1);
+                                          return Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                  "Selected Age: $selectedWeeks weeks (~$selectedMonths months)",
+                                                  style: const TextStyle(
+                                                      fontSize: 16)),
+                                              Slider(
+                                                value: selectedWeeks.toDouble(),
+                                                min: 0,
+                                                max: 624,
+                                                divisions: 624,
+                                                label: "$selectedWeeks weeks",
+                                                onChanged: (double value) {
+                                                  controller
+                                                      .childAgeInWeeksLoop[
+                                                          index]
+                                                      .value = value.toInt();
+                                                },
+                                              ),
+                                            ],
+                                          );
+                                        }),
+                                        /*  AppTextFieldHeader(
                                           title:
                                               'What is the age of child? (if DOB is uncertain): ${index + 1}',
                                           showCompulsory: false,
@@ -337,7 +393,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                   .value);
                                             },
                                           );
-                                        }),
+                                        }), */
                                       ],
                                       18.height,
                                       AppTextFieldHeader(
@@ -546,57 +602,161 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                   [],
                                             )),
                                         18.height, */
-                                          18.height,
-                                          AppTextFieldHeader(
-                                              title:
-                                                  'Select the antigens the child has received ${index + 1}'),
-                                          5.height,
-                                          Obx(() {
-                                            return MultiSelectDialogField(
-                                              title: const Text(
-                                                "You can select more than one option",
-                                                style: TextStyle(fontSize: 13),
-                                              ),
-                                              buttonIcon: Icon(
-                                                Icons.keyboard_arrow_down_sharp,
-                                                color: AppPalette.grey.gray350,
-                                              ),
-                                              itemsTextStyle:
-                                                  const TextStyle(fontSize: 13),
-                                              selectedItemsTextStyle:
-                                                  const TextStyle(fontSize: 13),
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color:
-                                                        AppPalette.grey.gray300,
-                                                    width: 1),
-                                                borderRadius:
-                                                    BorderRadius.circular(6),
-                                              ),
-                                              items: controller.selectAntigens
+                                          if (controller
+                                                  .selectedKnowDateOfBirthLoop[
+                                                      index]
+                                                  .value ==
+                                              'Yes') ...[
+                                            18.height,
+                                            AppTextFieldHeader(
+                                                title:
+                                                    'Select the antigens the child has received ${index + 1}'),
+                                            5.height,
+                                            Obx(() {
+                                              final date = controller
+                                                  .selectedDatesLoop[index]
+                                                  .value;
+                                              final antigenOptions = date !=
+                                                      null
+                                                  ? controller
+                                                      .getEligibleAntigens(date)
+                                                  : [];
+                                              return MultiSelectDialogField(
+                                                dialogHeight: 500,
+                                                title: const Text(
+                                                  "You can select more than one option",
+                                                  style:
+                                                      TextStyle(fontSize: 13),
+                                                ),
+                                                buttonIcon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_sharp,
+                                                  color:
+                                                      AppPalette.grey.gray350,
+                                                ),
+                                                itemsTextStyle: const TextStyle(
+                                                    fontSize: 13),
+                                                selectedItemsTextStyle:
+                                                    const TextStyle(
+                                                        fontSize: 13),
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: AppPalette
+                                                          .grey.gray300,
+                                                      width: 1),
+                                                  borderRadius:
+                                                      BorderRadius.circular(6),
+                                                ),
+                                                items: antigenOptions
+                                                    .map((e) =>
+                                                        MultiSelectItem(e, e))
+                                                    .toList(),
+                                                /*  items: controller.selectAntigens
                                                   .map((e) =>
                                                       MultiSelectItem(e, e))
-                                                  .toList(),
-                                              listType:
-                                                  MultiSelectListType.LIST,
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return 'Select an Option';
-                                                } else {
-                                                  return null;
-                                                }
-                                              },
-                                              onConfirm: (values) {
-                                                controller
-                                                    .selectedAntigensLoop[index]
-                                                    .value = values;
-                                                debugPrint(
-                                                    '${controller.selectedAntigensLoop[index]}');
-                                              },
-                                            );
-                                          }),
-                                          18.height,
+                                                  .toList(), */
+                                                listType:
+                                                    MultiSelectListType.LIST,
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Select an Option';
+                                                  } else {
+                                                    return null;
+                                                  }
+                                                },
+                                                onConfirm: (values) {
+                                                  controller
+                                                          .selectedAntigensLoop[
+                                                              index]
+                                                          .value =
+                                                      List<String>.from(values);
+                                                  debugPrint(
+                                                      '${controller.selectedAntigensLoop[index]}');
+                                                },
+                                              );
+                                            }),
+                                            18.height,
+                                          ] else if (controller
+                                                  .selectedKnowDateOfBirthLoop[
+                                                      index]
+                                                  .value ==
+                                              'No') ...[
+                                            18.height,
+                                            AppTextFieldHeader(
+                                                title:
+                                                    'Select the antigens the child has received ${index + 1}'),
+                                            5.height,
+                                            Obx(() {
+                                              final selectedWeeks = controller
+                                                      .childAgeInWeeksLoop[
+                                                          index]
+                                                      .value ??
+                                                  0;
+                                              final selectedMonths =
+                                                  (selectedWeeks / 4.345)
+                                                      .toStringAsFixed(1);
+                                              final availableAntigens = controller
+                                                  .getAvailableAntigensFromAgeInWeeks(
+                                                      selectedWeeks);
+                                              return MultiSelectDialogField(
+                                                dialogHeight: 500,
+                                                title: const Text(
+                                                  "You can select more than one option",
+                                                  style:
+                                                      TextStyle(fontSize: 13),
+                                                ),
+                                                buttonIcon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_sharp,
+                                                  color:
+                                                      AppPalette.grey.gray350,
+                                                ),
+                                                itemsTextStyle: const TextStyle(
+                                                    fontSize: 13),
+                                                selectedItemsTextStyle:
+                                                    const TextStyle(
+                                                        fontSize: 13),
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: AppPalette
+                                                          .grey.gray300,
+                                                      width: 1),
+                                                  borderRadius:
+                                                      BorderRadius.circular(6),
+                                                ),
+                                                items: availableAntigens
+                                                    .map((e) =>
+                                                        MultiSelectItem(e, e))
+                                                    .toList(),
+                                                /*  items: controller.selectAntigens
+                                                  .map((e) =>
+                                                      MultiSelectItem(e, e))
+                                                  .toList(), */
+                                                listType:
+                                                    MultiSelectListType.LIST,
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Select an Option';
+                                                  } else {
+                                                    return null;
+                                                  }
+                                                },
+                                                onConfirm: (values) {
+                                                  controller
+                                                          .selectedAntigensLoop[
+                                                              index]
+                                                          .value =
+                                                      List<String>.from(values);
+                                                  debugPrint(
+                                                      '${controller.selectedAntigensLoop[index]}');
+                                                },
+                                              );
+                                            }),
+                                            18.height,
+                                          ],
+
                                           /* AppTextFieldHeader(
                                             title:
                                                 'What is the name of HF the child goes for vaccination? ${index + 1}'),
@@ -659,36 +819,43 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                   .howManyVisitChildHadToHealthFacilityLoop[
                                               index],
                                         ),
-                                        18.height,
-                                        AppTextFieldHeader(
-                                            title:
-                                                'On which part of the body did the child take the last vaccine? ${index + 1}:'),
-                                        5.height,
-                                        Obx(() {
-                                          return AncDropDownButton(
-                                            hint: 'Select an answer',
-                                            value: controller
-                                                .selectedSiteOfLastVaccineLoop[
+                                        if (controller
+                                                .selectedHaveRiVaccinationCardLoop[
                                                     index]
-                                                .value,
-                                            items: controller
-                                                .partOfBodyLastVaccine,
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty) {
-                                                return 'Please Select an answer';
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                            onChanged: (value) {
-                                              controller
+                                                .value !=
+                                            'Yes') ...[
+                                          18.height,
+                                          AppTextFieldHeader(
+                                              title:
+                                                  'On which part of the body did the child take the last vaccine? ${index + 1}:'),
+                                          5.height,
+                                          Obx(() {
+                                            return AncDropDownButton(
+                                              hint: 'Select an answer',
+                                              value: controller
                                                   .selectedSiteOfLastVaccineLoop[
                                                       index]
-                                                  .value = value;
-                                            },
-                                          );
-                                        }),
+                                                  .value,
+                                              items: controller
+                                                  .partOfBodyLastVaccine,
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Please Select an answer';
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
+                                              onChanged: (value) {
+                                                controller
+                                                    .selectedSiteOfLastVaccineLoop[
+                                                        index]
+                                                    .value = value;
+                                              },
+                                            );
+                                          }),
+                                        ],
+
                                         /* AppTextField(
                                           textFieldType: TextFieldType.OTHER,
                                           isValidationRequired: true,
@@ -776,19 +943,24 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       }),
                                       18.height,
                                       AppTextFieldHeader(
+                                          showCompulsory: false,
                                           title:
                                               'Phone number of primary caregiver? ${index + 1}:'),
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.PHONE,
-                                        isValidationRequired: true,
-                                        validator: (value) {
+                                        isValidationRequired: false,
+                                        /*  validator: (value) {
                                           if (value == null || value.isEmpty) {
                                             return 'Field is required';
+                                          } else if (value.length < 11) {
+                                            return 'Phone number cannot be less than 11 digits';
+                                          } else if (value.length > 11) {
+                                            return 'Phone number cannot be more than 11 digits';
                                           } else {
                                             return null;
                                           }
-                                        },
+                                        }, */
                                         decoration: inputDecoration().copyWith(
                                             hintText: 'Enter your answer',
                                             hintStyle: const TextStyle(
