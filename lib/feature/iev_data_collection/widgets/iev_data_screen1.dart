@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:demo_app/component/button.dart';
 import 'package:demo_app/components/anc_drop_down_button.dart';
 import 'package:demo_app/components/app_text_field_header.dart';
 import 'package:demo_app/components/input_decoration.dart';
@@ -320,13 +321,13 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           textFieldType: TextFieldType.OTHER,
                           isValidationRequired: true,
                           onChanged: (value) {
-                            if (_debounce?.isActive ?? false)
+                            /*  if (_debounce?.isActive ?? false)
                               _debounce!.cancel();
                             _debounce = Timer(const Duration(seconds: 3), () {
                               // Call your function here (e.g., API call)
                               print('Debounced search: $value');
                               controller.verifyHouseNumber(context);
-                            });
+                            }); */
                           },
                           // maxLength: 15,
                           validator: (value) {
@@ -351,6 +352,32 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                               color: AppPalette.black,
                               fontWeight: FontWeight.w400),
                           controller: controller.houseNumber,
+                        ),
+                        5.height,
+                        Text(
+                          "House number Example : IE/D1/T001/H001 ",
+                          style:
+                              context.theme.appTextTheme.bodyMedium16.copyWith(
+                            fontSize: 15,
+                            color: AppPalette.lightgray,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        10.height,
+                        AppElevatedButton(
+                          textColor: AppPalette.white,
+                          color: AppPalette.primary.primary400,
+                          height: 45,
+                          width: MediaQuery.of(context).size.width - 30,
+                          radius: 8,
+                          text: 'Check House Number',
+                          onPressed: () async {
+                            if( controller.houseNumber.text.isEmpty){
+                              toast("Please enter a house number");
+                              return;
+                            }
+                            controller.verifyHouseNumber(context);
+                          },
                         ),
                         18.height,
                         const AppTextFieldHeader(title: 'Settlement'),

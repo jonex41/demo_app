@@ -242,6 +242,7 @@ class BankController extends GetxController {
       hideLoaderNew();
       if (response) {
         showSuccessModal(context, "Deleted", "Deleted successfully");
+        getBankAccountDetails();
       } else {
         showErrorSnackbar(context, "An error occurred");
       }
