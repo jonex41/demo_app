@@ -315,7 +315,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           ),
                         ),
                         18.height,
-                        const AppTextFieldHeader(title: 'House Number:'),
+                        const AppTextFieldHeader(title: 'House Number'),
                         5.height,
                         AppTextField(
                           textFieldType: TextFieldType.OTHER,
@@ -372,7 +372,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           radius: 8,
                           text: 'Check House Number',
                           onPressed: () async {
-                            if( controller.houseNumber.text.isEmpty){
+                            if (controller.houseNumber.text.isEmpty) {
                               toast("Please enter a house number");
                               return;
                             }
