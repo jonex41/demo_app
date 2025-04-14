@@ -76,7 +76,7 @@ class HomeController extends GetxController {
   }
 
   void getDataOnline() async {
-    var map = await networkService.getAllIEVData(1);
+    var map = await networkService.getAllDataIEVNew(1);
     print("online data $map");
 
     submittedList.value = convertList(map).length;

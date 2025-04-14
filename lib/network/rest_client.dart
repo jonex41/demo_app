@@ -18,7 +18,7 @@ abstract class RestClient {
   Future<BaseResponse<LoginResponse>> login(
       @Body() Map<String, dynamic> request);
 
-     @POST("/Enumerator/Refreshtoken")
+  @POST("/Enumerator/Refreshtoken")
   Future<BaseResponse<LoginResponse>> refreshToken(
       @Body() Map<String, dynamic> request);
 
@@ -44,6 +44,13 @@ abstract class RestClient {
 
   @GET("IEVSurvey/data?pageNumber={page}")
   Future<BaseResponse> getAllDataIEV(@Path() int page);
+  @GET("IEVSurvey/enumerator/data")
+  Future<BaseResponse> getAllDataIEVNew(
+    @Query("pageNumber") int pageNumber,
+    /*    @Query("HouseNumber") String houseNumber,
+    @Query("Lga") String lga,
+    @Query("State") String state, */
+  );
 
   @GET("Analytics/mobile/widget")
   Future<BaseResponse<ActivityModel>> getAnalytics();
@@ -101,5 +108,6 @@ abstract class RestClient {
   @GET("/IEVSurvey/householdnumber/generate")
   Future<BaseResponse<String>> generateNumber(
     @Header('Authorization') token,
+    @Query("houseNumber") String houseNumber,
   );
 }

@@ -92,7 +92,7 @@ class BankController extends GetxController {
   }
 
   Future<void> getDataOnline(int page) async {
-    var map = await networkService.getAllIEVData(page);
+    var map = await networkService.getAllDataIEVNew(page);
     print("online data $map");
     if (page == 1) {
       listMap.clear();

@@ -87,40 +87,58 @@ class AllRecordIevScreen extends GetView<OfflineController> {
             }), */
             Flexible(
               child: Obx(
-                () => GridView.count(
-                    shrinkWrap: true,
-                    // Create a grid with 2 columns. If you change the scrollDirection to
-                    // horizontal, this would produce 2 rows.
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.9,
-                    // Generate 100 Widgets that display their index in the List
-                    children: [
-                      ...controller.listMap.value.reversed.map((e) {
-                        int index = controller.listMap.indexOf(e);
-                        DateTime dateTime = DateTime.parse(
-                            controller.listMap[index]["createdAt"] ??
-                                "2025-02-22T21:56:35.826912");
-                        String formattedDate =
-                            DateFormat("dd/MM/yyyy").format(dateTime);
-                        String formattedTime =
-                            DateFormat("h:mm a").format(dateTime.toLocal());
-                        return InkWell(
-                          onTap: () {
-                            controller.selectedIndex = index;
-                            appRoute.push(const OfflineForm1Route());
-                            // controller.gotoDeliveryScreen(e);
-                          },
-                          child: OfflineCard(
-                            searchModel: SearchModel(
-                                title: controller.listMap[index]["household"]
-                                        ?["houseNumber"] ??
-                                    "",
-                                time: formattedTime,
-                                date: formattedDate),
+                () {
+                  if (controller.listMap.value.isEmpty) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        50.height,
+                        const Icon(Icons.data_usage_rounded),
+                        Text(
+                          'No data found',
+                          style:
+                              context.theme.appTextTheme.bodyLarge18.copyWith(
+                            fontWeight: FontWeight.w500,
                           ),
-                        );
-                      })
-                    ]),
+                        ),
+                      ],
+                    );
+                  }
+                  return GridView.count(
+                      shrinkWrap: true,
+                      // Create a grid with 2 columns. If you change the scrollDirection to
+                      // horizontal, this would produce 2 rows.
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.9,
+                      // Generate 100 Widgets that display their index in the List
+                      children: [
+                        ...controller.listMap.value.reversed.map((e) {
+                          int index = controller.listMap.indexOf(e);
+                          DateTime dateTime = DateTime.parse(
+                              controller.listMap[index]["createdAt"] ??
+                                  "2025-02-22T21:56:35.826912");
+                          String formattedDate =
+                              DateFormat("dd/MM/yyyy").format(dateTime);
+                          String formattedTime =
+                              DateFormat("h:mm a").format(dateTime.toLocal());
+                          return InkWell(
+                            onTap: () {
+                              controller.selectedIndex = index;
+                              appRoute.push(const OfflineForm1Route());
+                              // controller.gotoDeliveryScreen(e);
+                            },
+                            child: OfflineCard(
+                              searchModel: SearchModel(
+                                  title: controller.listMap[index]["household"]
+                                          ?["houseNumber"] ??
+                                      "",
+                                  time: formattedTime,
+                                  date: formattedDate),
+                            ),
+                          );
+                        })
+                      ]);
+                },
               ),
             )
           ],

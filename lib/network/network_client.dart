@@ -110,9 +110,21 @@ class NetworkService extends GetxService {
     return true;
   }
 
-  Future<List<dynamic>> getAllIEVData(int page) async {
+/*   Future<List<dynamic>> getAllIEVData(int page) async {
     //final token = storageService.getToken();
     final response = await _restClient.getAllDataIEV(page);
+    if (response.statusCode != 200) {
+      throw Exception(response.message);
+    }
+    return response.result;
+  }
+ */
+    Future<List<dynamic>> getAllDataIEVNew(
+      int pageNumber,
+ 
+    ) async {
+    //final token = storageService.getToken();
+    final response = await _restClient.getAllDataIEVNew(pageNumber);
     if (response.statusCode != 200) {
       throw Exception(response.message);
     }
@@ -235,9 +247,9 @@ class NetworkService extends GetxService {
     //return response.result;
   }
 
-  Future<String> generateNumber() async {
+  Future<String> generateNumber(String houseNumber) async {
     final token = storageService.getToken();
-    final response = await _restClient.generateNumber(token);
+    final response = await _restClient.generateNumber(token, houseNumber);
     if (response.statusCode != 200) {
       throw Exception(response.message);
     }

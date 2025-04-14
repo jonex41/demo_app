@@ -77,7 +77,9 @@ class OfflineController extends GetxController {
   }
 
   Future<void> getDataOnline(int page) async {
-    var map = await networkService.getAllIEVData(page);
+    final model = Get.find<HomeController>().loginModel.value;
+    var map = await networkService.getAllDataIEVNew(
+        1);
     print("online data $map");
     if (page == 1) {
       listMap.clear();
@@ -89,6 +91,20 @@ class OfflineController extends GetxController {
     /*
     listMapCopy.addAll(listMap); */
   }
+
+  /*  Future<void> getDataOnline(int page) async {
+    var map = await networkService.getAllIEVData(page);
+    print("online data $map");
+    if (page == 1) {
+      listMap.clear();
+      listMapCopy.clear();
+    }
+
+    listMap.value.addAll(convertList(map));
+    listMapCopy.addAll(listMap);
+    /*
+    listMapCopy.addAll(listMap); */
+  } */
 
   gotoHomeScreen(BuildContext c) {
     FocusScope.of(c).requestFocus(FocusNode());

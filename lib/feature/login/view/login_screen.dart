@@ -84,12 +84,12 @@ class LoginScreen extends GetView<LoginController> {
                        if (value == null || value.isEmpty) {
                 return "Password cannot be empty";
               }
-              if (!RegExp(
+             /*  if (!RegExp(
                       r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
                   .hasMatch(value)) {
                 return "Password must be at least 8 characters\n"
                     "Include 1 capital letter, 1 number, and 1 symbol";
-              }
+              } */
               return null;
                     },
 

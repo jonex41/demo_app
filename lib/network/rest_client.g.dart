@@ -275,6 +275,36 @@ class _RestClient implements RestClient {
   }
 
   @override
+  Future<BaseResponse<dynamic>> getAllDataIEVNew(int pageNumber) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'pageNumber': pageNumber};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<dynamic>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'IEVSurvey/enumerator/data',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BaseResponse<dynamic>.fromJson(
+      _result.data!,
+      (json) => json as dynamic,
+    );
+    return _value;
+  }
+
+  @override
   Future<BaseResponse<ActivityModel>> getAnalytics() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -690,9 +720,12 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<BaseResponse<String>> generateNumber(dynamic token) async {
+  Future<BaseResponse<String>> generateNumber(
+    dynamic token,
+    String houseNumber,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'houseNumber': houseNumber};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;

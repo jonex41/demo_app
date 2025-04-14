@@ -1108,14 +1108,16 @@ class IEVDataCollectionController extends GetxController {
   void generateHouseHoldNumber(BuildContext context) async {
     try {
       showLoaderNew(context);
-      final response = await networkService.generateNumber();
-      houseHoldNumber.text = response;
+      final response = await networkService.generateNumber(houseNumber.text);
+      // houseHoldNumber.text = response;
+      print("i dey here $response");
       if (!listHouseNumber.contains(response)) {
         listHouseNumber.insert(listHouseNumber.length - 1, response);
       }
-
-      householdNumberValue.value = response;
-      houseHoldNumber.text = response;
+      print("i dey here $response");
+      householdNumberValue.value = response.trim();
+      print("i dey here $response");
+      // houseHoldNumber.text = response;
       hideLoaderNew();
       //  verifyHouseNumber(context);
       /*  if (response.isEmpty) {
@@ -1124,6 +1126,7 @@ class IEVDataCollectionController extends GetxController {
         showSuccessSnackbar(context, "House Number is valid");
       } */
     } on DioException catch (e) {
+      print("i dey here 5 $e");
       hideLoaderNew();
       showErrorSnackbar(context, "${e.response!.data['message']}");
       print(e);

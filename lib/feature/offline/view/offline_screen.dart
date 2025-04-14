@@ -88,36 +88,54 @@ class OfflineScreen extends GetView<OfflineController> {
             }), */
             Flexible(
               child: Obx(
-                () => GridView.count(
-                    shrinkWrap: true,
-                    // Create a grid with 2 columns. If you change the scrollDirection to
-                    // horizontal, this would produce 2 rows.
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.9,
-                    // Generate 100 Widgets that display their index in the List
-                    children: [
-                      ...controller.listMap.value.reversed.map((e) {
-                        //  int index = controller.listMap.indexOf(e);
-                        int index = controller.listMap.indexOf(e);
-                        String date = controller.listMap[index]["date"];
-                        String time = controller.listMap[index]["time"];
-                        return InkWell(
-                          onTap: () {
-                            controller.selectedIndex = index;
-                            appRoute.push(const OfflineForm1Route());
-                            // controller.gotoDeliveryScreen(e);
-                          },
-                          child: OfflineCard(
-                            searchModel: SearchModel(
-                                title: controller.listMap[index]["household"]
-                                        ?["houseNumber"] ??
-                                    "",
-                                time: date,
-                                date: time),
+                () {
+                  if (controller.listMap.value.isEmpty) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        50.height,
+                        const Icon(Icons.data_usage_rounded),
+                        Text(
+                          'No data found',
+                          style:
+                              context.theme.appTextTheme.bodyLarge18.copyWith(
+                            fontWeight: FontWeight.w500,
                           ),
-                        );
-                      })
-                    ]),
+                        ),
+                      ],
+                    );
+                  }
+                  return GridView.count(
+                      shrinkWrap: true,
+                      // Create a grid with 2 columns. If you change the scrollDirection to
+                      // horizontal, this would produce 2 rows.
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.9,
+                      // Generate 100 Widgets that display their index in the List
+                      children: [
+                        ...controller.listMap.value.reversed.map((e) {
+                          //  int index = controller.listMap.indexOf(e);
+                          int index = controller.listMap.indexOf(e);
+                          String date = controller.listMap[index]["date"];
+                          String time = controller.listMap[index]["time"];
+                          return InkWell(
+                            onTap: () {
+                              controller.selectedIndex = index;
+                              appRoute.push(const OfflineForm1Route());
+                              // controller.gotoDeliveryScreen(e);
+                            },
+                            child: OfflineCard(
+                              searchModel: SearchModel(
+                                  title: controller.listMap[index]["household"]
+                                          ?["houseNumber"] ??
+                                      "",
+                                  time: date,
+                                  date: time),
+                            ),
+                          );
+                        })
+                      ]);
+                },
               ),
             )
           ],
