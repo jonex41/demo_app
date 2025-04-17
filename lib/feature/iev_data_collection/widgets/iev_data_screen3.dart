@@ -114,7 +114,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
-                                              'First name and surname of child: ${index + 1}'),
+                                              'First name and surname of ${controller.cardinals[index]} child'),
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.NAME,
@@ -142,7 +142,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
-                                              'Do you know the date of birth of the child? ${index + 1}'),
+                                              'Do you know the date of birth of the ${controller.cardinals[index]} child?'),
                                       5.height,
                                       Obx(() {
                                         return AncDropDownButton(
@@ -189,7 +189,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                           'Yes') ...[
                                         AppTextFieldHeader(
                                             title:
-                                                'Date of birth of the child? ${index + 1}'),
+                                                'Date of birth of the ${controller.cardinals[index]} child?'),
                                         5.height,
                                         Obx(() {
                                           final selectedDate = controller
@@ -241,7 +241,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                           'No') ...[
                                         AppTextFieldHeader(
                                           title:
-                                              'What is the age of child? (if DOB is uncertain in weeks): ${index + 1}',
+                                              'What is the age of the ${controller.cardinals[index]} child? (if DOB is uncertain in weeks)',
                                           showCompulsory: false,
                                         ),
                                         5.height,
@@ -398,7 +398,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
-                                              'What is the sex of the child: ${index + 1}'),
+                                              'What is the sex of the ${controller.cardinals[index]} child'),
                                       5.height,
                                       Obx(() {
                                         return AncDropDownButton(
@@ -426,7 +426,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
-                                              'Has the child ever received the polio vaccine in the past? ${index + 1}'),
+                                              'Has the ${controller.cardinals[index]} child ever received the polio vaccine in the past?'),
                                       5.height,
                                       Obx(() {
                                         return AncDropDownButton(
@@ -459,7 +459,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
-                                              'Has the child ever received any routine vaccines in the past? ${index + 1}'),
+                                              'Has the ${controller.cardinals[index]} child ever received any routine vaccines in the past?'),
                                       5.height,
                                       Obx(() {
                                         return AncDropDownButton(
@@ -497,7 +497,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                           "No") ...[
                                         AppTextFieldHeader(
                                             title:
-                                                'Does the child have an RI vaccination card? ${index + 1}'),
+                                                'Does the ${controller.cardinals[index]} child have an RI vaccination card?'),
                                         5.height,
                                         Obx(() {
                                           return AncDropDownButton(
@@ -610,7 +610,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                             18.height,
                                             AppTextFieldHeader(
                                                 title:
-                                                    'Select the antigens the child has received ${index + 1}'),
+                                                    'Select the antigens the ${controller.cardinals[index]} child has received'),
                                             5.height,
                                             Obx(() {
                                               final date = controller
@@ -685,7 +685,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                             18.height,
                                             AppTextFieldHeader(
                                                 title:
-                                                    'Select the antigens the child has received ${index + 1}'),
+                                                    'Select the antigens the ${controller.cardinals[index]} child has received'),
                                             5.height,
                                             Obx(() {
                                               final selectedWeeks = controller
@@ -791,7 +791,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                         18.height,
                                         AppTextFieldHeader(
                                             title:
-                                                'How many visits has the child had to the Health facility for vaccinations?  ${index + 1}'),
+                                                'How many visits has the ${controller.cardinals[index]} child had to the Health facility for vaccinations?'),
                                         5.height,
                                         AppTextField(
                                           textFieldType: TextFieldType.NUMBER,
@@ -827,7 +827,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                           18.height,
                                           AppTextFieldHeader(
                                               title:
-                                                  'On which part of the body did the child take the last vaccine? ${index + 1}:'),
+                                                  'On which part of the body did the ${controller.cardinals[index]} child take the last vaccine?'),
                                           5.height,
                                           Obx(() {
                                             return AncDropDownButton(
@@ -885,7 +885,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       ],
                                       AppTextFieldHeader(
                                           title:
-                                              'What is the name of the primary caregiver of this child? ${index + 1}:'),
+                                              'What is the name of the primary caregiver of this ${controller.cardinals[index]} child?'),
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.NAME,
@@ -914,7 +914,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
-                                              'Relationship of the primary caregiver to the child ${index + 1}'),
+                                              'Relationship of the primary caregiver to the ${controller.cardinals[index]} child'),
                                       5.height,
                                       Obx(() {
                                         return AncDropDownButton(
@@ -945,7 +945,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                       AppTextFieldHeader(
                                           showCompulsory: false,
                                           title:
-                                              'Phone number of primary caregiver? ${index + 1}:'),
+                                              'Phone number of ${controller.cardinals[index]} child primary caregiver?'),
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.PHONE,

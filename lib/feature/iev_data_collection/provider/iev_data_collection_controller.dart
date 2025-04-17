@@ -9,7 +9,6 @@ import 'package:demo_app/feature/iev_data_collection/model/duration_range.dart';
 import 'package:demo_app/feature/login/provider/login_controller.dart';
 import 'package:demo_app/feature/offline/provider/offline_controller.dart';
 import 'package:demo_app/feature/util/my_list_settlement.dart';
-import 'package:demo_app/feature/util/nigerian_states_and_lga.dart';
 import 'package:demo_app/feature/util/utils.dart';
 import 'package:demo_app/model/home/activity_model.dart';
 import 'package:demo_app/model/login/login_res.dart';
@@ -25,6 +24,39 @@ import 'package:progress_bar_steppers/stepper_data.dart';
 import 'package:uuid/uuid.dart';
 
 class IEVDataCollectionController extends GetxController {
+  List<String> cardinals = [
+    'first',
+    'second',
+    'third',
+    'fourth',
+    'fifth',
+    'sixth',
+    'seventh',
+    'eighth',
+    'ninth',
+    'tenth',
+    'eleventh',
+    'twelfth',
+    'thirteenth',
+    'fourteenth',
+    'fifteenth',
+    'sixteenth',
+    'seventeenth',
+    'eighteenth',
+    'nineteenth',
+    'twentieth',
+    'twenty-first',
+    'twenty-second',
+    'twenty-third',
+    'twenty-fourth',
+    'twenty-fifth',
+    'twenty-sixth',
+    'twenty-seventh',
+    'twenty-eighth',
+    'twenty-ninth',
+    'thirtieth'
+  ].obs;
+
   var isEditing = false.obs;
   var isFirstTime = false.obs;
   Map<String, dynamic> selectedMap = {};
