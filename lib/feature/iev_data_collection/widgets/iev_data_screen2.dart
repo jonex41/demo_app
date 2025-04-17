@@ -145,6 +145,7 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                       AppTextField(
                         textFieldType: TextFieldType.PHONE,
                         isValidationRequired: true,
+                        maxLength: 11,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Field is required';
@@ -176,6 +177,7 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                       AppTextField(
                         textFieldType: TextFieldType.NUMBER,
                         isValidationRequired: true,
+                        maxLength: 2,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Field is required';
@@ -209,6 +211,7 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                       AppTextField(
                         textFieldType: TextFieldType.NUMBER,
                         isValidationRequired: true,
+                        maxLength: 2,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Field is required';
@@ -244,6 +247,7 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                       AppTextField(
                         textFieldType: TextFieldType.NUMBER,
                         isValidationRequired: true,
+                        maxLength: 2,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Field is required';
@@ -270,6 +274,7 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                       AppTextField(
                         textFieldType: TextFieldType.NUMBER,
                         isValidationRequired: true,
+                        maxLength: 2,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Field is required';

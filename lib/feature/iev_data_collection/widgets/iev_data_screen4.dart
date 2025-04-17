@@ -233,6 +233,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       AppTextField(
                                         textFieldType: TextFieldType.NUMBER,
                                         isValidationRequired: false,
+                                        maxLength: 11,
                                         /* validator: (value) {
                                           if (value == null || value.isEmpty) {
                                             return 'Field is required';
