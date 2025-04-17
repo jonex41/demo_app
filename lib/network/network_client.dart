@@ -119,10 +119,9 @@ class NetworkService extends GetxService {
     return response.result;
   }
  */
-    Future<List<dynamic>> getAllDataIEVNew(
-      int pageNumber,
- 
-    ) async {
+  Future<List<dynamic>> getAllDataIEVNew(
+    int pageNumber,
+  ) async {
     //final token = storageService.getToken();
     final response = await _restClient.getAllDataIEVNew(pageNumber);
     if (response.statusCode != 200) {
@@ -201,7 +200,7 @@ class NetworkService extends GetxService {
   Future<bool> postBankAccountDetails(Map<String, dynamic> request) async {
     final token = storageService.getToken();
     final response = await _restClient.postBankAccountDetails(token, request);
-    if (response.statusCode != 200) {
+    if (response.statusCode != 201) {
       throw Exception(response.message);
     }
     return true;

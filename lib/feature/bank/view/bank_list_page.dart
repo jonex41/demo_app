@@ -52,7 +52,7 @@ class BankListScreen extends GetView<BankController> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+        padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50),
         child: Column(
           children: [
             const AppAppBar(title: "Bank Records", showBackButton: true),
@@ -155,7 +155,7 @@ class BankListScreen extends GetView<BankController> {
                 },
               ),
             ),
-            150.height,
+            //150.height,
           ],
         ),
       ),
