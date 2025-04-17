@@ -152,8 +152,9 @@ class BankController extends GetxController {
       var response = await networkService.getBankAccountDetails();
       listBankDetails.clear();
       listBankDetailsCopy.clear();
-      listBankDetails.assignAll(response ?? []);
-      listBankDetailsCopy.addAll(listBankDetails);
+      var myList = response?.reversed.toList() ?? [];
+      listBankDetails.assignAll(myList);
+      listBankDetailsCopy.addAll(myList);
       isLoading.value = false;
     } catch (e) {
       isLoading.value = false;
