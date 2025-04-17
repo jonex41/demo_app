@@ -356,7 +356,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         ),
                         5.height,
                         Text(
-                          "House number Example : IE/D1/T001/H001 ",
+                          "House number Example : IE/D1/T001 ",
                           style:
                               context.theme.appTextTheme.bodyMedium16.copyWith(
                             fontSize: 15,

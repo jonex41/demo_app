@@ -176,7 +176,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                       controller.accountNumberTextController,
                                   hint: 'Enter account number',
                                 ),
-                                //  18.height,
+                               18.height,
                                 MyInputTextWidget(
                                   title: "Account Name",
                                   showRequired: true,
