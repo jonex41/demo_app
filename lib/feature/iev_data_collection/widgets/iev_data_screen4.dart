@@ -125,6 +125,8 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 return Obx(() {
+                                  final name =
+                                      controller.fullNameTextLoop[index].value;
                                   return Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -132,7 +134,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
-                                              'First name and surname of pregnant woman ${index + 1}'),
+                                              'First name and surname of the ${controller.cardinals[index]} pregnant woman'),
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.NAME,
@@ -161,7 +163,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       18.height,
                                       AppTextFieldHeader(
                                           title:
-                                              'Has the woman visited the health facility for ANC? ${index + 1}'),
+                                              'Has ${name.isEmpty ? 'the' : ''} ${name.isEmpty ? '${controller.cardinals[index]} woman' : name} visited the health facility for ANC?'),
                                       5.height,
                                       Obx(() {
                                         return AncDropDownButton(
@@ -195,7 +197,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                         18.height,
                                         AppTextFieldHeader(
                                             title:
-                                                'How many times has the woman visited the health facility for ANC? ${index + 1}'),
+                                                'How many times ${name.isEmpty ? 'has the ${controller.cardinals[index]} woman' : 'has $name'} visited the health facility for ANC?'),
                                         5.height,
                                         AppTextField(
                                           textFieldType: TextFieldType.NUMBER,
@@ -228,7 +230,7 @@ class _IEVDataScreen4State extends State<IEVDataScreen4> {
                                       AppTextFieldHeader(
                                           showCompulsory: false,
                                           title:
-                                              'Whats the phone number of the pregnant woman (if available) ${index + 1}'),
+                                              'Whats the phone number ${name.isEmpty ? 'of the ${controller.cardinals[index]} pregnant woman' : 'of $name'} (if available)'),
                                       5.height,
                                       AppTextField(
                                         textFieldType: TextFieldType.NUMBER,

@@ -613,18 +613,27 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                     'Select the antigens the ${controller.cardinals[index]} child has received'),
                                             5.height,
                                             Obx(() {
-                                              final date = controller
+                                              /*  final date = controller
                                                   .selectedDatesLoop[index]
                                                   .value;
                                               final antigenOptions = date !=
                                                       null
                                                   ? controller
                                                       .getEligibleAntigens(date)
-                                                  : [];
+                                                  : []; */
+                                              final weeks = controller
+                                                  .calculateWeeksFromDOB(
+                                                      controller
+                                                          .selectedDatesLoop[
+                                                              index]
+                                                          .value!);
+                                              final eligibleAntigens = controller
+                                                  .getEligibleAntigensByWeeks(
+                                                      weeks);
                                               return MultiSelectDialogField(
                                                 dialogHeight: 500,
                                                 title: const Text(
-                                                  "You can select more than one option",
+                                                  "Scroll to view more options and you can select more than one option",
                                                   style:
                                                       TextStyle(fontSize: 13),
                                                 ),
@@ -647,7 +656,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                   borderRadius:
                                                       BorderRadius.circular(6),
                                                 ),
-                                                items: antigenOptions
+                                                items: eligibleAntigens
                                                     .map((e) =>
                                                         MultiSelectItem(e, e))
                                                     .toList(),
@@ -696,13 +705,16 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                               final selectedMonths =
                                                   (selectedWeeks / 4.345)
                                                       .toStringAsFixed(1);
-                                              final availableAntigens = controller
+                                              /* final availableAntigens = controller
                                                   .getAvailableAntigensFromAgeInWeeks(
+                                                      selectedWeeks); */
+                                              final availableAntigens = controller
+                                                  .getEligibleAntigensByWeeks(
                                                       selectedWeeks);
                                               return MultiSelectDialogField(
                                                 dialogHeight: 500,
                                                 title: const Text(
-                                                  "You can select more than one option",
+                                                  "Scroll to view more options and you can select more than one option",
                                                   style:
                                                       TextStyle(fontSize: 13),
                                                 ),
@@ -830,7 +842,59 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                   'On which part of the body did the ${controller.cardinals[index]} child take the last vaccine?'),
                                           5.height,
                                           Obx(() {
-                                            return AncDropDownButton(
+                                            return MultiSelectDialogField(
+                                              dialogHeight: 500,
+                                              title: const Text(
+                                                "You can select more than one option",
+                                                style: TextStyle(fontSize: 13),
+                                              ),
+                                              buttonIcon: Icon(
+                                                Icons.keyboard_arrow_down_sharp,
+                                                color: AppPalette.grey.gray350,
+                                              ),
+                                              itemsTextStyle:
+                                                  const TextStyle(fontSize: 13),
+                                              selectedItemsTextStyle:
+                                                  const TextStyle(fontSize: 13),
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color:
+                                                        AppPalette.grey.gray300,
+                                                    width: 1),
+                                                borderRadius:
+                                                    BorderRadius.circular(6),
+                                              ),
+                                              items: controller
+                                                  .partOfBodyLastVaccine
+                                                  .map((e) =>
+                                                      MultiSelectItem(e, e))
+                                                  .toList(),
+                                              /*  items: controller.selectAntigens
+                                                  .map((e) =>
+                                                      MultiSelectItem(e, e))
+                                                  .toList(), */
+                                              listType:
+                                                  MultiSelectListType.LIST,
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Select an Option';
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
+                                              onConfirm: (values) {
+                                                controller
+                                                        .selectedSiteOfLastVaccineLoop[
+                                                            index]
+                                                        .value =
+                                                    List<String>.from(values);
+
+                                                debugPrint(
+                                                    '${controller.selectedSiteOfLastVaccineLoop[index]}');
+                                              },
+                                            );
+                                            /* return AncDropDownButton(
                                               hint: 'Select an answer',
                                               value: controller
                                                   .selectedSiteOfLastVaccineLoop[
@@ -852,7 +916,7 @@ class _IEVDataScreen3State extends State<IEVDataScreen3> {
                                                         index]
                                                     .value = value;
                                               },
-                                            );
+                                            ); */
                                           }),
                                         ],
 

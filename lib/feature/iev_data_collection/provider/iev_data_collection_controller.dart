@@ -148,7 +148,8 @@ class IEVDataCollectionController extends GetxController {
   final List<Rxn<String>> selectedRelationShipOfPrimaryCareGiverOfChildLoop =
       [];
   var phoneNumberOfPrimaryCareGiverOfChildLoop = <TextEditingController>[].obs;
-  final List<Rxn<String>> selectedSiteOfLastVaccineLoop = [];
+  var selectedSiteOfLastVaccineLoop = <RxList<String>>[].obs;
+  //final List<Rxn<String>> selectedSiteOfLastVaccineLoop = [];
   final List<Rxn<int>> childAgeInWeeksLoop = [];
 
   void updateFieldsCountNumberOfUnder5Children(int count) {
@@ -195,7 +196,8 @@ class IEVDataCollectionController extends GetxController {
       nameOfPrimaryCareGiverOfChildLoop.add(TextEditingController());
       selectedRelationShipOfPrimaryCareGiverOfChildLoop.add(Rxn<String>());
       phoneNumberOfPrimaryCareGiverOfChildLoop.add(TextEditingController());
-      selectedSiteOfLastVaccineLoop.add(Rxn<String>());
+      selectedSiteOfLastVaccineLoop.add(<String>[].obs);
+      //selectedSiteOfLastVaccineLoop.add(Rxn<String>());
       childAgeInWeeksLoop.add(Rxn<int>());
     }
   }
@@ -218,8 +220,8 @@ class IEVDataCollectionController extends GetxController {
     const DurationRange(min: Duration(days: 70), max: Duration(days: 98)): [
       "Pentavalent (DPT, Hep B and Hib) 2",
       "Pneumococcal Conjugate Vaccine2",
-      "OPV 3",
-      "Rota 3"
+      "OPV 2",
+      "Rota 2"
     ],
     const DurationRange(min: Duration(days: 98), max: Duration(days: 180)): [
       "Pentavalent 3 (DPT, Hep B and Hib)",
@@ -246,6 +248,25 @@ class IEVDataCollectionController extends GetxController {
       "HPV 6 months interval (2 doses)"
     ],
   };
+
+  int calculateWeeksFromDOB(DateTime date) {
+    final now = DateTime.now();
+    final duration = now.difference(date);
+    return duration.inDays ~/ 7;
+  }
+
+  List<String> getEligibleAntigensByWeeks(int weeks) {
+    final nowDuration = Duration(days: weeks * 7);
+
+    final cumulativeRanges = antigenSchedule.entries
+        .where((entry) => nowDuration >= entry.key.min)
+        .map((e) => e.value)
+        .expand((e) => e)
+        .toSet() // Avoid duplicates
+        .toList();
+
+    return cumulativeRanges;
+  }
 
   // Function to filter antigens based on age in months
   List<String> getAvailableAntigensFromAgeInWeeks(int weeks) {
@@ -529,6 +550,7 @@ class IEVDataCollectionController extends GetxController {
 
   var textFieldCountOtherPregnantWomenInHouseHold = 0.obs;
   var fullNamePregnantWomanControllerLoop = <TextEditingController>[].obs;
+  var fullNameTextLoop = <RxString>[].obs;
   var selectedHowManyMonthsPregnantLoop = <RxString>[].obs;
   var selectedHasWomanTakenTTIDVaccineLoop = <RxString>[].obs;
   var selectedDosesTDVaccineTakenPregnantLoop = <RxString>[].obs;
@@ -542,6 +564,7 @@ class IEVDataCollectionController extends GetxController {
   void updateFieldCountOtherPregnantWomenInHouseHold(int count) {
     textFieldCountOtherPregnantWomenInHouseHold.value = count;
     fullNamePregnantWomanControllerLoop.clear();
+    fullNameTextLoop.clear();
     selectedHowManyMonthsPregnantLoop.clear();
     selectedHasWomanTakenTTIDVaccineLoop.clear();
     selectedDosesTDVaccineTakenPregnantLoop.clear();
@@ -553,6 +576,10 @@ class IEVDataCollectionController extends GetxController {
 
     for (int i = 0; i < count; i++) {
       fullNamePregnantWomanControllerLoop.add(TextEditingController());
+      fullNameTextLoop.add(''.obs);
+      fullNamePregnantWomanControllerLoop[i].addListener(() {
+        fullNameTextLoop[i].value = fullNamePregnantWomanControllerLoop[i].text;
+      });
       selectedHowManyMonthsPregnantLoop.add('None'.obs);
       selectedHasWomanTakenTTIDVaccineLoop.add('No'.obs);
       selectedDosesTDVaccineTakenPregnantLoop.add('None'.obs);
@@ -998,7 +1025,7 @@ class IEVDataCollectionController extends GetxController {
           "howManyVisitsHasChildHad":
               int.tryParse(howManyVisitChildHadToHealthFacilityLoop[j].text) ??
                   0,
-          "lastVaccinationSite": selectedSiteOfLastVaccineLoop[j].value,
+          "lastVaccinationSites": selectedSiteOfLastVaccineLoop[j].toList(),
           "primaryCareGiverName": nameOfPrimaryCareGiverOfChildLoop[j].text,
           "relationshipOfCaregiverToChild":
               selectedRelationShipOfPrimaryCareGiverOfChildLoop[j].value,
@@ -1376,7 +1403,7 @@ class IEVDataCollectionController extends GetxController {
     } on DioException catch (e) {
       showLoaderDialog(context, false);
       snackBar(context,
-          title: 'Something is wrong',
+          title: '${e.response?.data['message'] ?? 'Something is wrong'}',
           backgroundColor: AppPalette.red.red350,
           textColor: AppPalette.white);
       debugPrint(e.toString());
