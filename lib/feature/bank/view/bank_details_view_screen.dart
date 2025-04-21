@@ -97,26 +97,28 @@ class BankDetailsViewScreen extends GetView<BankController> {
                                 ),
                                 18.height,
                                 Obx(
-                                  () => MyDropDownWidget(
-                                    onChange: (value) {
-                                      controller.roleDesignation.value = value;
-                                    },
-                                    titile: "Role/designation",
-                                    children: controller.listDesignation.value,
-                                    //  hintText: controller.selectedDate.value,
-                                    isEnabled: false,
-                                    hintText: controller.hintDesignation.value,
-                                    showRequired: true,
-                                    validator: (value) {
-                                      if (controller.isEditing.isTrue) {
-                                        return null;
-                                      }
-                                      if (value == null || value.isEmpty) {
-                                        return 'Field is required';
-                                      } else {
-                                        return null;
-                                      }
-                                    },
+                                  () => AbsorbPointer(
+                                    child: MyDropDownWidget(
+                                      onChange: (value) {
+                                        controller.roleDesignation.value = value;
+                                      },
+                                      titile: "Role/designation",
+                                      children: controller.listDesignation.value,
+                                      //  hintText: controller.selectedDate.value,
+                                      isEnabled: false,
+                                      hintText: controller.hintDesignation.value,
+                                      showRequired: true,
+                                      validator: (value) {
+                                        if (controller.isEditing.isTrue) {
+                                          return null;
+                                        }
+                                        if (value == null || value.isEmpty) {
+                                          return 'Field is required';
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                    ),
                                   ),
                                 ),
                                 18.height,

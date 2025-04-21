@@ -118,6 +118,7 @@ class BankController extends GetxController {
       hintBank.value = selectedBankDetails.value?.bankName ?? "Bank Name";
       hintDesignation.value = selectedBankDetails.value?.designation ?? "Role";
       hintBank.value = selectedBankDetails.value?.bankName ?? "Bank Name";
+      selectedBank.value = selectedBankDetails.value?.bankName ?? "Bank Name";
     }
   }
 
@@ -133,16 +134,159 @@ class BankController extends GetxController {
   }
 
   Future<void> getRoleDesignation() async {
-    var response = await networkService.getDesignation();
-    listDesignation.clear();
-    listDesignation.assignAll(response ?? []);
+    try {
+      var response = await networkService.getDesignation();
+      listDesignation.clear();
+      listDesignation.assignAll(response ?? []);
+    } on Exception catch (e) {
+      listDesignation.clear();
+      listDesignation.assignAll([
+        "Data Clerk/Enumerator",
+        "Auxiliary Community Based Health Worker",
+        "Junior Community Health Extension Worker",
+        "Community Leader",
+        "Local Guide",
+        "Ward Focal Person",
+        "National Supervisor",
+        "State Supervisor",
+        "LGA Supervisor",
+        "Ward Supervisor",
+        "Other"
+      ]);
+
+      // TODO
+    }
     // print("online data $map");
   }
 
   Future<void> getBank() async {
-    var response = await networkService.getBanks();
-    listBank.clear();
-    listBank.assignAll(response ?? []);
+    try {
+      var response = await networkService.getBanks();
+      listBank.clear();
+      listBank.assignAll(response ?? []);
+    } on Exception catch (e) {
+      listBank.clear();
+      listBank.assignAll([
+        "9 PAYMENT SOLUTIONS BANK",
+        "AAA FINANCE",
+        "ACCELEREX NETWORK LIMITED",
+        "ACCESS BANK",
+        "ACCESS MONEY",
+        "ACCESS YELLO & BETA",
+        "ACCESS(DIAMOND) BANK",
+        "AKWA SAVINGS & LOANS LIMITED",
+        "ALTERNATIVE BANK LIMITED",
+        "ASO SAVINGS",
+        "Branch International Finance Company Limited",
+        "BRIDGEWAY MICROFINANACE BANK",
+        "CARBON",
+        "CBN",
+        "CBN_TSA",
+        "CELLULANT",
+        "CHANELLE BANK",
+        "CITI BANK",
+        "CORONATION MERCHANT BANK",
+        "COUNTY FINANCE LTD",
+        "CRYSTAL FINANCE COMPANY LIMITED",
+        "DIGNITY FINANCE",
+        "EARTHOLEUM",
+        "ECOBANK",
+        "ECOBANK XPRESS ACCOUNT",
+        "ECOMOBILE",
+        "ENAIRA",
+        "ENCO FINANCE",
+        "ENTERPRISE BANK",
+        "ETRANZACT",
+        "EYOWO",
+        "FAST CREDIT",
+        "FBNQUEST MERCHANT BANK",
+        "FCMB MOBILE",
+        "FETS",
+        "FEWCHORE FINANCE COMPANY LIMITED",
+        "FIDELITY BANK",
+        "FIDELITY MOBILE",
+        "FIRST BANK OF NIGERIA",
+        "FIRST CITY MONUMENT BANK",
+        "FIRSTMONIE WALLET",
+        "FORTIS MOBILE",
+        "FSDH",
+        "FUNDQUEST FINANCIAL SERVICES LTD",
+        "GIREI MICROFINANACE BANK",
+        "GLOBUS BANK",
+        "GREENWICH MERCHANT BANK",
+        "GT MOBILE",
+        "GTBANK PLC",
+        "HEDONMARK",
+        "HERITAGE BANK",
+        "HOPEPSB",
+        "INNOVECTIVES KESH",
+        "ITEX INTEGRATED SERVICES LIMITED",
+        "JAIZ BANK",
+        "JUBILEE LIFE",
+        "KEGOW",
+        "KEGOW(CHAMSMOBILE)",
+        "KEYSTONE BANK",
+        "KONGAPAY",
+        "LAGOS BUILDING AND INVESTMENT COMPANY",
+        "LOTUS BANK",
+        "M36",
+        "MOMO PAYMENT SERVICE BANK ",
+        "MONEY BOX",
+        "MONEY MASTER PSB",
+        "NEW PRUDENTIAL BANK",
+        "NEWEDGE FINANCE LTD",
+        "NIP VIRTUAL BANK",
+        "NOVA MERCHANT BANK",
+        "NOWNOW DIGITAL SYSTEMS LIMITED",
+        "OPAY",
+        "OPTIMUS BANK",
+        "PAGA",
+        "PALMPAY",
+        "PARALLEX BANK",
+        "PARKWAY-READYCASH",
+        "PAYSTACK-TITAN",
+        "POLARIS BANK",
+        "PREMIUM TRUST  BANK",
+        "PROVIDUS BANK",
+        "RAND MERCHANT BANK",
+        "SAFETRUST",
+        "SAGEGREY FINANCE LIMITED",
+        "SIGNATURE BANK",
+        "SIMPLE FINANCE LIMITED",
+        "SMARTCASH PAYMENT SERVICE BANK",
+        "SPARKLE",
+        "STANBIC IBTC @EASE WALLET",
+        "STANBIC IBTC BANK",
+        "STANDARD CHARTERED BANK",
+        "STERLING BANK",
+        "STERLING MOBILE",
+        "SUNTRUST BANK",
+        "TAGPAY",
+        "TAJ BANK",
+        "TAJWALLET",
+        "TANGERINE MONEY",
+        "TEASY MOBILE",
+        "TEKLA FINANCE LTD",
+        "TEST BANK",
+        "TITAN TRUST BANK",
+        "TRINITY FINANCIAL SERVICES LIMITED",
+        "UBA MONI",
+        "UNION BANK",
+        "UNITED BANK FOR AFRICA",
+        "UNITY BANK",
+        "VALE FINANCE LIMITED",
+        "VT NETWORKS",
+        "WEMA BANK",
+        "WINVIEW BANK",
+        "XPRESS PAYMENTS",
+        "XPRESS WALLET",
+        "ZEDVANCE FINANCE LIMITED",
+        "ZENITH BANK",
+        "ZENITH EASY WALLET",
+        "ZENITH MOBILE",
+      ]);
+      // TODO
+    }
     // print("online data $map");
   }
 
@@ -152,7 +296,7 @@ class BankController extends GetxController {
       var response = await networkService.getBankAccountDetails();
       listBankDetails.clear();
       listBankDetailsCopy.clear();
-     // var myList = response?.reversed.toList() ?? [];
+      // var myList = response?.reversed.toList() ?? [];
       listBankDetails.assignAll(response ?? []);
       listBankDetailsCopy.addAll(response ?? []);
       isLoading.value = false;
@@ -170,7 +314,15 @@ class BankController extends GetxController {
     if (!isValid) {
       return;
     }
+
     showLoaderNew(context);
+    //submit data locally
+    if (!await isNetworkAvailable()) {
+      print("i am offline");
+      submitDataLocally(context);
+       hideLoaderNew();
+      return;
+    }
     try {
       var response = await networkService.postBankAccountDetails({
         "accountNumber": accountNumberTextController.text,
@@ -196,6 +348,30 @@ class BankController extends GetxController {
       showErrorSnackbar(context, "An error occurred");
       print(e);
     }
+  }
+
+  void submitDataLocally(BuildContext context) async {
+    Map<String, dynamic> iEVData = {
+      "accountNumber": accountNumberTextController.text,
+      "accountName": accountNameTextController.text,
+      "bankName": selectedBank.value,
+      "fullName": nameTextController.text,
+      "phoneNumber": phoneNumberTextController.text,
+      "designation": roleDesignation.value,
+    };
+
+    final storageService = LocalStorageService(key: "my_storage_bank_key");
+    var list = await storageService.getList();
+    if (list.isEmpty) {
+      await storageService.saveList([iEVData]);
+    } else {
+      await storageService.addItem(iEVData);
+    }
+    /*  Get.find<OfflineController>().listMap.refresh();
+    Get.find<OfflineController>().getLocal();
+    Get.find<HomeController>().getLocal(); */
+    showSuccessModal(
+        context, "Data Submitted Locally", "Data submitted successfully");
   }
 
   Future<void> submitEditData(BuildContext context) async {

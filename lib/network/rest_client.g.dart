@@ -275,9 +275,15 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<BaseResponse<dynamic>> getAllDataIEVNew(int pageNumber) async {
+  Future<BaseResponse<dynamic>> getAllDataIEVNew(
+    int pageNumber,
+    int pageSize,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'pageNumber': pageNumber};
+    final queryParameters = <String, dynamic>{
+      r'pageNumber': pageNumber,
+      r'pageSize': pageSize,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -574,9 +580,11 @@ class _RestClient implements RestClient {
 
   @override
   Future<BaseResponse<List<BankAccountModel>>> getBankAccountDetails(
-      dynamic token) async {
+    dynamic token,
+    int pageSize,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'pageSize': pageSize};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;

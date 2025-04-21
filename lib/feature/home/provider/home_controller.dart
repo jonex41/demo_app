@@ -44,6 +44,7 @@ class HomeController extends GetxController {
 //   userModel.value = storageService.getUser();
     loginModel.value = storageService.getUser();
     getLocal();
+    getLocalBank();
     getDataOnline();
     selectedTab.listen((value) {
       print('new $value');
@@ -94,6 +95,17 @@ class HomeController extends GetxController {
     final storageService = LocalStorageService(key: "my_storage_key");
     var list = await storageService.getList();
     pendingSync.value = list.length;
+  }
+
+  void getLocalBank() async {
+    final storageService = LocalStorageService(key: "my_storage_bank_key");
+    var list = await storageService.getList();
+    for (var model in list) {
+      networkService.postBankAccountDetails(model);
+    }
+    if (await isNetworkAvailable()) {
+      storageService.deleteAll();
+    }
   }
 
   String greeting() {

@@ -47,6 +47,7 @@ abstract class RestClient {
   @GET("IEVSurvey/enumerator/data")
   Future<BaseResponse> getAllDataIEVNew(
     @Query("pageNumber") int pageNumber,
+     @Query("pageSize") int pageSize,
     /*    @Query("HouseNumber") String houseNumber,
     @Query("Lga") String lga,
     @Query("State") String state, */
@@ -74,7 +75,9 @@ abstract class RestClient {
   );
 
   @GET("/Resources/account/designations")
-  Future<BaseResponse<List<String>>> getDesignation();
+  Future<BaseResponse<List<String>>> getDesignation(
+    
+  );
   @GET("/Wallet/banks")
   Future<BaseResponse<List<String>>> getBanks();
 
@@ -85,6 +88,7 @@ abstract class RestClient {
   @GET("/Wallet/account/details")
   Future<BaseResponse<List<BankAccountModel>>> getBankAccountDetails(
     @Header('Authorization') token,
+    @Query("pageSize") int pageSize,
   );
 
   @DELETE("/Wallet/account/details")

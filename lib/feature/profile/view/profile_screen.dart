@@ -40,7 +40,7 @@ class ProfileScreen extends GetView<ProfileController> {
             ),
           ),
         ),
-        actions: [
+        /*  actions: [
           InkWell(
             onTap: () {
               controller.gotoEditProfileScreen();
@@ -52,7 +52,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       AppPalette.black, BlendMode.srcIn)),
             ),
           )
-        ],
+        ], */
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -103,7 +103,7 @@ class ProfileScreen extends GetView<ProfileController> {
                   controller.loginModel.value?.lga ?? ""),
               20.height,
               _card(context, Assets.icons.location.svg(),
-                  controller.loginModel.value?.settlement[0]??"" ),
+                  controller.loginModel.value?.settlement[0] ?? ""),
               20.height,
               _card(context, Assets.icons.ward.svg(),
                   controller.loginModel.value?.ward ?? ""),

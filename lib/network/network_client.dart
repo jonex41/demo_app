@@ -123,7 +123,7 @@ class NetworkService extends GetxService {
     int pageNumber,
   ) async {
     //final token = storageService.getToken();
-    final response = await _restClient.getAllDataIEVNew(pageNumber);
+    final response = await _restClient.getAllDataIEVNew(pageNumber, 1000);
     if (response.statusCode != 200) {
       throw Exception(response.message);
     }
@@ -229,7 +229,7 @@ class NetworkService extends GetxService {
 
   Future<List<BankAccountModel>?> getBankAccountDetails() async {
     final token = storageService.getToken();
-    final response = await _restClient.getBankAccountDetails(token);
+    final response = await _restClient.getBankAccountDetails(token, 1000);
     if (response.statusCode != 200) {
       throw Exception(response.message);
     }
