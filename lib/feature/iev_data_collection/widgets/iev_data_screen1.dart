@@ -32,9 +32,12 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
     super.dispose();
   }
 
+  bool? isOnline;
+
   @override
   void initState() {
     super.initState();
+    checkOnline();
     if (controller.isEditing.value) {
       controller.isFirstTime.value = true;
       controller.teamCode.text =
@@ -75,6 +78,11 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
           controller.selectedMap["household"]["houseNumber"].toString();
       controller.isFirstTime.value = false;
     }
+  }
+
+  void checkOnline() async {
+    isOnline = await isNetworkAvailable();
+    setState(() {});
   }
 
   @override
@@ -365,22 +373,27 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                           ),
                         ),
                         10.height,
-                        AppElevatedButton(
-                          textColor: AppPalette.white,
-                          color: AppPalette.primary.primary400,
-                          height: 45,
-                          width: MediaQuery.of(context).size.width - 30,
-                          radius: 8,
-                          text: 'Check House Number',
-                          onPressed: () async {
-                            if (controller.houseNumber.text.isEmpty) {
-                              toast("Please enter a house number");
-                              return;
-                            }
-                            controller.verifyHouseNumber(context);
-                          },
-                        ),
-                        18.height,
+                        if (isOnline == true)
+                          Column(
+                            children: [
+                              AppElevatedButton(
+                                textColor: AppPalette.white,
+                                color: AppPalette.primary.primary400,
+                                height: 45,
+                                width: MediaQuery.of(context).size.width - 30,
+                                radius: 8,
+                                text: 'Check House Number',
+                                onPressed: () async {
+                                  if (controller.houseNumber.text.isEmpty) {
+                                    toast("Please enter a house number");
+                                    return;
+                                  }
+                                  controller.verifyHouseNumber(context);
+                                },
+                              ),
+                              18.height,
+                            ],
+                          ),
                         const AppTextFieldHeader(title: 'Settlement'),
                         5.height,
                         Obx(() {
@@ -415,7 +428,7 @@ class _IEVDataScreen1State extends State<IEVDataScreen1> {
                         header(context, 'Consent Enumerator Introduction:'),
                         18.height,
                         Text(
-                          'Good day, my name is ......................... I am here on behalf of the National Primary Health Care Development Agency (NPHCDA) and State Primary Health Care to ask you questions about the immunization status of children and pregnant women in your household. The information gathered will be used to improve the immunization program. All information you provide will remain confidential.',
+                          'Good day, my name is ${controller.nameOfEnumerator.text} I am here on behalf of the National Primary Health Care Development Agency (NPHCDA) and State Primary Health Care to ask you questions about the immunization status of children and pregnant women in your household. The information gathered will be used to improve the immunization program. All information you provide will remain confidential.',
                           style:
                               context.theme.appTextTheme.bodyMedium16.copyWith(
                             fontSize: 14,

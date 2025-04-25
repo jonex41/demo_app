@@ -29,7 +29,7 @@ class BankDetailsScreen extends GetView<BankController> {
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 13, right: 13),
+            padding: const EdgeInsets.only(left: 13, right: 13, top: 10),
             child: Column(
               children: [
                 const AppAppBar(title: "Bank Records", showBackButton: true),
@@ -146,7 +146,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                     },
                                   ), */
                                     ),
-                                //  18.height,
+                                18.height,
                                 MyInputTextWidget(
                                   title: "Account Number",
                                   showRequired: true,
@@ -176,7 +176,7 @@ class BankDetailsScreen extends GetView<BankController> {
                                       controller.accountNumberTextController,
                                   hint: 'Enter account number',
                                 ),
-                               18.height,
+                                // 18.height,
                                 MyInputTextWidget(
                                   title: "Account Name",
                                   showRequired: true,
@@ -277,20 +277,17 @@ class BankDetailsScreen extends GetView<BankController> {
   Widget getDropDown(BuildContext context) {
     return DropdownSearch<String>(
       // key: dropDownKey,
-      
+
       selectedItem: controller.selectedBank.value,
       items: (filter, infiniteScrollProps) => controller.listBank.value,
-      
+
       onChanged: (value) {
-        
         controller.selectedBank.value = value!;
       },
       decoratorProps: DropDownDecoratorProps(
-        
           decoration: inputDecoration(
-            
               fillColor: AppPalette.white, hintText: "Select Bank")),
-              
+
       popupProps: const PopupProps.menu(
           showSearchBox: true,
           fit: FlexFit.loose,

@@ -52,7 +52,8 @@ class BankListScreen extends GetView<BankController> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50),
+        padding:
+            const EdgeInsets.only(left: 25, right: 25, bottom: 50, top: 10),
         child: Column(
           children: [
             const AppAppBar(title: "Bank Records", showBackButton: true),
@@ -124,7 +125,7 @@ class BankListScreen extends GetView<BankController> {
                       childAspectRatio: 0.9,
                       // Generate 100 Widgets that display their index in the List
                       children: [
-                        ...controller.listBankDetails.reversed.map((e) {
+                        ...controller.listBankDetails.map((e) {
                           //  int index = controller.listMap.indexOf(e);
                           int index = controller.listBankDetails.indexOf(e);
 

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:demo_app/core/offline_storage.dart';
 import 'package:demo_app/core/router/locator.dart';
 import 'package:demo_app/core/router/router.dart';
@@ -16,6 +18,7 @@ import 'package:demo_app/network/network_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:nb_utils/nb_utils.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class HomeController extends GetxController {
   final isFirst = true.obs;
@@ -23,6 +26,7 @@ class HomeController extends GetxController {
   final canShowSend = false.obs;
   final canShowMore = false.obs;
   final showBalance = true.obs;
+  final onlineOffline = true.obs;
   final userTransactions = <TransactionModel?>[].obs;
   final userTransactions4 = <TransactionModel?>[].obs;
   final text = ''.obs;
@@ -36,10 +40,13 @@ class HomeController extends GetxController {
   final networkService = Get.find<NetworkService>();
   final storageService = Get.find<StorageService>();
   final FocusNode unitCodeCtrlFocusNode = FocusNode();
+  List<Map<String, dynamic>> ievList = [];
 
   final loginModel = Rxn<LoginResponse?>();
+  late StreamSubscription<List<ConnectivityResult>> subscription;
   @override
   void onInit() {
+    listenToNetwork();
     // TODO: implement onInit
 //   userModel.value = storageService.getUser();
     loginModel.value = storageService.getUser();
@@ -51,6 +58,22 @@ class HomeController extends GetxController {
     });
     super.onInit();
   }
+
+  
+
+  void listenToNetwork() {
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((List<ConnectivityResult> result) async {
+      // Received changes in available connectivity types!
+      if (await isNetworkAvailable()) {
+        onlineOffline.value = true;
+      } else {
+        onlineOffline.value = false;
+      }
+    });
+  }
+  
 
   showSuccessSnackbar(
     BuildContext context,
@@ -93,8 +116,7 @@ class HomeController extends GetxController {
 
   void getLocal() async {
     final storageService = LocalStorageService(key: "my_storage_key");
-    var list = await storageService.getList();
-    pendingSync.value = list.length;
+    ievList = await storageService.getList();
   }
 
   void getLocalBank() async {
@@ -104,8 +126,14 @@ class HomeController extends GetxController {
       networkService.postBankAccountDetails(model);
     }
     if (await isNetworkAvailable()) {
+      pendingSync.value = ievList.length;
       storageService.deleteAll();
+    } else {
+      int mylength = list.length + ievList.length;
+      pendingSync.value = mylength;
     }
+
+    pendingSync.value = list.length;
   }
 
   String greeting() {

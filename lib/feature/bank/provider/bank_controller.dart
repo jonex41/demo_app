@@ -320,7 +320,7 @@ class BankController extends GetxController {
     if (!await isNetworkAvailable()) {
       print("i am offline");
       submitDataLocally(context);
-       hideLoaderNew();
+      hideLoaderNew();
       return;
     }
     try {
@@ -334,6 +334,7 @@ class BankController extends GetxController {
       });
       hideLoaderNew();
       if (response) {
+        getBankAccountDetails();
         showSuccessModal(
             context, "Data Submitted", "Data submitted successfully");
       } else {
@@ -395,7 +396,7 @@ class BankController extends GetxController {
         getBankAccountDetails();
         showSuccessModal(
             context, "Data Submitted", "Data submitted successfully");
-        getBankAccountDetails();
+        // getBankAccountDetails();
       } else {
         showErrorSnackbar(context, "An error occurred");
       }

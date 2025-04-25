@@ -52,7 +52,8 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                           style: ElevatedButton.styleFrom(
                               foregroundColor: AppPalette.primary.primary400,
                               backgroundColor: AppPalette.white,
-                              padding: const EdgeInsets.all(20.0),
+                              padding:
+                                  const EdgeInsets.only(right: 20, left: 20),
                               fixedSize:
                                   Size(MediaQuery.of(context).size.width, 55),
                               textStyle: context.theme.appTextTheme.bodyMedium16

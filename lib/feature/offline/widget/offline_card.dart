@@ -31,12 +31,17 @@ class OfflineCard extends StatelessWidget {
                 name: name,
               ),
               10.height,
-              Text(
-                searchModel.title ?? "Name",
-                style: context.theme.appTextTheme.labelLarge12.copyWith(
-                    color: const Color(0xff7A7C7F),
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w800),
+              SizedBox(
+                width: 150.w,
+                child: Text(
+                  searchModel.title ?? "Name",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.theme.appTextTheme.labelLarge12.copyWith(
+                      color: const Color(0xff7A7C7F),
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w800),
+                ),
               ),
               5.height,
               Row(
@@ -44,8 +49,8 @@ class OfflineCard extends StatelessWidget {
                   Row(
                     children: [
                       Assets.icons.calendar.svg(
-                        width: 16,
-                        height: 16,
+                        width: 14,
+                        height: 14,
                         fit: BoxFit.scaleDown,
                         color: const Color(0xff7A7C7F),
                       ),
@@ -63,8 +68,8 @@ class OfflineCard extends StatelessWidget {
                   Row(
                     children: [
                       Assets.icons.clock.svg(
-                        width: 16,
-                        height: 16,
+                        width: 14,
+                        height: 14,
                         fit: BoxFit.scaleDown,
                         color: const Color(0xff7A7C7F),
                       ),

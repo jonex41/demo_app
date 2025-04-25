@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
       ScreenUtil.init(context);
       // final state = ref.watch(themeProvider);
       return MaterialApp.router(
-        title: 'Book Keeping App',
+        title: 'IEV app',
         debugShowCheckedModeBanner: false,
         // theme: themeData(state.theme!),
         theme: AppTheme.light,

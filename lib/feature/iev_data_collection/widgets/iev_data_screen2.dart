@@ -18,9 +18,11 @@ class IEVDataScreen2 extends StatefulWidget {
 class _IEVDataScreen2State extends State<IEVDataScreen2> {
   final controller =
       Get.put<IEVDataCollectionController>(IEVDataCollectionController());
+  bool? isOnline;
   @override
   void initState() {
     super.initState();
+    checkOnline();
     if (controller.isEditing.value) {
       controller.isFirstTime.value = true;
       Future.delayed(const Duration(seconds: 1), () {
@@ -38,6 +40,11 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
       controller.updateEditFields(listMap.length, listMap);
       controller.isFirstTime.value = false;
     }
+  }
+
+  void checkOnline() async {
+    isOnline = await isNetworkAvailable();
+    setState(() {});
   }
 
   @override
@@ -61,33 +68,35 @@ class _IEVDataScreen2State extends State<IEVDataScreen2> {
                     children: [
                       header(context, 'Household details'),
                       18.height,
-                      const AppTextFieldHeader(
-                          title:
-                              'Household Number(if number is not available, select Generate Household Number)'),
-                      5.height,
-                      Obx(
-                        () => AncDropDownButton(
-                          hint: 'Select a Household Number',
-                          // value: controller.dummyWard[0],
-                          value: controller.householdNumberValue.value,
-                          items: controller.listHouseNumber.value,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Field is required';
-                            } else {
-                              return null;
-                            }
-                          },
-                          onChanged: (value) {
-                            if (value == "Generate Household Number") {
-                              controller.generateHouseHoldNumber(context);
-                            } else {
-                              controller.houseHoldNumber.text = value;
-                              controller.householdNumberValue.value = value;
-                            }
-                          },
+                      if (isOnline == true)
+                        const AppTextFieldHeader(
+                            title:
+                                'Household Number(if number is not available, select Generate Household Number)'),
+                      if (isOnline == true) 5.height,
+                      if (isOnline == true)
+                        Obx(
+                          () => AncDropDownButton(
+                            hint: 'Select a Household Number',
+                            // value: controller.dummyWard[0],
+                            value: controller.householdNumberValue.value,
+                            items: controller.listHouseNumber.value,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Field is required';
+                              } else {
+                                return null;
+                              }
+                            },
+                            onChanged: (value) {
+                              if (value == "Generate Household Number") {
+                                controller.generateHouseHoldNumber(context);
+                              } else {
+                                controller.houseHoldNumber.text = value;
+                                controller.householdNumberValue.value = value;
+                              }
+                            },
+                          ),
                         ),
-                      ),
                       /*   AppTextField(
                         textFieldType: TextFieldType.OTHER,
                         isValidationRequired: true,

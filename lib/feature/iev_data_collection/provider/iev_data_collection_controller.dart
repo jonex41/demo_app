@@ -20,6 +20,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:nb_utils/nb_utils.dart' as nb;
 import 'package:progress_bar_steppers/stepper_data.dart';
 import 'package:uuid/uuid.dart';
 
@@ -945,7 +946,7 @@ class IEVDataCollectionController extends GetxController {
     if (currentScreen.value == 1) {
       return 'Enumerator Questionnaire for Immunization Status Survey';
     } else if (currentScreen.value == 2) {
-      return 'Consent';
+      return 'Household Details';
     } else if (currentScreen.value == 3) {
       return 'U5 Child Profile and Immunization Status';
     } else if (currentScreen.value == 4) {
@@ -987,7 +988,8 @@ class IEVDataCollectionController extends GetxController {
       },
       "household": {
         "houseNumber": houseNumber.text,
-        "houseHoldNumber": houseHoldNumber.text,
+        if (houseHoldNumber.text.isNotEmpty)
+          "houseHoldNumber": houseHoldNumber.text,
         "consent": selectedProceed.value ?? '',
         "reasonForNonConsent": selectedProceedReason.value == "Others specify"
             ? othersProceedSpecify.text
@@ -1275,8 +1277,14 @@ class IEVDataCollectionController extends GetxController {
       }
     } on DioException catch (e) {
       listHouseNumber.clear();
-      listHouseNumber.insert(
-          listHouseNumber.length, "Generate Household Number");
+      if (await nb.isNetworkAvailable()) {
+        listHouseNumber.insert(
+            listHouseNumber.length, "Generate Household Number");
+      } else {
+        //  listHouseNumber.add("Generate Household Number");
+        // householdNumberValue.value = "";
+      }
+
       hideLoaderNew();
       showAlertDialog(context,
           "${e.response!.data['message']}, This house number will be registered");

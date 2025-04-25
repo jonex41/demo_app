@@ -30,7 +30,7 @@ class BankDetailsViewScreen extends GetView<BankController> {
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 13, right: 13),
+            padding: const EdgeInsets.only(left: 13, right: 13, top: 10),
             child: Column(
               children: [
                 const AppAppBar(title: "Bank Records", showBackButton: true),

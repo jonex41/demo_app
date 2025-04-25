@@ -1,3 +1,4 @@
+import 'package:demo_app/core/storage_service.dart';
 import 'package:demo_app/core/theme/new_theme/app_color.dart';
 import 'package:demo_app/feature/home/provider/home_binding.dart';
 import 'package:demo_app/feature/login/provider/login_controller.dart';
@@ -10,6 +11,7 @@ import '../../../core/router/locator.dart';
 import '../../../core/router/router.dart';
 
 class ProfileController extends GetxController {
+  final storageService = Get.find<StorageService>();
   final nameEdit = TextEditingController();
   final emailEdit = TextEditingController();
   final phoneNumberEdit = TextEditingController();
@@ -75,8 +77,7 @@ class ProfileController extends GetxController {
 
   @override
   void onInit() {
-    loginModel.value = Get.find<LoginController>().loginModel.value;
-
+    loginModel.value = storageService.getUser();
     super.onInit();
   }
 
