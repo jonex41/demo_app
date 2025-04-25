@@ -62,6 +62,32 @@ class OfflineController extends GetxController {
     }
   }
 
+  String formatAgeString(String weekString) {
+    final regex = RegExp(r'(\d+)\s*weeks');
+    final match = regex.firstMatch(weekString);
+
+    if (match != null) {
+      int weeks = int.parse(match.group(1)!);
+      int totalDays = weeks * 7;
+      int years = totalDays ~/ 365;
+      int remainingDays = totalDays % 365;
+      int months = remainingDays ~/ 30;
+
+      String result = '$weeks weeks';
+      if (years > 0 && months > 0) {
+        result += ' (Approx. ${years}y ${months}m)';
+      } else if (years > 0) {
+        result += ' (Approx. ${years}y)';
+      } else if (months > 0) {
+        result += ' (Approx. ${months}m)';
+      }
+
+      return result;
+    }
+
+    return weekString; // fallback if the format doesn't match
+  }
+
   Future<void> _fetchMoreData() async {
     isLoading.value = true;
 
@@ -78,8 +104,7 @@ class OfflineController extends GetxController {
 
   Future<void> getDataOnline(int page) async {
     final model = Get.find<HomeController>().loginModel.value;
-    var map = await networkService.getAllDataIEVNew(
-        1);
+    var map = await networkService.getAllDataIEVNew(1);
     print("online data $map");
     if (page == 1) {
       listMap.clear();

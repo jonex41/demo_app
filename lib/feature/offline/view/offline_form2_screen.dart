@@ -68,13 +68,17 @@ class OfflineForm2Screen extends GetView<OfflineController> {
                   children: [
                     buildQuestion("First name and surname of child",
                         e["name"].toString()),
-                    buildQuestion("Do you know the date of birth of the child?",
-                        e["dateOfBirth"].toString()),
+                    /*  buildQuestion("Do you know the date of birth of the child?",
+                        e["dateOfBirth"].toString()), */
+                    if (!e["dateOfBirth"].toString().contains("null"))
+                      buildQuestion("Date of birth of the child?",
+                          e["dateOfBirth"].toString()),
 
                     if (!e["age"].toString().contains("null"))
                       buildQuestion(
                           "What is the age of child? (if DOB is uncertain)",
-                          e["age"].toString()),
+                          controller.formatAgeString(e["age"].toString())),
+
                     buildQuestion(
                         "What is the sex of the child?", e["sex"].toString()),
                     buildQuestion(
