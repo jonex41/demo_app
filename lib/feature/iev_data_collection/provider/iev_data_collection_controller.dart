@@ -1059,8 +1059,8 @@ class IEVDataCollectionController extends GetxController {
       }),
       "latitude": currentPosition.value?.latitude,
       "longitude": currentPosition.value?.longitude,
-      "submittedBy": Get.find<LoginController>().loginModel.value?.id ??
-          '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+      "submittedBy":
+          loginModel.value?.id ?? '3fa85f64-5717-4562-b3fc-2c963f66afa6'
       /* "motherDetails": {
         "numberOfMothers": textFieldCountMothersInTheHouseHold.value,
         "mothers":
@@ -1239,8 +1239,8 @@ class IEVDataCollectionController extends GetxController {
         .toList();
 
     Map<String, dynamic> iEVData = {
-      'submittedBy': Get.find<LoginController>().loginModel.value?.id ??
-          '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+      'submittedBy':
+          loginModel.value?.id ?? '3fa85f64-5717-4562-b3fc-2c963f66afa6',
       'longitude': currentPosition.value?.longitude,
       'latitude': currentPosition.value?.latitude,
       'answers': answersListMap,
@@ -1405,6 +1405,8 @@ class IEVDataCollectionController extends GetxController {
 
       final response = await networkService.submitIEVDataNew(iEVData);
       if (response) {
+        Get.find<HomeController>().getLocal();
+        Get.find<HomeController>().getDataOnline();
         showLoaderDialog(context, false);
         showSuccessModal(context);
       }
